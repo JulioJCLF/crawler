@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T03:08:39.035Z",
+  "updatedAt": "2026-06-30T14:31:33.883Z",
   "count": 1931,
   "products": [
     {
@@ -1363,19 +1363,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "35391",
-      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
-      "price": "USD 139,00",
-      "image": "https://www.arsenalsports.com/img/35391/produtos/400/e365696f37cf11c07b6b9b5d69dda27c.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "18235",
       "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-18235.html",
       "price": "USD 146,00",
       "image": "https://www.arsenalsports.com/img/18235/produtos/400/8481b90df57fdd6ea84e956740c02418.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "35391",
+      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
+      "price": "USD 139,00",
+      "image": "https://www.arsenalsports.com/img/35391/produtos/400/e365696f37cf11c07b6b9b5d69dda27c.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -3163,14 +3163,6 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "23906",
-      "name": "FN HERSTAL BOLT CYBERGUN AEG SCAR-SC COMPACT B.R.S.S. PDW BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/fn-herstal-bolt-cybergun-aeg-scarsc-compact-brss-pdw-blowback-airsoft-rifle-black-23906.html",
-      "price": "USD 346,00",
-      "image": "https://www.arsenalsports.com/img/23906/produtos/400/2e4a92e610470353d9d5877346b9312d.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "24204",
       "name": "FN HERSTAL CYBERGUN GBB FIVE-SEVEN 5-7 BLOWBACK AIRSOFT PISTOL FLAT DARK EARTH Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/fn-herstal-cybergun-gbb-fiveseven-57-blowback-airsoft-pistol-flat-dark-earth-24204.html",
@@ -3427,19 +3419,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "12423",
-      "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-12423.html",
-      "price": "USD 200,00",
-      "image": "https://www.arsenalsports.com/img/12423/produtos/400/0f17d44f5d052c59be7cfc711bc8f943.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "9729",
       "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-9729.html",
       "price": "USD 190,00",
       "image": "https://www.arsenalsports.com/img/9729/produtos/400/3ab22bf55c1aec890b105a4fb6561421.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "12423",
+      "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-12423.html",
+      "price": "USD 200,00",
+      "image": "https://www.arsenalsports.com/img/12423/produtos/400/0f17d44f5d052c59be7cfc711bc8f943.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -11880,6 +11872,14 @@
       "url": "https://www.arsenalsports.com/produto/fn-herstal-aw-cybergun-gbbr-scarh-blowback-airsoft-rifle-desert-18277.html",
       "price": null,
       "image": "https://www.arsenalsports.com/img/18277/produtos/400/ab93dc243e4cb5fba65eb4220ebe3893.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "23906",
+      "name": "FN HERSTAL BOLT CYBERGUN AEG SCAR-SC COMPACT B.R.S.S. PDW BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/fn-herstal-bolt-cybergun-aeg-scarsc-compact-brss-pdw-blowback-airsoft-rifle-black-23906.html",
+      "price": "USD 346,00",
+      "image": "https://www.arsenalsports.com/img/23906/produtos/400/2e4a92e610470353d9d5877346b9312d.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
