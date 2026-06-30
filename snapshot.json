@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-30T02:54:16.537Z",
-  "count": 1800,
+  "updatedAt": "2026-06-30T03:02:39.097Z",
+  "count": 1931,
   "products": [
     {
       "id": "8345",
@@ -1715,19 +1715,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "29633",
-      "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29633.html",
-      "price": "USD 159,00",
-      "image": "https://www.arsenalsports.com/img/29633/produtos/400/ebec63a2aa2a92e5af8d7fff0837229f.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "29634",
       "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29634.html",
       "price": "USD 159,00",
       "image": "https://www.arsenalsports.com/img/29634/produtos/400/bf5f9ea363e47049b740e0054ca6fd3f.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "29633",
+      "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29633.html",
+      "price": "USD 159,00",
+      "image": "https://www.arsenalsports.com/img/29633/produtos/400/ebec63a2aa2a92e5af8d7fff0837229f.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -6475,19 +6475,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "28663",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
-      "price": "USD 129,00",
-      "image": "https://www.arsenalsports.com/img/28663/produtos/400/29c81ce12039ca6d52cf68f1034363b4.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "28666",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28666.html",
       "price": "USD 169,00",
       "image": "https://www.arsenalsports.com/img/28666/produtos/400/67e9a55ed4a11891b7ee820229d4a35a.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "28663",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/28663/produtos/400/29c81ce12039ca6d52cf68f1034363b4.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -14401,6 +14401,1054 @@
       "price": "USD 398,00",
       "image": "https://www.arsenalsports.com/img/34420/produtos/400/9a0cedfc9fc9eaa2526308c1c36e793f.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "31145",
+      "name": "VFC AEG VIRGO M4 MK18DDR WITH HANDGUARD 9 MFR AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-aeg-virgo-m4-mk18ddr-with-handguard-9-mfr-airsoft-rifle-black-combo-31145.html",
+      "price": "USD 495,00",
+      "image": "https://www.arsenalsports.com/img/31145/produtos/400/6450b87e3219c39e56190a565d1ef421.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34272",
+      "name": "VFC APFG GBBR MCX RATTLER LT 5.75 HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-rattler-lt-575-handguard-rail-blowback-airsoft-rifle-black-34272.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34272/produtos/400/c6e974a10b3458954965390c006ddbcc.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34274",
+      "name": "VFC APFG GBBR MCX RATTLER LT 8 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-rattler-lt-8-mlok-handguard-rail-blowback-airsoft-rifle-black-34274.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34274/produtos/400/7a8e4f09af12c09de0c39f2749011e75.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34273",
+      "name": "VFC APFG GBBR MCX SPEAR LT 13.1 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-131-mlok-handguard-rail-blowback-airsoft-rifle-tan-34273.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34273/produtos/400/f6c7a7a578dd08495feed2d5d2ff1ff9.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34541",
+      "name": "VFC APFG GBBR MCX SPEAR LT MCX 11.5 M-LOK HANDGUARD BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-mcx-115-mlok-handguard-blowback-airsoft-rifle-black-34541.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34541/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34542",
+      "name": "VFC APFG GBBR MCX SPEAR LT MCX 11.5 M-LOK HANDGUARD BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-mcx-115-mlok-handguard-blowback-airsoft-rifle-tan-34542.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34542/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34543",
+      "name": "VFC APFG GBBR MCX SPEAR LT PDW 9 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-pdw-9-mlok-handguard-rail-blowback-airsoft-rifle-black-34543.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34543/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34276",
+      "name": "VFC APFG GBBR MCX SPEAR LT PDW 9 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-pdw-9-mlok-handguard-rail-blowback-airsoft-rifle-black-34276.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34276/produtos/400/9d509908b65403e36e538f2e309d4a4c.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34275",
+      "name": "VFC APFG GBBR MPX-K 4.5 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mpxk-45-mlok-handguard-rail-blowback-airsoft-rifle-black-34275.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34275/produtos/400/f8fb672e1d7644f1c5ec17a49d7a0c7d.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "17752",
+      "name": "VFC AVALON AEG CALIBUR II PDW WITH GATE ASTER ECU AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-avalon-aeg-calibur-ii-pdw-with-gate-aster-ecu-airsoft-rifle-black-17752.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/17752/produtos/400/bd36f066eb334a9bb665c5903b8a6147.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "17753",
+      "name": "VFC AVALON AEG CALIBUR II PDW WITH GATE ASTER ECU AIRSOFT RIFLE DESERT Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-avalon-aeg-calibur-ii-pdw-with-gate-aster-ecu-airsoft-rifle-desert-17753.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/17753/produtos/400/19e1068b40c455ef25c15c95ce7ffd65.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "24025",
+      "name": "VFC AVALON AEG M4 AVALON SPD BY KRYTAC AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-avalon-aeg-m4-avalon-spd-by-krytac-airsoft-rifle-black-combo-24025.html",
+      "price": "USD 465,00",
+      "image": "https://www.arsenalsports.com/img/24025/produtos/400/e3e95781edc51e4babc9141560efc91d.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34426",
+      "name": "VFC COLT AEG MK18 MOD1 STD AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-colt-aeg-mk18-mod1-std-airsoft-rifle-black-34426.html",
+      "price": "USD 385,00",
+      "image": "https://www.arsenalsports.com/img/34426/produtos/400/84a0b5a1e3da5b8db96ab6f74a9cc6f9.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "30778",
+      "name": "VFC COLT AEG MK48 MOD1 STD PLUS SAW AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-colt-aeg-mk48-mod1-std-plus-saw-airsoft-rifle-black-30778.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/30778/produtos/400/b3fc16477e770fe6d1c5386cf497f677.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "30777",
+      "name": "VFC COLT GBB M16A1 V3 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-colt-gbb-m16a1-v3-blowback-airsoft-rifle-black-30777.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/30777/produtos/400/2b2979f8bb2bf736ccc9d305af0b50ad.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34416",
+      "name": "VFC COLT GBBR M16A2 VER. 3 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-colt-gbbr-m16a2-ver-3-blowback-airsoft-rifle-black-34416.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34416/produtos/400/ae709b15b2b4b6beb6abcbe3498440ea.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "31228",
+      "name": "VFC FN HERSTAL CYBERGUN GBBR SCAR-H MK17 BLOWBACK AIRSOFT RIFLE BLACK & TAN SUPER COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-fn-herstal-cybergun-gbbr-scarh-mk17-blowback-airsoft-rifle-black--tan-super-combo-31228.html",
+      "price": "USD 1.040,00",
+      "image": "https://www.arsenalsports.com/img/31228/produtos/400/2d5a13398a09dc6e4b5b2b5a4f6d1bf2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35047",
+      "name": "VFC FN HERSTAL GBB FNX-45 TACTICAL BLOWBACK AIRSOFT PISTOL TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-fn-herstal-gbb-fnx45-tactical-blowback-airsoft-pistol-tan-35047.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35047/produtos/400/8ec84c81c8a7d7fa7b810d0fb50121cd.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "31146",
+      "name": "VFC GBB FAL LAR OSW MK1 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbb-fal-lar-osw-mk1-blowback-airsoft-rifle-black-31146.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/31146/produtos/400/7090795f606ddf154ee62822db60280e.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34550",
+      "name": "VFC GBBR AV74U BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-av74u-blowback-airsoft-rifle-black-34550.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34550/produtos/400/2a91d8d46df8f86682cbdc261be96b49.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34415",
+      "name": "VFC GBBR HK 417 GEN 2 13 RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-hk-417-gen-2-13-rail-blowback-airsoft-rifle-black-34415.html",
+      "price": "USD 699,00",
+      "image": "https://www.arsenalsports.com/img/34415/produtos/400/a38b31bb988dcca8c12b2d2c1cfc3ff1.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35050",
+      "name": "VFC GBBR ISO 556 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-iso-556-blowback-airsoft-rifle-black-35050.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35050/produtos/400/2c6a4d07fb064ecd3303bdf6fb03f9bc.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "31270",
+      "name": "VFC GBBR PPSH-41 WWII BLOWBACK AIRSOFT RIFLE WOOD & BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-ppsh41-wwii-blowback-airsoft-rifle-wood--black-31270.html",
+      "price": "USD 599,00",
+      "image": "https://www.arsenalsports.com/img/31270/produtos/400/9c3b60a76dcef8636667d99d2cc7f2d3.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35049",
+      "name": "VFC GBBR SCW-9K PRO BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-scw9k-pro-blowback-airsoft-rifle-black-35049.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35049/produtos/400/3c771d309e6af18c587f5587d3aeadff.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35163",
+      "name": "VFC GBBR SCW-9K PRO PDW BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-scw9k-pro-pdw-blowback-airsoft-rifle-black-35163.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35163/produtos/400/72d949f222362bead02f1ef3ef7d60c6.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35044",
+      "name": "VFC GBBR SMG SPC9 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-smg-spc9-blowback-airsoft-rifle-black-35044.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35044/produtos/400/57110cd28f3e6ecfac4c2cbabbaa4802.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "12022",
+      "name": "VFC GBBR SNIPER M40A5 MCMILIAN ASIA SUPER DX LIMITED BLOWBACK AIRSOFT RIFLE OD GREEN COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-gbbr-sniper-m40a5-mcmilian-asia-super-dx-limited-blowback-airsoft-rifle-od-green-combo-12022.html",
+      "price": "USD 495,00",
+      "image": "https://www.arsenalsports.com/img/12022/produtos/400/71824bc2819a7f46b9056a66cd632d39.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34544",
+      "name": "VFC GRENADE LAUNCHER MK13 EGLM MOD 0 BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-grenade-launcher-mk13-eglm-mod-0-black-34544.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34544/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34545",
+      "name": "VFC GRENADE LAUNCHER MK13 EGLM MOD 0 TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-grenade-launcher-mk13-eglm-mod-0-tan-34545.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34545/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34556",
+      "name": "VFC H&K GBB VP9 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-hk-gbb-vp9-blowback-airsoft-pistol-black-34556.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34556/produtos/400/029ac7ce6efc3c0c9c01ba44571a513a.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34547",
+      "name": "VFC KAC GBBR L403A1 EVO BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-kac-gbbr-l403a1--evo-blowback-airsoft-rifle-tan--34547.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34547/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35046",
+      "name": "VFC MARKSMAN GBBR MK12 MOD.O GEN.II BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-marksman-gbbr-mk12-modo-genii-blowback-airsoft-rifle-black-35046.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35046/produtos/400/672a499adad315f7e721610120291a02.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35045",
+      "name": "VFC MAXIM DEFENSE GBBR PDX-SBR BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-maxim-defense-gbbr-pdxsbr-blowback-airsoft-rifle-tan-35045.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35045/produtos/400/1c6b8f7bb89cf802945dc9a15c99fe2e.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "31149",
+      "name": "VFC ROBINSON ARMAMENT AEG VR16 XCR MICRO AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-robinson-armament-aeg-vr16-xcr-micro-airsoft-rifle-black-combo-31149.html",
+      "price": "USD 297,00",
+      "image": "https://www.arsenalsports.com/img/31149/produtos/400/2149ed588fd6f9fdab4dddae63f271f2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "31150",
+      "name": "VFC ROBINSON ARMAMENT AEG VR16 XCR MICRO AIRSOFT RIFLE GREY COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-robinson-armament-aeg-vr16-xcr-micro-airsoft-rifle-grey-combo-31150.html",
+      "price": "USD 317,00",
+      "image": "https://www.arsenalsports.com/img/31150/produtos/400/2322da401de8f39b6dd7b5c0aba33edf.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34421",
+      "name": "VFC TARAN TACTICAL AEG M4 JOHN WICK 2 ULTRALIGHT 14.5 RAIL & GATE ASTER AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-taran-tactical-aeg-m4-john-wick-2-ultralight-145-rail--gate-aster-airsoft-rifle-black-34421.html",
+      "price": "USD 499,00",
+      "image": "https://www.arsenalsports.com/img/34421/produtos/400/c4a58fc1e108b19195e14e2db3549660.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34419",
+      "name": "VFC WALTHER GBB PDP COMPACT BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-walther-gbb-pdp-compact-blowback-airsoft-pistol-black-34419.html",
+      "price": "USD 209,00",
+      "image": "https://www.arsenalsports.com/img/34419/produtos/400/87f0f4225ff7e0b47003abac1de18faa.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "16202",
+      "name": "VIVA ARMS AEG M1919 MACHINE GUN SCALE 1:1 SAW AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/viva-arms-aeg-m1919-machine-gun-scale-11-saw-airsoft-rifle-black-16202.html",
+      "price": "USD 980,00",
+      "image": "https://www.arsenalsports.com/img/16202/produtos/400/0294a133755e7a9542f5c071ae35825e.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "33496",
+      "name": "VIVA ARMS MAXIM RUSSIAN MACHINE GUN AIRSOFT GREEN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/viva-arms-maxim-russian-machine-gun-airsoft-green-33496.html",
+      "price": "USD 750,00",
+      "image": "https://www.arsenalsports.com/img/33496/produtos/400/28b1bb37fa3518a8a5e8e073d5174540.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34549",
+      "name": "WALTHER UMAREX VFC GBB PPK/S BLOWBACK AIRSOFT BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/walther-umarex-vfc-gbb-ppks-blowback-airsoft-black-34549.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34549/produtos/400/be1710323b11547a3999522852a0bb55.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "23537",
+      "name": "WE AEG 888 HK416 FULL METAL AIRSOFT RIFLE BLACK / RED COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-aeg-888-hk416-full-metal-airsoft-rifle-black--red-combo-23537.html",
+      "price": "USD 466,00",
+      "image": "https://www.arsenalsports.com/img/23537/produtos/400/be8a0dc59074a27cb25d839aa6762317.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "963",
+      "name": "WE GBB 1911 DESERT WARRIOR 4.3 BLOWBACK AIRSOFT PISTOL TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-1911-desert-warrior-43-blowback-airsoft-pistol-tan-963.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/963/produtos/400/fea32a172a0f01217a59d63dca7fe60c.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34130",
+      "name": "WE GBB 1911 G2 B-VER BLOWBACK AIRSOFT PISTOL BLACK & BROWN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-1911-g2-bver-blowback-airsoft-pistol-black--brown-34130.html",
+      "price": "USD 109,00",
+      "image": "https://www.arsenalsports.com/img/34130/produtos/400/8b3931a4fa7bc6add07e8e0545cbfe22.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34131",
+      "name": "WE GBB 1911 M.E.U. RAIL BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-1911-meu-rail-blowback-airsoft-pistol-black-34131.html",
+      "price": "USD 109,00",
+      "image": "https://www.arsenalsports.com/img/34131/produtos/400/dd757e5d255d38cb15c8bc9aad1141e2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "21216",
+      "name": "WE GBB BULLDOG D001 BLOWBACK AIRSOFT PISTOL GOLD COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-bulldog-d001-blowback-airsoft-pistol-gold-combo-21216.html",
+      "price": "USD 161,00",
+      "image": "https://www.arsenalsports.com/img/21216/produtos/400/ce1122b2cf30580e84b2ffdbcb4a1346.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18956",
+      "name": "WE GBB CT-25 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-ct25-blowback-airsoft-pistol-black-18956.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/18956/produtos/400/2615c13491fab3eac6520654c7887ea1.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34132",
+      "name": "WE GBB CT-25 BLOWBACK AIRSOFT PISTOL PINK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-ct25-blowback-airsoft-pistol-pink-34132.html",
+      "price": "USD 135,00",
+      "image": "https://www.arsenalsports.com/img/34132/produtos/400/5f666ffcc97a40d62616bc56d12f88a0.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18957",
+      "name": "WE GBB CT-25 BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-ct25-blowback-airsoft-pistol-silver-18957.html",
+      "price": "USD 139,00",
+      "image": "https://www.arsenalsports.com/img/18957/produtos/400/d2bb85f24587e03994a0d1cceac52fe1.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14164",
+      "name": "WE GBB F-SER F226 VIRUS BLOWBACK AIRSOFT PISTOL SILVER / BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-fser-f226-virus-blowback-airsoft-pistol-silver--black-14164.html",
+      "price": "USD 169,00",
+      "image": "https://www.arsenalsports.com/img/14164/produtos/400/4f394a0e1c7df1a3b138b45a4c790080.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18952",
+      "name": "WE GBB F17 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-f17-blowback-airsoft-pistol-black-18952.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/18952/produtos/400/4003a74ee6ded38b126306eec6fe6513.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34135",
+      "name": "WE GBB F17 BLOWBACK AIRSOFT PISTOL TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-f17-blowback-airsoft-pistol-tan-34135.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/34135/produtos/400/4610fe23cb0747cff5226976aaee3cc4.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18954",
+      "name": "WE GBB F18 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-f18-blowback-airsoft-pistol-black-18954.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/18954/produtos/400/4c9ff7c3080746e9a3c4f388e3b8b00d.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18955",
+      "name": "WE GBB F18 BLOWBACK AIRSOFT PISTOL TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-f18-blowback-airsoft-pistol-tan-18955.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/18955/produtos/400/a373108efd305590c90525090722f399.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34142",
+      "name": "WE GBB GALAXY G SERIES SERIES TYPE A BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-galaxy-g-series-series-type-a-blowback-airsoft-pistol-black-34142.html",
+      "price": "USD 122,00",
+      "image": "https://www.arsenalsports.com/img/34142/produtos/400/2ae40719ce4a3912c1ef109b8bdf547c.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34143",
+      "name": "WE GBB GALAXY G SERIES SERIES TYPE A BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-galaxy-g-series-series-type-a-blowback-airsoft-pistol-silver-34143.html",
+      "price": "USD 139,00",
+      "image": "https://www.arsenalsports.com/img/34143/produtos/400/4b6098aa20b28aa83b0390c2f3fd6565.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14157",
+      "name": "WE GBB HI-CAPA 1938-B BABY BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-1938b-baby-blowback-airsoft-pistol-black-14157.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/14157/produtos/400/7c743b5bb1f62cc036d059cec97cce70.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "16517",
+      "name": "WE GBB HI-CAPA 3.8 BRONTOSAURUS BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-38-brontosaurus-blowback-airsoft-pistol-black-16517.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/16517/produtos/400/62e56631cb46597b4834afe4acf56ee2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "21217",
+      "name": "WE GBB HI-CAPA 4.3 FORCE ALLOSAURUS BLOWBACK AIRSOFT SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-43-force-allosaurus-blowback-airsoft-silver-21217.html",
+      "price": "USD 135,00",
+      "image": "https://www.arsenalsports.com/img/21217/produtos/400/0b1b8d8d0b3d834aa1fec95dba3b1c83.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14134",
+      "name": "WE GBB HI-CAPA 5.1 BLACKDRAGON A BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-51-blackdragon-a-blowback-airsoft-pistol-black-14134.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/14134/produtos/400/56ae2b7b39de3ea4189865b1f5edf4f8.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14135",
+      "name": "WE GBB HI-CAPA 5.1 BLACKDRAGON B BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-51-blackdragon-b-blowback-airsoft-pistol-black-14135.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/14135/produtos/400/35ad34c06d7474efdb76113d3766cc9f.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14139",
+      "name": "WE GBB HI-CAPA 5.1 K2-VER H012 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-51-k2ver-h012-blowback-airsoft-pistol-black-14139.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/14139/produtos/400/a7fd3dba0e4010805411043f0b14708e.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "20290",
+      "name": "WE GBB HI-CAPA 5.1 R BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-51-r-blowback-airsoft-pistol-black-20290.html",
+      "price": "USD 116,00",
+      "image": "https://www.arsenalsports.com/img/20290/produtos/400/5f9b017d8d9f16ba4f50a2b2cad25fcf.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "15570",
+      "name": "WE GBB HI-CAPA 7 T-REX VER-A ALPHA LONG SLIDE BLOWBACK AIRSOFT PISTOL BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-7-trex-vera-alpha-long-slide-blowback-airsoft-pistol-black-combo-15570.html",
+      "price": "USD 168,00",
+      "image": "https://www.arsenalsports.com/img/15570/produtos/400/badf470c98aedb01a1362548d0be3e71.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "10465",
+      "name": "WE GBB HI-CAPA FORCE 3.8 VELOCIRAPTOR BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-force-38-velociraptor-blowback-airsoft-pistol-silver-10465.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/10465/produtos/400/b83db6acaea9fc25c62c808a76fe3fc4.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "12488",
+      "name": "WE GBB HI-CAPA SER 5.1 T-REX BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-hicapa-ser-51-trex-blowback-airsoft-pistol-black-12488.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/12488/produtos/400/2961cdba6efab186d3969099efb7ea5a.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "20341",
+      "name": "WE GBB LUGER P08 GBB 4 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-luger-p08-gbb-4-blowback-airsoft-pistol-black-20341.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/20341/produtos/400/69f9af217d1389f5a76ce786112d63bc.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "20342",
+      "name": "WE GBB LUGER P08 GBB 6 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-luger-p08-gbb-6-blowback-airsoft-pistol-black-20342.html",
+      "price": "USD 127,00",
+      "image": "https://www.arsenalsports.com/img/20342/produtos/400/4847172742ff5e2e3d8bfaa8b6b51fdb.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "10361",
+      "name": "WE GBB M92 A1 USMC BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-a1-usmc-blowback-airsoft-pistol-black-10361.html",
+      "price": "USD 115,00",
+      "image": "https://www.arsenalsports.com/img/10361/produtos/400/fb1bd3590fa2a68d6a56da117933bcf2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34153",
+      "name": "WE GBB M92 A1 USMC BLOWBACK AIRSOFT PISTOL DUAL TONE Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-a1-usmc-blowback-airsoft-pistol-dual-tone-34153.html",
+      "price": "USD 120,00",
+      "image": "https://www.arsenalsports.com/img/34153/produtos/400/81afb2c19aaf20627ee82cc57398c307.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34151",
+      "name": "WE GBB M92 A1 USMC BLOWBACK AIRSOFT PISTOL GOLD Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-a1-usmc-blowback-airsoft-pistol-gold-34151.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34151/produtos/400/ba804573cbc0afb0fb940240f958e86f.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34152",
+      "name": "WE GBB M92 A1 USMC BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-a1-usmc-blowback-airsoft-pistol-silver-34152.html",
+      "price": "USD 130,00",
+      "image": "https://www.arsenalsports.com/img/34152/produtos/400/5c0673b942ad57268a38df5bf4dcf0e3.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "20314",
+      "name": "WE GBB M92 MINI BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-mini-blowback-airsoft-pistol-silver-20314.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/20314/produtos/400/5c094b87d8ca59073420a82e76a17dda.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34147",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD GEN.2 S.T.A.R.S. BARRY BURTON AUTO WITH WOOD GRIP BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-gen2-stars-barry-burton-auto-with-wood-grip-blowback-airsoft-pistol-black-34147.html",
+      "price": "USD 179,00",
+      "image": "https://www.arsenalsports.com/img/34147/produtos/400/df8e09f744cb5f84bb72884a95881198.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34146",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD GEN.2 S.T.A.R.S. BARRY BURTON AUTO WITH WOOD GRIP BLOWBACK AIRSOFT PISTOL BROWN & BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-gen2-stars-barry-burton-auto-with-wood-grip-blowback-airsoft-pistol-brown--black-34146.html",
+      "price": "USD 188,00",
+      "image": "https://www.arsenalsports.com/img/34146/produtos/400/babef0220fc766a7a52d44945b0db5a0.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "12496",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD S.T.A.R.S. AUTO BARRY BURTON WITH WOOD GRIP BLOWBACK AIRSOFT PISTOL BROWN & BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-stars-auto-barry-burton-with-wood-grip-blowback-airsoft-pistol-brown--black-12496.html",
+      "price": "USD 215,00",
+      "image": "https://www.arsenalsports.com/img/12496/produtos/400/bc9cba5bc5c92cf8e491d5f029d541d8.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "14145",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD S.T.A.R.S. SEMI-AUTO BARRY BURTON WITH WOOD GRIP BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-stars-semiauto-barry-burton-with-wood-grip-blowback-airsoft-pistol-black-14145.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/14145/produtos/400/98314928af353cf0aa5728ab51fef7cf.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "2462",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD S.T.A.R.S. SEMI-AUTO BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-stars-semiauto-blowback-airsoft-pistol-black-2462.html",
+      "price": "USD 122,00",
+      "image": "https://www.arsenalsports.com/img/2462/produtos/400/8811212fd5773692137ddecb2bc9d72e.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "2488",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD S.T.A.R.S. SEMI-AUTO BLOWBACK AIRSOFT PISTOL CHROME Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-stars-semiauto-blowback-airsoft-pistol-chrome-2488.html",
+      "price": "USD 138,00",
+      "image": "https://www.arsenalsports.com/img/2488/produtos/400/7f91491ff5a849eda3b515e26515cdbb.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "8386",
+      "name": "WE GBB M92 SAMURAI EDGE BIOHAZARD S.T.A.R.S. SEMI-AUTO BLOWBACK AIRSOFT PISTOL DUAL TONE Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-samurai-edge-biohazard-stars-semiauto-blowback-airsoft-pistol-dual-tone-8386.html",
+      "price": "USD 122,00",
+      "image": "https://www.arsenalsports.com/img/8386/produtos/400/b95626a79cf8e7f0ef1e5857e5bd418f.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "25322",
+      "name": "WE GBB M92 SKULL BLOWBACK AIRSOFT PISTOL SILVER / GOLD COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-skull-blowback-airsoft-pistol-silver--gold-combo-25322.html",
+      "price": "USD 213,00",
+      "image": "https://www.arsenalsports.com/img/25322/produtos/400/b3061d4f9b8c149becd81fd0adb2299d.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34149",
+      "name": "WE GBB M92 STANDARD BLOWBACK AIRSOFT PISTOL TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-m92-standard-blowback-airsoft-pistol-tan-34149.html",
+      "price": "USD 110,00",
+      "image": "https://www.arsenalsports.com/img/34149/produtos/400/3018669aacea4f04efd51bbfd1a0321c.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34133",
+      "name": "WE GBB ULTRA COMPACT 950 POCKET BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-ultra-compact-950-pocket-blowback-airsoft-pistol-black-34133.html",
+      "price": "USD 145,00",
+      "image": "https://www.arsenalsports.com/img/34133/produtos/400/db6e8f16f27b1521caaaf9831d954ab6.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34134",
+      "name": "WE GBB ULTRA COMPACT 950 POCKET BLOWBACK AIRSOFT PISTOL SILVER Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbb-ultra-compact-950-pocket-blowback-airsoft-pistol-silver-34134.html",
+      "price": "USD 155,00",
+      "image": "https://www.arsenalsports.com/img/34134/produtos/400/8bcb6f556f8d2f0cf9febd4386f8e94a.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "19016",
+      "name": "WE GBBR AK74-UN FULL-AUTO BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-ak74un-fullauto-blowback-airsoft-rifle-black-19016.html",
+      "price": "USD 450,00",
+      "image": "https://www.arsenalsports.com/img/19016/produtos/400/070177dfb93e726237d1595cc5a676d2.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34150",
+      "name": "WE GBBR L85 BLOWBACK AIRSOFT RIFLE BLACK & OD GREEN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-l85-blowback-airsoft-rifle-black--od-green-34150.html",
+      "price": "USD 435,00",
+      "image": "https://www.arsenalsports.com/img/34150/produtos/400/b09d6c9e8cd1731b9c1a48ab8238d3a2.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34163",
+      "name": "WE GBBR M14 EBR FULL METAL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m14-ebr-full-metal-blowback-airsoft-rifle-black-34163.html",
+      "price": "USD 599,00",
+      "image": "https://www.arsenalsports.com/img/34163/produtos/400/b993426ebe1c7437b7be037ec388e79c.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34162",
+      "name": "WE GBBR M16A1 GEN. 3 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m16a1-gen-3-blowback-airsoft-rifle-black-34162.html",
+      "price": "USD 400,00",
+      "image": "https://www.arsenalsports.com/img/34162/produtos/400/77999783f9467389e526cc40b35022f9.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "16169",
+      "name": "WE GBBR M16A3 GEN. 3 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m16a3-gen-3-blowback-airsoft-rifle-black-16169.html",
+      "price": "USD 450,00",
+      "image": "https://www.arsenalsports.com/img/16169/produtos/400/2f832ce8e6dbff4024a442ef620e9dda.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "29567",
+      "name": "WE GBBR M16A3 GEN. 3 BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m16a3-gen-3-blowback-airsoft-rifle-tan-29567.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/29567/produtos/400/99644edfa7e03a55e1e5296cfdf39370.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "16167",
+      "name": "WE GBBR M4A1 CQB OPEN BOLT FULL METAL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m4a1-cqb-open-bolt-full-metal-blowback-airsoft-rifle-black-16167.html",
+      "price": "USD 385,00",
+      "image": "https://www.arsenalsports.com/img/16167/produtos/400/83adc864c6d6e8f1b52a4fd55ccfd7f7.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34161",
+      "name": "WE GBBR M4A1 CQB OPEN BOLT FULL METAL BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m4a1-cqb-open-bolt-full-metal-blowback-airsoft-rifle-tan-34161.html",
+      "price": "USD 385,00",
+      "image": "https://www.arsenalsports.com/img/34161/produtos/400/16b85030181a282a14737c4b9cedb181.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "16166",
+      "name": "WE GBBR M4A1 OPEN BOLT FULL METAL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m4a1-open-bolt-full-metal-blowback-airsoft-rifle-black-16166.html",
+      "price": "USD 385,00",
+      "image": "https://www.arsenalsports.com/img/16166/produtos/400/e4aa7688a0403cd90a5d5cc56ea0dbca.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "29568",
+      "name": "WE GBBR M4A1 OPEN BOLT FULL METAL BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-m4a1-open-bolt-full-metal-blowback-airsoft-rifle-tan-29568.html",
+      "price": "USD 385,00",
+      "image": "https://www.arsenalsports.com/img/29568/produtos/400/84cda460f634b96df0bf25d063cf90ba.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "18968",
+      "name": "WE GBBR MP5A2 BLOWBACK SMG AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-mp5a2-blowback-smg-airsoft-rifle-black-18968.html",
+      "price": "USD 485,00",
+      "image": "https://www.arsenalsports.com/img/18968/produtos/400/dfaf078865ab8cd7ca9574e27ada252f.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "28737",
+      "name": "WE GBBR PLR-16 SOCOMGEAR BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-gbbr-plr16-socomgear-blowback-airsoft-rifle-black-combo-28737.html",
+      "price": "USD 415,00",
+      "image": "https://www.arsenalsports.com/img/28737/produtos/400/01b11a6dfdd66cced4c7bc5fa11627c0.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34248",
+      "name": "WE HPA GALAXY HI-CAPA SERIES SLIDE K BLOWBACK AIRSOFT PISTOL GOLD COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-hpa-galaxy-hicapa-series-slide-k-blowback-airsoft-pistol-gold-combo-34248.html",
+      "price": "USD 326,00",
+      "image": "https://www.arsenalsports.com/img/34248/produtos/400/63465af317c4c5d5cb9822815db3a557.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34247",
+      "name": "WE HPA GALAXY HI-CAPA SERIES SLIDE R BLOWBACK AIRSOFT PISTOL PURPLE COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/we-hpa-galaxy-hicapa-series-slide-r-blowback-airsoft-pistol-purple-combo-34247.html",
+      "price": "USD 229,00",
+      "image": "https://www.arsenalsports.com/img/34247/produtos/400/c5883dd6348e839f82b01627166ce134.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32226",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 4 TUBE MODEL SL AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-4-tube-model-sl-airsoft-saw-black-32226.html",
+      "price": "USD 226,00",
+      "image": "https://www.arsenalsports.com/img/32226/produtos/400/210a2a696611a964476fccc6ab0540c8.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32225",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 4 TUBE MODEL SL-1 AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-4-tube-model-sl1-airsoft-saw-black-32225.html",
+      "price": "USD 246,00",
+      "image": "https://www.arsenalsports.com/img/32225/produtos/400/d1b67ea0505788c666f8c89e9b672d4d.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32232",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL H AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-h-airsoft-saw-black-32232.html",
+      "price": "USD 569,00",
+      "image": "https://www.arsenalsports.com/img/32232/produtos/400/75f3d84fd3c52b46e0eedaebe83b1420.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32229",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL L AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-l-airsoft-saw-black-32229.html",
+      "price": "USD 496,00",
+      "image": "https://www.arsenalsports.com/img/32229/produtos/400/bf78fd7228ed0b6c70bb6a337f8333be.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32231",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL MINI AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-mini-airsoft-saw-black-32231.html",
+      "price": "USD 359,00",
+      "image": "https://www.arsenalsports.com/img/32231/produtos/400/7521d9896d61b7decfbbb9817d5a1e01.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32230",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL PLUS AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-plus-airsoft-saw-black-32230.html",
+      "price": "USD 569,00",
+      "image": "https://www.arsenalsports.com/img/32230/produtos/400/2f7d0651acc728d034eb3d7576cb7792.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32228",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL S AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-s-airsoft-saw-black-32228.html",
+      "price": "USD 496,00",
+      "image": "https://www.arsenalsports.com/img/32228/produtos/400/475636df9671207c93ff9c1113a18283.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32227",
+      "name": "WELLPRO AEG MINI ROTARY MACHINE GUN 5 TUBE MODEL X AIRSOFT SAW BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-mini-rotary-machine-gun-5-tube-model-x-airsoft-saw-black-32227.html",
+      "price": "USD 569,00",
+      "image": "https://www.arsenalsports.com/img/32227/produtos/400/d6f4423d480f4fdabd4be3377f8a90c6.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32233",
+      "name": "WELLPRO AEG SIG MCX CQB WITH MOSFET & ETU SMG AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-aeg-sig-mcx-cqb-with-mosfet--etu-smg-airsoft-rifle-black-32233.html",
+      "price": "USD 286,00",
+      "image": "https://www.arsenalsports.com/img/32233/produtos/400/3a7509997dd1ba2edcc829dbea748f0c.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32236",
+      "name": "WELLPRO CO2 REVOLVER G296A AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-co2-revolver-g296a-airsoft-pistol-black-32236.html",
+      "price": "USD 96,00",
+      "image": "https://www.arsenalsports.com/img/32236/produtos/400/f6ac0b56e36f176de5c091474d177583.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32235",
+      "name": "WELLPRO CO2 REVOLVER G296B AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-co2-revolver-g296b-airsoft-pistol-black-32235.html",
+      "price": "USD 96,00",
+      "image": "https://www.arsenalsports.com/img/32235/produtos/400/13a0d8eef16183e602e3f580261a75d9.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32234",
+      "name": "WELLPRO CO2 REVOLVER G296C AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-co2-revolver-g296c-airsoft-pistol-black-32234.html",
+      "price": "USD 98,00",
+      "image": "https://www.arsenalsports.com/img/32234/produtos/400/dd964eeff44673dba0625dd576467deb.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32237",
+      "name": "WELLPRO CO2 REVOLVER G296D AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-co2-revolver-g296d-airsoft-pistol-black-32237.html",
+      "price": "USD 100,00",
+      "image": "https://www.arsenalsports.com/img/32237/produtos/400/5bf3b272c792fc3bbfc30df379bbc4e9.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32238",
+      "name": "WELLPRO GBB M11 SUBMACHINE AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbb-m11-submachine-airsoft-rifle-black-32238.html",
+      "price": "USD 245,00",
+      "image": "https://www.arsenalsports.com/img/32238/produtos/400/c73b6ac13aaf8b0f2442eb20c6e468f3.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32239",
+      "name": "WELLPRO GBBR AK12 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-ak12-blowback-airsoft-rifle-black-32239.html",
+      "price": "USD 499,00",
+      "image": "https://www.arsenalsports.com/img/32239/produtos/400/63a76f3664947d0736510d2ae926eaf1.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32241",
+      "name": "WELLPRO GBBR LT-10 CNC HANDGUARD 10 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-lt10-cnc-handguard-10-blowback-airsoft-rifle-black-32241.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/32241/produtos/400/e1f3da4c8e817ca1c5577e39e36e775a.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32244",
+      "name": "WELLPRO GBBR LT-7 CNC HANDGUARD 7 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-lt7-cnc-handguard-7-blowback-airsoft-rifle-black-32244.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/32244/produtos/400/423d1f7a5b75a71951bc898d969d451b.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32240",
+      "name": "WELLPRO GBBR PPK20 FULL METAL SMG AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-ppk20-full-metal-smg-airsoft-rifle-black-32240.html",
+      "price": "USD 439,00",
+      "image": "https://www.arsenalsports.com/img/32240/produtos/400/c6af3b77275a919dee1f7fe972239b41.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32242",
+      "name": "WELLPRO GBBR SIG LT-13 CNC HANDGUARD 13 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-sig-lt13-cnc-handguard-13-blowback-airsoft-rifle-black-32242.html",
+      "price": "USD 699,00",
+      "image": "https://www.arsenalsports.com/img/32242/produtos/400/606858c4dbe67cdae47f04190e381491.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32243",
+      "name": "WELLPRO GBBR SIG LT-6 CNC HANDGUARD 6 BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wellpro-gbbr-sig-lt6-cnc-handguard-6-blowback-airsoft-rifle-black-32243.html",
+      "price": "USD 699,00",
+      "image": "https://www.arsenalsports.com/img/32243/produtos/400/44a4e4359f52ae8303779d397a73698c.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "33421",
+      "name": "WOLVERINE AIRSOFT GENESIS ARMS TARAN TACTICAL HPA MTW G12 SHOTGUN AIRSOFT RIFLE GREY Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wolverine-airsoft-genesis-arms-taran-tactical-hpa-mtw-g12-shotgun-airsoft-rifle-grey-33421.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/33421/produtos/400/f32ffe3a9216362c8d7f0a04efb4dc4d.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "33425",
+      "name": "WOLVERINE AIRSOFT HPA HERETIC ARTICLE 2 SPEEDSOFT AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wolverine-airsoft-hpa-heretic-article-2-speedsoft-airsoft-rifle-black-33425.html",
+      "price": "USD 1.259,00",
+      "image": "https://www.arsenalsports.com/img/33425/produtos/400/6fd87249e46c9ffcbf6c2724b1c551ad.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "33426",
+      "name": "WOLVERINE AIRSOFT HPA HERETIC ARTICLE 4 SPEEDSOFT AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wolverine-airsoft-hpa-heretic-article-4-speedsoft-airsoft-rifle-black-33426.html",
+      "price": "USD 1.299,00",
+      "image": "https://www.arsenalsports.com/img/33426/produtos/400/f7b3b4563a418a6c316e943689f71a56.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "24990",
+      "name": "WOLVERINE AIRSOFT HPA M4 MTW BILLET TACTICAL 10 AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/wolverine-airsoft-hpa-m4-mtw-billet-tactical-10-airsoft-rifle-black-24990.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/24990/produtos/400/1d715472643de44c84de583d58b5ede6.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35204",
+      "name": "A&K AEG M60 E4 MACHINE GUN SUPORT SAW AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ak-aeg-m60-e4-machine-gun-suport-saw-airsoft-rifle-black-35204.html",
+      "price": "USD 490,00",
+      "image": "https://www.arsenalsports.com/img/35204/produtos/400/5c99e8fdebf108a7432b95f932be9101.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35205",
+      "name": "A&K AEG MK43 MACHINE GUN SUPORT SAW AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ak-aeg-mk43-machine-gun-suport-saw-airsoft-rifle-black-35205.html",
+      "price": "USD 490,00",
+      "image": "https://www.arsenalsports.com/img/35205/produtos/400/4010012241d3e3ec3736e070b6644e67.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32216",
+      "name": "A&K SPRING SVD DRAGUNOV WITH METAL GEARBOX SNIPER AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ak-spring-svd-dragunov-with-metal-gearbox-sniper-airsoft-rifle-black-32216.html",
+      "price": "USD 190,00",
+      "image": "https://www.arsenalsports.com/img/32216/produtos/400/d96a7fedb5e81672cf7f82039dcc7a66.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32087",
+      "name": "ACETECH GBB PISTOL CONVERTION DRUMFIRE WITH STOCK FOLDABLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/acetech-gbb-pistol-convertion-drumfire-with-stock-foldable-black-32087.html",
+      "price": "USD 298,00",
+      "image": "https://www.arsenalsports.com/img/32087/produtos/400/eda15c87f89bdfd06648a4aa7aa30afd.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32507",
+      "name": "APS HPA M4 HANDGUARD 7.7 SUPER LITE WITH PULSAR EDITION AIRSOFT RIFLE BLACK & RED Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/aps-hpa-m4-handguard-77-super-lite-with-pulsar-edition-airsoft-rifle-black--red-32507.html",
+      "price": "USD 789,00",
+      "image": "https://www.arsenalsports.com/img/32507/produtos/400/6d6bc6661966a09f996a82c8b421013d.jpeg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35150",
+      "name": "BOLT AEG MP5 SWAT KSS STYLE ELECTRIC BLOWBACK SMG AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/bolt-aeg-mp5-swat-kss-style-electric-blowback-smg-airsoft-rifle-black-35150.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35150/produtos/400/464b1536d40312ba682c1186b0f7c218.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32860",
+      "name": "HFC GBB UZI M11BLOWBACK AIRSOFT SMG BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/hfc-gbb-uzi-m11blowback-airsoft-smg-black-32860.html",
+      "price": "USD 190,00",
+      "image": "https://www.arsenalsports.com/img/32860/produtos/400/6eef0bc537ef8c2bf4a59ccd2df33858.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35427",
+      "name": "POSEIDON GBBR M4 CERBERUS BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbbr-m4-cerberus-blowback-airsoft-rifle-black-35427.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35427/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "35428",
+      "name": "POSEIDON GBBR M4 CERBERUS BLOWBACK AIRSOFT RIFLE TAN Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbbr-m4-cerberus-blowback-airsoft-rifle-tan-35428.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/35428/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "32535",
+      "name": "S&T ARMAMENT SPRING SNIPER SV-98 AIRSOFT RIFLE REAL WOOD Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/st-armament-spring-sniper-sv98-airsoft-rifle-real-wood-32535.html",
+      "price": "USD 360,00",
+      "image": "https://www.arsenalsports.com/img/32535/produtos/400/97b151aafae509263b15f661ac12e9bc.png",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
     }
   ]
 }
