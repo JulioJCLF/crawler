@@ -138,29 +138,62 @@ async function loadSnapshot() {
   }
 }
 
+const DISCORD_LIMIT = 1900; // margem de seguranca sob o limite real de 2000
+
+function splitIntoChunks(linhas, header) {
+  const chunks = [];
+  let atual = header;
+  for (const linha of linhas) {
+    if ((atual + "\n" + linha).length > DISCORD_LIMIT) {
+      chunks.push(atual);
+      atual = linha;
+    } else {
+      atual += "\n" + linha;
+    }
+  }
+  if (atual) chunks.push(atual);
+  return chunks;
+}
+
 async function notify(novos) {
   const linhas = novos.map(
     (p) => `• ${p.name}${p.price ? ` — ${p.price}` : ""}\n  ${p.url}`
   );
-  const msg = `🆕 ${novos.length} produto(s) novo(s) na Arsenal Sports:\n\n${linhas.join("\n")}`;
-  console.log("\n" + msg);
+  const header = `🆕 ${novos.length} produto(s) novo(s) na Arsenal Sports:`;
+  const msgCompleta = `${header}\n\n${linhas.join("\n")}`;
+  console.log("\n" + msgCompleta);
 
-  if (WEBHOOK_URL) {
+  if (!WEBHOOK_URL) {
+    console.log("(WEBHOOK_URL nao configurada — pulando envio)");
+    return;
+  }
+
+  const chunks = splitIntoChunks(linhas, header + "\n");
+
+  for (let i = 0; i < chunks.length; i++) {
+    const body =
+      chunks.length > 1 ? `${chunks[i]}\n(parte ${i + 1}/${chunks.length})` : chunks[i];
     try {
-      await fetch(WEBHOOK_URL, {
+      const res = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          content: msg,          // Discord (campo "content")
-          text: msg,             // Slack (campo "text")
-          count: novos.length,   // n8n: facil de checar
-          produtos: novos,       // n8n: array cru pra montar a msg do WhatsApp
+          content: body,
+          text: body,
+          count: novos.length,
+          produtos: novos,
         }),
       });
-      console.log("→ webhook enviado");
+      if (!res.ok) {
+        const txt = await res.text().catch(() => "");
+        console.error(`webhook falhou: HTTP ${res.status} — ${txt}`);
+      } else {
+        console.log(`→ webhook enviado (${i + 1}/${chunks.length})`);
+      }
     } catch (e) {
       console.error("webhook falhou:", e.message);
     }
+    if (chunks.length > 1) await sleep(700); // evita rate limit do Discord
   }
 }
 
