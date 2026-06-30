@@ -1,0 +1,42 @@
+name: arsenal-watch
+
+on:
+  schedule:
+    - cron: "0 12 * * *"      # todo dia 12:00 UTC (09:00 BRT). Semanal: "0 12 * * 1"
+  workflow_dispatch: {}        # permite rodar na mao pela aba Actions
+
+permissions:
+  contents: write              # necessario pra commitar o snapshot.json de volta
+
+concurrency:
+  group: arsenal-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - name: Rodar crawler
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: node crawler.js
+
+      - name: Commitar snapshot atualizado
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add snapshot.json
+          if git diff --staged --quiet; then
+            echo "snapshot sem mudancas"
+          else
+            git commit -m "chore: update snapshot [skip ci]"
+            git push
+          fi

@@ -141,7 +141,12 @@ async function notify(novos) {
       await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: msg, text: msg }), // content=Discord, text=Slack
+        body: JSON.stringify({
+          content: msg,          // Discord (campo "content")
+          text: msg,             // Slack (campo "text")
+          count: novos.length,   // n8n: facil de checar
+          produtos: novos,       // n8n: array cru pra montar a msg do WhatsApp
+        }),
       });
       console.log("→ webhook enviado");
     } catch (e) {
