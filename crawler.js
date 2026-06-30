@@ -60,9 +60,17 @@ function parseProducts(html) {
     if (byId.has(id)) return;
 
     const title = ($(el).attr("title") || $(el).text() || "").trim();
-    // Preco: procura "USD x" no card ancestral mais proximo
+    // Card ancestral: dali tiramos preco e imagem
     const card = $(el).closest("div,li,article");
     const priceMatch = card.text().match(/USD\s*([\d.,]+)/);
+
+    // Imagem do produto: src que contem "/produtos/" (logos de marca usam "/marcas/")
+    let img =
+      card.find('img[src*="/produtos/"]').first().attr("src") ||
+      $(el).find("img").first().attr("src") ||
+      null;
+    if (img && !img.startsWith("http"))
+      img = `https://www.arsenalsports.com${img}`;
 
     byId.set(id, {
       id,
@@ -71,6 +79,7 @@ function parseProducts(html) {
         ? href
         : `https://www.arsenalsports.com${href}`,
       price: priceMatch ? `USD ${priceMatch[1]}` : null,
+      image: img,
     });
   });
 
@@ -166,6 +175,15 @@ async function main() {
   }
 
   const snapshot = await loadSnapshot();
+  const agora = new Date().toISOString();
+
+  // Mapa de firstSeen do snapshot anterior, pra preservar a data original
+  const firstSeenAntigo = new Map(
+    (snapshot?.products || []).map((p) => [p.id, p.firstSeen])
+  );
+  for (const p of atuais) {
+    p.firstSeen = firstSeenAntigo.get(p.id) || agora;
+  }
 
   if (!snapshot) {
     console.log("Primeira execucao — criando baseline, sem alertas.");
@@ -186,7 +204,7 @@ async function main() {
   await writeFile(
     SNAPSHOT_PATH,
     JSON.stringify(
-      { updatedAt: new Date().toISOString(), count: atuais.length, products: atuais },
+      { updatedAt: agora, count: atuais.length, products: atuais },
       null,
       2
     )

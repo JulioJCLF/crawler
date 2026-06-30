@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Armaria — Réplicas de Airsoft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d0f0e;
+    --surface: #141815;
+    --surface-2: #1b201c;
+    --border: #2a312c;
+    --text: #e9ece8;
+    --muted: #8b948c;
+    --accent: #c6ff00;
+    --danger: #ff5b4a;
+    --radius: 4px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: linear-gradient(180deg, rgba(13,15,14,.98), rgba(13,15,14,.92));
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+  }
+  .bar {
+    max-width: 1400px; margin: 0 auto; padding: 14px 20px;
+    display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+  }
+  .brand {
+    font-family: "Saira Condensed", sans-serif;
+    font-weight: 700; font-size: 26px; letter-spacing: .08em;
+    text-transform: uppercase; line-height: 1;
+  }
+  .brand span { color: var(--accent); }
+  .meta {
+    font-family: "Space Mono", monospace; font-size: 12px; color: var(--muted);
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .meta b { color: var(--text); font-weight: 700; }
+
+  .controls {
+    max-width: 1400px; margin: 0 auto; padding: 0 20px 14px;
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  }
+  input[type="search"], select {
+    background: var(--surface); color: var(--text);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 9px 12px; font-size: 14px; font-family: inherit;
+  }
+  input[type="search"] { flex: 1; min-width: 200px; }
+  input[type="search"]::placeholder { color: var(--muted); }
+  select { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  .toggle {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: "Space Mono", monospace; font-size: 12px; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--muted); cursor: pointer; user-select: none;
+    border: 1px solid var(--border); border-radius: var(--radius); padding: 8px 12px;
+  }
+  .toggle input { accent-color: var(--accent); width: 15px; height: 15px; }
+  .toggle.on { color: var(--accent); border-color: var(--accent); }
+
+  /* GRID */
+  main { max-width: 1400px; margin: 0 auto; padding: 20px; }
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .card:hover { border-color: #3c4640; transform: translateY(-2px); }
+  .thumb {
+    aspect-ratio: 1 / 1; background: var(--surface-2);
+    display: flex; align-items: center; justify-content: center; padding: 12px;
+  }
+  .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .thumb.empty::after {
+    content: "SEM IMAGEM"; font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--muted); letter-spacing: .1em;
+  }
+  .body { padding: 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .name {
+    font-size: 13px; line-height: 1.35; font-weight: 500;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .ref { font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted); }
+  .foot { margin-top: auto; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .price { font-family: "Space Mono", monospace; font-weight: 700; font-size: 17px; }
+  .price.none { color: var(--muted); font-size: 13px; font-weight: 400; }
+  .open {
+    font-family: "Space Mono", monospace; font-size: 11px; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--muted); border-bottom: 1px solid transparent;
+  }
+  .card:hover .open { color: var(--accent); border-color: var(--accent); }
+
+  /* NOVO badge — clip-path stencil, hi-vis */
+  .novo {
+    position: absolute; top: 0; left: 0; z-index: 2;
+    background: var(--accent); color: #0d0f0e;
+    font-family: "Space Mono", monospace; font-weight: 700; font-size: 10px;
+    letter-spacing: .12em; padding: 4px 14px 4px 8px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  }
+
+  .empty-state {
+    text-align: center; padding: 80px 20px; color: var(--muted);
+    font-family: "Space Mono", monospace;
+  }
+  .empty-state b { display: block; color: var(--text); font-size: 16px; margin-bottom: 6px; }
+  footer {
+    max-width: 1400px; margin: 0 auto; padding: 30px 20px;
+    font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted);
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <div class="brand">ARMARIA <span>//</span> RÉPLICAS</div>
+      <div class="meta">
+        <span><b id="count">—</b> itens</span>
+        <span>novos 7d: <b id="countNovo">—</b></span>
+        <span>atualizado <b id="updated">—</b></span>
+      </div>
+    </div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Buscar por nome, marca, modelo..." autocomplete="off" />
+      <select id="sort" aria-label="Ordenar">
+        <option value="default">Ordem do catálogo</option>
+        <option value="new">Mais recentes</option>
+        <option value="price-asc">Menor preço</option>
+        <option value="price-desc">Maior preço</option>
+        <option value="az">A–Z</option>
+      </select>
+      <label class="toggle" id="novoToggle">
+        <input type="checkbox" id="onlyNovo" /> Só novos
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid"></div>
+    <div class="empty-state" id="empty" hidden></div>
+  </main>
+
+  <footer id="footer"></footer>
+
+<script>
+const NEW_WINDOW_DAYS = 7;
+const grid = document.getElementById("grid");
+const empty = document.getElementById("empty");
+let items = [];
+
+const priceNum = (s) => {
+  if (!s) return Infinity;
+  // "USD 1.249,00" -> 1249.00
+  const n = s.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", ".");
+  const v = parseFloat(n);
+  return isNaN(v) ? Infinity : v;
+};
+const isNew = (p) => {
+  if (!p.firstSeen) return false;
+  return (Date.now() - new Date(p.firstSeen)) / 86400000 <= NEW_WINDOW_DAYS;
+};
+
+function render() {
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const sort = document.getElementById("sort").value;
+  const onlyNovo = document.getElementById("onlyNovo").checked;
+
+  let list = items.filter((p) => p.name.toLowerCase().includes(q));
+  if (onlyNovo) list = list.filter(isNew);
+
+  if (sort === "price-asc") list.sort((a, b) => priceNum(a.price) - priceNum(b.price));
+  else if (sort === "price-desc") list.sort((a, b) => priceNum(b.price) - priceNum(a.price));
+  else if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
+  else if (sort === "new") list.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
+
+  if (list.length === 0) {
+    grid.innerHTML = "";
+    empty.hidden = false;
+    empty.innerHTML = "<b>Nada por aqui</b>Ajuste a busca ou desligue o filtro de novos.";
+    return;
+  }
+  empty.hidden = true;
+
+  grid.innerHTML = list.map((p) => `
+    <article class="card">
+      ${isNew(p) ? '<div class="novo">NOVO</div>' : ""}
+      <a class="thumb ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">
+        ${p.image ? `<img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)}">` : ""}
+      </a>
+      <div class="body">
+        <div class="name">${escapeHtml(p.name)}</div>
+        <div class="ref">REF ${p.id}</div>
+        <div class="foot">
+          <span class="price ${p.price ? "" : "none"}">${p.price || "sob consulta"}</span>
+          <a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+function fmtDate(iso) {
+  try {
+    return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
+  } catch { return "—"; }
+}
+
+document.getElementById("q").addEventListener("input", render);
+document.getElementById("sort").addEventListener("change", render);
+document.getElementById("onlyNovo").addEventListener("change", (e) => {
+  document.getElementById("novoToggle").classList.toggle("on", e.target.checked);
+  render();
+});
+
+fetch("./snapshot.json")
+  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((data) => {
+    items = data.products || [];
+    document.getElementById("count").textContent = items.length;
+    document.getElementById("countNovo").textContent = items.filter(isNew).length;
+    document.getElementById("updated").textContent = fmtDate(data.updatedAt);
+    document.getElementById("footer").textContent =
+      `Fonte: arsenalsports.com · snapshot gerado pelo arsenal-watch · ${items.length} produtos`;
+    render();
+  })
+  .catch((err) => {
+    empty.hidden = false;
+    empty.innerHTML = `<b>Sem dados ainda</b>O snapshot.json não foi encontrado (erro ${err.message}). Rode o crawler ao menos uma vez.`;
+  });
+</script>
+</body>
+</html>
