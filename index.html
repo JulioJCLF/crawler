@@ -33,6 +33,7 @@
     -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
   ::selection { background: var(--accent); color: #0b0d0c; }
 
   /* ============ HERO ============ */
@@ -68,7 +69,7 @@
     line-height: 1.5;
   }
   .stats {
-    display: flex; flex-wrap: wrap; gap: 10px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
   }
   .stat {
     font-family: "Space Mono", monospace; font-size: 12px;
@@ -129,6 +130,11 @@
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
     margin-bottom: 6px; min-height: 31px;
   }
+  .radar-fav-dot {
+    position: absolute; top: 6px; left: 6px; z-index: 3;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(11,13,12,.8);
+  }
 
   /* ============ CONTROLS ============ */
   .controls-wrap {
@@ -160,6 +166,14 @@
   .toggle input { accent-color: var(--accent); width: 15px; height: 15px; }
   .toggle.on { color: var(--accent); border-color: var(--accent); }
 
+  .view-switch { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-left: auto; }
+  .view-btn {
+    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+    background: var(--surface); color: var(--muted); border: none; padding: 9px 14px; cursor: pointer;
+  }
+  .view-btn + .view-btn { border-left: 1px solid var(--border); }
+  .view-btn.active { background: var(--accent); color: #0b0d0c; font-weight: 700; }
+
   /* ============ GRID ============ */
   main { max-width: 1400px; margin: 0 auto; padding: 24px 20px 60px; }
   .grid {
@@ -170,9 +184,10 @@
     position: relative; display: flex; flex-direction: column;
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); overflow: hidden;
-    transition: border-color .15s ease, transform .15s ease;
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
   .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .card.fav-alert { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .thumb {
     aspect-ratio: 1 / 1; background: var(--surface-2);
     display: flex; align-items: center; justify-content: center; padding: 12px;
@@ -183,12 +198,17 @@
     font-size: 11px; color: var(--muted); letter-spacing: .1em;
   }
   .body { padding: 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .fav-alert-tag {
+    font-family: "Space Mono", monospace; font-size: 10px; color: var(--accent);
+    letter-spacing: .04em; text-transform: uppercase;
+  }
   .name {
     font-size: 13px; line-height: 1.35; font-weight: 500;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
   }
   .ref { font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted); }
   .foot { margin-top: auto; display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .foot-actions { display: flex; align-items: center; gap: 10px; }
   .price { font-family: "Space Mono", monospace; font-weight: 700; font-size: 17px; }
   .price.none { color: var(--muted); font-size: 13px; font-weight: 400; }
   .open {
@@ -205,6 +225,27 @@
     margin-top: 2px; transition: filter .15s ease;
   }
   .cta-zap:hover { filter: brightness(1.1); }
+
+  /* fav / share icon buttons */
+  .fav-btn {
+    position: absolute; top: 8px; right: 8px; z-index: 3;
+    width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
+    background: rgba(11,13,12,.65); border: 1px solid var(--border); border-radius: 50%;
+    color: var(--text); cursor: pointer; backdrop-filter: blur(2px);
+    transition: color .15s, border-color .15s, transform .1s;
+  }
+  .fav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .fav-btn.active { color: var(--accent); border-color: var(--accent); }
+  .fav-btn:active { transform: scale(.9); }
+  .fav-btn svg { width: 15px; height: 15px; }
+  .share-item-btn {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    display: inline-flex; align-items: center; padding: 2px; transition: color .15s;
+  }
+  .share-item-btn:hover { color: var(--accent); }
+  .share-item-btn svg { width: 14px; height: 14px; }
+
+  .stab-label { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); }
 
   /* badges */
   .novo {
@@ -239,6 +280,45 @@
     padding: 2px 6px; letter-spacing: .05em; align-self: flex-start;
   }
 
+  /* deep link highlight */
+  .deep-link-highlight { outline: 2px solid var(--accent); outline-offset: 3px; animation: dlpulse 1.6s ease-out; }
+  @keyframes dlpulse {
+    0% { box-shadow: 0 0 0 0 rgba(198,255,0,.45); }
+    100% { box-shadow: 0 0 0 16px rgba(198,255,0,0); }
+  }
+
+  /* ============ TABLE VIEW ============ */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  .data-table thead th {
+    text-align: left; font-family: "Space Mono", monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .05em; color: var(--muted);
+    padding: 10px 12px; border-bottom: 1px solid var(--border); background: var(--surface);
+    position: sticky; top: 0;
+  }
+  .data-table tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+  .data-table tbody tr:hover { background: var(--surface-2); }
+  .data-table tbody tr.fav-alert-row { box-shadow: inset 3px 0 0 var(--accent); }
+  .data-table tbody tr.consulta-row { opacity: .5; }
+  .data-table td { padding: 8px 12px; vertical-align: middle; }
+  .thumb-mini {
+    width: 44px; height: 44px; border-radius: var(--radius); overflow: hidden;
+    background: var(--surface-2); display: flex; align-items: center; justify-content: center;
+  }
+  .thumb-mini img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .row-name { font-size: 13px; font-weight: 500; line-height: 1.3; max-width: 460px; }
+  .row-meta { font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .row-badges { display: flex; gap: 6px; margin-top: 4px; }
+  .pill {
+    font-family: "Space Mono", monospace; font-size: 9px; font-weight: 700;
+    letter-spacing: .06em; padding: 2px 6px; border-radius: 3px;
+  }
+  .pill-new { background: var(--accent); color: #0b0d0c; }
+  .pill-restock { background: var(--info); color: #0b0d0c; }
+  .td-actions { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+  .td-actions .fav-btn { position: static; background: none; border: none; width: auto; height: auto; }
+  .td-actions .fav-btn:hover { background: none; }
+
   .empty-state {
     text-align: center; padding: 80px 20px; color: var(--muted);
     font-family: "Space Mono", monospace;
@@ -268,6 +348,8 @@
     .hero { padding: 28px 16px 22px; }
     .share-btn { margin-left: 0; width: 100%; justify-content: center; }
     .stats { width: 100%; }
+    .view-switch { margin-left: 0; width: 100%; }
+    .view-btn { flex: 1; }
   }
 </style>
 </head>
@@ -280,8 +362,10 @@
       <p class="tagline">Estoque e preço atualizados todos os dias. Sem precisar entrar no site original — veja o que chegou, o que voltou e o que mudou de preço, tudo aqui.</p>
       <div class="stats">
         <div class="stat"><span class="dot"></span>itens no catálogo <b id="count">—</b></div>
+        <div class="stat"><span class="dot"></span>disponíveis <b id="countAvail">—</b></div>
         <div class="stat hot"><span class="dot"></span>novos (7d) <b id="countNovo">—</b></div>
         <div class="stat hot"><span class="dot"></span>voltaram ao estoque <b id="countRestock">—</b></div>
+        <div class="stat hot" id="favStat" hidden><span class="dot"></span>favoritos <b id="countFav">0</b></div>
         <div class="stat"><span class="dot"></span>atualizado <b id="updated">—</b></div>
         <button class="share-btn" id="shareBtn" type="button">↗ Compartilhar</button>
       </div>
@@ -311,11 +395,29 @@
       <label class="toggle" id="changedToggle">
         <input type="checkbox" id="onlyChanged" /> Só com mudança de preço
       </label>
+      <label class="toggle" id="availToggle">
+        <input type="checkbox" id="onlyAvail" /> Só disponíveis
+      </label>
+      <label class="toggle" id="favToggle">
+        <input type="checkbox" id="onlyFav" /> Só favoritos
+      </label>
+      <div class="view-switch" role="group" aria-label="Modo de visualização">
+        <button type="button" class="view-btn" id="viewGrid">Grade</button>
+        <button type="button" class="view-btn" id="viewTable">Tabela</button>
+      </div>
     </div>
   </div>
 
   <main>
     <div class="grid" id="grid"></div>
+    <div class="table-wrap" id="tableWrap" hidden>
+      <table class="data-table">
+        <thead>
+          <tr><th></th><th>Produto</th><th>Preço</th><th>Ações</th></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
     <div class="empty-state" id="empty" hidden></div>
   </main>
 
@@ -337,9 +439,35 @@ const CONFIG = {
 
 const NEW_WINDOW_DAYS = 7;
 const CHANGE_WINDOW_DAYS = 7;
+const FAV_KEY = "armaria_favoritos";
+const VIEW_KEY = "armaria_view";
+
 const grid = document.getElementById("grid");
+const tableWrap = document.getElementById("tableWrap");
 const empty = document.getElementById("empty");
 let items = [];
+
+// ---- icons (svg simples, herdam cor via currentColor) ----
+const STAR_OUTLINE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
+const STAR_FILLED = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
+const SHARE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.3" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.3" y1="13.4" x2="15.6" y2="17.4"/></svg>`;
+
+// ---- favoritos / visualizacao (localStorage, so neste navegador) ----
+function loadFavorites() {
+  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
+  catch { return new Set(); }
+}
+function saveFavorites() {
+  try { localStorage.setItem(FAV_KEY, JSON.stringify([...favorites])); } catch {}
+}
+let favorites = loadFavorites();
+
+function loadView() {
+  try { return localStorage.getItem(VIEW_KEY) === "table" ? "table" : "grid"; }
+  catch { return "grid"; }
+}
+function saveView(v) { try { localStorage.setItem(VIEW_KEY, v); } catch {} }
+let viewMode = loadView();
 
 const priceNum = (s) => {
   if (!s) return Infinity;
@@ -353,11 +481,33 @@ const isChanged = (p) => p.priceChangedAt && daysAgo(p.priceChangedAt) <= CHANGE
 const isRestock = (p) => isChanged(p) && p.changeType === "restock";
 const isPriceMove = (p) => isChanged(p) && p.changeType === "price_change";
 const isSobConsulta = (p) => !p.price && (p.changeType === "sob_consulta" || !p.changeType);
+const isFavAlert = (p) => favorites.has(p.id) && (isRestock(p) || isPriceMove(p));
 
 function priority(p) {
   if (isRestock(p) || isPriceMove(p)) return 2;
   if (isNew(p)) return 1;
   return 0;
+}
+
+function stabilityLabel(p) {
+  if (isSobConsulta(p)) {
+    if (p.priceChangedAt) {
+      const d = Math.floor(daysAgo(p.priceChangedAt));
+      return `indisponível ${d <= 0 ? "hoje" : "há " + d + "d"}`;
+    }
+    return null;
+  }
+  if (p.priceChangedAt) {
+    const d = Math.floor(daysAgo(p.priceChangedAt));
+    const tag = d <= 0 ? "hoje" : `há ${d}d`;
+    if (p.changeType === "restock") return `disponível ${tag}`;
+    if (p.changeType === "price_change") return `neste preço ${tag}`;
+  }
+  if (p.firstSeen) {
+    const d = Math.floor(daysAgo(p.firstSeen));
+    return d <= 0 ? "rastreado desde hoje" : `rastreado há ${d}d`;
+  }
+  return null;
 }
 
 function escapeHtml(s) {
@@ -374,54 +524,93 @@ function zapLink(p) {
   return `https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`;
 }
 
-function cardHtml(p, compact) {
-  const novo = isNew(p);
-  const restock = isRestock(p);
+function priceBlockHtml(p) {
   const priceMove = isPriceMove(p);
   const sobConsulta = isSobConsulta(p);
-
-  let priceBlock;
   if (priceMove && p.previousPrice) {
     const up = priceNum(p.price) > priceNum(p.previousPrice);
-    priceBlock = `
+    return `
       <div class="price-row">
         <span class="price-old">${p.previousPrice}</span>
         <span class="price">${p.price || "—"}</span>
         <span class="price-arrow ${up ? "up" : "down"}">${up ? "▲" : "▼"}</span>
       </div>`;
-  } else if (sobConsulta) {
-    priceBlock = `<span class="tag-consulta">SOB CONSULTA</span>`;
-  } else {
-    priceBlock = `<span class="price ${p.price ? "" : "none"}">${p.price || "sob consulta"}</span>`;
   }
+  if (sobConsulta) return `<span class="tag-consulta">SOB CONSULTA</span>`;
+  return `<span class="price ${p.price ? "" : "none"}">${p.price || "sob consulta"}</span>`;
+}
+
+function cardHtml(p, compact) {
+  const novo = isNew(p);
+  const restock = isRestock(p);
+  const sobConsulta = isSobConsulta(p);
+  const fav = favorites.has(p.id);
+  const favAlert = isFavAlert(p);
+  const stab = stabilityLabel(p);
 
   const zap = zapLink(p);
   const zapBtn = zap && !compact
     ? `<a class="cta-zap" href="${zap}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
     : "";
+  const favBtn = compact ? "" : `<button type="button" class="fav-btn ${fav ? "active" : ""}" data-action="fav" data-id="${p.id}" aria-label="Favoritar" title="Favoritar">${fav ? STAR_FILLED : STAR_OUTLINE}</button>`;
+  const shareBtn = compact ? "" : `<button type="button" class="share-item-btn" data-action="share" data-id="${p.id}" aria-label="Compartilhar este item" title="Compartilhar este item">${SHARE_ICON}</button>`;
+  const favDot = compact && fav ? '<div class="radar-fav-dot"></div>' : "";
 
   return `
-    <article class="card ${sobConsulta ? "consulta" : ""} ${compact ? "radar-card" : ""}">
+    <article class="card ${sobConsulta ? "consulta" : ""} ${compact ? "radar-card" : ""} ${favAlert ? "fav-alert" : ""}" data-id="${p.id}">
+      ${favBtn}${favDot}
       ${novo ? '<div class="novo">NOVO</div>' : ""}
       ${restock ? `<div class="restock ${novo ? "stacked" : ""}">VOLTOU</div>` : ""}
       <a class="thumb ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">
         ${p.image ? `<img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)}">` : ""}
       </a>
       <div class="body">
+        ${favAlert ? '<div class="fav-alert-tag">★ favorito que mudou</div>' : ""}
         <div class="name">${escapeHtml(p.name)}</div>
         ${compact ? "" : `<div class="ref">REF ${p.id}</div>`}
+        ${!compact && stab ? `<div class="stab-label">${stab}</div>` : ""}
         <div class="foot">
-          ${priceBlock}
-          <a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a>
+          ${priceBlockHtml(p)}
+          <span class="foot-actions">${shareBtn}<a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a></span>
         </div>
         ${zapBtn}
       </div>
     </article>`;
 }
 
+function rowHtml(p) {
+  const novo = isNew(p);
+  const restock = isRestock(p);
+  const sobConsulta = isSobConsulta(p);
+  const fav = favorites.has(p.id);
+  const favAlert = isFavAlert(p);
+  const stab = stabilityLabel(p);
+  const badges = `${novo ? '<span class="pill pill-new">NOVO</span>' : ""}${restock ? '<span class="pill pill-restock">VOLTOU</span>' : ""}`;
+
+  return `
+    <tr data-id="${p.id}" class="${sobConsulta ? "consulta-row" : ""} ${favAlert ? "fav-alert-row" : ""}">
+      <td><a class="thumb-mini ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">${p.image ? `<img loading="lazy" src="${p.image}" alt="">` : ""}</a></td>
+      <td>
+        <div class="row-name">${escapeHtml(p.name)}</div>
+        <div class="row-meta">REF ${p.id}${stab ? ` · ${stab}` : ""}</div>
+        ${badges ? `<div class="row-badges">${badges}</div>` : ""}
+      </td>
+      <td>${priceBlockHtml(p)}</td>
+      <td class="td-actions">
+        <button type="button" class="fav-btn ${fav ? "active" : ""}" data-action="fav" data-id="${p.id}" aria-label="Favoritar" title="Favoritar">${fav ? STAR_FILLED : STAR_OUTLINE}</button>
+        <button type="button" class="share-item-btn" data-action="share" data-id="${p.id}" aria-label="Compartilhar" title="Compartilhar">${SHARE_ICON}</button>
+        <a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a>
+      </td>
+    </tr>`;
+}
+
 function renderRadar() {
   const destaques = items.filter((p) => isRestock(p) || isPriceMove(p))
-    .sort((a, b) => new Date(b.priceChangedAt) - new Date(a.priceChangedAt))
+    .sort((a, b) => {
+      const fa = favorites.has(a.id) ? 1 : 0, fb = favorites.has(b.id) ? 1 : 0;
+      if (fb - fa !== 0) return fb - fa;
+      return new Date(b.priceChangedAt) - new Date(a.priceChangedAt);
+    })
     .slice(0, 12);
   const section = document.getElementById("radarSection");
   if (destaques.length === 0) { section.hidden = true; return; }
@@ -434,10 +623,14 @@ function render() {
   const sort = document.getElementById("sort").value;
   const onlyNovo = document.getElementById("onlyNovo").checked;
   const onlyChanged = document.getElementById("onlyChanged").checked;
+  const onlyAvail = document.getElementById("onlyAvail").checked;
+  const onlyFav = document.getElementById("onlyFav").checked;
 
   let list = items.filter((p) => p.name.toLowerCase().includes(q));
   if (onlyNovo) list = list.filter(isNew);
   if (onlyChanged) list = list.filter((p) => isRestock(p) || isPriceMove(p));
+  if (onlyAvail) list = list.filter((p) => !isSobConsulta(p));
+  if (onlyFav) list = list.filter((p) => favorites.has(p.id));
 
   if (sort === "price-asc") list.sort((a, b) => priceNum(a.price) - priceNum(b.price));
   else if (sort === "price-desc") list.sort((a, b) => priceNum(b.price) - priceNum(a.price));
@@ -458,13 +651,46 @@ function render() {
   }
 
   if (list.length === 0) {
-    grid.innerHTML = "";
+    grid.hidden = true; tableWrap.hidden = true;
     empty.hidden = false;
-    empty.innerHTML = "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
+    empty.innerHTML = (onlyFav && favorites.size === 0)
+      ? "<b>Nenhum favorito ainda</b>Clique na estrela de um item pra acompanhar ele de perto."
+      : "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
     return;
   }
   empty.hidden = true;
-  grid.innerHTML = list.map((p) => cardHtml(p, false)).join("");
+
+  if (viewMode === "table") {
+    grid.hidden = true; tableWrap.hidden = false;
+    document.getElementById("tableBody").innerHTML = list.map(rowHtml).join("");
+  } else {
+    tableWrap.hidden = true; grid.hidden = false;
+    grid.innerHTML = list.map((p) => cardHtml(p, false)).join("");
+  }
+}
+
+function updateFavCount() {
+  const n = favorites.size;
+  document.getElementById("countFav").textContent = n;
+  document.getElementById("favStat").hidden = n === 0;
+}
+
+function toggleFavorite(id) {
+  if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  saveFavorites();
+  updateFavCount();
+  renderRadar();
+  render();
+}
+
+async function shareItem(p) {
+  const url = `${location.origin}${location.pathname}?p=${encodeURIComponent(p.id)}`;
+  if (navigator.share) {
+    try { await navigator.share({ title: p.name, text: `${p.name}${p.price ? " — " + p.price : ""}`, url }); return; }
+    catch { return; }
+  }
+  try { await navigator.clipboard.writeText(url); showToast("Link do item copiado!"); }
+  catch { showToast(url); }
 }
 
 function showToast(msg) {
@@ -475,18 +701,50 @@ function showToast(msg) {
   t._timer = setTimeout(() => t.classList.remove("show"), 2200);
 }
 
+function setView(v) {
+  viewMode = v;
+  saveView(v);
+  document.getElementById("viewGrid").classList.toggle("active", v === "grid");
+  document.getElementById("viewTable").classList.toggle("active", v === "table");
+  render();
+}
+
+function handleDeepLink() {
+  const params = new URLSearchParams(location.search);
+  const pid = params.get("p");
+  if (!pid) return;
+  requestAnimationFrame(() => {
+    let sel;
+    try { sel = `[data-id="${CSS.escape(pid)}"]`; } catch { return; }
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add("deep-link-highlight");
+    setTimeout(() => el.classList.remove("deep-link-highlight"), 2200);
+  });
+}
+
+// ---- listeners ----
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-action]");
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const id = btn.dataset.id;
+  const p = items.find((x) => x.id === id);
+  if (!p) return;
+  if (btn.dataset.action === "fav") toggleFavorite(id);
+  else if (btn.dataset.action === "share") shareItem(p);
+});
+
 document.getElementById("shareBtn").addEventListener("click", async () => {
   const url = location.href;
   if (navigator.share) {
     try { await navigator.share({ title: "Catálogo de Réplicas — Armaria", url }); }
-    catch { /* usuario cancelou, ignora */ }
+    catch { /* usuario cancelou */ }
   } else {
-    try {
-      await navigator.clipboard.writeText(url);
-      showToast("Link copiado!");
-    } catch {
-      showToast(url);
-    }
+    try { await navigator.clipboard.writeText(url); showToast("Link copiado!"); }
+    catch { showToast(url); }
   }
 });
 
@@ -500,18 +758,31 @@ document.getElementById("onlyChanged").addEventListener("change", (e) => {
   document.getElementById("changedToggle").classList.toggle("on", e.target.checked);
   render();
 });
+document.getElementById("onlyAvail").addEventListener("change", (e) => {
+  document.getElementById("availToggle").classList.toggle("on", e.target.checked);
+  render();
+});
+document.getElementById("onlyFav").addEventListener("change", (e) => {
+  document.getElementById("favToggle").classList.toggle("on", e.target.checked);
+  render();
+});
+document.getElementById("viewGrid").addEventListener("click", () => setView("grid"));
+document.getElementById("viewTable").addEventListener("click", () => setView("table"));
 
 fetch("./snapshot.json")
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((data) => {
     items = data.products || [];
     document.getElementById("count").textContent = items.length;
+    document.getElementById("countAvail").textContent = items.filter((p) => !isSobConsulta(p)).length;
     document.getElementById("countNovo").textContent = items.filter(isNew).length;
     document.getElementById("countRestock").textContent = items.filter(isRestock).length;
     document.getElementById("updated").textContent = fmtDate(data.updatedAt);
     document.getElementById("footerRight").textContent = `${items.length} produtos rastreados`;
+    setView(viewMode); // aplica preferencia salva e ja chama render()
+    updateFavCount();
     renderRadar();
-    render();
+    handleDeepLink();
   })
   .catch((err) => {
     empty.hidden = false;
