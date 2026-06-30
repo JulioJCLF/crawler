@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T02:26:34.782Z",
+  "updatedAt": "2026-06-30T02:46:45.682Z",
   "count": 1800,
   "products": [
     {
@@ -1023,16 +1023,16 @@
       "price": "USD 166,00"
     },
     {
-      "id": "35391",
-      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
-      "price": "USD 139,00"
-    },
-    {
       "id": "18235",
       "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-18235.html",
       "price": "USD 146,00"
+    },
+    {
+      "id": "35391",
+      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
+      "price": "USD 139,00"
     },
     {
       "id": "18237",
@@ -2571,16 +2571,16 @@
       "price": "USD 190,00"
     },
     {
-      "id": "9729",
-      "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-9729.html",
-      "price": "USD 190,00"
-    },
-    {
       "id": "12423",
       "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-12423.html",
       "price": "USD 200,00"
+    },
+    {
+      "id": "9729",
+      "name": "G&G AEG CM16 RAIDER L AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/gg-aeg-cm16-raider-l-airsoft-rifle-black-9729.html",
+      "price": "USD 190,00"
     },
     {
       "id": "13686",
@@ -4839,16 +4839,16 @@
       "price": "USD 136,00"
     },
     {
-      "id": "28662",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28662.html",
-      "price": "USD 129,00"
-    },
-    {
       "id": "28665",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28665.html",
       "price": "USD 169,00"
+    },
+    {
+      "id": "28662",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28662.html",
+      "price": "USD 129,00"
     },
     {
       "id": "28668",
@@ -4857,16 +4857,16 @@
       "price": "USD 129,00"
     },
     {
-      "id": "28663",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
-      "price": "USD 129,00"
-    },
-    {
       "id": "28666",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28666.html",
       "price": "USD 169,00"
+    },
+    {
+      "id": "28663",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
+      "price": "USD 129,00"
     },
     {
       "id": "28681",
@@ -9429,16 +9429,16 @@
       "price": "USD 465,00"
     },
     {
-      "id": "20814",
-      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-20814.html",
-      "price": "USD 469,00"
-    },
-    {
       "id": "27965",
       "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-27965.html",
       "price": "USD 399,00"
+    },
+    {
+      "id": "20814",
+      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-20814.html",
+      "price": "USD 469,00"
     },
     {
       "id": "20812",
