@@ -16,7 +16,7 @@ import { fileURLToPath } from "node:url";
 const CATEGORY_URL =
   "https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124";
 const PAGE_PARAM = "pagina";       // esquema de paginacao do site (?pagina=N)
-const MAX_PAGES = 50;              // trava de seguranca
+const MAX_PAGES = 150;             // trava de seguranca
 const DELAY_MS = 800;              // educacao com o servidor entre requests
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SNAPSHOT_PATH = join(__dirname, "snapshot.json");
