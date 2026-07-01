@@ -769,7 +769,7 @@ document.getElementById("onlyFav").addEventListener("change", (e) => {
 document.getElementById("viewGrid").addEventListener("click", () => setView("grid"));
 document.getElementById("viewTable").addEventListener("click", () => setView("table"));
 
-fetch("./snapshot.json")
+fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then((data) => {
     items = data.products || [];
