@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-06-30T03:08:39.035Z",
-  "count": 1931,
+  "updatedAt": "2026-07-01T14:44:19.155Z",
+  "count": 1930,
   "products": [
     {
       "id": "8345",
@@ -1363,19 +1363,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "35391",
-      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
-      "price": "USD 139,00",
-      "image": "https://www.arsenalsports.com/img/35391/produtos/400/e365696f37cf11c07b6b9b5d69dda27c.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "18235",
       "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-18235.html",
       "price": "USD 146,00",
       "image": "https://www.arsenalsports.com/img/18235/produtos/400/8481b90df57fdd6ea84e956740c02418.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "35391",
+      "name": "ARMORER WORKS GBB HI-CAPA HX11 COMPETITION GRADE BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/armorer-works-gbb-hicapa-hx11-competition-grade-blowback-airsoft-pistol-black-35391.html",
+      "price": "USD 139,00",
+      "image": "https://www.arsenalsports.com/img/35391/produtos/400/e365696f37cf11c07b6b9b5d69dda27c.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -3163,14 +3163,6 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "23906",
-      "name": "FN HERSTAL BOLT CYBERGUN AEG SCAR-SC COMPACT B.R.S.S. PDW BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/fn-herstal-bolt-cybergun-aeg-scarsc-compact-brss-pdw-blowback-airsoft-rifle-black-23906.html",
-      "price": "USD 346,00",
-      "image": "https://www.arsenalsports.com/img/23906/produtos/400/2e4a92e610470353d9d5877346b9312d.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "24204",
       "name": "FN HERSTAL CYBERGUN GBB FIVE-SEVEN 5-7 BLOWBACK AIRSOFT PISTOL FLAT DARK EARTH Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/fn-herstal-cybergun-gbb-fiveseven-57-blowback-airsoft-pistol-flat-dark-earth-24204.html",
@@ -4271,7 +4263,7 @@
       "name": "GLOCK UMAREX GBB G17 GEN5 BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/glock-umarex-gbb-g17-gen5-blowback-airsoft-pistol-black-35404.html",
       "price": "USD 175,00",
-      "image": "https://www.arsenalsports.com/img/35404/produtos/400/248aa5fde0c7a3b638bd1a732e285cb8.png",
+      "image": "https://www.arsenalsports.com/img/35404/produtos/400/33bccb5bbaa17a474123031175e36f04.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -5062,7 +5054,7 @@
       "id": "11124",
       "name": "KJW GBB 1911 KP-07 FULL METAL BLOWBACK AIRSOFT PISTOL BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/kjw-gbb-1911-kp07-full-metal-blowback-airsoft-pistol-black-11124.html",
-      "price": "USD 92,00",
+      "price": null,
       "image": "https://www.arsenalsports.com/img/11124/produtos/400/530285338b7618b9e112243e124e161c.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
@@ -6451,19 +6443,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "28665",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28665.html",
-      "price": "USD 169,00",
-      "image": "https://www.arsenalsports.com/img/28665/produtos/400/f96d5b04a16eacb6f18a9e271650ad66.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "28662",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28662.html",
       "price": "USD 129,00",
       "image": "https://www.arsenalsports.com/img/28662/produtos/400/1176c76c53abfee8997554f38c86f98b.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "28665",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28665.html",
+      "price": "USD 169,00",
+      "image": "https://www.arsenalsports.com/img/28665/produtos/400/f96d5b04a16eacb6f18a9e271650ad66.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -6475,19 +6467,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "28663",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
-      "price": "USD 129,00",
-      "image": "https://www.arsenalsports.com/img/28663/produtos/400/29c81ce12039ca6d52cf68f1034363b4.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "28666",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28666.html",
       "price": "USD 169,00",
       "image": "https://www.arsenalsports.com/img/28666/produtos/400/67e9a55ed4a11891b7ee820229d4a35a.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "28663",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR GREY Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-grey-28663.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/28663/produtos/400/29c81ce12039ca6d52cf68f1034363b4.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -7064,14 +7056,6 @@
       "url": "https://www.arsenalsports.com/produto/seekins-precision-emg-gg-aeg-tgr-sbr8-9-rail-airsoft-rifle-black-23377.html",
       "price": "USD 370,00",
       "image": "https://www.arsenalsports.com/img/23377/produtos/400/2db296aaaf145b8f4c857d1e0bd08b32.png",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
-      "id": "23385",
-      "name": "SEEKINS PRECISION EMG G&G AEG TGR SBR8 MOCK SUPRESSOR 12 RAIL AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/seekins-precision-emg-gg-aeg-tgr-sbr8-mock-supressor-12-rail-airsoft-rifle-black-23385.html",
-      "price": null,
-      "image": "https://www.arsenalsports.com/img/23385/produtos/400/696f4d5550a79641133e9e1888572d99.png",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -11883,6 +11867,14 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
+      "id": "23906",
+      "name": "FN HERSTAL BOLT CYBERGUN AEG SCAR-SC COMPACT B.R.S.S. PDW BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/fn-herstal-bolt-cybergun-aeg-scarsc-compact-brss-pdw-blowback-airsoft-rifle-black-23906.html",
+      "price": "USD 346,00",
+      "image": "https://www.arsenalsports.com/img/23906/produtos/400/2e4a92e610470353d9d5877346b9312d.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
       "id": "19657",
       "name": "FN HERSTAL KRYTAC EMG CYBERGUN AEG P90 TRAINING PDW AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/fn-herstal-krytac-emg-cybergun-aeg-p90-training-pdw-airsoft-rifle-black-19657.html",
@@ -12571,19 +12563,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "27965",
-      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-27965.html",
-      "price": "USD 399,00",
-      "image": "https://www.arsenalsports.com/img/27965/produtos/400/ba089aa77f32f74d068d7599c52cf0a8.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "20814",
       "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-20814.html",
       "price": "USD 469,00",
       "image": "https://www.arsenalsports.com/img/20814/produtos/400/edb4daa7db060caddaf585ed53fe3c16.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "27965",
+      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-27965.html",
+      "price": "USD 399,00",
+      "image": "https://www.arsenalsports.com/img/27965/produtos/400/ba089aa77f32f74d068d7599c52cf0a8.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -12843,19 +12835,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "21658",
-      "name": "KRISS VECTOR AEG SMG RIFLE BY KRYTAC WITH PERUN TRIGGER BLACK COMBO Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/kriss-vector-aeg-smg-rifle-by-krytac-with-perun-trigger-black-combo-21658.html",
-      "price": "USD 470,00",
-      "image": "https://www.arsenalsports.com/img/21658/produtos/400/51de092cdd0aab9b0655ab22669ebcae.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "27497",
       "name": "KRISS VECTOR AEG SMG RIFLE BY KRYTAC WITH PERUN TRIGGER BLACK COMBO Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/kriss-vector-aeg-smg-rifle-by-krytac-with-perun-trigger-black-combo-27497.html",
       "price": "USD 629,00",
       "image": "https://www.arsenalsports.com/img/27497/produtos/400/bddd13453ec6e8ae05d8b13899c881fd.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "21658",
+      "name": "KRISS VECTOR AEG SMG RIFLE BY KRYTAC WITH PERUN TRIGGER BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/kriss-vector-aeg-smg-rifle-by-krytac-with-perun-trigger-black-combo-21658.html",
+      "price": "USD 470,00",
+      "image": "https://www.arsenalsports.com/img/21658/produtos/400/51de092cdd0aab9b0655ab22669ebcae.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
