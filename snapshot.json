@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T14:44:19.155Z",
+  "updatedAt": "2026-07-02T14:10:12.772Z",
   "count": 1930,
   "products": [
     {
@@ -187,19 +187,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "27521",
-      "name": "A&K GBBR M1892 WINCHESTER LEVER ACTION LONG TYPE WITH M-LOCK RAIL AIRSOFT RIFLE REAL WOOD & BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/ak-gbbr-m1892-winchester-lever-action-long-type-with-mlock-rail-airsoft-rifle-real-wood--black-27521.html",
-      "price": null,
-      "image": "https://www.arsenalsports.com/img/27521/produtos/400/b4a7fd022d5893c3fcfc1490d01fe267.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "27522",
       "name": "A&K GBBR M1892 WINCHESTER LEVER ACTION LONG TYPE WITH M-LOCK RAIL AIRSOFT RIFLE REAL WOOD & BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/ak-gbbr-m1892-winchester-lever-action-long-type-with-mlock-rail-airsoft-rifle-real-wood--black-27522.html",
       "price": null,
       "image": "https://www.arsenalsports.com/img/27522/produtos/400/af5c2548bea100ba2cff3a9f5b4469b8.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "27521",
+      "name": "A&K GBBR M1892 WINCHESTER LEVER ACTION LONG TYPE WITH M-LOCK RAIL AIRSOFT RIFLE REAL WOOD & BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ak-gbbr-m1892-winchester-lever-action-long-type-with-mlock-rail-airsoft-rifle-real-wood--black-27521.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/27521/produtos/400/b4a7fd022d5893c3fcfc1490d01fe267.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -1715,19 +1715,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "29633",
-      "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29633.html",
-      "price": "USD 159,00",
-      "image": "https://www.arsenalsports.com/img/29633/produtos/400/ebec63a2aa2a92e5af8d7fff0837229f.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "29634",
       "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29634.html",
       "price": "USD 159,00",
       "image": "https://www.arsenalsports.com/img/29634/produtos/400/bf5f9ea363e47049b740e0054ca6fd3f.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "29633",
+      "name": "BOLT AEG B4 MCBABY HIGH CYCLE AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/bolt-aeg-b4-mcbaby-high-cycle-airsoft-rifle-black-29633.html",
+      "price": "USD 159,00",
+      "image": "https://www.arsenalsports.com/img/29633/produtos/400/ebec63a2aa2a92e5af8d7fff0837229f.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -6443,19 +6443,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "28662",
-      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28662.html",
-      "price": "USD 129,00",
-      "image": "https://www.arsenalsports.com/img/28662/produtos/400/1176c76c53abfee8997554f38c86f98b.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "28665",
       "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28665.html",
       "price": "USD 169,00",
       "image": "https://www.arsenalsports.com/img/28665/produtos/400/f96d5b04a16eacb6f18a9e271650ad66.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "28662",
+      "name": "POSEIDON GBB XG8 CLOSE COMBAT TACTICAL BLOWBACK AIRSOFT PISTOL COLOR BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/poseidon-gbb-xg8-close-combat-tactical-blowback-airsoft-pistol-color-black-28662.html",
+      "price": "USD 129,00",
+      "image": "https://www.arsenalsports.com/img/28662/produtos/400/1176c76c53abfee8997554f38c86f98b.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -8142,7 +8142,7 @@
       "id": "24301",
       "name": "TOKYO MARUI GBB M4A1 MK18 MOD.1 BLOWBACK AIRSOFT RIFLE DUAL TONE Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/tokyo-marui-gbb-m4a1-mk18-mod1-blowback-airsoft-rifle-dual-tone-24301.html",
-      "price": "USD 880,00",
+      "price": null,
       "image": "https://www.arsenalsports.com/img/24301/produtos/400/05e98a13153bbed387b1991780c3d5dd.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
@@ -12563,19 +12563,19 @@
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
-      "id": "20814",
-      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-20814.html",
-      "price": "USD 469,00",
-      "image": "https://www.arsenalsports.com/img/20814/produtos/400/edb4daa7db060caddaf585ed53fe3c16.jpg",
-      "firstSeen": "2026-06-30T02:54:16.537Z"
-    },
-    {
       "id": "27965",
       "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-27965.html",
       "price": "USD 399,00",
       "image": "https://www.arsenalsports.com/img/27965/produtos/400/ba089aa77f32f74d068d7599c52cf0a8.jpg",
+      "firstSeen": "2026-06-30T02:54:16.537Z"
+    },
+    {
+      "id": "20814",
+      "name": "ICS AEG CXP-YAK ICS-413S3 ELECTRIC BLOWBACK AIRSOFT RIFLE BLACK COMBO Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/ics-aeg-cxpyak-ics413s3-electric-blowback-airsoft-rifle-black-combo-20814.html",
+      "price": "USD 469,00",
+      "image": "https://www.arsenalsports.com/img/20814/produtos/400/edb4daa7db060caddaf585ed53fe3c16.jpg",
       "firstSeen": "2026-06-30T02:54:16.537Z"
     },
     {
@@ -14443,19 +14443,19 @@
       "firstSeen": "2026-06-30T03:02:39.097Z"
     },
     {
-      "id": "34276",
-      "name": "VFC APFG GBBR MCX SPEAR LT PDW 9 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
-      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-pdw-9-mlok-handguard-rail-blowback-airsoft-rifle-black-34276.html",
-      "price": null,
-      "image": "https://www.arsenalsports.com/img/34276/produtos/400/9d509908b65403e36e538f2e309d4a4c.png",
-      "firstSeen": "2026-06-30T03:02:39.097Z"
-    },
-    {
       "id": "34543",
       "name": "VFC APFG GBBR MCX SPEAR LT PDW 9 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
       "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-pdw-9-mlok-handguard-rail-blowback-airsoft-rifle-black-34543.html",
       "price": null,
       "image": "https://www.arsenalsports.com/img/34543/produtos/400/no-img.jpg",
+      "firstSeen": "2026-06-30T03:02:39.097Z"
+    },
+    {
+      "id": "34276",
+      "name": "VFC APFG GBBR MCX SPEAR LT PDW 9 M-LOK HANDGUARD RAIL BLOWBACK AIRSOFT RIFLE BLACK Arsenal Sports",
+      "url": "https://www.arsenalsports.com/produto/vfc-apfg-gbbr-mcx-spear-lt-pdw-9-mlok-handguard-rail-blowback-airsoft-rifle-black-34276.html",
+      "price": null,
+      "image": "https://www.arsenalsports.com/img/34276/produtos/400/9d509908b65403e36e538f2e309d4a4c.png",
       "firstSeen": "2026-06-30T03:02:39.097Z"
     },
     {
