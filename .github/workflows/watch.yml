@@ -37,6 +37,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "snapshot sem mudancas"
           else
-            git commit -m "chore: update snapshot [skip ci]"
+            git commit -m "chore: update snapshot"
             git push
           fi
