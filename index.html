@@ -472,7 +472,8 @@
     transition: border-color .15s;
   }
   .calc-input:focus { border-color: var(--accent); outline: none; }
-  .calc-input.no-prefix { padding-left: 12px; }
+  .calc-input.no-prefix  { padding-left: 12px; }
+  .calc-input.has-suffix { padding-right: 32px; }
   .calc-result-box {
     background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
     padding: 14px 16px; margin-top: 12px;
@@ -622,14 +623,14 @@
           <div class="modal-section-label">Calculadora de conversão</div>
           <div class="calc-fields">
             <div class="calc-field">
-              <label for="calcPreco">Preço do produto (R$)</label>
+              <label for="calcPreco">Preço do produto ($)</label>
               <div class="calc-input-wrap">
-                <span class="calc-prefix">R$</span>
+                <span class="calc-prefix">$</span>
                 <input class="calc-input" id="calcPreco" type="number" min="0" step="0.01" placeholder="0,00" />
               </div>
             </div>
             <div class="calc-field">
-              <label for="calcDolar">Valor do dólar (R$)</label>
+              <label for="calcDolar">Cotação do dólar (R$)</label>
               <div class="calc-input-wrap">
                 <span class="calc-prefix">R$</span>
                 <input class="calc-input" id="calcDolar" type="number" min="0" step="0.01" placeholder="0,00" />
@@ -638,15 +639,15 @@
             <div class="calc-field">
               <label for="calcPct">Porcentagem</label>
               <div class="calc-input-wrap">
-                <input class="calc-input no-prefix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" />
+                <input class="calc-input no-prefix has-suffix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" />
                 <span class="calc-suffix">%</span>
               </div>
             </div>
           </div>
           <div class="calc-result-box">
             <div>
-              <div class="calc-result-label">Valor em USD</div>
-              <div class="calc-result-sub" id="calcFormula">— ÷ (— × (1 + —%)) = —</div>
+              <div class="calc-result-label">Total em reais (R$)</div>
+              <div class="calc-result-sub" id="calcFormula">$ — × R$ — × (1 + —%) = R$ —</div>
             </div>
             <div class="calc-result-value" id="calcResult">—</div>
           </div>
@@ -1173,19 +1174,17 @@ function updateCalculator() {
   const dollarRate = parseFloat(dom.calcDolar.value);
   const percentage = parseFloat(dom.calcPct.value);
 
-  if (isNaN(preco) || isNaN(dollarRate) || isNaN(percentage) || dollarRate === 0) {
+  if (isNaN(preco) || isNaN(dollarRate) || isNaN(percentage)) {
     dom.calcResult.textContent  = "—";
-    dom.calcFormula.textContent = "— ÷ (— × (1 + —%)) = —";
+    dom.calcFormula.textContent = "$ — × R$ — × (1 + —%) = R$ —";
     return;
   }
 
-  const effectiveRate = dollarRate * (1 + percentage / 100);
-  const usd           = preco / effectiveRate;
-  const fmt           = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  const fmtUsd        = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const total = preco * dollarRate * (1 + percentage / 100);
+  const fmt   = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  dom.calcResult.textContent  = `$ ${fmtUsd(usd)}`;
-  dom.calcFormula.textContent = `R$ ${fmt(preco)} ÷ (R$ ${fmt(dollarRate)} × (1 + ${percentage}%)) = $ ${fmtUsd(usd)}`;
+  dom.calcResult.textContent  = `R$ ${fmt(total)}`;
+  dom.calcFormula.textContent = `$ ${fmt(preco)} × R$ ${fmt(dollarRate)} × (1 + ${percentage}%) = R$ ${fmt(total)}`;
 }
 
 // ─── TOAST ────────────────────────────────────────────────────────────────────
