@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Umami Analytics: substitua data-website-id pelo ID do seu site em umami.is -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="c4cc1f71-95f1-4e02-b855-16ae3a04dd04"></script>
 <style>
   :root {
     --bg: #0b0d0c;
@@ -340,6 +342,88 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+  /* ============ SHARE MODAL ============ */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(4px);
+    z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity .2s ease;
+  }
+  .modal-backdrop.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 6px; width: 100%; max-width: 440px;
+    transform: translateY(12px); transition: transform .2s ease;
+  }
+  .modal-backdrop.open .modal { transform: translateY(0); }
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+  }
+  .modal-header h2 {
+    margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
+    font-size: 18px; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .modal-close {
+    background: none; border: none; color: var(--muted); cursor: pointer;
+    font-size: 20px; line-height: 1; padding: 4px 6px; border-radius: var(--radius);
+    transition: color .15s;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
+  .modal-section-label {
+    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted); margin-bottom: 8px;
+  }
+  .share-url-row {
+    display: flex; gap: 8px; align-items: stretch;
+  }
+  .share-url-input {
+    flex: 1; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 9px 12px; font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; min-width: 0;
+  }
+  .copy-btn {
+    font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase; color: #0b0d0c;
+    background: var(--accent); border: none; border-radius: var(--radius);
+    padding: 9px 14px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+    transition: filter .15s ease;
+  }
+  .copy-btn:hover { filter: brightness(1.1); }
+  .copy-btn:active { filter: brightness(.9); }
+  .modal-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .calc-fields { display: flex; gap: 10px; }
+  .calc-field { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .calc-field label {
+    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--muted);
+  }
+  .calc-input-wrap { position: relative; display: flex; align-items: center; }
+  .calc-prefix {
+    position: absolute; left: 10px; font-family: "Space Mono", monospace;
+    font-size: 12px; color: var(--muted); pointer-events: none;
+  }
+  .calc-suffix {
+    position: absolute; right: 10px; font-family: "Space Mono", monospace;
+    font-size: 12px; color: var(--muted); pointer-events: none;
+  }
+  .calc-input {
+    width: 100%; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text); font-family: "Space Mono", monospace;
+    font-size: 14px; font-weight: 700; padding: 10px 32px 10px 32px;
+    transition: border-color .15s;
+  }
+  .calc-input:focus { border-color: var(--accent); outline: none; }
+  .calc-input.no-prefix { padding-left: 12px; }
+  .calc-result-box {
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .calc-result-label { font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .calc-result-value { font-family: "Space Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent); }
+  .calc-result-sub { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
     .wordmark .bar { display: none; }
@@ -428,6 +512,52 @@
 
   <div class="toast" id="toast"></div>
 
+  <!-- Share Modal -->
+  <div class="modal-backdrop" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="shareModalTitle">Compartilhar</h2>
+        <button class="modal-close" id="shareModalClose" type="button" aria-label="Fechar">✕</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="modal-section-label">Link do catálogo</div>
+          <div class="share-url-row">
+            <div class="share-url-input" id="shareUrlDisplay"></div>
+            <button class="copy-btn" id="copyUrlBtn" type="button">Copiar</button>
+          </div>
+        </div>
+        <hr class="modal-divider" />
+        <div>
+          <div class="modal-section-label">Calculadora de conversão</div>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="calcDolar">Valor dolar</label>
+              <div class="calc-input-wrap">
+                <span class="calc-prefix">R$</span>
+                <input class="calc-input" id="calcDolar" type="number" min="0" step="0.01" placeholder="0,00" />
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="calcPct">Porcentagem</label>
+              <div class="calc-input-wrap">
+                <input class="calc-input no-prefix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" style="padding-right:32px" />
+                <span class="calc-suffix">%</span>
+              </div>
+            </div>
+          </div>
+          <div class="calc-result-box" style="margin-top:12px">
+            <div>
+              <div class="calc-result-label">Valor ajustado (R$)</div>
+              <div class="calc-result-sub" id="calcFormula">— × (1 + —%) = —</div>
+            </div>
+            <div class="calc-result-value" id="calcResult">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <script>
 // ============ CONFIG — edite aqui ============
 const CONFIG = {
@@ -436,6 +566,11 @@ const CONFIG = {
   whatsappTemplate: "Olá! Vi a réplica \"{nome}\" (ref {ref}) no catálogo, ainda está disponível?",
 };
 // ==============================================
+
+// ---- Umami tracking helper (no-op se o script ainda não carregou) ----
+function track(event, data) {
+  try { if (typeof umami !== "undefined") umami.track(event, data); } catch {}
+}
 
 const NEW_WINDOW_DAYS = 7;
 const CHANGE_WINDOW_DAYS = 7;
@@ -676,7 +811,10 @@ function updateFavCount() {
 }
 
 function toggleFavorite(id) {
-  if (favorites.has(id)) favorites.delete(id); else favorites.add(id);
+  const adding = !favorites.has(id);
+  if (adding) favorites.add(id); else favorites.delete(id);
+  const p = items.find((x) => x.id === id);
+  track(adding ? "favorite-add" : "favorite-remove", { id, name: p ? p.name : id });
   saveFavorites();
   updateFavCount();
   renderRadar();
@@ -685,6 +823,7 @@ function toggleFavorite(id) {
 
 async function shareItem(p) {
   const url = `${location.origin}${location.pathname}?p=${encodeURIComponent(p.id)}`;
+  track("share-item", { id: p.id, name: p.name, price: p.price || "" });
   if (navigator.share) {
     try { await navigator.share({ title: p.name, text: `${p.name}${p.price ? " — " + p.price : ""}`, url }); return; }
     catch { return; }
@@ -704,6 +843,7 @@ function showToast(msg) {
 function setView(v) {
   viewMode = v;
   saveView(v);
+  track("view-switch", { mode: v });
   document.getElementById("viewGrid").classList.toggle("active", v === "grid");
   document.getElementById("viewTable").classList.toggle("active", v === "table");
   render();
@@ -737,37 +877,96 @@ document.addEventListener("click", (e) => {
   else if (btn.dataset.action === "share") shareItem(p);
 });
 
-document.getElementById("shareBtn").addEventListener("click", async () => {
-  const url = location.href;
-  if (navigator.share) {
-    try { await navigator.share({ title: "Catálogo de Réplicas — Armaria", url }); }
-    catch { /* usuario cancelou */ }
-  } else {
-    try { await navigator.clipboard.writeText(url); showToast("Link copiado!"); }
-    catch { showToast(url); }
-  }
+// ---- share modal ----
+function openShareModal() {
+  const modal = document.getElementById("shareModal");
+  document.getElementById("shareUrlDisplay").textContent = location.href;
+  modal.classList.add("open");
+  track("share-catalog");
+  updateCalc();
+}
+function closeShareModal() {
+  document.getElementById("shareModal").classList.remove("open");
+}
+
+document.getElementById("shareBtn").addEventListener("click", openShareModal);
+document.getElementById("shareModalClose").addEventListener("click", closeShareModal);
+document.getElementById("shareModal").addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) closeShareModal();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeShareModal();
 });
 
-document.getElementById("q").addEventListener("input", render);
-document.getElementById("sort").addEventListener("change", render);
+document.getElementById("copyUrlBtn").addEventListener("click", async () => {
+  const url = location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = document.getElementById("copyUrlBtn");
+    btn.textContent = "Copiado!";
+    setTimeout(() => { btn.textContent = "Copiar"; }, 1800);
+  } catch { showToast(url); }
+});
+
+function updateCalc() {
+  const dolar = parseFloat(document.getElementById("calcDolar").value);
+  const pct = parseFloat(document.getElementById("calcPct").value);
+  const resultEl = document.getElementById("calcResult");
+  const formulaEl = document.getElementById("calcFormula");
+  if (isNaN(dolar) || isNaN(pct)) {
+    resultEl.textContent = "—";
+    formulaEl.textContent = "— × (1 + —%) = —";
+    return;
+  }
+  const result = dolar * (1 + pct / 100);
+  resultEl.textContent = result.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  formulaEl.textContent = `R$ ${dolar.toLocaleString("pt-BR", { minimumFractionDigits: 2 })} × (1 + ${pct}%) = R$ ${result.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
+document.getElementById("calcDolar").addEventListener("input", updateCalc);
+document.getElementById("calcPct").addEventListener("input", updateCalc);
+
+document.getElementById("q").addEventListener("input", (e) => {
+  if (e.target.value.trim().length >= 3) track("search", { query: e.target.value.trim() });
+  render();
+});
+document.getElementById("sort").addEventListener("change", (e) => {
+  track("sort", { value: e.target.value });
+  render();
+});
 document.getElementById("onlyNovo").addEventListener("change", (e) => {
   document.getElementById("novoToggle").classList.toggle("on", e.target.checked);
+  if (e.target.checked) track("filter", { type: "novos" });
   render();
 });
 document.getElementById("onlyChanged").addEventListener("change", (e) => {
   document.getElementById("changedToggle").classList.toggle("on", e.target.checked);
+  if (e.target.checked) track("filter", { type: "mudanca-preco" });
   render();
 });
 document.getElementById("onlyAvail").addEventListener("change", (e) => {
   document.getElementById("availToggle").classList.toggle("on", e.target.checked);
+  if (e.target.checked) track("filter", { type: "disponiveis" });
   render();
 });
 document.getElementById("onlyFav").addEventListener("change", (e) => {
   document.getElementById("favToggle").classList.toggle("on", e.target.checked);
+  if (e.target.checked) track("filter", { type: "favoritos" });
   render();
 });
 document.getElementById("viewGrid").addEventListener("click", () => setView("grid"));
 document.getElementById("viewTable").addEventListener("click", () => setView("table"));
+
+// track clicks on product links ("abrir ↗")
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("a.open, a.thumb");
+  if (!link) return;
+  const card = link.closest("[data-id]");
+  if (!card) return;
+  const id = card.dataset.id;
+  const p = items.find((x) => x.id === id);
+  if (p) track("product-click", { id: p.id, name: p.name, price: p.price || "" });
+});
 
 fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
   .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
