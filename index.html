@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Favicon — scope crosshair mark -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='6' fill='%230b0d0c'/><circle cx='20' cy='20' r='15' fill='none' stroke='%23c6ff00' stroke-width='2'/><circle cx='20' cy='20' r='7' fill='none' stroke='%23c6ff00' stroke-width='1' opacity='.45'/><line x1='20' y1='2'  x2='20' y2='12' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='20' y1='28' x2='20' y2='38' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='2'  y1='20' x2='12' y2='20' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='28' y1='20' x2='38' y2='20' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='20' r='2.5' fill='%23c6ff00'/></svg>" />
 <!-- Umami Analytics: substitua data-website-id pelo ID do seu site em umami.is -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="c4cc1f71-95f1-4e02-b855-16ae3a04dd04"></script>
 <style>
@@ -54,6 +56,16 @@
     margin-bottom: 10px;
   }
   .eyebrow::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+
+  .brand {
+    display: flex; align-items: center; gap: 18px; margin-bottom: 6px;
+  }
+  .brand-mark {
+    flex-shrink: 0; width: 52px; height: 52px;
+    filter: drop-shadow(0 0 10px rgba(198,255,0,.25));
+  }
+  .brand-mark .ring-outer { transition: stroke-dashoffset .6s ease; }
+
   .wordmark {
     position: relative; display: inline-block; margin: 0;
     font-family: "Saira Condensed", sans-serif; font-weight: 800;
@@ -441,7 +453,27 @@
   <section class="hero">
     <div class="hero-inner">
       <div class="eyebrow">Catálogo tático // réplicas de airsoft</div>
-      <h1 class="wordmark">ARMARIA<div class="bar"></div></h1>
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- outer ring -->
+          <circle cx="26" cy="26" r="23" fill="none" stroke="#c6ff00" stroke-width="1.5" class="ring-outer"/>
+          <!-- inner ring, faded -->
+          <circle cx="26" cy="26" r="11" fill="none" stroke="#c6ff00" stroke-width="1" opacity=".35"/>
+          <!-- crosshair ticks -->
+          <line x1="26" y1="2"  x2="26" y2="14" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26" y1="38" x2="26" y2="50" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="2"  y1="26" x2="14" y2="26" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="38" y1="26" x2="50" y2="26" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- diagonal corner marks -->
+          <line x1="7"  y1="7"  x2="11" y2="11" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="45" y1="7"  x2="41" y2="11" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="7"  y1="45" x2="11" y2="41" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="45" y1="45" x2="41" y2="41" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <!-- center dot -->
+          <circle cx="26" cy="26" r="2.5" fill="#c6ff00"/>
+        </svg>
+        <h1 class="wordmark">ARMARIA<div class="bar"></div></h1>
+      </div>
       <p class="tagline">Estoque e preço atualizados todos os dias. Sem precisar entrar no site original — veja o que chegou, o que voltou e o que mudou de preço, tudo aqui.</p>
       <div class="stats">
         <div class="stat"><span class="dot"></span>itens no catálogo <b id="count">—</b></div>
