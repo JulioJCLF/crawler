@@ -622,7 +622,14 @@
           <div class="modal-section-label">Calculadora de conversão</div>
           <div class="calc-fields">
             <div class="calc-field">
-              <label for="calcDolar">Preço do produto (R$)</label>
+              <label for="calcPreco">Preço do produto (R$)</label>
+              <div class="calc-input-wrap">
+                <span class="calc-prefix">R$</span>
+                <input class="calc-input" id="calcPreco" type="number" min="0" step="0.01" placeholder="0,00" />
+              </div>
+            </div>
+            <div class="calc-field">
+              <label for="calcDolar">Valor do dólar (R$)</label>
               <div class="calc-input-wrap">
                 <span class="calc-prefix">R$</span>
                 <input class="calc-input" id="calcDolar" type="number" min="0" step="0.01" placeholder="0,00" />
@@ -638,8 +645,8 @@
           </div>
           <div class="calc-result-box">
             <div>
-              <div class="calc-result-label">Total com markup (R$)</div>
-              <div class="calc-result-sub" id="calcFormula">— × (1 + —%) = —</div>
+              <div class="calc-result-label">Valor em USD</div>
+              <div class="calc-result-sub" id="calcFormula">— ÷ (— × (1 + —%)) = —</div>
             </div>
             <div class="calc-result-value" id="calcResult">—</div>
           </div>
@@ -693,6 +700,7 @@ const dom = {
   shareModal:      document.getElementById("shareModal"),
   shareUrlDisplay: document.getElementById("shareUrlDisplay"),
   copyUrlBtn:      document.getElementById("copyUrlBtn"),
+  calcPreco:       document.getElementById("calcPreco"),
   calcDolar:       document.getElementById("calcDolar"),
   calcPct:         document.getElementById("calcPct"),
   calcResult:      document.getElementById("calcResult"),
@@ -1151,7 +1159,7 @@ function openShareModal(product) {
   dom.shareUrlDisplay.textContent = url;
   dom.shareModal.dataset.url      = url;
   dom.shareModal.classList.add("open");
-  if (isFinite(price)) dom.calcDolar.value = price.toFixed(2);
+  if (isFinite(price)) dom.calcPreco.value = price.toFixed(2);
   updateCalculator();
 }
 
@@ -1161,20 +1169,23 @@ function closeShareModal() {
 
 // ─── CONVERSION CALCULATOR ───────────────────────────────────────────────────
 function updateCalculator() {
+  const preco      = parseFloat(dom.calcPreco.value);
   const dollarRate = parseFloat(dom.calcDolar.value);
   const percentage = parseFloat(dom.calcPct.value);
 
-  if (isNaN(dollarRate) || isNaN(percentage)) {
+  if (isNaN(preco) || isNaN(dollarRate) || isNaN(percentage) || dollarRate === 0) {
     dom.calcResult.textContent  = "—";
-    dom.calcFormula.textContent = "— × (1 + —%) = —";
+    dom.calcFormula.textContent = "— ÷ (— × (1 + —%)) = —";
     return;
   }
 
-  const adjusted = dollarRate * (1 + percentage / 100);
-  const fmt      = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const effectiveRate = dollarRate * (1 + percentage / 100);
+  const usd           = preco / effectiveRate;
+  const fmt           = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const fmtUsd        = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  dom.calcResult.textContent  = fmt(adjusted);
-  dom.calcFormula.textContent = `R$ ${fmt(dollarRate)} × (1 + ${percentage}%) = R$ ${fmt(adjusted)}`;
+  dom.calcResult.textContent  = `$ ${fmtUsd(usd)}`;
+  dom.calcFormula.textContent = `R$ ${fmt(preco)} ÷ (R$ ${fmt(dollarRate)} × (1 + ${percentage}%)) = $ ${fmtUsd(usd)}`;
 }
 
 // ─── TOAST ────────────────────────────────────────────────────────────────────
@@ -1334,6 +1345,7 @@ document.addEventListener("keydown", (event) => {
 dom.copyUrlBtn.addEventListener("click", copyModalUrl);
 
 // Conversion calculator
+dom.calcPreco.addEventListener("input", updateCalculator);
 dom.calcDolar.addEventListener("input", updateCalculator);
 dom.calcPct.addEventListener("input",   updateCalculator);
 
