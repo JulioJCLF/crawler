@@ -109,9 +109,9 @@
     box-shadow: 0 0 0 0 rgba(198,255,0,.6); animation: pulse 2s infinite;
   }
   @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(198,255,0,.5); }
-    70% { box-shadow: 0 0 0 7px rgba(198,255,0,0); }
-    100% { box-shadow: 0 0 0 0 rgba(198,255,0,0); }
+    0%   { box-shadow: 0 0 0 0   rgba(198,255,0,.5); }
+    70%  { box-shadow: 0 0 0 7px rgba(198,255,0,0);  }
+    100% { box-shadow: 0 0 0 0   rgba(198,255,0,0);  }
   }
   .radar-head small { font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0; font-weight: 400; }
   .radar-strip {
@@ -272,7 +272,7 @@
     font-family: "Space Mono", monospace; font-size: 12px; color: var(--muted);
     text-decoration: line-through;
   }
-  .price-arrow.up { color: var(--danger); }
+  .price-arrow.up   { color: var(--danger); }
   .price-arrow.down { color: var(--accent); }
 
   .card.consulta { opacity: .55; }
@@ -285,8 +285,8 @@
   /* deep link highlight */
   .deep-link-highlight { outline: 2px solid var(--accent); outline-offset: 3px; animation: dlpulse 1.6s ease-out; }
   @keyframes dlpulse {
-    0% { box-shadow: 0 0 0 0 rgba(198,255,0,.45); }
-    100% { box-shadow: 0 0 0 16px rgba(198,255,0,0); }
+    0%   { box-shadow: 0 0 0 0   rgba(198,255,0,.45); }
+    100% { box-shadow: 0 0 0 16px rgba(198,255,0,0);  }
   }
 
   /* ============ TABLE VIEW ============ */
@@ -315,8 +315,8 @@
     font-family: "Space Mono", monospace; font-size: 9px; font-weight: 700;
     letter-spacing: .06em; padding: 2px 6px; border-radius: 3px;
   }
-  .pill-new { background: var(--accent); color: #0b0d0c; }
-  .pill-restock { background: var(--info); color: #0b0d0c; }
+  .pill-new     { background: var(--accent); color: #0b0d0c; }
+  .pill-restock { background: var(--info);   color: #0b0d0c; }
   .td-actions { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
   .td-actions .fav-btn { position: static; background: none; border: none; width: auto; height: auto; }
   .td-actions .fav-btn:hover { background: none; }
@@ -374,9 +374,7 @@
     font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
     letter-spacing: .12em; color: var(--muted); margin-bottom: 8px;
   }
-  .share-url-row {
-    display: flex; gap: 8px; align-items: stretch;
-  }
+  .share-url-row { display: flex; gap: 8px; align-items: stretch; }
   .share-url-input {
     flex: 1; background: var(--surface-2); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 9px 12px; font-family: "Space Mono", monospace;
@@ -411,18 +409,19 @@
   .calc-input {
     width: 100%; background: var(--surface-2); border: 1px solid var(--border);
     border-radius: var(--radius); color: var(--text); font-family: "Space Mono", monospace;
-    font-size: 14px; font-weight: 700; padding: 10px 32px 10px 32px;
+    font-size: 14px; font-weight: 700; padding: 10px 32px;
     transition: border-color .15s;
   }
   .calc-input:focus { border-color: var(--accent); outline: none; }
   .calc-input.no-prefix { padding-left: 12px; }
   .calc-result-box {
     background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 16px; margin-top: 12px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
   .calc-result-label { font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
   .calc-result-value { font-family: "Space Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent); }
-  .calc-result-sub { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+  .calc-result-sub   { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
@@ -524,7 +523,7 @@
       </div>
       <div class="modal-body">
         <div>
-          <div class="modal-section-label">Link do catálogo</div>
+          <div class="modal-section-label">Link do item</div>
           <div class="share-url-row">
             <div class="share-url-input" id="shareUrlDisplay"></div>
             <button class="copy-btn" id="copyUrlBtn" type="button">Copiar</button>
@@ -544,12 +543,12 @@
             <div class="calc-field">
               <label for="calcPct">Porcentagem</label>
               <div class="calc-input-wrap">
-                <input class="calc-input no-prefix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" style="padding-right:32px" />
+                <input class="calc-input no-prefix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" />
                 <span class="calc-suffix">%</span>
               </div>
             </div>
           </div>
-          <div class="calc-result-box" style="margin-top:12px">
+          <div class="calc-result-box">
             <div>
               <div class="calc-result-label">Valor ajustado (R$)</div>
               <div class="calc-result-sub" id="calcFormula">— × (1 + —%) = —</div>
@@ -562,509 +561,658 @@
   </div>
 
 <script>
-// ============ CONFIG — edite aqui ============
+// ─── CONFIG — edite aqui ────────────────────────────────────────────────────
 const CONFIG = {
-  // Numero de WhatsApp pra receber pedidos (DDI+DDD+numero, so digitos). Deixe "" pra esconder o botao.
-  whatsappNumber: "",
+  whatsappNumber:   "",  // DDI+DDD+numero, só dígitos. Deixe "" pra esconder o botão.
   whatsappTemplate: "Olá! Vi a réplica \"{nome}\" (ref {ref}) no catálogo, ainda está disponível?",
 };
-// ==============================================
 
-// ---- Umami tracking helper (no-op se o script ainda não carregou) ----
+// ─── CONSTANTS ───────────────────────────────────────────────────────────────
+const NEW_WINDOW_DAYS    = 7;
+const CHANGE_WINDOW_DAYS = 7;
+const RADAR_MAX_ITEMS    = 12;
+const TOAST_DURATION_MS  = 2200;
+const COPY_RESET_MS      = 1800;
+const SEARCH_TRACK_MIN_CHARS = 3;
+
+const STORAGE_KEY_FAVORITES = "armaria_favoritos";
+const STORAGE_KEY_VIEW      = "armaria_view";
+
+// ─── DOM CACHE ───────────────────────────────────────────────────────────────
+const dom = {
+  grid:            document.getElementById("grid"),
+  tableWrap:       document.getElementById("tableWrap"),
+  tableBody:       document.getElementById("tableBody"),
+  empty:           document.getElementById("empty"),
+  count:           document.getElementById("count"),
+  countAvail:      document.getElementById("countAvail"),
+  countNovo:       document.getElementById("countNovo"),
+  countRestock:    document.getElementById("countRestock"),
+  countFav:        document.getElementById("countFav"),
+  favStat:         document.getElementById("favStat"),
+  updated:         document.getElementById("updated"),
+  footerRight:     document.getElementById("footerRight"),
+  searchInput:     document.getElementById("q"),
+  sortSelect:      document.getElementById("sort"),
+  catFilter:       document.getElementById("catFilter"),
+  toast:           document.getElementById("toast"),
+  radarSection:    document.getElementById("radarSection"),
+  radarStrip:      document.getElementById("radarStrip"),
+  shareModal:      document.getElementById("shareModal"),
+  shareUrlDisplay: document.getElementById("shareUrlDisplay"),
+  copyUrlBtn:      document.getElementById("copyUrlBtn"),
+  calcDolar:       document.getElementById("calcDolar"),
+  calcPct:         document.getElementById("calcPct"),
+  calcResult:      document.getElementById("calcResult"),
+  calcFormula:     document.getElementById("calcFormula"),
+  viewGrid:        document.getElementById("viewGrid"),
+  viewTable:       document.getElementById("viewTable"),
+  toggles: {
+    novo:    { checkbox: document.getElementById("onlyNovo"),    label: document.getElementById("novoToggle") },
+    changed: { checkbox: document.getElementById("onlyChanged"), label: document.getElementById("changedToggle") },
+    avail:   { checkbox: document.getElementById("onlyAvail"),   label: document.getElementById("availToggle") },
+    fav:     { checkbox: document.getElementById("onlyFav"),     label: document.getElementById("favToggle") },
+  },
+};
+
+// ─── ICONS ───────────────────────────────────────────────────────────────────
+const ICON_STAR_OUTLINE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
+const ICON_STAR_FILLED  = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
+const ICON_SHARE        = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.3" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.3" y1="13.4" x2="15.6" y2="17.4"/></svg>`;
+
+// ─── APP STATE ───────────────────────────────────────────────────────────────
+let catalog  = [];                 // all products loaded from snapshot.json
+let favorites = loadFavorites();   // Set<productId> — persisted in localStorage
+let viewMode  = loadView();        // "grid" | "table" — persisted in localStorage
+
+// ─── STORAGE ─────────────────────────────────────────────────────────────────
+function loadFavorites() {
+  try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_FAVORITES) || "[]")); }
+  catch { return new Set(); }
+}
+function saveFavorites() {
+  try { localStorage.setItem(STORAGE_KEY_FAVORITES, JSON.stringify([...favorites])); } catch {}
+}
+function loadView() {
+  try { return localStorage.getItem(STORAGE_KEY_VIEW) === "table" ? "table" : "grid"; }
+  catch { return "grid"; }
+}
+function saveView(mode) {
+  try { localStorage.setItem(STORAGE_KEY_VIEW, mode); } catch {}
+}
+
+// ─── ANALYTICS ───────────────────────────────────────────────────────────────
 function track(event, data) {
   try { if (typeof umami !== "undefined") umami.track(event, data); } catch {}
 }
 
-const NEW_WINDOW_DAYS = 7;
-const CHANGE_WINDOW_DAYS = 7;
-const FAV_KEY = "armaria_favoritos";
-const VIEW_KEY = "armaria_view";
+// ─── PRODUCT CLASSIFICATION (pure functions) ─────────────────────────────────
+const msPerDay = 86_400_000;
+const daysAgo  = (isoDate) => (Date.now() - new Date(isoDate)) / msPerDay;
 
-const grid = document.getElementById("grid");
-const tableWrap = document.getElementById("tableWrap");
-const empty = document.getElementById("empty");
-let items = [];
+const isNewProduct      = (product) => product.firstSeen    && daysAgo(product.firstSeen)    <= NEW_WINDOW_DAYS;
+const isRecentlyChanged = (product) => product.priceChangedAt && daysAgo(product.priceChangedAt) <= CHANGE_WINDOW_DAYS;
+const isRestock         = (product) => isRecentlyChanged(product) && product.changeType === "restock";
+const isPriceChange     = (product) => isRecentlyChanged(product) && product.changeType === "price_change";
+const isUnavailable     = (product) => !product.price && (product.changeType === "sob_consulta" || !product.changeType);
+const isFavoriteAlert   = (product) => favorites.has(product.id) && (isRestock(product) || isPriceChange(product));
 
-// ---- icons (svg simples, herdam cor via currentColor) ----
-const STAR_OUTLINE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
-const STAR_FILLED = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
-const SHARE_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.3" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.3" y1="13.4" x2="15.6" y2="17.4"/></svg>`;
-
-// ---- favoritos / visualizacao (localStorage, so neste navegador) ----
-function loadFavorites() {
-  try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }
-  catch { return new Set(); }
-}
-function saveFavorites() {
-  try { localStorage.setItem(FAV_KEY, JSON.stringify([...favorites])); } catch {}
-}
-let favorites = loadFavorites();
-
-function loadView() {
-  try { return localStorage.getItem(VIEW_KEY) === "table" ? "table" : "grid"; }
-  catch { return "grid"; }
-}
-function saveView(v) { try { localStorage.setItem(VIEW_KEY, v); } catch {} }
-let viewMode = loadView();
-
-const priceNum = (s) => {
-  if (!s) return Infinity;
-  const n = s.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", ".");
-  const v = parseFloat(n);
-  return isNaN(v) ? Infinity : v;
-};
-const daysAgo = (iso) => (Date.now() - new Date(iso)) / 86400000;
-const isNew = (p) => p.firstSeen && daysAgo(p.firstSeen) <= NEW_WINDOW_DAYS;
-const isChanged = (p) => p.priceChangedAt && daysAgo(p.priceChangedAt) <= CHANGE_WINDOW_DAYS;
-const isRestock = (p) => isChanged(p) && p.changeType === "restock";
-const isPriceMove = (p) => isChanged(p) && p.changeType === "price_change";
-const isSobConsulta = (p) => !p.price && (p.changeType === "sob_consulta" || !p.changeType);
-const isFavAlert = (p) => favorites.has(p.id) && (isRestock(p) || isPriceMove(p));
-
-function priority(p) {
-  if (isRestock(p) || isPriceMove(p)) return 2;
-  if (isNew(p)) return 1;
+function productPriority(product) {
+  if (isRestock(product) || isPriceChange(product)) return 2;
+  if (isNewProduct(product)) return 1;
   return 0;
 }
 
-function stabilityLabel(p) {
-  if (isSobConsulta(p)) {
-    if (p.priceChangedAt) {
-      const d = Math.floor(daysAgo(p.priceChangedAt));
-      return `indisponível ${d <= 0 ? "hoje" : "há " + d + "d"}`;
-    }
-    return null;
+// ─── FORMATTING (pure functions) ──────────────────────────────────────────────
+function parsePriceNumber(priceString) {
+  if (!priceString) return Infinity;
+  const normalized = priceString.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", ".");
+  const value = parseFloat(normalized);
+  return isNaN(value) ? Infinity : value;
+}
+
+function formatDate(isoDate) {
+  try {
+    return new Date(isoDate).toLocaleDateString("pt-BR", {
+      day: "2-digit", month: "2-digit", year: "2-digit",
+      hour: "2-digit", minute: "2-digit",
+    });
+  } catch { return "—"; }
+}
+
+function escapeHtml(text) {
+  const entities = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+  return text.replace(/[&<>"']/g, (char) => entities[char]);
+}
+
+function buildWhatsappUrl(product) {
+  if (!CONFIG.whatsappNumber) return "";
+  const message = encodeURIComponent(
+    CONFIG.whatsappTemplate
+      .replace("{nome}", product.name)
+      .replace("{ref}",  product.id)
+  );
+  return `https://wa.me/${CONFIG.whatsappNumber}?text=${message}`;
+}
+
+function buildDeepLinkUrl(product) {
+  return `${location.origin}${location.pathname}?p=${encodeURIComponent(product.id)}`;
+}
+
+function stabilityLabel(product) {
+  if (isUnavailable(product)) {
+    if (!product.priceChangedAt) return null;
+    const days = Math.floor(daysAgo(product.priceChangedAt));
+    return `indisponível ${days <= 0 ? "hoje" : "há " + days + "d"}`;
   }
-  if (p.priceChangedAt) {
-    const d = Math.floor(daysAgo(p.priceChangedAt));
-    const tag = d <= 0 ? "hoje" : `há ${d}d`;
-    if (p.changeType === "restock") return `disponível ${tag}`;
-    if (p.changeType === "price_change") return `neste preço ${tag}`;
+  if (product.priceChangedAt) {
+    const days = Math.floor(daysAgo(product.priceChangedAt));
+    const when = days <= 0 ? "hoje" : `há ${days}d`;
+    if (product.changeType === "restock")      return `disponível ${when}`;
+    if (product.changeType === "price_change") return `neste preço ${when}`;
   }
-  if (p.firstSeen) {
-    const d = Math.floor(daysAgo(p.firstSeen));
-    return d <= 0 ? "rastreado desde hoje" : `rastreado há ${d}d`;
+  if (product.firstSeen) {
+    const days = Math.floor(daysAgo(product.firstSeen));
+    return days <= 0 ? "rastreado desde hoje" : `rastreado há ${days}d`;
   }
   return null;
 }
 
-function escapeHtml(s) {
-  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-}
-function fmtDate(iso) {
-  try {
-    return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
-  } catch { return "—"; }
-}
-function zapLink(p) {
-  if (!CONFIG.whatsappNumber) return "";
-  const msg = encodeURIComponent(CONFIG.whatsappTemplate.replace("{nome}", p.name).replace("{ref}", p.id));
-  return `https://wa.me/${CONFIG.whatsappNumber}?text=${msg}`;
+// ─── SEARCH ───────────────────────────────────────────────────────────────────
+// Returns a relevance score 0–100. 0 means no match (exclude from results).
+// Supports "ref:1234" prefix for exact ID lookup.
+// Priority: ref exact → name exact → name starts-with → all words → phrase → partial.
+function searchScore(product, query) {
+  if (!query) return 1;
+
+  const name     = (product.name          || "").toLowerCase();
+  const ref      = (product.id            || "").toLowerCase();
+  const category = (product.categoryLabel || product.category || "").toLowerCase();
+
+  if (query.startsWith("ref:")) {
+    const refQuery = query.slice(4).trim();
+    if (ref === refQuery)         return 100;
+    if (ref.startsWith(refQuery)) return 80;
+    return 0;
+  }
+
+  if (ref  === query) return 100;
+  if (name === query) return 95;
+  if (name.startsWith(query)) return 85;
+
+  const words = query.split(/\s+/).filter(Boolean);
+  if (words.length > 1) {
+    const allInName        = words.every((word) => name.includes(word));
+    const allInAnyField    = words.every((word) => name.includes(word) || ref.includes(word) || category.includes(word));
+    const matchedWordCount = words.filter((word) => name.includes(word) || ref.includes(word)).length;
+
+    if (allInName)     return 70;
+    if (allInAnyField) return 65;
+    if (matchedWordCount > 0) return 30 + Math.round(25 * matchedWordCount / words.length);
+  }
+
+  if (name.includes(query)) return 60;
+  if (ref.startsWith(query)) return 50;
+  if (ref.includes(query))   return 40;
+
+  return 0;
 }
 
-function priceBlockHtml(p) {
-  const priceMove = isPriceMove(p);
-  const sobConsulta = isSobConsulta(p);
-  if (priceMove && p.previousPrice) {
-    const up = priceNum(p.price) > priceNum(p.previousPrice);
+// ─── FILTER & SORT PIPELINE (pure functions) ─────────────────────────────────
+function readFilterState() {
+  return {
+    query:      dom.searchInput.value.trim().toLowerCase(),
+    sort:       dom.sortSelect.value,
+    category:   dom.catFilter.value,
+    onlyNew:    dom.toggles.novo.checkbox.checked,
+    onlyChanged:dom.toggles.changed.checkbox.checked,
+    onlyAvail:  dom.toggles.avail.checkbox.checked,
+    onlyFav:    dom.toggles.fav.checkbox.checked,
+  };
+}
+
+function filterProducts(products, filters) {
+  let result = filters.category
+    ? products.filter((product) => product.category === filters.category)
+    : [...products];
+
+  if (filters.query) {
+    result = result
+      .map((product) => ({ product, score: searchScore(product, filters.query) }))
+      .filter(({ score }) => score > 0)
+      .sort((a, b) => b.score - a.score)
+      .map(({ product }) => product);
+  }
+
+  if (filters.onlyNew)     result = result.filter(isNewProduct);
+  if (filters.onlyChanged) result = result.filter((p) => isRestock(p) || isPriceChange(p));
+  if (filters.onlyAvail)   result = result.filter((p) => !isUnavailable(p));
+  if (filters.onlyFav)     result = result.filter((p) => favorites.has(p.id));
+
+  return result;
+}
+
+function sortProducts(products, filters) {
+  // Search results stay sorted by relevance score; manual sort only applies when searching is inactive.
+  if (filters.query) return products;
+
+  const sorted = [...products];
+
+  if (filters.sort === "price-asc")  return sorted.sort((a, b) => parsePriceNumber(a.price) - parsePriceNumber(b.price));
+  if (filters.sort === "price-desc") return sorted.sort((a, b) => parsePriceNumber(b.price) - parsePriceNumber(a.price));
+  if (filters.sort === "az")         return sorted.sort((a, b) => a.name.localeCompare(b.name));
+  if (filters.sort === "new")        return sorted.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
+
+  // Default: recent changes and new arrivals first, then stable by original catalog order
+  return sorted
+    .map((product, originalIndex) => ({ product, originalIndex }))
+    .sort((a, b) => {
+      const priorityDiff = productPriority(b.product) - productPriority(a.product);
+      if (priorityDiff !== 0) return priorityDiff;
+
+      const dateA = new Date(a.product.priceChangedAt || a.product.firstSeen || 0);
+      const dateB = new Date(b.product.priceChangedAt || b.product.firstSeen || 0);
+      if (dateB - dateA !== 0) return dateB - dateA;
+
+      return a.originalIndex - b.originalIndex;
+    })
+    .map(({ product }) => product);
+}
+
+// ─── TEMPLATES (return HTML strings) ─────────────────────────────────────────
+function priceHtml(product) {
+  if (isPriceChange(product) && product.previousPrice) {
+    const priceWentUp = parsePriceNumber(product.price) > parsePriceNumber(product.previousPrice);
     return `
       <div class="price-row">
-        <span class="price-old">${p.previousPrice}</span>
-        <span class="price">${p.price || "—"}</span>
-        <span class="price-arrow ${up ? "up" : "down"}">${up ? "▲" : "▼"}</span>
+        <span class="price-old">${product.previousPrice}</span>
+        <span class="price">${product.price || "—"}</span>
+        <span class="price-arrow ${priceWentUp ? "up" : "down"}">${priceWentUp ? "▲" : "▼"}</span>
       </div>`;
   }
-  if (sobConsulta) return `<span class="tag-consulta">SOB CONSULTA</span>`;
-  return `<span class="price ${p.price ? "" : "none"}">${p.price || "sob consulta"}</span>`;
+  if (isUnavailable(product)) return `<span class="tag-consulta">SOB CONSULTA</span>`;
+  return `<span class="price ${product.price ? "" : "none"}">${product.price || "sob consulta"}</span>`;
 }
 
-function cardHtml(p, compact) {
-  const novo = isNew(p);
-  const restock = isRestock(p);
-  const sobConsulta = isSobConsulta(p);
-  const fav = favorites.has(p.id);
-  const favAlert = isFavAlert(p);
-  const stab = stabilityLabel(p);
+function cardHtml(product, { compact = false } = {}) {
+  const isNew      = isNewProduct(product);
+  const hasRestock = isRestock(product);
+  const unavail    = isUnavailable(product);
+  const isFav      = favorites.has(product.id);
+  const favAlert   = isFavoriteAlert(product);
+  const stability  = stabilityLabel(product);
+  const zapUrl     = buildWhatsappUrl(product);
 
-  const zap = zapLink(p);
-  const zapBtn = zap && !compact
-    ? `<a class="cta-zap" href="${zap}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
+  const favButton = compact ? "" : `
+    <button type="button" class="fav-btn ${isFav ? "active" : ""}" data-action="fav" data-id="${product.id}" aria-label="Favoritar" title="Favoritar">
+      ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
+    </button>`;
+
+  const shareButton = compact ? "" : `
+    <button type="button" class="share-item-btn" data-action="share" data-id="${product.id}" aria-label="Compartilhar este item" title="Compartilhar este item">
+      ${ICON_SHARE}
+    </button>`;
+
+  const zapButton = zapUrl && !compact
+    ? `<a class="cta-zap" href="${zapUrl}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
     : "";
-  const favBtn = compact ? "" : `<button type="button" class="fav-btn ${fav ? "active" : ""}" data-action="fav" data-id="${p.id}" aria-label="Favoritar" title="Favoritar">${fav ? STAR_FILLED : STAR_OUTLINE}</button>`;
-  const shareBtn = compact ? "" : `<button type="button" class="share-item-btn" data-action="share" data-id="${p.id}" aria-label="Compartilhar este item" title="Compartilhar este item">${SHARE_ICON}</button>`;
-  const favDot = compact && fav ? '<div class="radar-fav-dot"></div>' : "";
+
+  const favDot = compact && isFav ? '<div class="radar-fav-dot"></div>' : "";
+
+  const metaLine = compact ? "" : `
+    <div class="ref">REF ${product.id}${product.categoryLabel ? ` · ${product.categoryLabel}` : ""}</div>
+    ${stability ? `<div class="stab-label">${stability}</div>` : ""}`;
 
   return `
-    <article class="card ${sobConsulta ? "consulta" : ""} ${compact ? "radar-card" : ""} ${favAlert ? "fav-alert" : ""}" data-id="${p.id}">
-      ${favBtn}${favDot}
-      ${novo ? '<div class="novo">NOVO</div>' : ""}
-      ${restock ? `<div class="restock ${novo ? "stacked" : ""}">VOLTOU</div>` : ""}
-      <a class="thumb ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">
-        ${p.image ? `<img loading="lazy" src="${p.image}" alt="${escapeHtml(p.name)}">` : ""}
+    <article class="card ${unavail ? "consulta" : ""} ${compact ? "radar-card" : ""} ${favAlert ? "fav-alert" : ""}" data-id="${product.id}">
+      ${favButton}${favDot}
+      ${isNew     ? '<div class="novo">NOVO</div>' : ""}
+      ${hasRestock ? `<div class="restock ${isNew ? "stacked" : ""}">VOLTOU</div>` : ""}
+      <a class="thumb ${product.image ? "" : "empty"}" href="${product.url}" target="_blank" rel="noopener">
+        ${product.image ? `<img loading="lazy" src="${product.image}" alt="${escapeHtml(product.name)}">` : ""}
       </a>
       <div class="body">
         ${favAlert ? '<div class="fav-alert-tag">★ favorito que mudou</div>' : ""}
-        <div class="name">${escapeHtml(p.name)}</div>
-        ${compact ? "" : `<div class="ref">REF ${p.id}${p.categoryLabel ? ` · ${p.categoryLabel}` : ""}</div>`}
-        ${!compact && stab ? `<div class="stab-label">${stab}</div>` : ""}
+        <div class="name">${escapeHtml(product.name)}</div>
+        ${metaLine}
         <div class="foot">
-          ${priceBlockHtml(p)}
-          <span class="foot-actions">${shareBtn}<a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a></span>
+          ${priceHtml(product)}
+          <span class="foot-actions">
+            ${shareButton}
+            <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
+          </span>
         </div>
-        ${zapBtn}
+        ${zapButton}
       </div>
     </article>`;
 }
 
-function rowHtml(p) {
-  const novo = isNew(p);
-  const restock = isRestock(p);
-  const sobConsulta = isSobConsulta(p);
-  const fav = favorites.has(p.id);
-  const favAlert = isFavAlert(p);
-  const stab = stabilityLabel(p);
-  const badges = `${novo ? '<span class="pill pill-new">NOVO</span>' : ""}${restock ? '<span class="pill pill-restock">VOLTOU</span>' : ""}`;
+function rowHtml(product) {
+  const isNew      = isNewProduct(product);
+  const hasRestock = isRestock(product);
+  const unavail    = isUnavailable(product);
+  const isFav      = favorites.has(product.id);
+  const favAlert   = isFavoriteAlert(product);
+  const stability  = stabilityLabel(product);
+
+  const badges = [
+    isNew      ? '<span class="pill pill-new">NOVO</span>'     : "",
+    hasRestock ? '<span class="pill pill-restock">VOLTOU</span>' : "",
+  ].join("");
+
+  const metaParts = [
+    `REF ${product.id}`,
+    product.categoryLabel || "",
+    stability             || "",
+  ].filter(Boolean).join(" · ");
 
   return `
-    <tr data-id="${p.id}" class="${sobConsulta ? "consulta-row" : ""} ${favAlert ? "fav-alert-row" : ""}">
-      <td><a class="thumb-mini ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">${p.image ? `<img loading="lazy" src="${p.image}" alt="">` : ""}</a></td>
+    <tr data-id="${product.id}" class="${unavail ? "consulta-row" : ""} ${favAlert ? "fav-alert-row" : ""}">
       <td>
-        <div class="row-name">${escapeHtml(p.name)}</div>
-        <div class="row-meta">REF ${p.id}${p.categoryLabel ? ` · ${p.categoryLabel}` : ""}${stab ? ` · ${stab}` : ""}</div>
+        <a class="thumb-mini ${product.image ? "" : "empty"}" href="${product.url}" target="_blank" rel="noopener">
+          ${product.image ? `<img loading="lazy" src="${product.image}" alt="">` : ""}
+        </a>
+      </td>
+      <td>
+        <div class="row-name">${escapeHtml(product.name)}</div>
+        <div class="row-meta">${metaParts}</div>
         ${badges ? `<div class="row-badges">${badges}</div>` : ""}
       </td>
-      <td>${priceBlockHtml(p)}</td>
+      <td>${priceHtml(product)}</td>
       <td class="td-actions">
-        <button type="button" class="fav-btn ${fav ? "active" : ""}" data-action="fav" data-id="${p.id}" aria-label="Favoritar" title="Favoritar">${fav ? STAR_FILLED : STAR_OUTLINE}</button>
-        <button type="button" class="share-item-btn" data-action="share" data-id="${p.id}" aria-label="Compartilhar" title="Compartilhar">${SHARE_ICON}</button>
-        <a class="open" href="${p.url}" target="_blank" rel="noopener">abrir ↗</a>
+        <button type="button" class="fav-btn ${isFav ? "active" : ""}" data-action="fav" data-id="${product.id}" aria-label="Favoritar" title="Favoritar">
+          ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
+        </button>
+        <button type="button" class="share-item-btn" data-action="share" data-id="${product.id}" aria-label="Compartilhar" title="Compartilhar">
+          ${ICON_SHARE}
+        </button>
+        <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
       </td>
     </tr>`;
 }
 
-function renderRadar() {
-  const destaques = items.filter((p) => isRestock(p) || isPriceMove(p))
-    .sort((a, b) => {
-      const fa = favorites.has(a.id) ? 1 : 0, fb = favorites.has(b.id) ? 1 : 0;
-      if (fb - fa !== 0) return fb - fa;
-      return new Date(b.priceChangedAt) - new Date(a.priceChangedAt);
-    })
-    .slice(0, 12);
-  const section = document.getElementById("radarSection");
-  if (destaques.length === 0) { section.hidden = true; return; }
-  section.hidden = false;
-  document.getElementById("radarStrip").innerHTML = destaques.map((p) => cardHtml(p, true)).join("");
-}
+// ─── RENDERING ────────────────────────────────────────────────────────────────
+function renderCatalog() {
+  const filters  = readFilterState();
+  const filtered = filterProducts(catalog, filters);
+  const sorted   = sortProducts(filtered, filters);
 
-// ---- ranked search ----
-// Suporta "ref:1234" pra busca exata por ID.
-// Ordem de prioridade: ref exato → nome exato → nome começa com → todas as palavras → frase → palavras parciais → ref contém.
-function searchScore(p, q) {
-  if (!q) return 1;
-
-  const name = (p.name || "").toLowerCase();
-  const ref  = (p.id   || "").toLowerCase();
-  const cat  = (p.categoryLabel || p.category || "").toLowerCase();
-
-  // "ref:XXXX" — busca direta por ID
-  if (q.startsWith("ref:")) {
-    const rq = q.slice(4).trim();
-    if (ref === rq)           return 100;
-    if (ref.startsWith(rq))   return 80;
-    return 0;
-  }
-
-  if (ref === q)              return 100; // ref exato sem prefixo
-  if (name === q)             return 95;
-  if (name.startsWith(q))     return 85;
-
-  const words = q.split(/\s+/).filter(Boolean);
-  if (words.length > 1) {
-    if (words.every((w) => name.includes(w)))                          return 70;
-    if (words.every((w) => name.includes(w) || ref.includes(w) || cat.includes(w))) return 65;
-    const matched = words.filter((w) => name.includes(w) || ref.includes(w)).length;
-    if (matched > 0) return 30 + Math.round(25 * matched / words.length);
-  }
-
-  if (name.includes(q))       return 60;
-  if (ref.startsWith(q))      return 50;
-  if (ref.includes(q))        return 40;
-  return 0;
-}
-
-function render() {
-  const raw  = document.getElementById("q").value.trim();
-  const q    = raw.toLowerCase();
-  const sort = document.getElementById("sort").value;
-  const cat  = document.getElementById("catFilter").value;
-  const onlyNovo    = document.getElementById("onlyNovo").checked;
-  const onlyChanged = document.getElementById("onlyChanged").checked;
-  const onlyAvail   = document.getElementById("onlyAvail").checked;
-  const onlyFav     = document.getElementById("onlyFav").checked;
-
-  // filtra por categoria
-  let list = cat ? items.filter((p) => p.category === cat) : [...items];
-
-  // filtra e pontua pela busca
-  if (q) {
-    list = list
-      .map((p) => ({ p, score: searchScore(p, q) }))
-      .filter((x) => x.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .map((x) => x.p);
-  }
-
-  if (onlyNovo)    list = list.filter(isNew);
-  if (onlyChanged) list = list.filter((p) => isRestock(p) || isPriceMove(p));
-  if (onlyAvail)   list = list.filter((p) => !isSobConsulta(p));
-  if (onlyFav)     list = list.filter((p) => favorites.has(p.id));
-
-  // ordenacao manual so se nao ha busca ativa
-  if (!q) {
-    if (sort === "price-asc")  list.sort((a, b) => priceNum(a.price) - priceNum(b.price));
-    else if (sort === "price-desc") list.sort((a, b) => priceNum(b.price) - priceNum(a.price));
-    else if (sort === "az")    list.sort((a, b) => a.name.localeCompare(b.name));
-    else if (sort === "new")   list.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
-    else {
-      list = list
-        .map((p, i) => ({ p, i }))
-        .sort((a, b) => {
-          const pr = priority(b.p) - priority(a.p);
-          if (pr !== 0) return pr;
-          const da = new Date(a.p.priceChangedAt || a.p.firstSeen || 0);
-          const db = new Date(b.p.priceChangedAt || b.p.firstSeen || 0);
-          if (db - da !== 0) return db - da;
-          return a.i - b.i;
-        })
-        .map((x) => x.p);
-    }
-  }
-
-  if (list.length === 0) {
-    grid.hidden = true; tableWrap.hidden = true;
-    empty.hidden = false;
-    empty.innerHTML = (onlyFav && favorites.size === 0)
+  if (sorted.length === 0) {
+    dom.grid.hidden = true;
+    dom.tableWrap.hidden = true;
+    dom.empty.hidden = false;
+    dom.empty.innerHTML = (filters.onlyFav && favorites.size === 0)
       ? "<b>Nenhum favorito ainda</b>Clique na estrela de um item pra acompanhar ele de perto."
       : "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
     return;
   }
-  empty.hidden = true;
+
+  dom.empty.hidden = true;
 
   if (viewMode === "table") {
-    grid.hidden = true; tableWrap.hidden = false;
-    document.getElementById("tableBody").innerHTML = list.map(rowHtml).join("");
+    dom.grid.hidden      = true;
+    dom.tableWrap.hidden = false;
+    dom.tableBody.innerHTML = sorted.map(rowHtml).join("");
   } else {
-    tableWrap.hidden = true; grid.hidden = false;
-    grid.innerHTML = list.map((p) => cardHtml(p, false)).join("");
+    dom.tableWrap.hidden = true;
+    dom.grid.hidden      = false;
+    dom.grid.innerHTML   = sorted.map((product) => cardHtml(product)).join("");
   }
 }
 
-function updateFavCount() {
-  const n = favorites.size;
-  document.getElementById("countFav").textContent = n;
-  document.getElementById("favStat").hidden = n === 0;
+function renderRadar() {
+  const changedProducts = catalog
+    .filter((product) => isRestock(product) || isPriceChange(product))
+    .sort((a, b) => {
+      const aIsFav = favorites.has(a.id) ? 1 : 0;
+      const bIsFav = favorites.has(b.id) ? 1 : 0;
+      if (bIsFav - aIsFav !== 0) return bIsFav - aIsFav;
+      return new Date(b.priceChangedAt) - new Date(a.priceChangedAt);
+    })
+    .slice(0, RADAR_MAX_ITEMS);
+
+  dom.radarSection.hidden = changedProducts.length === 0;
+  if (changedProducts.length > 0) {
+    dom.radarStrip.innerHTML = changedProducts.map((product) => cardHtml(product, { compact: true })).join("");
+  }
 }
 
-function toggleFavorite(id) {
-  const adding = !favorites.has(id);
-  if (adding) favorites.add(id); else favorites.delete(id);
-  const p = items.find((x) => x.id === id);
-  track(adding ? "favorite-add" : "favorite-remove", { id, name: p ? p.name : id });
-  saveFavorites();
-  updateFavCount();
-  renderRadar();
-  render();
+function renderStats(data) {
+  dom.count.textContent        = catalog.length;
+  dom.countAvail.textContent   = catalog.filter((p) => !isUnavailable(p)).length;
+  dom.countNovo.textContent    = catalog.filter(isNewProduct).length;
+  dom.countRestock.textContent = catalog.filter(isRestock).length;
+  dom.updated.textContent      = formatDate(data.updatedAt);
+  dom.footerRight.textContent  = `${catalog.length} produtos rastreados`;
 }
 
-function shareItem(p) {
-  track("share-item", { id: p.id, name: p.name, price: p.price || "" });
-  openShareModal(p);
-}
+function renderCategoryFilter(data) {
+  const categories = data.categories
+    || [...new Map(
+        catalog
+          .filter((p) => p.category)
+          .map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])
+      ).values()];
 
-function showToast(msg) {
-  const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  clearTimeout(t._timer);
-  t._timer = setTimeout(() => t.classList.remove("show"), 2200);
-}
-
-function setView(v) {
-  viewMode = v;
-  saveView(v);
-  track("view-switch", { mode: v });
-  document.getElementById("viewGrid").classList.toggle("active", v === "grid");
-  document.getElementById("viewTable").classList.toggle("active", v === "table");
-  render();
-}
-
-function handleDeepLink() {
-  const params = new URLSearchParams(location.search);
-  const pid = params.get("p");
-  if (!pid) return;
-  requestAnimationFrame(() => {
-    let sel;
-    try { sel = `[data-id="${CSS.escape(pid)}"]`; } catch { return; }
-    const el = document.querySelector(sel);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center" });
-    el.classList.add("deep-link-highlight");
-    setTimeout(() => el.classList.remove("deep-link-highlight"), 2200);
+  categories.forEach((cat) => {
+    const count  = cat.count || catalog.filter((p) => p.category === cat.slug).length;
+    const option = document.createElement("option");
+    option.value       = cat.slug;
+    option.textContent = `${cat.label} (${count})`;
+    dom.catFilter.appendChild(option);
   });
 }
 
-// ---- listeners ----
-document.addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-action]");
-  if (!btn) return;
-  e.preventDefault();
-  e.stopPropagation();
-  const id = btn.dataset.id;
-  const p = items.find((x) => x.id === id);
-  if (!p) return;
-  if (btn.dataset.action === "fav") toggleFavorite(id);
-  else if (btn.dataset.action === "share") shareItem(p);
-});
-
-// ---- share modal ----
-// p = product object → shows item URL; omit → shows current page URL
-function openShareModal(p) {
-  const url = p
-    ? `${location.origin}${location.pathname}?p=${encodeURIComponent(p.id)}`
-    : location.href;
-  document.getElementById("shareUrlDisplay").textContent = url;
-  document.getElementById("shareModal").dataset.url = url;
-  document.getElementById("shareModal").classList.add("open");
-  updateCalc();
+function updateFavoriteCount() {
+  dom.countFav.textContent = favorites.size;
+  dom.favStat.hidden       = favorites.size === 0;
 }
+
+// ─── SHARE MODAL ─────────────────────────────────────────────────────────────
+function openShareModal(product) {
+  const url = buildDeepLinkUrl(product);
+  dom.shareUrlDisplay.textContent = url;
+  dom.shareModal.dataset.url      = url;
+  dom.shareModal.classList.add("open");
+  updateCalculator();
+}
+
 function closeShareModal() {
-  document.getElementById("shareModal").classList.remove("open");
+  dom.shareModal.classList.remove("open");
 }
 
-document.getElementById("shareBtn").addEventListener("click", async () => {
+// ─── CONVERSION CALCULATOR ───────────────────────────────────────────────────
+function updateCalculator() {
+  const dollarRate = parseFloat(dom.calcDolar.value);
+  const percentage = parseFloat(dom.calcPct.value);
+
+  if (isNaN(dollarRate) || isNaN(percentage)) {
+    dom.calcResult.textContent  = "—";
+    dom.calcFormula.textContent = "— × (1 + —%) = —";
+    return;
+  }
+
+  const adjusted = dollarRate * (1 + percentage / 100);
+  const fmt      = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  dom.calcResult.textContent  = fmt(adjusted);
+  dom.calcFormula.textContent = `R$ ${fmt(dollarRate)} × (1 + ${percentage}%) = R$ ${fmt(adjusted)}`;
+}
+
+// ─── TOAST ────────────────────────────────────────────────────────────────────
+function showToast(message) {
+  dom.toast.textContent = message;
+  dom.toast.classList.add("show");
+  clearTimeout(dom.toast._timer);
+  dom.toast._timer = setTimeout(() => dom.toast.classList.remove("show"), TOAST_DURATION_MS);
+}
+
+// ─── ACTIONS ─────────────────────────────────────────────────────────────────
+function toggleFavorite(productId) {
+  const isAdding = !favorites.has(productId);
+  if (isAdding) favorites.add(productId); else favorites.delete(productId);
+
+  const product = catalog.find((p) => p.id === productId);
+  track(isAdding ? "favorite-add" : "favorite-remove", { id: productId, name: product?.name ?? productId });
+
+  saveFavorites();
+  updateFavoriteCount();
+  renderRadar();
+  renderCatalog();
+}
+
+function shareItem(product) {
+  track("share-item", { id: product.id, name: product.name, price: product.price || "" });
+  openShareModal(product);
+}
+
+async function shareCatalog() {
   const url = location.href;
   track("share-catalog");
   if (navigator.share) {
     try { await navigator.share({ title: "Catálogo de Réplicas — Armaria", url }); }
-    catch { /* usuario cancelou */ }
+    catch { /* user cancelled */ }
   } else {
     try { await navigator.clipboard.writeText(url); showToast("Link copiado!"); }
     catch { showToast(url); }
   }
-});
-document.getElementById("shareModalClose").addEventListener("click", closeShareModal);
-document.getElementById("shareModal").addEventListener("click", (e) => {
-  if (e.target === e.currentTarget) closeShareModal();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeShareModal();
-});
-
-document.getElementById("copyUrlBtn").addEventListener("click", async () => {
-  const url = document.getElementById("shareModal").dataset.url || location.href;
-  try {
-    await navigator.clipboard.writeText(url);
-    const btn = document.getElementById("copyUrlBtn");
-    btn.textContent = "Copiado!";
-    setTimeout(() => { btn.textContent = "Copiar"; }, 1800);
-  } catch { showToast(url); }
-});
-
-function updateCalc() {
-  const dolar = parseFloat(document.getElementById("calcDolar").value);
-  const pct = parseFloat(document.getElementById("calcPct").value);
-  const resultEl = document.getElementById("calcResult");
-  const formulaEl = document.getElementById("calcFormula");
-  if (isNaN(dolar) || isNaN(pct)) {
-    resultEl.textContent = "—";
-    formulaEl.textContent = "— × (1 + —%) = —";
-    return;
-  }
-  const result = dolar * (1 + pct / 100);
-  resultEl.textContent = result.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  formulaEl.textContent = `R$ ${dolar.toLocaleString("pt-BR", { minimumFractionDigits: 2 })} × (1 + ${pct}%) = R$ ${result.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
-document.getElementById("calcDolar").addEventListener("input", updateCalc);
-document.getElementById("calcPct").addEventListener("input", updateCalc);
+async function copyModalUrl() {
+  const url = dom.shareModal.dataset.url || location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    dom.copyUrlBtn.textContent = "Copiado!";
+    setTimeout(() => { dom.copyUrlBtn.textContent = "Copiar"; }, COPY_RESET_MS);
+  } catch { showToast(url); }
+}
 
-document.getElementById("q").addEventListener("input", (e) => {
-  if (e.target.value.trim().length >= 3) track("search", { query: e.target.value.trim() });
-  render();
-});
-document.getElementById("sort").addEventListener("change", (e) => {
-  track("sort", { value: e.target.value });
-  render();
-});
-document.getElementById("onlyNovo").addEventListener("change", (e) => {
-  document.getElementById("novoToggle").classList.toggle("on", e.target.checked);
-  if (e.target.checked) track("filter", { type: "novos" });
-  render();
-});
-document.getElementById("onlyChanged").addEventListener("change", (e) => {
-  document.getElementById("changedToggle").classList.toggle("on", e.target.checked);
-  if (e.target.checked) track("filter", { type: "mudanca-preco" });
-  render();
-});
-document.getElementById("onlyAvail").addEventListener("change", (e) => {
-  document.getElementById("availToggle").classList.toggle("on", e.target.checked);
-  if (e.target.checked) track("filter", { type: "disponiveis" });
-  render();
-});
-document.getElementById("onlyFav").addEventListener("change", (e) => {
-  document.getElementById("favToggle").classList.toggle("on", e.target.checked);
-  if (e.target.checked) track("filter", { type: "favoritos" });
-  render();
-});
-document.getElementById("viewGrid").addEventListener("click", () => setView("grid"));
-document.getElementById("viewTable").addEventListener("click", () => setView("table"));
-document.getElementById("catFilter").addEventListener("change", (e) => {
-  if (e.target.value) track("filter", { type: "categoria", value: e.target.value });
-  render();
+function setViewMode(mode) {
+  viewMode = mode;
+  saveView(mode);
+  track("view-switch", { mode });
+  dom.viewGrid.classList.toggle("active",  mode === "grid");
+  dom.viewTable.classList.toggle("active", mode === "table");
+  renderCatalog();
+}
+
+function handleDeepLink() {
+  const productId = new URLSearchParams(location.search).get("p");
+  if (!productId) return;
+
+  requestAnimationFrame(() => {
+    let selector;
+    try { selector = `[data-id="${CSS.escape(productId)}"]`; } catch { return; }
+
+    const element = document.querySelector(selector);
+    if (!element) return;
+
+    element.scrollIntoView({ behavior: "smooth", block: "center" });
+    element.classList.add("deep-link-highlight");
+    setTimeout(() => element.classList.remove("deep-link-highlight"), TOAST_DURATION_MS);
+  });
+}
+
+// ─── EVENT WIRING ─────────────────────────────────────────────────────────────
+// Card action buttons (fav + share) — delegated from document
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-action]");
+  if (!button) return;
+  event.preventDefault();
+  event.stopPropagation();
+
+  const product = catalog.find((p) => p.id === button.dataset.id);
+  if (!product) return;
+
+  if (button.dataset.action === "fav")   toggleFavorite(product.id);
+  if (button.dataset.action === "share") shareItem(product);
 });
 
-// track clicks on product links ("abrir ↗")
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("a.open, a.thumb");
+// Product link click tracking — delegated from document
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a.open, a.thumb");
   if (!link) return;
   const card = link.closest("[data-id]");
   if (!card) return;
-  const id = card.dataset.id;
-  const p = items.find((x) => x.id === id);
-  if (p) track("product-click", { id: p.id, name: p.name, price: p.price || "" });
+  const product = catalog.find((p) => p.id === card.dataset.id);
+  if (product) track("product-click", { id: product.id, name: product.name, price: product.price || "" });
 });
 
+// Search
+dom.searchInput.addEventListener("input", (event) => {
+  const query = event.target.value.trim();
+  if (query.length >= SEARCH_TRACK_MIN_CHARS) track("search", { query });
+  renderCatalog();
+});
+
+// Sort
+dom.sortSelect.addEventListener("change", (event) => {
+  track("sort", { value: event.target.value });
+  renderCatalog();
+});
+
+// Category filter
+dom.catFilter.addEventListener("change", (event) => {
+  if (event.target.value) track("filter", { type: "categoria", value: event.target.value });
+  renderCatalog();
+});
+
+// Toggle filters — each toggle updates its label class and re-renders
+[
+  { key: "novo",    trackName: "novos"          },
+  { key: "changed", trackName: "mudanca-preco"  },
+  { key: "avail",   trackName: "disponiveis"    },
+  { key: "fav",     trackName: "favoritos"      },
+].forEach(({ key, trackName }) => {
+  const { checkbox, label } = dom.toggles[key];
+  checkbox.addEventListener("change", (event) => {
+    label.classList.toggle("on", event.target.checked);
+    if (event.target.checked) track("filter", { type: trackName });
+    renderCatalog();
+  });
+});
+
+// View mode
+dom.viewGrid.addEventListener("click",  () => setViewMode("grid"));
+dom.viewTable.addEventListener("click", () => setViewMode("table"));
+
+// Main share button
+document.getElementById("shareBtn").addEventListener("click", shareCatalog);
+
+// Share modal
+document.getElementById("shareModalClose").addEventListener("click", closeShareModal);
+dom.shareModal.addEventListener("click", (event) => {
+  if (event.target === event.currentTarget) closeShareModal();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeShareModal();
+});
+
+// Copy URL inside modal
+dom.copyUrlBtn.addEventListener("click", copyModalUrl);
+
+// Conversion calculator
+dom.calcDolar.addEventListener("input", updateCalculator);
+dom.calcPct.addEventListener("input",   updateCalculator);
+
+// ─── DATA BOOTSTRAP ───────────────────────────────────────────────────────────
 fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
-  .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((response) => {
+    if (!response.ok) throw new Error(response.status);
+    return response.json();
+  })
   .then((data) => {
-    items = data.products || [];
-    document.getElementById("count").textContent = items.length;
-    document.getElementById("countAvail").textContent = items.filter((p) => !isSobConsulta(p)).length;
-    document.getElementById("countNovo").textContent = items.filter(isNew).length;
-    document.getElementById("countRestock").textContent = items.filter(isRestock).length;
-    document.getElementById("updated").textContent = fmtDate(data.updatedAt);
-    document.getElementById("footerRight").textContent = `${items.length} produtos rastreados`;
-
-    // popula filtro de categoria a partir dos dados (usa summary do snapshot ou deduz dos produtos)
-    const catSelect = document.getElementById("catFilter");
-    const cats = data.categories
-      || [...new Map(items.filter((p) => p.category).map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])).values()];
-    cats.forEach((c) => {
-      const count = c.count || items.filter((p) => p.category === c.slug).length;
-      const opt = document.createElement("option");
-      opt.value = c.slug;
-      opt.textContent = `${c.label} (${count})`;
-      catSelect.appendChild(opt);
-    });
-
-    setView(viewMode);
-    updateFavCount();
+    catalog = data.products || [];
+    renderStats(data);
+    renderCategoryFilter(data);
+    setViewMode(viewMode);
+    updateFavoriteCount();
     renderRadar();
     handleDeepLink();
   })
-  .catch((err) => {
-    empty.hidden = false;
-    empty.innerHTML = `<b>Sem dados ainda</b>O snapshot.json não foi encontrado (erro ${err.message}). Rode o crawler ao menos uma vez.`;
+  .catch((error) => {
+    dom.empty.hidden = false;
+    dom.empty.innerHTML = `<b>Sem dados ainda</b>O snapshot.json não foi encontrado (erro ${error.message}). Rode o crawler ao menos uma vez.`;
   });
 </script>
 </body>
