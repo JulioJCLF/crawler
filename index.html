@@ -622,7 +622,7 @@
           <div class="modal-section-label">Calculadora de conversão</div>
           <div class="calc-fields">
             <div class="calc-field">
-              <label for="calcDolar">Valor dolar</label>
+              <label for="calcDolar">Preço do produto (R$)</label>
               <div class="calc-input-wrap">
                 <span class="calc-prefix">R$</span>
                 <input class="calc-input" id="calcDolar" type="number" min="0" step="0.01" placeholder="0,00" />
@@ -638,7 +638,7 @@
           </div>
           <div class="calc-result-box">
             <div>
-              <div class="calc-result-label">Valor ajustado (R$)</div>
+              <div class="calc-result-label">Total com markup (R$)</div>
               <div class="calc-result-sub" id="calcFormula">— × (1 + —%) = —</div>
             </div>
             <div class="calc-result-value" id="calcResult">—</div>
@@ -1146,10 +1146,12 @@ function updateFavoriteCount() {
 
 // ─── SHARE MODAL ─────────────────────────────────────────────────────────────
 function openShareModal(product) {
-  const url = buildDeepLinkUrl(product);
+  const url   = buildDeepLinkUrl(product);
+  const price = parsePriceNumber(product.price);
   dom.shareUrlDisplay.textContent = url;
   dom.shareModal.dataset.url      = url;
   dom.shareModal.classList.add("open");
+  if (isFinite(price)) dom.calcDolar.value = price.toFixed(2);
   updateCalculator();
 }
 
