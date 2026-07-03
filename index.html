@@ -465,7 +465,10 @@
 
   <div class="controls-wrap">
     <div class="controls">
-      <input type="search" id="q" placeholder="Buscar por nome, marca, modelo..." autocomplete="off" />
+      <input type="search" id="q" placeholder="Buscar por nome, ref, ex: ref:8345..." autocomplete="off" />
+      <select id="catFilter" aria-label="Categoria">
+        <option value="">Todas as categorias</option>
+      </select>
       <select id="sort" aria-label="Ordenar">
         <option value="default">Alterações primeiro</option>
         <option value="new">Mais recentes</option>
@@ -702,7 +705,7 @@ function cardHtml(p, compact) {
       <div class="body">
         ${favAlert ? '<div class="fav-alert-tag">★ favorito que mudou</div>' : ""}
         <div class="name">${escapeHtml(p.name)}</div>
-        ${compact ? "" : `<div class="ref">REF ${p.id}</div>`}
+        ${compact ? "" : `<div class="ref">REF ${p.id}${p.categoryLabel ? ` · ${p.categoryLabel}` : ""}</div>`}
         ${!compact && stab ? `<div class="stab-label">${stab}</div>` : ""}
         <div class="foot">
           ${priceBlockHtml(p)}
@@ -727,7 +730,7 @@ function rowHtml(p) {
       <td><a class="thumb-mini ${p.image ? "" : "empty"}" href="${p.url}" target="_blank" rel="noopener">${p.image ? `<img loading="lazy" src="${p.image}" alt="">` : ""}</a></td>
       <td>
         <div class="row-name">${escapeHtml(p.name)}</div>
-        <div class="row-meta">REF ${p.id}${stab ? ` · ${stab}` : ""}</div>
+        <div class="row-meta">REF ${p.id}${p.categoryLabel ? ` · ${p.categoryLabel}` : ""}${stab ? ` · ${stab}` : ""}</div>
         ${badges ? `<div class="row-badges">${badges}</div>` : ""}
       </td>
       <td>${priceBlockHtml(p)}</td>
@@ -753,36 +756,88 @@ function renderRadar() {
   document.getElementById("radarStrip").innerHTML = destaques.map((p) => cardHtml(p, true)).join("");
 }
 
+// ---- ranked search ----
+// Suporta "ref:1234" pra busca exata por ID.
+// Ordem de prioridade: ref exato → nome exato → nome começa com → todas as palavras → frase → palavras parciais → ref contém.
+function searchScore(p, q) {
+  if (!q) return 1;
+
+  const name = (p.name || "").toLowerCase();
+  const ref  = (p.id   || "").toLowerCase();
+  const cat  = (p.categoryLabel || p.category || "").toLowerCase();
+
+  // "ref:XXXX" — busca direta por ID
+  if (q.startsWith("ref:")) {
+    const rq = q.slice(4).trim();
+    if (ref === rq)           return 100;
+    if (ref.startsWith(rq))   return 80;
+    return 0;
+  }
+
+  if (ref === q)              return 100; // ref exato sem prefixo
+  if (name === q)             return 95;
+  if (name.startsWith(q))     return 85;
+
+  const words = q.split(/\s+/).filter(Boolean);
+  if (words.length > 1) {
+    if (words.every((w) => name.includes(w)))                          return 70;
+    if (words.every((w) => name.includes(w) || ref.includes(w) || cat.includes(w))) return 65;
+    const matched = words.filter((w) => name.includes(w) || ref.includes(w)).length;
+    if (matched > 0) return 30 + Math.round(25 * matched / words.length);
+  }
+
+  if (name.includes(q))       return 60;
+  if (ref.startsWith(q))      return 50;
+  if (ref.includes(q))        return 40;
+  return 0;
+}
+
 function render() {
-  const q = document.getElementById("q").value.trim().toLowerCase();
+  const raw  = document.getElementById("q").value.trim();
+  const q    = raw.toLowerCase();
   const sort = document.getElementById("sort").value;
-  const onlyNovo = document.getElementById("onlyNovo").checked;
+  const cat  = document.getElementById("catFilter").value;
+  const onlyNovo    = document.getElementById("onlyNovo").checked;
   const onlyChanged = document.getElementById("onlyChanged").checked;
-  const onlyAvail = document.getElementById("onlyAvail").checked;
-  const onlyFav = document.getElementById("onlyFav").checked;
+  const onlyAvail   = document.getElementById("onlyAvail").checked;
+  const onlyFav     = document.getElementById("onlyFav").checked;
 
-  let list = items.filter((p) => p.name.toLowerCase().includes(q));
-  if (onlyNovo) list = list.filter(isNew);
-  if (onlyChanged) list = list.filter((p) => isRestock(p) || isPriceMove(p));
-  if (onlyAvail) list = list.filter((p) => !isSobConsulta(p));
-  if (onlyFav) list = list.filter((p) => favorites.has(p.id));
+  // filtra por categoria
+  let list = cat ? items.filter((p) => p.category === cat) : [...items];
 
-  if (sort === "price-asc") list.sort((a, b) => priceNum(a.price) - priceNum(b.price));
-  else if (sort === "price-desc") list.sort((a, b) => priceNum(b.price) - priceNum(a.price));
-  else if (sort === "az") list.sort((a, b) => a.name.localeCompare(b.name));
-  else if (sort === "new") list.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
-  else {
+  // filtra e pontua pela busca
+  if (q) {
     list = list
-      .map((p, i) => ({ p, i }))
-      .sort((a, b) => {
-        const pr = priority(b.p) - priority(a.p);
-        if (pr !== 0) return pr;
-        const da = new Date(a.p.priceChangedAt || a.p.firstSeen || 0);
-        const db = new Date(b.p.priceChangedAt || b.p.firstSeen || 0);
-        if (db - da !== 0) return db - da;
-        return a.i - b.i;
-      })
+      .map((p) => ({ p, score: searchScore(p, q) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score)
       .map((x) => x.p);
+  }
+
+  if (onlyNovo)    list = list.filter(isNew);
+  if (onlyChanged) list = list.filter((p) => isRestock(p) || isPriceMove(p));
+  if (onlyAvail)   list = list.filter((p) => !isSobConsulta(p));
+  if (onlyFav)     list = list.filter((p) => favorites.has(p.id));
+
+  // ordenacao manual so se nao ha busca ativa
+  if (!q) {
+    if (sort === "price-asc")  list.sort((a, b) => priceNum(a.price) - priceNum(b.price));
+    else if (sort === "price-desc") list.sort((a, b) => priceNum(b.price) - priceNum(a.price));
+    else if (sort === "az")    list.sort((a, b) => a.name.localeCompare(b.name));
+    else if (sort === "new")   list.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
+    else {
+      list = list
+        .map((p, i) => ({ p, i }))
+        .sort((a, b) => {
+          const pr = priority(b.p) - priority(a.p);
+          if (pr !== 0) return pr;
+          const da = new Date(a.p.priceChangedAt || a.p.firstSeen || 0);
+          const db = new Date(b.p.priceChangedAt || b.p.firstSeen || 0);
+          if (db - da !== 0) return db - da;
+          return a.i - b.i;
+        })
+        .map((x) => x.p);
+    }
   }
 
   if (list.length === 0) {
@@ -956,6 +1011,10 @@ document.getElementById("onlyFav").addEventListener("change", (e) => {
 });
 document.getElementById("viewGrid").addEventListener("click", () => setView("grid"));
 document.getElementById("viewTable").addEventListener("click", () => setView("table"));
+document.getElementById("catFilter").addEventListener("change", (e) => {
+  if (e.target.value) track("filter", { type: "categoria", value: e.target.value });
+  render();
+});
 
 // track clicks on product links ("abrir ↗")
 document.addEventListener("click", (e) => {
@@ -978,7 +1037,20 @@ fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
     document.getElementById("countRestock").textContent = items.filter(isRestock).length;
     document.getElementById("updated").textContent = fmtDate(data.updatedAt);
     document.getElementById("footerRight").textContent = `${items.length} produtos rastreados`;
-    setView(viewMode); // aplica preferencia salva e ja chama render()
+
+    // popula filtro de categoria a partir dos dados (usa summary do snapshot ou deduz dos produtos)
+    const catSelect = document.getElementById("catFilter");
+    const cats = data.categories
+      || [...new Map(items.filter((p) => p.category).map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])).values()];
+    cats.forEach((c) => {
+      const count = c.count || items.filter((p) => p.category === c.slug).length;
+      const opt = document.createElement("option");
+      opt.value = c.slug;
+      opt.textContent = `${c.label} (${count})`;
+      catSelect.appendChild(opt);
+    });
+
+    setView(viewMode);
     updateFavCount();
     renderRadar();
     handleDeepLink();
