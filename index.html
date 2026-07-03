@@ -876,15 +876,9 @@ function toggleFavorite(id) {
   render();
 }
 
-async function shareItem(p) {
-  const url = `${location.origin}${location.pathname}?p=${encodeURIComponent(p.id)}`;
+function shareItem(p) {
   track("share-item", { id: p.id, name: p.name, price: p.price || "" });
-  if (navigator.share) {
-    try { await navigator.share({ title: p.name, text: `${p.name}${p.price ? " — " + p.price : ""}`, url }); return; }
-    catch { return; }
-  }
-  try { await navigator.clipboard.writeText(url); showToast("Link do item copiado!"); }
-  catch { showToast(url); }
+  openShareModal(p);
 }
 
 function showToast(msg) {
@@ -933,18 +927,31 @@ document.addEventListener("click", (e) => {
 });
 
 // ---- share modal ----
-function openShareModal() {
-  const modal = document.getElementById("shareModal");
-  document.getElementById("shareUrlDisplay").textContent = location.href;
-  modal.classList.add("open");
-  track("share-catalog");
+// p = product object → shows item URL; omit → shows current page URL
+function openShareModal(p) {
+  const url = p
+    ? `${location.origin}${location.pathname}?p=${encodeURIComponent(p.id)}`
+    : location.href;
+  document.getElementById("shareUrlDisplay").textContent = url;
+  document.getElementById("shareModal").dataset.url = url;
+  document.getElementById("shareModal").classList.add("open");
   updateCalc();
 }
 function closeShareModal() {
   document.getElementById("shareModal").classList.remove("open");
 }
 
-document.getElementById("shareBtn").addEventListener("click", openShareModal);
+document.getElementById("shareBtn").addEventListener("click", async () => {
+  const url = location.href;
+  track("share-catalog");
+  if (navigator.share) {
+    try { await navigator.share({ title: "Catálogo de Réplicas — Armaria", url }); }
+    catch { /* usuario cancelou */ }
+  } else {
+    try { await navigator.clipboard.writeText(url); showToast("Link copiado!"); }
+    catch { showToast(url); }
+  }
+});
 document.getElementById("shareModalClose").addEventListener("click", closeShareModal);
 document.getElementById("shareModal").addEventListener("click", (e) => {
   if (e.target === e.currentTarget) closeShareModal();
@@ -954,7 +961,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.getElementById("copyUrlBtn").addEventListener("click", async () => {
-  const url = location.href;
+  const url = document.getElementById("shareModal").dataset.url || location.href;
   try {
     await navigator.clipboard.writeText(url);
     const btn = document.getElementById("copyUrlBtn");
