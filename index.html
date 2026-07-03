@@ -150,6 +150,53 @@
     box-shadow: 0 0 0 2px rgba(11,13,12,.8);
   }
 
+  /* ============ CATEGORY STRIP ============ */
+  .cat-strip-wrap {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .cat-strip {
+    max-width: 1400px; margin: 0 auto; padding: 10px 20px;
+    display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity;
+  }
+  .cat-strip::-webkit-scrollbar { height: 4px; }
+  .cat-strip::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+  .cat-pill {
+    flex-shrink: 0; scroll-snap-align: start;
+    font-family: "Space Mono", monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .06em;
+    padding: 7px 14px; border-radius: 99px;
+    border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--muted);
+    cursor: pointer; white-space: nowrap;
+    transition: color .15s, border-color .15s, background .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .cat-pill:hover { border-color: var(--border-strong); color: var(--text); }
+  .cat-pill.active { background: var(--accent); color: #0b0d0c; border-color: var(--accent); font-weight: 700; }
+  .cat-count { font-size: 10px; opacity: .65; }
+  .cat-pill.active .cat-count { opacity: .75; }
+
+  /* ============ SECTION HEADING ============ */
+  .section-heading {
+    max-width: 1400px; margin: 0 auto; padding: 20px 20px 0;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-heading-name {
+    font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .section-heading-count {
+    font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted);
+  }
+  .section-heading-clear {
+    margin-left: auto; background: none; border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--muted); cursor: pointer;
+    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
+    letter-spacing: .06em; padding: 5px 10px; transition: color .15s, border-color .15s;
+  }
+  .section-heading-clear:hover { color: var(--text); border-color: var(--border-strong); }
+
   /* ============ CONTROLS ============ */
   .controls-wrap {
     position: sticky; top: 0; z-index: 10;
@@ -497,9 +544,6 @@
   <div class="controls-wrap">
     <div class="controls">
       <input type="search" id="q" placeholder="Buscar por nome, ref, ex: ref:8345..." autocomplete="off" />
-      <select id="catFilter" aria-label="Categoria">
-        <option value="">Todas as categorias</option>
-      </select>
       <select id="sort" aria-label="Ordenar">
         <option value="default">Alterações primeiro</option>
         <option value="new">Mais recentes</option>
@@ -526,7 +570,19 @@
     </div>
   </div>
 
+  <!-- Category pill strip -->
+  <div class="cat-strip-wrap">
+    <div class="cat-strip" id="catStrip" role="tablist" aria-label="Categorias"></div>
+  </div>
+
   <main>
+    <!-- Section heading: shows when a category is active -->
+    <div class="section-heading" id="sectionHeading" hidden>
+      <span class="section-heading-name"  id="sectionHeadingName"></span>
+      <span class="section-heading-count" id="sectionHeadingCount"></span>
+      <button class="section-heading-clear" id="sectionHeadingClear" type="button">✕ Todos</button>
+    </div>
+
     <div class="grid" id="grid"></div>
     <div class="table-wrap" id="tableWrap" hidden>
       <table class="data-table">
@@ -626,7 +682,11 @@ const dom = {
   footerRight:     document.getElementById("footerRight"),
   searchInput:     document.getElementById("q"),
   sortSelect:      document.getElementById("sort"),
-  catFilter:       document.getElementById("catFilter"),
+  catStrip:           document.getElementById("catStrip"),
+  sectionHeading:     document.getElementById("sectionHeading"),
+  sectionHeadingName: document.getElementById("sectionHeadingName"),
+  sectionHeadingCount:document.getElementById("sectionHeadingCount"),
+  sectionHeadingClear:document.getElementById("sectionHeadingClear"),
   toast:           document.getElementById("toast"),
   radarSection:    document.getElementById("radarSection"),
   radarStrip:      document.getElementById("radarStrip"),
@@ -653,9 +713,10 @@ const ICON_STAR_FILLED  = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="
 const ICON_SHARE        = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.3" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.3" y1="13.4" x2="15.6" y2="17.4"/></svg>`;
 
 // ─── APP STATE ───────────────────────────────────────────────────────────────
-let catalog  = [];                 // all products loaded from snapshot.json
-let favorites = loadFavorites();   // Set<productId> — persisted in localStorage
-let viewMode  = loadView();        // "grid" | "table" — persisted in localStorage
+let catalog        = [];              // all products loaded from snapshot.json
+let favorites      = loadFavorites(); // Set<productId> — persisted in localStorage
+let viewMode       = loadView();      // "grid" | "table" — persisted in localStorage
+let activeCategory = "";             // slug of the active category pill, "" = all
 
 // ─── STORAGE ─────────────────────────────────────────────────────────────────
 function loadFavorites() {
@@ -795,7 +856,7 @@ function readFilterState() {
   return {
     query:      dom.searchInput.value.trim().toLowerCase(),
     sort:       dom.sortSelect.value,
-    category:   dom.catFilter.value,
+    category:   activeCategory,
     onlyNew:    dom.toggles.novo.checkbox.checked,
     onlyChanged:dom.toggles.changed.checkbox.checked,
     onlyAvail:  dom.toggles.avail.checkbox.checked,
@@ -969,11 +1030,13 @@ function renderCatalog() {
   const filtered = filterProducts(catalog, filters);
   const sorted   = sortProducts(filtered, filters);
 
+  updateSectionHeading(filtered.length);
+
   if (sorted.length === 0) {
-    dom.grid.hidden = true;
+    dom.grid.hidden      = true;
     dom.tableWrap.hidden = true;
-    dom.empty.hidden = false;
-    dom.empty.innerHTML = (filters.onlyFav && favorites.size === 0)
+    dom.empty.hidden     = false;
+    dom.empty.innerHTML  = (filters.onlyFav && favorites.size === 0)
       ? "<b>Nenhum favorito ainda</b>Clique na estrela de um item pra acompanhar ele de perto."
       : "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
     return;
@@ -1018,7 +1081,7 @@ function renderStats(data) {
   dom.footerRight.textContent  = `${catalog.length} produtos rastreados`;
 }
 
-function renderCategoryFilter(data) {
+function renderCategoryStrip(data) {
   const categories = data.categories
     || [...new Map(
         catalog
@@ -1026,13 +1089,54 @@ function renderCategoryFilter(data) {
           .map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])
       ).values()];
 
+  const totalCount = catalog.length;
+
+  const allPill = makeCategoryPill("", "Todos", totalCount, activeCategory === "");
+  dom.catStrip.appendChild(allPill);
+
   categories.forEach((cat) => {
-    const count  = cat.count || catalog.filter((p) => p.category === cat.slug).length;
-    const option = document.createElement("option");
-    option.value       = cat.slug;
-    option.textContent = `${cat.label} (${count})`;
-    dom.catFilter.appendChild(option);
+    const count = cat.count || catalog.filter((p) => p.category === cat.slug).length;
+    if (count === 0) return;
+    dom.catStrip.appendChild(makeCategoryPill(cat.slug, cat.label, count, activeCategory === cat.slug));
   });
+}
+
+function makeCategoryPill(slug, label, count, isActive) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.role = "tab";
+  button.className  = `cat-pill${isActive ? " active" : ""}`;
+  button.dataset.cat = slug;
+  button.setAttribute("aria-selected", isActive);
+  button.innerHTML = `${label} <span class="cat-count">${count}</span>`;
+  return button;
+}
+
+function updateCategoryStrip() {
+  dom.catStrip.querySelectorAll(".cat-pill").forEach((pill) => {
+    const isActive = pill.dataset.cat === activeCategory;
+    pill.classList.toggle("active", isActive);
+    pill.setAttribute("aria-selected", isActive);
+  });
+}
+
+function updateSectionHeading(filteredCount) {
+  const isFiltered = activeCategory !== "";
+  dom.sectionHeading.hidden = !isFiltered;
+
+  if (isFiltered) {
+    const activePill = dom.catStrip.querySelector(`.cat-pill[data-cat="${activeCategory}"]`);
+    const label = activePill ? activePill.firstChild.textContent.trim() : activeCategory;
+    dom.sectionHeadingName.textContent  = label;
+    dom.sectionHeadingCount.textContent = `${filteredCount} produto${filteredCount !== 1 ? "s" : ""}`;
+  }
+}
+
+function selectCategory(slug) {
+  activeCategory = slug;
+  track("filter", { type: "categoria", value: slug || "todos" });
+  updateCategoryStrip();
+  renderCatalog();
 }
 
 function updateFavoriteCount() {
@@ -1183,11 +1287,15 @@ dom.sortSelect.addEventListener("change", (event) => {
   renderCatalog();
 });
 
-// Category filter
-dom.catFilter.addEventListener("change", (event) => {
-  if (event.target.value) track("filter", { type: "categoria", value: event.target.value });
-  renderCatalog();
+// Category pill strip
+dom.catStrip.addEventListener("click", (event) => {
+  const pill = event.target.closest(".cat-pill");
+  if (!pill) return;
+  selectCategory(pill.dataset.cat);
 });
+
+// Section heading clear button
+dom.sectionHeadingClear.addEventListener("click", () => selectCategory(""));
 
 // Toggle filters — each toggle updates its label class and re-renders
 [
@@ -1236,7 +1344,7 @@ fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
   .then((data) => {
     catalog = data.products || [];
     renderStats(data);
-    renderCategoryFilter(data);
+    renderCategoryStrip(data);
     setViewMode(viewMode);
     updateFavoriteCount();
     renderRadar();

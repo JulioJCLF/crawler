@@ -11,16 +11,18 @@ import { fileURLToPath } from "node:url";
 
 // ---------- CONFIG ----------
 const CATEGORIES = [
-  { slug: "airsoft-replicas",       label: "Réplicas Airsoft",        url: "https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124" },
-  { slug: "partes-e-acessorios",    label: "Partes e Acessórios",     url: "https://www.arsenalsports.com/produtos/partes-e-acessorios/filter?d=1" },
-  { slug: "otica-e-iluminacao",     label: "Ótica e Iluminação",      url: "https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273" },
-  { slug: "equipamento-vestuario",  label: "Equipamento e Vestuário", url: "https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381" },
-  { slug: "airgun",                 label: "Airgun",                  url: "https://www.arsenalsports.com/produtos/airgun/filter?d=34" },
-  { slug: "paintball",              label: "Paintball",               url: "https://www.arsenalsports.com/produtos/paintball/filter?d=307" },
-  { slug: "gel-blasters",           label: "Gel Blasters",            url: "https://www.arsenalsports.com/produtos/gel-blasters/filter?d=619" },
-  { slug: "arco-e-flecha",          label: "Arco e Flecha",           url: "https://www.arsenalsports.com/produtos/arco-e-flecha/filter?d=43" },
-  { slug: "defesa-pessoal",         label: "Defesa Pessoal",          url: "https://www.arsenalsports.com/produtos/marcadores-nao-letais--defesa-pessoal/filter?d=1563" },
-  { slug: "modelismo-rc",           label: "Modelismo RC",            url: "https://www.arsenalsports.com/produtos/modelismo-radio-controller/filter?d=1653" },
+  { slug: "replicas",       label: "Réplicas",                url: "https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124" },
+  { slug: "pecas-externas", label: "Peças Externas",          url: "https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191" },
+  { slug: "pecas-internas", label: "Peças Internas",          url: "https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229" },
+  { slug: "pistolas",       label: "Peças para Pistolas",     url: "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423" },
+  { slug: "rifles-gas",     label: "Peças para Rifles a Gás", url: "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-rifles-a-gas/filter?d=214" },
+  { slug: "sniper",         label: "Peças para Sniper",       url: "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424" },
+  { slug: "magazines",      label: "Magazines",               url: "https://www.arsenalsports.com/produtos/airsoft-magazines-para-replicas-de-airsoft/filter?d=114" },
+  { slug: "bbs",            label: "BBs",                     url: "https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163" },
+  { slug: "gas",            label: "Gas / CO2 / HPA",         url: "https://www.arsenalsports.com/produtos/airsoft-green-gas--co2--hpa/filter?d=176" },
+  { slug: "baterias",       label: "Baterias & Carregadores", url: "https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104" },
+  { slug: "granadas",       label: "Granadas",                url: "https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184" },
+  { slug: "speedsoft",      label: "Speedsoft",               url: "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256" },
 ];
 
 const PAGE_PARAM  = "pagina";
