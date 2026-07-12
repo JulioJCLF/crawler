@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Armaria — Catálogo de Réplicas</title>
-<meta name="description" content="Catálogo de réplicas de airsoft, atualizado todos os dias. Preço, estoque e novidades em um só lugar." />
+<title>Catálogo Hunting World — Equipamentos de Airsoft</title>
+<meta name="description" content="Catálogo completo de equipamentos de airsoft. Preço, estoque e novidades atualizados diariamente." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <!-- Favicon — scope crosshair mark -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='6' fill='%230b0d0c'/><circle cx='20' cy='20' r='15' fill='none' stroke='%23c6ff00' stroke-width='2'/><circle cx='20' cy='20' r='7' fill='none' stroke='%23c6ff00' stroke-width='1' opacity='.45'/><line x1='20' y1='2'  x2='20' y2='12' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='20' y1='28' x2='20' y2='38' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='2'  y1='20' x2='12' y2='20' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><line x1='28' y1='20' x2='38' y2='20' stroke='%23c6ff00' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='20' r='2.5' fill='%23c6ff00'/></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='6' fill='%230b0d0c'/><circle cx='20' cy='20' r='15' fill='none' stroke='%234d5030' stroke-width='2'/><circle cx='20' cy='20' r='7' fill='none' stroke='%234d5030' stroke-width='1' opacity='.45'/><line x1='20' y1='2'  x2='20' y2='12' stroke='%234d5030' stroke-width='2' stroke-linecap='round'/><line x1='20' y1='28' x2='20' y2='38' stroke='%234d5030' stroke-width='2' stroke-linecap='round'/><line x1='2'  y1='20' x2='12' y2='20' stroke='%234d5030' stroke-width='2' stroke-linecap='round'/><line x1='28' y1='20' x2='38' y2='20' stroke='%234d5030' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='20' r='2.5' fill='%234d5030'/></svg>" />
 <!-- Umami Analytics: substitua data-website-id pelo ID do seu site em umami.is -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="c4cc1f71-95f1-4e02-b855-16ae3a04dd04"></script>
 <style>
@@ -19,10 +19,10 @@
     --surface-2: #1b201c;
     --border: #2a312c;
     --border-strong: #3c4640;
-    --text: #eef1ec;
+    --text: #f0efea;
     --muted: #8b948c;
-    --accent: #c6ff00;
-    --accent-dim: #8fb800;
+    --accent: #4d5030;
+    --accent-dim: #3d4026;
     --info: #4ec9ff;
     --danger: #ff5b4a;
     --radius: 4px;
@@ -44,7 +44,7 @@
   .hero {
     position: relative; overflow: hidden;
     background:
-      radial-gradient(900px 400px at 15% -10%, rgba(198,255,0,.06), transparent 60%),
+      radial-gradient(900px 400px at 15% -10%, rgba(77,80,48,.06), transparent 60%),
       var(--bg);
     border-bottom: 1px solid var(--border);
     padding: 36px 20px 28px;
@@ -147,111 +147,137 @@
   .radar-fav-dot {
     position: absolute; top: 6px; left: 6px; z-index: 3;
     width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
-    box-shadow: 0 0 0 2px rgba(11,13,12,.8);
+    box-shadow: 0 0 0 2px rgba(11,13,12,.8)
+  }
+  /* ============ LAYOUT & SIDEBAR ============ */
+  .layout-container {
+    display: flex; align-items: flex-start; gap: 24px;
+    max-width: 1400px; margin: 0 auto; padding: 24px 20px;
+    position: relative;
+  }
+  
+  .mobile-filter-bar { display: none; margin: 0 auto; max-width: 1400px; padding: 16px 20px 0; }
+  .mobile-filter-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--text); padding: 12px; border-radius: var(--radius);
+    font-family: "Saira Condensed", sans-serif; font-size: 16px; font-weight: 700;
+    text-transform: uppercase; cursor: pointer; transition: background .15s;
+  }
+  .mobile-filter-btn:hover { background: var(--surface); }
+
+  .sidebar {
+    width: 280px; flex-shrink: 0; position: sticky; top: 24px;
+    display: flex; flex-direction: column; gap: 24px;
+    height: calc(100vh - 48px); overflow-y: auto; overflow-x: hidden;
+    padding-right: 8px; /* For scrollbar */
+  }
+  
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+  .sidebar-header { display: none; }
+  
+  .sidebar-section {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .sidebar-title {
+    margin: 0 0 4px; font-family: "Space Mono", monospace; font-size: 10px;
+    color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+    border-bottom: 1px solid var(--border); padding-bottom: 8px;
   }
 
-  /* ============ CATEGORY STRIP ============ */
-  .cat-strip-wrap {
-    background: var(--surface); border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .cat-strip {
-    max-width: 1400px; margin: 0 auto; padding: 10px 20px;
-    display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity;
-  }
-  .cat-strip::-webkit-scrollbar { height: 4px; }
-  .cat-strip::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
-  .cat-pill {
-    flex-shrink: 0; scroll-snap-align: start;
-    font-family: "Space Mono", monospace; font-size: 11px;
-    text-transform: uppercase; letter-spacing: .06em;
-    padding: 7px 14px; border-radius: 99px;
-    border: 1px solid var(--border);
-    background: var(--surface-2); color: var(--muted);
-    cursor: pointer; white-space: nowrap;
-    transition: color .15s, border-color .15s, background .15s;
-    display: inline-flex; align-items: center; gap: 6px;
-  }
-  .cat-pill:hover { border-color: var(--border-strong); color: var(--text); }
-  .cat-pill.active { background: var(--accent); color: #0b0d0c; border-color: var(--accent); font-weight: 700; }
-  .cat-count { font-size: 10px; opacity: .65; }
-  .cat-pill.active .cat-count { opacity: .75; }
-
-  /* ============ SECTION HEADING ============ */
-  .section-heading {
-    max-width: 1400px; margin: 0 auto; padding: 20px 20px 0;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-heading-name {
-    font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 22px;
-    letter-spacing: .06em; text-transform: uppercase;
-  }
-  .section-heading-count {
-    font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted);
-  }
-  .section-heading-clear {
-    margin-left: auto; background: none; border: 1px solid var(--border);
-    border-radius: var(--radius); color: var(--muted); cursor: pointer;
-    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
-    letter-spacing: .06em; padding: 5px 10px; transition: color .15s, border-color .15s;
-  }
-  .section-heading-clear:hover { color: var(--text); border-color: var(--border-strong); }
-
-  /* ============ CONTROLS ============ */
-  .controls-wrap {
-    position: sticky; top: 0; z-index: 10;
-    background: rgba(11,13,12,.96); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  .controls {
-    max-width: 1400px; margin: 0 auto; padding: 12px 20px;
-    display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
-  }
-  input[type="search"], select {
-    background: var(--surface); color: var(--text);
+  input[type="search"], select, .price-range-input {
+    width: 100%; background: var(--surface); color: var(--text);
     border: 1px solid var(--border); border-radius: var(--radius);
     padding: 10px 12px; font-size: 14px; font-family: inherit;
   }
-  input[type="search"] { flex: 1; min-width: 200px; }
   input[type="search"]::placeholder { color: var(--muted); }
   select { cursor: pointer; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+  .price-range-wrap { display: flex; gap: 8px; align-items: center; font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted); }
+  .price-range-input { flex: 1; min-width: 0; font-size: 12px; padding: 9px 10px; }
+
   .toggle {
-    display: inline-flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     font-family: "Space Mono", monospace; font-size: 12px; text-transform: uppercase;
     letter-spacing: .05em; color: var(--muted); cursor: pointer; user-select: none;
     border: 1px solid var(--border); border-radius: var(--radius); padding: 9px 12px;
     transition: color .15s, border-color .15s;
   }
-  .toggle input { accent-color: var(--accent); width: 15px; height: 15px; }
+  .toggle input { accent-color: var(--accent); width: 15px; height: 15px; flex-shrink: 0; }
   .toggle.on { color: var(--accent); border-color: var(--accent); }
 
-  .view-switch { display: inline-flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-left: auto; }
+  .view-switch { display: flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .view-btn {
-    font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
-    background: var(--surface); color: var(--muted); border: none; padding: 9px 14px; cursor: pointer;
+    flex: 1; font-family: "Space Mono", monospace; font-size: 12px; letter-spacing: .04em; text-transform: uppercase;
+    background: var(--surface); color: var(--muted); border: none; padding: 9px; cursor: pointer;
   }
   .view-btn + .view-btn { border-left: 1px solid var(--border); }
   .view-btn.active { background: var(--accent); color: #0b0d0c; font-weight: 700; }
+
+  /* ============ CATEGORY LIST ============ */
+  .cat-list { display: flex; flex-direction: column; gap: 4px; }
+  .cat-pill {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: "Space Mono", monospace; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .06em;
+    padding: 8px 12px; border-radius: var(--radius);
+    border: 1px solid transparent; background: transparent; color: var(--muted);
+    cursor: pointer; transition: color .15s, background .15s, border-color .15s;
+    text-align: left;
+  }
+  .cat-pill:hover { background: var(--surface-2); color: var(--text); }
+  .cat-pill.active { background: var(--surface-2); border-color: var(--accent); color: var(--accent); font-weight: 700; }
+  .cat-count { font-size: 10px; opacity: .65; background: var(--surface); padding: 2px 6px; border-radius: 99px; }
+  .cat-pill.active .cat-count { background: var(--accent); color: #0b0d0c; opacity: 1; }
+
+  /* ============ MAIN CONTENT ============ */
+  .main-content { flex: 1; min-width: 0; }
+
+  /* ============ SECTION HEADING ============ */
+  .section-heading {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+    padding-bottom: 16px; border-bottom: 1px dashed var(--border);
+  }
+  .section-heading-name {
+    font-family: "Saira Condensed", sans-serif; font-weight: 700; font-size: 28px;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--accent);
+    text-shadow: 0 0 20px rgba(77,80,48, 0.4);
+  }
+  .section-heading-count {
+    font-family: "Space Mono", monospace; font-size: 12px; color: var(--text);
+    background: var(--surface-2); padding: 4px 10px; border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+  .section-heading-clear {
+    margin-left: auto; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: var(--radius); color: var(--text); cursor: pointer;
+    font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; padding: 6px 14px; transition: all .2s;
+  }
+  .section-heading-clear:hover { background: var(--danger); border-color: var(--danger); color: #000; }
 
   /* ============ GRID ============ */
   main { max-width: 1400px; margin: 0 auto; padding: 24px 20px 60px; }
   .grid {
     display: grid; gap: 14px;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
   .card {
     position: relative; display: flex; flex-direction: column;
     background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); overflow: hidden;
     transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+    max-height: 400px;
   }
   .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
   .card.fav-alert { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .thumb {
     aspect-ratio: 1 / 1; background: var(--surface-2);
     display: flex; align-items: center; justify-content: center; padding: 12px;
+    min-height: 0; flex-shrink: 1;
   }
   .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
   .thumb.empty::after {
@@ -401,99 +427,95 @@
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* ============ SHARE MODAL ============ */
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(0,0,0,.72); backdrop-filter: blur(4px);
-    z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px;
-    opacity: 0; pointer-events: none; transition: opacity .2s ease;
-  }
-  .modal-backdrop.open { opacity: 1; pointer-events: all; }
-  .modal {
-    background: var(--surface); border: 1px solid var(--border-strong);
-    border-radius: 6px; width: 100%; max-width: 440px;
-    transform: translateY(12px); transition: transform .2s ease;
-  }
-  .modal-backdrop.open .modal { transform: translateY(0); }
-  .modal-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 20px; border-bottom: 1px solid var(--border);
-  }
-  .modal-header h2 {
-    margin: 0; font-family: "Saira Condensed", sans-serif; font-weight: 700;
-    font-size: 18px; letter-spacing: .06em; text-transform: uppercase;
-  }
-  .modal-close {
-    background: none; border: none; color: var(--muted); cursor: pointer;
-    font-size: 20px; line-height: 1; padding: 4px 6px; border-radius: var(--radius);
-    transition: color .15s;
-  }
-  .modal-close:hover { color: var(--text); }
-  .modal-body { padding: 20px; display: flex; flex-direction: column; gap: 20px; }
-  .modal-section-label {
-    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
-    letter-spacing: .12em; color: var(--muted); margin-bottom: 8px;
-  }
-  .share-url-row { display: flex; gap: 8px; align-items: stretch; }
-  .share-url-input {
-    flex: 1; background: var(--surface-2); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 9px 12px; font-family: "Space Mono", monospace;
-    font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis;
-    white-space: nowrap; min-width: 0;
-  }
-  .copy-btn {
-    font-family: "Space Mono", monospace; font-size: 11px; font-weight: 700;
-    letter-spacing: .05em; text-transform: uppercase; color: #0b0d0c;
-    background: var(--accent); border: none; border-radius: var(--radius);
-    padding: 9px 14px; cursor: pointer; white-space: nowrap; flex-shrink: 0;
-    transition: filter .15s ease;
-  }
-  .copy-btn:hover { filter: brightness(1.1); }
-  .copy-btn:active { filter: brightness(.9); }
-  .modal-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-  .calc-fields { display: flex; gap: 10px; }
-  .calc-field { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  .calc-field label {
-    margin-bottom: 15px;
-    font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase;
-    letter-spacing: .1em; color: var(--muted);
-  }
-  .calc-input-wrap { position: relative; display: flex; align-items: center; }
-  .calc-prefix {
-    position: absolute; left: 10px; font-family: "Space Mono", monospace;
-    font-size: 12px; color: var(--muted); pointer-events: none;
-  }
-  .calc-suffix {
-    position: absolute; right: 10px; font-family: "Space Mono", monospace;
-    font-size: 12px; color: var(--muted); pointer-events: none;
-  }
-  .calc-input {
-    width: 100%; background: var(--surface-2); border: 1px solid var(--border);
-    border-radius: var(--radius); color: var(--text); font-family: "Space Mono", monospace;
-    font-size: 14px; font-weight: 700; padding: 10px 32px;
-    transition: border-color .15s;
-  }
-  .calc-input:focus { border-color: var(--accent); outline: none; }
-  .calc-input.no-prefix  { padding-left: 12px; }
-  .calc-input.has-suffix { padding-right: 32px; }
-  .calc-result-box {
-    background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 14px 16px; margin-top: 12px;
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  }
-  .calc-result-label { font-family: "Space Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
-  .calc-result-value { font-family: "Space Mono", monospace; font-size: 22px; font-weight: 700; color: var(--accent); }
-  .calc-result-sub   { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
 
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; animation: none !important; }
     .wordmark .bar { display: none; }
   }
+
+  /* ============ PAGINATION ============ */
+  .pagination-wrap {
+    max-width: 1400px; margin: 32px auto 0; padding: 0 20px;
+  }
+  .pagination {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    flex-wrap: wrap; padding: 16px 0;
+    border-top: 1px solid var(--border);
+  }
+  .pagination-info {
+    width: 100%; text-align: center; margin-bottom: 8px;
+    font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted);
+    letter-spacing: .03em;
+  }
+  .page-btn {
+    font-family: "Space Mono", monospace; font-size: 12px; font-weight: 700;
+    letter-spacing: .04em; min-width: 38px; height: 38px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--surface); color: var(--muted);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    cursor: pointer; transition: color .15s, border-color .15s, background .15s;
+    padding: 0 10px;
+  }
+  .page-btn:hover:not(:disabled):not(.active) { border-color: var(--border-strong); color: var(--text); }
+  .page-btn.active { background: var(--accent); color: #0b0d0c; border-color: var(--accent); }
+  .page-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .page-ellipsis {
+    font-family: "Space Mono", monospace; font-size: 14px; color: var(--muted);
+    padding: 0 4px; user-select: none;
+  }
+
+  /* ============ EXTRA FILTERS ============ */
+  .filter-group {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .filter-group select {
+    max-width: 200px;
+  }
+  .price-range-wrap {
+    display: flex; align-items: center; gap: 6px;
+    font-family: "Space Mono", monospace; font-size: 11px; color: var(--muted);
+  }
+  .price-range-input {
+    width: 100px; background: var(--surface); color: var(--text);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 9px 10px; font-size: 12px; font-family: "Space Mono", monospace;
+  }
+  .price-range-input::placeholder { color: var(--muted); font-size: 11px; }
+
+  @media (max-width: 860px) {
+    .layout-container { flex-direction: column; padding-top: 0; }
+    .mobile-filter-bar { display: block; }
+    
+    .sidebar-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(2px);
+      z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .sidebar-backdrop.open { opacity: 1; pointer-events: all; }
+    
+    .sidebar {
+      position: fixed; top: 0; left: -100%; bottom: 0; width: 300px; max-width: 85vw;
+      height: 100vh; background: var(--surface-2); padding: 20px; z-index: 100;
+      transition: left 0.3s ease; box-shadow: 4px 0 24px rgba(0,0,0,0.4); border-right: 1px solid var(--border);
+    }
+    .sidebar.open { left: 0; }
+    
+    .sidebar-header.mobile-only {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px; border-bottom: 1px solid var(--border); padding-bottom: 12px;
+    }
+    .sidebar-header h2 { font-family: "Saira Condensed", sans-serif; font-size: 20px; text-transform: uppercase; margin: 0; }
+    .sidebar-close {
+      background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;
+    }
+  }
+
   @media (max-width: 640px) {
     .hero { padding: 28px 16px 22px; }
-    .share-btn { margin-left: 0; width: 100%; justify-content: center; }
     .stats { width: 100%; }
-    .view-switch { margin-left: 0; width: 100%; }
-    .view-btn { flex: 1; }
+    .pagination { gap: 4px; }
+    .page-btn { min-width: 34px; height: 34px; font-size: 11px; }
+    .price-range-wrap { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -501,29 +523,29 @@
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">Catálogo tático // réplicas de airsoft</div>
+      <div class="eyebrow">Catálogo tático // equipamentos de airsoft</div>
       <div class="brand">
         <svg class="brand-mark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <!-- outer ring -->
-          <circle cx="26" cy="26" r="23" fill="none" stroke="#c6ff00" stroke-width="1.5" class="ring-outer"/>
+          <circle cx="26" cy="26" r="23" fill="none" stroke="#4d5030" stroke-width="1.5" class="ring-outer"/>
           <!-- inner ring, faded -->
-          <circle cx="26" cy="26" r="11" fill="none" stroke="#c6ff00" stroke-width="1" opacity=".35"/>
+          <circle cx="26" cy="26" r="11" fill="none" stroke="#4d5030" stroke-width="1" opacity=".35"/>
           <!-- crosshair ticks -->
-          <line x1="26" y1="2"  x2="26" y2="14" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26" y1="38" x2="26" y2="50" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="2"  y1="26" x2="14" y2="26" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="38" y1="26" x2="50" y2="26" stroke="#c6ff00" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26" y1="2"  x2="26" y2="14" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26" y1="38" x2="26" y2="50" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="2"  y1="26" x2="14" y2="26" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="38" y1="26" x2="50" y2="26" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
           <!-- diagonal corner marks -->
-          <line x1="7"  y1="7"  x2="11" y2="11" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="45" y1="7"  x2="41" y2="11" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="7"  y1="45" x2="11" y2="41" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="45" y1="45" x2="41" y2="41" stroke="#c6ff00" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="7"  y1="7"  x2="11" y2="11" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="45" y1="7"  x2="41" y2="11" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="7"  y1="45" x2="11" y2="41" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="45" y1="45" x2="41" y2="41" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
           <!-- center dot -->
-          <circle cx="26" cy="26" r="2.5" fill="#c6ff00"/>
+          <circle cx="26" cy="26" r="2.5" fill="#4d5030"/>
         </svg>
-        <h1 class="wordmark">ARMARIA<div class="bar"></div></h1>
+        <h1 class="wordmark">HUNTING WORLD<div class="bar"></div></h1>
       </div>
-      <p class="tagline">Estoque e preço atualizados todos os dias. Sem precisar entrar no site original — veja o que chegou, o que voltou e o que mudou de preço, tudo aqui.</p>
+      <p class="tagline">Catálogo completo de equipamentos de airsoft com preços atualizados. Veja o que chegou, o que voltou ao estoque e o que mudou de preço.</p>
       <div class="stats">
         <div class="stat"><span class="dot"></span>itens no catálogo <b id="count">—</b></div>
         <div class="stat"><span class="dot"></span>disponíveis <b id="countAvail">—</b></div>
@@ -531,7 +553,6 @@
         <div class="stat hot"><span class="dot"></span>voltaram ao estoque <b id="countRestock">—</b></div>
         <div class="stat hot" id="favStat" hidden><span class="dot"></span>favoritos <b id="countFav">0</b></div>
         <div class="stat"><span class="dot"></span>atualizado <b id="updated">—</b></div>
-        <button class="share-btn" id="shareBtn" type="button">↗ Compartilhar</button>
       </div>
     </div>
   </section>
@@ -543,137 +564,150 @@
     </div>
   </section>
 
-  <div class="controls-wrap">
-    <div class="controls">
-      <input type="search" id="q" placeholder="Buscar por nome, ref, ex: ref:8345..." autocomplete="off" />
-      <select id="sort" aria-label="Ordenar">
-        <option value="default">Alterações primeiro</option>
-        <option value="new">Mais recentes</option>
-        <option value="price-asc">Menor preço</option>
-        <option value="price-desc">Maior preço</option>
-        <option value="az">A–Z</option>
-      </select>
-      <label class="toggle" id="novoToggle">
-        <input type="checkbox" id="onlyNovo" /> Só novos
-      </label>
-      <label class="toggle" id="changedToggle">
-        <input type="checkbox" id="onlyChanged" /> Só com mudança de preço
-      </label>
-      <label class="toggle" id="availToggle">
-        <input type="checkbox" id="onlyAvail" /> Só disponíveis
-      </label>
-      <label class="toggle" id="favToggle">
-        <input type="checkbox" id="onlyFav" /> Só favoritos
-      </label>
-      <div class="view-switch" role="group" aria-label="Modo de visualização">
-        <button type="button" class="view-btn" id="viewGrid">Grade</button>
-        <button type="button" class="view-btn" id="viewTable">Tabela</button>
+  <div class="mobile-filter-bar">
+    <button type="button" id="mobileFilterBtn" class="mobile-filter-btn">
+      <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+      Filtros e Categorias
+    </button>
+  </div>
+
+  <div class="layout-container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header mobile-only">
+        <h2>Filtros e Categorias</h2>
+        <button type="button" class="sidebar-close" id="sidebarClose">✕</button>
       </div>
-    </div>
+      
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Busca e Ordenação</h3>
+        <input type="search" id="q" placeholder="Buscar por nome, ref..." autocomplete="off" />
+        <select id="sort" aria-label="Ordenar">
+          <option value="new">Mais recentes adicionadas</option>
+          <option value="az">Ordem alfabética (A-Z)</option>
+          <option value="price-desc">Maior valor</option>
+          <option value="price-asc">Menor valor</option>
+        </select>
+        <select id="brandFilter" aria-label="Filtrar por marca">
+          <option value="">Todas as marcas</option>
+        </select>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Faixa de Preço</h3>
+        <div class="price-range-wrap">
+          <span>R$</span>
+          <input type="number" class="price-range-input" id="priceMin" placeholder="Mín" min="0" step="1" />
+          <span>—</span>
+          <input type="number" class="price-range-input" id="priceMax" placeholder="Máx" min="0" step="1" />
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Status do Produto</h3>
+        <label class="toggle" id="novoToggle">
+          <input type="checkbox" id="onlyNovo" /> Só novos
+        </label>
+        <label class="toggle" id="changedToggle">
+          <input type="checkbox" id="onlyChanged" /> Só com mudança de preço
+        </label>
+        <label class="toggle" id="availToggle">
+          <input type="checkbox" id="onlyAvail" /> Só disponíveis
+        </label>
+        <label class="toggle" id="favToggle">
+          <input type="checkbox" id="onlyFav" /> Só favoritos
+        </label>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Modo de Visualização</h3>
+        <div class="view-switch" role="group" aria-label="Modo de visualização">
+          <button type="button" class="view-btn" id="viewGrid">Grade</button>
+          <button type="button" class="view-btn" id="viewTable">Tabela</button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Categorias de Réplicas</h3>
+        <div class="cat-list" id="catReplicas" role="tablist"></div>
+      </div>
+
+      <div class="sidebar-section" id="bbWeightSection" hidden style="margin-top: 2px; margin-bottom: 4px; margin-left: 12px; padding-left: 8px; border-left: 2px solid var(--border); gap: 0;">
+        <select id="bbWeightFilter" aria-label="Filtrar por peso da BB" style="font-size: 11px; padding: 6px 8px;">
+          <option value="">Qualquer peso</option>
+        </select>
+      </div>
+
+      <div class="sidebar-section" id="bateriaVoltageSection" hidden style="margin-top: 2px; margin-bottom: 4px; margin-left: 12px; padding-left: 8px; border-left: 2px solid var(--border); gap: 0;">
+        <select id="bateriaVoltageFilter" aria-label="Filtrar por voltagem" style="font-size: 11px; padding: 6px 8px;">
+          <option value="">Qualquer voltagem</option>
+        </select>
+      </div>
+
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Outras Categorias</h3>
+        <div class="cat-list" id="catOutros" role="tablist"></div>
+      </div>
+    </aside>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <main class="main-content">
+      <!-- Section heading: shows when a category is active -->
+      <div class="section-heading" id="sectionHeading" hidden>
+        <span class="section-heading-name" id="sectionHeadingName"></span>
+        <span class="section-heading-count" id="sectionHeadingCount"></span>
+        <button class="section-heading-clear" id="sectionHeadingClear" type="button">✕ Todos</button>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <div class="table-wrap" id="tableWrap" hidden>
+        <table class="data-table">
+          <thead>
+            <tr><th></th><th>Produto</th><th>Preço</th><th>Ações</th></tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="empty-state" id="empty" hidden></div>
+      <div class="pagination-wrap" id="paginationWrap" hidden>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </main>
   </div>
-
-  <!-- Category pill strip -->
-  <div class="cat-strip-wrap">
-    <div class="cat-strip" id="catStrip" role="tablist" aria-label="Categorias"></div>
-  </div>
-
-  <main>
-    <!-- Section heading: shows when a category is active -->
-    <div class="section-heading" id="sectionHeading" hidden>
-      <span class="section-heading-name"  id="sectionHeadingName"></span>
-      <span class="section-heading-count" id="sectionHeadingCount"></span>
-      <button class="section-heading-clear" id="sectionHeadingClear" type="button">✕ Todos</button>
-    </div>
-
-    <div class="grid" id="grid"></div>
-    <div class="table-wrap" id="tableWrap" hidden>
-      <table class="data-table">
-        <thead>
-          <tr><th></th><th>Produto</th><th>Preço</th><th>Ações</th></tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
-    </div>
-    <div class="empty-state" id="empty" hidden></div>
-  </main>
 
   <footer>
-    <span id="footerLeft">Fonte: arsenalsports.com — catálogo de curadoria, preços e disponibilidade sujeitos a alteração.</span>
+    <span id="footerLeft">Catálogo Hunting World — preços e disponibilidade sujeitos a alteração.</span>
     <span id="footerRight"></span>
   </footer>
 
   <div class="toast" id="toast"></div>
 
-  <!-- Share Modal -->
-  <div class="modal-backdrop" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
-    <div class="modal">
-      <div class="modal-header">
-        <h2 id="shareModalTitle">Compartilhar</h2>
-        <button class="modal-close" id="shareModalClose" type="button" aria-label="Fechar">✕</button>
-      </div>
-      <div class="modal-body">
-        <div>
-          <div class="modal-section-label">Link do item</div>
-          <div class="share-url-row">
-            <div class="share-url-input" id="shareUrlDisplay"></div>
-            <button class="copy-btn" id="copyUrlBtn" type="button">Copiar</button>
-          </div>
-        </div>
-        <hr class="modal-divider" />
-        <div>
-          <div class="modal-section-label">Calculadora de conversão</div>
-          <div class="calc-fields">
-            <div class="calc-field">
-              <label for="calcPreco">Preço do produto ($)</label>
-              <div class="calc-input-wrap">
-                <span class="calc-prefix">$</span>
-                <input class="calc-input" id="calcPreco" type="number" min="0" step="0.01" placeholder="0,00" />
-              </div>
-            </div>
-            <div class="calc-field">
-              <label for="calcDolar">Cotação do dólar (R$)</label>
-              <div class="calc-input-wrap">
-                <span class="calc-prefix">R$</span>
-                <input class="calc-input" id="calcDolar" type="number" min="0" step="0.01" placeholder="0,00" />
-              </div>
-            </div>
-            <div class="calc-field">
-              <label for="calcPct">Porcentagem</label>
-              <div class="calc-input-wrap">
-                <input class="calc-input no-prefix has-suffix" id="calcPct" type="number" min="0" step="0.1" placeholder="0" />
-                <span class="calc-suffix">%</span>
-              </div>
-            </div>
-          </div>
-          <div class="calc-result-box">
-            <div>
-              <div class="calc-result-label">Total em reais (R$)</div>
-              <div class="calc-result-sub" id="calcFormula">$ — × R$ — × (1 + —%) = R$ —</div>
-            </div>
-            <div class="calc-result-value" id="calcResult">—</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 <script>
 // ─── CONFIG — edite aqui ────────────────────────────────────────────────────
 const CONFIG = {
-  whatsappNumber:   "",  // DDI+DDD+numero, só dígitos. Deixe "" pra esconder o botão.
-  whatsappTemplate: "Olá! Vi a réplica \"{nome}\" (ref {ref}) no catálogo, ainda está disponível?",
+  whatsappNumber:   "5545999858096",
+  whatsappTemplate: "Oi tenho interesse nesse equipamento {link}",
+};
+
+// ─── PRICING — ajuste câmbio e markup aqui ───────────────────────────────────
+const PRICING = {
+  exchangeRate:  5.50,   // Cotação fixa USD → BRL
+  markupPercent: 48,     // Porcentagem de markup sobre o valor convertido
 };
 
 // ─── CONSTANTS ───────────────────────────────────────────────────────────────
 const NEW_WINDOW_DAYS    = 7;
 const CHANGE_WINDOW_DAYS = 7;
 const RADAR_MAX_ITEMS    = 12;
+const ITEMS_PER_PAGE     = 36;
 const TOAST_DURATION_MS  = 2200;
 const COPY_RESET_MS      = 1800;
 const SEARCH_TRACK_MIN_CHARS = 3;
 
-const STORAGE_KEY_FAVORITES = "armaria_favoritos";
-const STORAGE_KEY_VIEW      = "armaria_view";
+const STORAGE_KEY_FAVORITES = "hw_favoritos";
+const STORAGE_KEY_VIEW      = "hw_view";
 
 // ─── DOM CACHE ───────────────────────────────────────────────────────────────
 const dom = {
@@ -691,7 +725,21 @@ const dom = {
   footerRight:     document.getElementById("footerRight"),
   searchInput:     document.getElementById("q"),
   sortSelect:      document.getElementById("sort"),
-  catStrip:           document.getElementById("catStrip"),
+  brandFilter:     document.getElementById("brandFilter"),
+  priceMin:        document.getElementById("priceMin"),
+  priceMax:        document.getElementById("priceMax"),
+  paginationWrap:  document.getElementById("paginationWrap"),
+  pagination:      document.getElementById("pagination"),
+  catReplicas:     document.getElementById("catReplicas"),
+  catOutros:       document.getElementById("catOutros"),
+  sidebar:         document.getElementById("sidebar"),
+  sidebarBackdrop: document.getElementById("sidebarBackdrop"),
+  sidebarClose:    document.getElementById("sidebarClose"),
+  mobileFilterBtn: document.getElementById("mobileFilterBtn"),
+  bbWeightSection: document.getElementById("bbWeightSection"),
+  bbWeightFilter:  document.getElementById("bbWeightFilter"),
+  bateriaVoltageSection: document.getElementById("bateriaVoltageSection"),
+  bateriaVoltageFilter:  document.getElementById("bateriaVoltageFilter"),
   sectionHeading:     document.getElementById("sectionHeading"),
   sectionHeadingName: document.getElementById("sectionHeadingName"),
   sectionHeadingCount:document.getElementById("sectionHeadingCount"),
@@ -699,14 +747,6 @@ const dom = {
   toast:           document.getElementById("toast"),
   radarSection:    document.getElementById("radarSection"),
   radarStrip:      document.getElementById("radarStrip"),
-  shareModal:      document.getElementById("shareModal"),
-  shareUrlDisplay: document.getElementById("shareUrlDisplay"),
-  copyUrlBtn:      document.getElementById("copyUrlBtn"),
-  calcPreco:       document.getElementById("calcPreco"),
-  calcDolar:       document.getElementById("calcDolar"),
-  calcPct:         document.getElementById("calcPct"),
-  calcResult:      document.getElementById("calcResult"),
-  calcFormula:     document.getElementById("calcFormula"),
   viewGrid:        document.getElementById("viewGrid"),
   viewTable:       document.getElementById("viewTable"),
   toggles: {
@@ -720,13 +760,14 @@ const dom = {
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 const ICON_STAR_OUTLINE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
 const ICON_STAR_FILLED  = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
-const ICON_SHARE        = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><line x1="8.3" y1="10.6" x2="15.6" y2="6.6"/><line x1="8.3" y1="13.4" x2="15.6" y2="17.4"/></svg>`;
 
 // ─── APP STATE ───────────────────────────────────────────────────────────────
 let catalog        = [];              // all products loaded from snapshot.json
+let catalogBrands  = [];              // extracted brand list [{ brand, count }]
 let favorites      = loadFavorites(); // Set<productId> — persisted in localStorage
 let viewMode       = loadView();      // "grid" | "table" — persisted in localStorage
-let activeCategory = "";             // slug of the active category pill, "" = all
+let activeCategory = "aeg";             // slug of the active category pill, "" = all
+let currentPage    = 1;               // current pagination page
 
 // ─── STORAGE ─────────────────────────────────────────────────────────────────
 function loadFavorites() {
@@ -774,6 +815,30 @@ function parsePriceNumber(priceString) {
   return isNaN(value) ? Infinity : value;
 }
 
+// Converte valor USD para BRL com markup
+function convertToBRL(usdValue) {
+  return usdValue * PRICING.exchangeRate * (1 + PRICING.markupPercent / 100);
+}
+
+// Converte string de preço "USD 249,00" para string BRL formatada
+function convertPriceToBRL(priceString) {
+  const usdValue = parsePriceNumber(priceString);
+  if (!isFinite(usdValue)) return null;
+  return convertToBRL(usdValue);
+}
+
+// Formata número como BRL
+function formatBRL(value) {
+  return "R$ " + value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+// Retorna o preço em BRL (número) para ordenação/filtragem
+function productPriceBRL(product) {
+  if (!product.price) return Infinity;
+  const usd = parsePriceNumber(product.price);
+  return isFinite(usd) ? convertToBRL(usd) : Infinity;
+}
+
 function formatDate(isoDate) {
   try {
     return new Date(isoDate).toLocaleDateString("pt-BR", {
@@ -792,10 +857,46 @@ function buildWhatsappUrl(product) {
   if (!CONFIG.whatsappNumber) return "";
   const message = encodeURIComponent(
     CONFIG.whatsappTemplate
+      .replace("{link}", product.url)
       .replace("{nome}", product.name)
       .replace("{ref}",  product.id)
   );
   return `https://wa.me/${CONFIG.whatsappNumber}?text=${message}`;
+}
+
+// ─── BRAND EXTRACTION ────────────────────────────────────────────────────────
+const MULTI_WORD_BRANDS = [
+  "TARAN TACTICAL", "TOKYO MARUI", "CLASSIC ARMY", "LANCER TACTICAL",
+  "DOUBLE EAGLE", "GOLDEN EAGLE", "MAPLE LEAF", "ACTION ARMY",
+  "ARMY ARMAMENT", "AW CUSTOM", "FN HERSTAL", "JING GONG",
+  "KJ WORKS", "SPECNA ARMS", "SEEKINS PRECISION", "G&P", "G&G",
+  "E&L", "S&T", "SHS GUNS",
+];
+const SKIP_WORDS = new Set(["AEG", "GBB", "HPA", "CO2", "CQB", "DMR", "EBB", "NBB", "GBBR"]);
+
+function extractBrand(productName) {
+  const name = (productName || "").toUpperCase();
+  for (const mb of MULTI_WORD_BRANDS) {
+    if (name.startsWith(mb + " ") || name.startsWith(mb + "-")) return mb;
+  }
+  const firstWord = name.split(/[\s-]/)[0];
+  if (firstWord && firstWord.length >= 2 && !SKIP_WORDS.has(firstWord)) return firstWord;
+  return null;
+}
+
+function buildBrandList(products) {
+  const brandCount = {};
+  products.forEach((p) => {
+    const brand = extractBrand(p.name);
+    if (brand) {
+      p._brand = brand;
+      brandCount[brand] = (brandCount[brand] || 0) + 1;
+    }
+  });
+  return Object.entries(brandCount)
+    .filter(([, count]) => count >= 3)
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([brand, count]) => ({ brand, count }));
 }
 
 function buildDeepLinkUrl(product) {
@@ -867,6 +968,11 @@ function readFilterState() {
     query:      dom.searchInput.value.trim().toLowerCase(),
     sort:       dom.sortSelect.value,
     category:   activeCategory,
+    brand:      dom.brandFilter.value,
+    bbWeight:   dom.bbWeightFilter.value,
+    bateriaVoltage: dom.bateriaVoltageFilter.value,
+    priceMin:   parseFloat(dom.priceMin.value) || 0,
+    priceMax:   parseFloat(dom.priceMax.value) || Infinity,
     onlyNew:    dom.toggles.novo.checkbox.checked,
     onlyChanged:dom.toggles.changed.checkbox.checked,
     onlyAvail:  dom.toggles.avail.checkbox.checked,
@@ -878,6 +984,21 @@ function filterProducts(products, filters) {
   let result = filters.category
     ? products.filter((product) => product.category === filters.category)
     : [...products];
+
+  if (filters.brand) {
+    result = result.filter((p) => p._brand === filters.brand);
+  }
+
+  if (filters.bbWeight && filters.category === "bbs") {
+    result = result.filter((p) => p.name.includes(filters.bbWeight));
+  }
+
+  if (filters.bateriaVoltage && filters.category === "baterias") {
+    result = result.filter((p) => {
+      const match = p.name.match(/(\d+\.\d+)v/i);
+      return match && match[1] === filters.bateriaVoltage;
+    });
+  }
 
   if (filters.query) {
     result = result
@@ -892,6 +1013,17 @@ function filterProducts(products, filters) {
   if (filters.onlyAvail)   result = result.filter((p) => !isUnavailable(p));
   if (filters.onlyFav)     result = result.filter((p) => favorites.has(p.id));
 
+  // Filtro de faixa de preço (em BRL)
+  if (filters.priceMin > 0 || isFinite(filters.priceMax)) {
+    result = result.filter((p) => {
+      const brl = productPriceBRL(p);
+      if (!isFinite(brl)) return false;
+      if (brl < filters.priceMin) return false;
+      if (isFinite(filters.priceMax) && brl > filters.priceMax) return false;
+      return true;
+    });
+  }
+
   return result;
 }
 
@@ -901,40 +1033,31 @@ function sortProducts(products, filters) {
 
   const sorted = [...products];
 
-  if (filters.sort === "price-asc")  return sorted.sort((a, b) => parsePriceNumber(a.price) - parsePriceNumber(b.price));
-  if (filters.sort === "price-desc") return sorted.sort((a, b) => parsePriceNumber(b.price) - parsePriceNumber(a.price));
+  if (filters.sort === "price-asc")  return sorted.sort((a, b) => productPriceBRL(a) - productPriceBRL(b));
+  if (filters.sort === "price-desc") return sorted.sort((a, b) => productPriceBRL(b) - productPriceBRL(a));
   if (filters.sort === "az")         return sorted.sort((a, b) => a.name.localeCompare(b.name));
-  if (filters.sort === "new")        return sorted.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
 
-  // Default: recent changes and new arrivals first, then stable by original catalog order
-  return sorted
-    .map((product, originalIndex) => ({ product, originalIndex }))
-    .sort((a, b) => {
-      const priorityDiff = productPriority(b.product) - productPriority(a.product);
-      if (priorityDiff !== 0) return priorityDiff;
-
-      const dateA = new Date(a.product.priceChangedAt || a.product.firstSeen || 0);
-      const dateB = new Date(b.product.priceChangedAt || b.product.firstSeen || 0);
-      if (dateB - dateA !== 0) return dateB - dateA;
-
-      return a.originalIndex - b.originalIndex;
-    })
-    .map(({ product }) => product);
+  // Default ("new" / Mais recentes)
+  return sorted.sort((a, b) => new Date(b.firstSeen || 0) - new Date(a.firstSeen || 0));
 }
 
 // ─── TEMPLATES (return HTML strings) ─────────────────────────────────────────
 function priceHtml(product) {
   if (isPriceChange(product) && product.previousPrice) {
-    const priceWentUp = parsePriceNumber(product.price) > parsePriceNumber(product.previousPrice);
+    const oldBRL = convertPriceToBRL(product.previousPrice);
+    const newBRL = convertPriceToBRL(product.price);
+    const priceWentUp = (newBRL || 0) > (oldBRL || 0);
     return `
       <div class="price-row">
-        <span class="price-old">${product.previousPrice}</span>
-        <span class="price">${product.price || "—"}</span>
+        <span class="price-old">${oldBRL != null ? formatBRL(oldBRL) : product.previousPrice}</span>
+        <span class="price">${newBRL != null ? formatBRL(newBRL) : "—"}</span>
         <span class="price-arrow ${priceWentUp ? "up" : "down"}">${priceWentUp ? "▲" : "▼"}</span>
       </div>`;
   }
   if (isUnavailable(product)) return `<span class="tag-consulta">SOB CONSULTA</span>`;
-  return `<span class="price ${product.price ? "" : "none"}">${product.price || "sob consulta"}</span>`;
+  const brl = convertPriceToBRL(product.price);
+  if (brl != null) return `<span class="price">${formatBRL(brl)}</span>`;
+  return `<span class="price none">sob consulta</span>`;
 }
 
 function cardHtml(product, { compact = false } = {}) {
@@ -951,10 +1074,6 @@ function cardHtml(product, { compact = false } = {}) {
       ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
     </button>`;
 
-  const shareButton = compact ? "" : `
-    <button type="button" class="share-item-btn" data-action="share" data-id="${product.id}" aria-label="Compartilhar este item" title="Compartilhar este item">
-      ${ICON_SHARE}
-    </button>`;
 
   const zapButton = zapUrl && !compact
     ? `<a class="cta-zap" href="${zapUrl}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
@@ -981,7 +1100,6 @@ function cardHtml(product, { compact = false } = {}) {
         <div class="foot">
           ${priceHtml(product)}
           <span class="foot-actions">
-            ${shareButton}
             <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
           </span>
         </div>
@@ -1026,9 +1144,6 @@ function rowHtml(product) {
         <button type="button" class="fav-btn ${isFav ? "active" : ""}" data-action="fav" data-id="${product.id}" aria-label="Favoritar" title="Favoritar">
           ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
         </button>
-        <button type="button" class="share-item-btn" data-action="share" data-id="${product.id}" aria-label="Compartilhar" title="Compartilhar">
-          ${ICON_SHARE}
-        </button>
         <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
       </td>
     </tr>`;
@@ -1039,12 +1154,14 @@ function renderCatalog() {
   const filters  = readFilterState();
   const filtered = filterProducts(catalog, filters);
   const sorted   = sortProducts(filtered, filters);
+  const totalItems = sorted.length;
 
-  updateSectionHeading(filtered.length);
+  updateSectionHeading(totalItems);
 
-  if (sorted.length === 0) {
+  if (totalItems === 0) {
     dom.grid.hidden      = true;
     dom.tableWrap.hidden = true;
+    dom.paginationWrap.hidden = true;
     dom.empty.hidden     = false;
     dom.empty.innerHTML  = (filters.onlyFav && favorites.size === 0)
       ? "<b>Nenhum favorito ainda</b>Clique na estrela de um item pra acompanhar ele de perto."
@@ -1054,15 +1171,76 @@ function renderCatalog() {
 
   dom.empty.hidden = true;
 
+  // Paginação
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+  const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIdx   = Math.min(startIdx + ITEMS_PER_PAGE, totalItems);
+  const pageItems = sorted.slice(startIdx, endIdx);
+
   if (viewMode === "table") {
     dom.grid.hidden      = true;
     dom.tableWrap.hidden = false;
-    dom.tableBody.innerHTML = sorted.map(rowHtml).join("");
+    dom.tableBody.innerHTML = pageItems.map(rowHtml).join("");
   } else {
     dom.tableWrap.hidden = true;
     dom.grid.hidden      = false;
-    dom.grid.innerHTML   = sorted.map((product) => cardHtml(product)).join("");
+    dom.grid.innerHTML   = pageItems.map((product) => cardHtml(product)).join("");
   }
+
+  renderPagination(totalItems, totalPages, startIdx + 1, endIdx);
+}
+
+function renderPagination(totalItems, totalPages, from, to) {
+  if (totalPages <= 1) {
+    dom.paginationWrap.hidden = true;
+    return;
+  }
+  dom.paginationWrap.hidden = false;
+
+  const pages = buildPageNumbers(currentPage, totalPages);
+
+  let html = `<div class="pagination-info">Mostrando ${from}–${to} de ${totalItems} produtos</div>`;
+  html += `<button type="button" class="page-btn" data-page="${currentPage - 1}" ${currentPage <= 1 ? "disabled" : ""}>« Anterior</button>`;
+
+  pages.forEach((p) => {
+    if (p === "...") {
+      html += `<span class="page-ellipsis">…</span>`;
+    } else {
+      html += `<button type="button" class="page-btn ${p === currentPage ? "active" : ""}" data-page="${p}">${p}</button>`;
+    }
+  });
+
+  html += `<button type="button" class="page-btn" data-page="${currentPage + 1}" ${currentPage >= totalPages ? "disabled" : ""}>Próximo »</button>`;
+
+  dom.pagination.innerHTML = html;
+}
+
+function buildPageNumbers(current, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages = [];
+  pages.push(1);
+  if (current > 3) pages.push("...");
+  for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) {
+    pages.push(i);
+  }
+  if (current < total - 2) pages.push("...");
+  pages.push(total);
+  return pages;
+}
+
+function goToPage(page) {
+  currentPage = page;
+  renderCatalog();
+  // Scroll suave para o topo do grid
+  const target = document.querySelector(".controls-wrap");
+  if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function resetPage() {
+  currentPage = 1;
+  renderCatalog();
 }
 
 function renderRadar() {
@@ -1092,8 +1270,7 @@ function renderStats(data) {
 }
 
 function renderCategoryStrip(data) {
-  const categories = data.categories
-    || [...new Map(
+  const categories = [...new Map(
         catalog
           .filter((p) => p.category)
           .map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])
@@ -1101,13 +1278,24 @@ function renderCategoryStrip(data) {
 
   const totalCount = catalog.length;
 
-  const allPill = makeCategoryPill("", "Todos", totalCount, activeCategory === "");
-  dom.catStrip.appendChild(allPill);
+  dom.catReplicas.innerHTML = "";
+  dom.catOutros.innerHTML = "";
+
+  const allPill = makeCategoryPill("", "Todos os Produtos", totalCount, activeCategory === "");
+  dom.catOutros.appendChild(allPill);
+
+  const replicaSlugs = ["aeg", "gbb", "gbbr", "spring", "replicas-outras"];
 
   categories.forEach((cat) => {
     const count = cat.count || catalog.filter((p) => p.category === cat.slug).length;
     if (count === 0) return;
-    dom.catStrip.appendChild(makeCategoryPill(cat.slug, cat.label, count, activeCategory === cat.slug));
+    const pill = makeCategoryPill(cat.slug, cat.label, count, activeCategory === cat.slug);
+    
+    if (replicaSlugs.includes(cat.slug)) {
+      dom.catReplicas.appendChild(pill);
+    } else {
+      dom.catOutros.appendChild(pill);
+    }
   });
 }
 
@@ -1123,7 +1311,7 @@ function makeCategoryPill(slug, label, count, isActive) {
 }
 
 function updateCategoryStrip() {
-  dom.catStrip.querySelectorAll(".cat-pill").forEach((pill) => {
+  document.querySelectorAll(".cat-pill").forEach((pill) => {
     const isActive = pill.dataset.cat === activeCategory;
     pill.classList.toggle("active", isActive);
     pill.setAttribute("aria-selected", isActive);
@@ -1135,7 +1323,7 @@ function updateSectionHeading(filteredCount) {
   dom.sectionHeading.hidden = !isFiltered;
 
   if (isFiltered) {
-    const activePill = dom.catStrip.querySelector(`.cat-pill[data-cat="${activeCategory}"]`);
+    const activePill = document.querySelector(`.cat-pill[data-cat="${activeCategory}"]`);
     const label = activePill ? activePill.firstChild.textContent.trim() : activeCategory;
     dom.sectionHeadingName.textContent  = label;
     dom.sectionHeadingCount.textContent = `${filteredCount} produto${filteredCount !== 1 ? "s" : ""}`;
@@ -1144,8 +1332,30 @@ function updateSectionHeading(filteredCount) {
 
 function selectCategory(slug) {
   activeCategory = slug;
+  currentPage = 1;
   track("filter", { type: "categoria", value: slug || "todos" });
   updateCategoryStrip();
+  
+  if (slug === "bbs") {
+    dom.bbWeightSection.hidden = false;
+    const activePill = document.querySelector(`.cat-pill[data-cat="bbs"]`);
+    if (activePill) {
+      activePill.insertAdjacentElement('afterend', dom.bbWeightSection);
+    }
+  } else {
+    dom.bbWeightSection.hidden = true;
+  }
+
+  if (slug === "baterias") {
+    dom.bateriaVoltageSection.hidden = false;
+    const activePill = document.querySelector(`.cat-pill[data-cat="baterias"]`);
+    if (activePill) {
+      activePill.insertAdjacentElement('afterend', dom.bateriaVoltageSection);
+    }
+  } else {
+    dom.bateriaVoltageSection.hidden = true;
+  }
+  
   renderCatalog();
 }
 
@@ -1153,41 +1363,6 @@ function updateFavoriteCount() {
   dom.countFav.textContent = favorites.size;
   dom.favStat.hidden       = favorites.size === 0;
 }
-
-// ─── SHARE MODAL ─────────────────────────────────────────────────────────────
-function openShareModal(product) {
-  const url   = buildDeepLinkUrl(product);
-  const price = parsePriceNumber(product.price);
-  dom.shareUrlDisplay.textContent = url;
-  dom.shareModal.dataset.url      = url;
-  dom.shareModal.classList.add("open");
-  if (isFinite(price)) dom.calcPreco.value = price.toFixed(2);
-  updateCalculator();
-}
-
-function closeShareModal() {
-  dom.shareModal.classList.remove("open");
-}
-
-// ─── CONVERSION CALCULATOR ───────────────────────────────────────────────────
-function updateCalculator() {
-  const preco      = parseFloat(dom.calcPreco.value);
-  const dollarRate = parseFloat(dom.calcDolar.value);
-  const percentage = parseFloat(dom.calcPct.value);
-
-  if (isNaN(preco) || isNaN(dollarRate) || isNaN(percentage)) {
-    dom.calcResult.textContent  = "—";
-    dom.calcFormula.textContent = "$ — × R$ — × (1 + —%) = R$ —";
-    return;
-  }
-
-  const total = preco * dollarRate * (1 + percentage / 100);
-  const fmt   = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-  dom.calcResult.textContent  = `R$ ${fmt(total)}`;
-  dom.calcFormula.textContent = `$ ${fmt(preco)} × R$ ${fmt(dollarRate)} × (1 + ${percentage}%) = R$ ${fmt(total)}`;
-}
-
 // ─── TOAST ────────────────────────────────────────────────────────────────────
 function showToast(message) {
   dom.toast.textContent = message;
@@ -1208,32 +1383,6 @@ function toggleFavorite(productId) {
   updateFavoriteCount();
   renderRadar();
   renderCatalog();
-}
-
-function shareItem(product) {
-  track("share-item", { id: product.id, name: product.name, price: product.price || "" });
-  openShareModal(product);
-}
-
-async function shareCatalog() {
-  const url = location.href;
-  track("share-catalog");
-  if (navigator.share) {
-    try { await navigator.share({ title: "Catálogo de Réplicas — Armaria", url }); }
-    catch { /* user cancelled */ }
-  } else {
-    try { await navigator.clipboard.writeText(url); showToast("Link copiado!"); }
-    catch { showToast(url); }
-  }
-}
-
-async function copyModalUrl() {
-  const url = dom.shareModal.dataset.url || location.href;
-  try {
-    await navigator.clipboard.writeText(url);
-    dom.copyUrlBtn.textContent = "Copiado!";
-    setTimeout(() => { dom.copyUrlBtn.textContent = "Copiar"; }, COPY_RESET_MS);
-  } catch { showToast(url); }
 }
 
 function setViewMode(mode) {
@@ -1274,7 +1423,6 @@ document.addEventListener("click", (event) => {
   if (!product) return;
 
   if (button.dataset.action === "fav")   toggleFavorite(product.id);
-  if (button.dataset.action === "share") shareItem(product);
 });
 
 // Product link click tracking — delegated from document
@@ -1291,20 +1439,39 @@ document.addEventListener("click", (event) => {
 dom.searchInput.addEventListener("input", (event) => {
   const query = event.target.value.trim();
   if (query.length >= SEARCH_TRACK_MIN_CHARS) track("search", { query });
-  renderCatalog();
+  resetPage();
 });
 
 // Sort
 dom.sortSelect.addEventListener("change", (event) => {
   track("sort", { value: event.target.value });
-  renderCatalog();
+  resetPage();
 });
 
 // Category pill strip
-dom.catStrip.addEventListener("click", (event) => {
+// Category pill click delegation
+dom.sidebar.addEventListener("click", (event) => {
   const pill = event.target.closest(".cat-pill");
   if (!pill) return;
   selectCategory(pill.dataset.cat);
+  
+  // Auto-close sidebar on mobile when a category is selected
+  dom.sidebar.classList.remove("open");
+  dom.sidebarBackdrop.classList.remove("open");
+});
+
+// Mobile Drawer Listeners
+dom.mobileFilterBtn.addEventListener("click", () => {
+  dom.sidebar.classList.add("open");
+  dom.sidebarBackdrop.classList.add("open");
+});
+dom.sidebarClose.addEventListener("click", () => {
+  dom.sidebar.classList.remove("open");
+  dom.sidebarBackdrop.classList.remove("open");
+});
+dom.sidebarBackdrop.addEventListener("click", () => {
+  dom.sidebar.classList.remove("open");
+  dom.sidebarBackdrop.classList.remove("open");
 });
 
 // Section heading clear button
@@ -1321,33 +1488,48 @@ dom.sectionHeadingClear.addEventListener("click", () => selectCategory(""));
   checkbox.addEventListener("change", (event) => {
     label.classList.toggle("on", event.target.checked);
     if (event.target.checked) track("filter", { type: trackName });
-    renderCatalog();
+    resetPage();
   });
+});
+
+// Brand filter
+dom.brandFilter.addEventListener("change", (event) => {
+  track("filter", { type: "marca", value: event.target.value });
+  resetPage();
+});
+
+dom.bbWeightFilter.addEventListener("change", (event) => {
+  track("filter", { type: "peso_bb", value: event.target.value });
+  resetPage();
+});
+
+dom.bateriaVoltageFilter.addEventListener("change", (event) => {
+  track("filter", { type: "voltagem_bateria", value: event.target.value });
+  resetPage();
+});
+
+// Price range filter
+let priceRangeTimer = null;
+dom.priceMin.addEventListener("input", () => {
+  clearTimeout(priceRangeTimer);
+  priceRangeTimer = setTimeout(resetPage, 400);
+});
+dom.priceMax.addEventListener("input", () => {
+  clearTimeout(priceRangeTimer);
+  priceRangeTimer = setTimeout(resetPage, 400);
+});
+
+// Pagination
+dom.pagination.addEventListener("click", (event) => {
+  const btn = event.target.closest(".page-btn");
+  if (!btn || btn.disabled) return;
+  const page = parseInt(btn.dataset.page, 10);
+  if (!isNaN(page)) goToPage(page);
 });
 
 // View mode
 dom.viewGrid.addEventListener("click",  () => setViewMode("grid"));
 dom.viewTable.addEventListener("click", () => setViewMode("table"));
-
-// Main share button
-document.getElementById("shareBtn").addEventListener("click", shareCatalog);
-
-// Share modal
-document.getElementById("shareModalClose").addEventListener("click", closeShareModal);
-dom.shareModal.addEventListener("click", (event) => {
-  if (event.target === event.currentTarget) closeShareModal();
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeShareModal();
-});
-
-// Copy URL inside modal
-dom.copyUrlBtn.addEventListener("click", copyModalUrl);
-
-// Conversion calculator
-dom.calcPreco.addEventListener("input", updateCalculator);
-dom.calcDolar.addEventListener("input", updateCalculator);
-dom.calcPct.addEventListener("input",   updateCalculator);
 
 // ─── DATA BOOTSTRAP ───────────────────────────────────────────────────────────
 fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
@@ -1357,6 +1539,53 @@ fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
   })
   .then((data) => {
     catalog = data.products || [];
+
+    // Separar categoria de réplicas e extrair pesos de BBs / Voltagens
+    const bbWeights = new Set();
+    const batteryVoltages = new Set();
+    catalog.forEach(p => {
+      if (p.category === "replicas") {
+        const n = p.name.toLowerCase();
+        if (n.includes("aeg")) { p.category = "aeg"; p.categoryLabel = "Réplicas AEG"; }
+        else if (n.includes("gbbr")) { p.category = "gbbr"; p.categoryLabel = "Réplicas GBBR"; }
+        else if (n.includes("gbb")) { p.category = "gbb"; p.categoryLabel = "Réplicas GBB"; }
+        else if (n.includes("spring")) { p.category = "spring"; p.categoryLabel = "Réplicas Spring"; }
+        else { p.category = "replicas-outras"; p.categoryLabel = "Outras Réplicas"; }
+      }
+      if (p.category === "bbs") {
+        const match = p.name.match(/0\.\d{2}/);
+        if (match) bbWeights.add(match[0]);
+      }
+      if (p.category === "baterias") {
+        const match = p.name.match(/(\d+\.\d+)v/i);
+        if (match) batteryVoltages.add(match[1]);
+      }
+    });
+
+    [...bbWeights].sort().forEach(weight => {
+      const opt = document.createElement("option");
+      opt.value = weight;
+      opt.textContent = `${weight}g`;
+      dom.bbWeightFilter.appendChild(opt);
+    });
+
+    [...batteryVoltages].sort((a,b) => parseFloat(a) - parseFloat(b)).forEach(voltage => {
+      const opt = document.createElement("option");
+      opt.value = voltage;
+      opt.textContent = `${voltage}V`;
+      dom.bateriaVoltageFilter.appendChild(opt);
+    });
+
+
+    // Extrair marcas dos produtos
+    catalogBrands = buildBrandList(catalog);
+    catalogBrands.forEach(({ brand, count }) => {
+      const opt = document.createElement("option");
+      opt.value = brand;
+      opt.textContent = `${brand} (${count})`;
+      dom.brandFilter.appendChild(opt);
+    });
+
     renderStats(data);
     renderCategoryStrip(data);
     setViewMode(viewMode);
