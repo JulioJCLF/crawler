@@ -1,0 +1,9 @@
+{
+	"id": "fslXGBkQmMBdYOB",
+	"json": "{\"id\":\"fslXGBkQmMBdYOB\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229&pagina=30\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229&pagina=30\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229&pagina=30\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"pecas-internas\",\"catLabel\":\"Peças Internas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229\",\"page\":30,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:49:02.708Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229&pagina=30",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229&pagina=30"
+}

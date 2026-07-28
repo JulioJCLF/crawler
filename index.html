@@ -236,6 +236,66 @@
   /* ============ MAIN CONTENT ============ */
   .main-content { flex: 1; min-width: 0; }
 
+  /* ============ QUICK ACCESS BOXES ============ */
+  .quick-access {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .quick-box {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  .quick-box::before {
+    content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(172, 229, 236, 0.05) 0%, transparent 100%);
+    opacity: 0; transition: opacity 0.3s ease;
+  }
+  .quick-box:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px rgba(77,80,48, 0.3);
+  }
+  .quick-box:hover::before { opacity: 1; }
+  .quick-box.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #000;
+  }
+  .quick-box-img {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px dashed var(--border);
+    display: flex; justify-content: center; align-items: center;
+    color: var(--text-dim);
+    font-size: 10px; font-weight: 700; font-family: "Space Mono", monospace;
+    transition: all 0.3s ease;
+  }
+  .quick-box:hover .quick-box-img {
+    border-color: var(--accent); border-style: solid;
+    color: var(--accent);
+  }
+  .quick-box.active .quick-box-img {
+    background: #000; border-color: #000; color: var(--accent);
+  }
+  .quick-box-label {
+    font-size: 13px; font-weight: 700; text-align: center;
+    line-height: 1.2; text-transform: uppercase;
+    letter-spacing: 0.05em; transition: color 0.3s ease;
+  }
+  .quick-box.active .quick-box-label { color: #000; }
+
   /* ============ SECTION HEADING ============ */
   .section-heading {
     display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
@@ -652,6 +712,39 @@
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <main class="main-content">
+      
+      <!-- Quick Access Boxes -->
+      <section class="quick-access" id="quickAccess">
+        <div class="quick-box" data-macro="aeg">
+          <div class="quick-box-img"><span>AEG</span></div>
+          <span class="quick-box-label">Réplicas AEGs</span>
+        </div>
+        <div class="quick-box" data-macro="gbbr">
+          <div class="quick-box-img"><span>GBBR</span></div>
+          <span class="quick-box-label">Réplicas GBBR</span>
+        </div>
+        <div class="quick-box" data-macro="gbb">
+          <div class="quick-box-img"><span>GBB</span></div>
+          <span class="quick-box-label">Réplicas GBBs</span>
+        </div>
+        <div class="quick-box" data-macro="miras">
+          <div class="quick-box-img"><span>MIRAS</span></div>
+          <span class="quick-box-label">Red Dots e Miras</span>
+        </div>
+        <div class="quick-box" data-macro="upgrade-aeg">
+          <div class="quick-box-img"><span>UPG-AEG</span></div>
+          <span class="quick-box-label">Upgrades AEG</span>
+        </div>
+        <div class="quick-box" data-macro="upgrade-gbb">
+          <div class="quick-box-img"><span>UPG-GBB</span></div>
+          <span class="quick-box-label">Upgrades GBB/GBBR</span>
+        </div>
+        <div class="quick-box" data-macro="suprimentos">
+          <div class="quick-box-img"><span>SUPRI</span></div>
+          <span class="quick-box-label">Suprimentos</span>
+        </div>
+      </section>
+
       <!-- Section heading: shows when a category is active -->
       <div class="section-heading" id="sectionHeading" hidden>
         <span class="section-heading-name" id="sectionHeadingName"></span>
@@ -981,9 +1074,27 @@ function readFilterState() {
 }
 
 function filterProducts(products, filters) {
-  let result = filters.category
-    ? products.filter((product) => product.category === filters.category)
-    : [...products];
+  let result = [...products];
+
+  if (filters.category) {
+    if (filters.category === "#aeg") {
+      result = result.filter(p => p.category === "replicas" && p.name.toLowerCase().includes("aeg"));
+    } else if (filters.category === "#gbbr") {
+      result = result.filter(p => p.category === "replicas" && p.name.toLowerCase().includes("gbbr"));
+    } else if (filters.category === "#gbb") {
+      result = result.filter(p => p.category === "replicas" && (p.name.toLowerCase().match(/\bgbb\b/) && !p.name.toLowerCase().includes("gbbr")));
+    } else if (filters.category === "#miras") {
+      result = result.filter(p => p.category === "miras");
+    } else if (filters.category === "#upgrade-aeg") {
+      result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().includes("aeg"));
+    } else if (filters.category === "#upgrade-gbb") {
+      result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().match(/gbb|gbbr/));
+    } else if (filters.category === "#suprimentos") {
+      result = result.filter(p => ["bbs", "gas", "baterias"].includes(p.category));
+    } else {
+      result = result.filter((product) => product.category === filters.category);
+    }
+  }
 
   if (filters.brand) {
     result = result.filter((p) => p._brand === filters.brand);
@@ -1316,6 +1427,10 @@ function updateCategoryStrip() {
     pill.classList.toggle("active", isActive);
     pill.setAttribute("aria-selected", isActive);
   });
+  document.querySelectorAll(".quick-box").forEach((box) => {
+    const isActive = `#${box.dataset.macro}` === activeCategory;
+    box.classList.toggle("active", isActive);
+  });
 }
 
 function updateSectionHeading(filteredCount) {
@@ -1323,8 +1438,15 @@ function updateSectionHeading(filteredCount) {
   dom.sectionHeading.hidden = !isFiltered;
 
   if (isFiltered) {
-    const activePill = document.querySelector(`.cat-pill[data-cat="${activeCategory}"]`);
-    const label = activePill ? activePill.firstChild.textContent.trim() : activeCategory;
+    let label = activeCategory;
+    if (activeCategory.startsWith("#")) {
+      const activeBox = document.querySelector(`.quick-box[data-macro="${activeCategory.substring(1)}"]`);
+      if (activeBox) label = activeBox.querySelector(".quick-box-label").textContent.trim();
+    } else {
+      const activePill = document.querySelector(`.cat-pill[data-cat="${activeCategory}"]`);
+      if (activePill) label = activePill.firstChild.textContent.trim();
+    }
+    
     dom.sectionHeadingName.textContent  = label;
     dom.sectionHeadingCount.textContent = `${filteredCount} produto${filteredCount !== 1 ? "s" : ""}`;
   }
@@ -1336,26 +1458,23 @@ function selectCategory(slug) {
   track("filter", { type: "categoria", value: slug || "todos" });
   updateCategoryStrip();
   
-  if (slug === "bbs") {
-    dom.bbWeightSection.hidden = false;
+  const showBbs = slug === "bbs" || slug === "#suprimentos";
+  const showBat = slug === "baterias" || slug === "#suprimentos";
+
+  dom.bbWeightSection.hidden = !showBbs;
+  dom.bateriaVoltageSection.hidden = !showBat;
+
+  if (showBbs) {
     const activePill = document.querySelector(`.cat-pill[data-cat="bbs"]`);
-    if (activePill) {
-      activePill.insertAdjacentElement('afterend', dom.bbWeightSection);
-    }
-  } else {
-    dom.bbWeightSection.hidden = true;
+    if (activePill) activePill.insertAdjacentElement('afterend', dom.bbWeightSection);
+    else dom.catOutros.prepend(dom.bbWeightSection);
+  }
+  if (showBat) {
+    const activePill = document.querySelector(`.cat-pill[data-cat="baterias"]`);
+    if (activePill) activePill.insertAdjacentElement('afterend', dom.bateriaVoltageSection);
+    else dom.catOutros.prepend(dom.bateriaVoltageSection);
   }
 
-  if (slug === "baterias") {
-    dom.bateriaVoltageSection.hidden = false;
-    const activePill = document.querySelector(`.cat-pill[data-cat="baterias"]`);
-    if (activePill) {
-      activePill.insertAdjacentElement('afterend', dom.bateriaVoltageSection);
-    }
-  } else {
-    dom.bateriaVoltageSection.hidden = true;
-  }
-  
   renderCatalog();
 }
 
@@ -1476,6 +1595,15 @@ dom.sidebarBackdrop.addEventListener("click", () => {
 
 // Section heading clear button
 dom.sectionHeadingClear.addEventListener("click", () => selectCategory(""));
+
+document.querySelectorAll(".quick-box").forEach(box => {
+  box.addEventListener("click", () => {
+    const macro = box.dataset.macro;
+    // se clicar novamente, desmarca
+    if (activeCategory === `#${macro}`) selectCategory("");
+    else selectCategory(`#${macro}`);
+  });
+});
 
 // Toggle filters — each toggle updates its label class and re-renders
 [

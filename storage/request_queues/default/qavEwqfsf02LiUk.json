@@ -1,0 +1,9 @@
+{
+	"id": "qavEwqfsf02LiUk",
+	"json": "{\"id\":\"qavEwqfsf02LiUk\",\"url\":\"https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273&pagina=2\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273&pagina=2\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273&pagina=2\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"miras\",\"catLabel\":\"Miras e Red Dots\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273\",\"page\":2,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:43.078Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273&pagina=2",
+	"url": "https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273&pagina=2"
+}

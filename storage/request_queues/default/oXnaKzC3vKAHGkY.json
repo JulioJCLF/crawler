@@ -1,0 +1,9 @@
+{
+	"id": "oXnaKzC3vKAHGkY",
+	"json": "{\"id\":\"oXnaKzC3vKAHGkY\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"speedsoft\",\"catLabel\":\"Speedsoft\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256\",\"page\":1,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:34.475Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256"
+}

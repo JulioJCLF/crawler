@@ -1,0 +1,9 @@
+{
+	"id": "SBMG1W9njIRYHAb",
+	"json": "{\"id\":\"SBMG1W9njIRYHAb\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104&pagina=7\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104&pagina=7\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104&pagina=7\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"baterias\",\"catLabel\":\"Baterias & Carregadores\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104\",\"page\":7,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:38.004Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104&pagina=7",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104&pagina=7"
+}

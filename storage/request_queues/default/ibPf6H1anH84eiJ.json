@@ -1,0 +1,9 @@
+{
+	"id": "ibPf6H1anH84eiJ",
+	"json": "{\"id\":\"ibPf6H1anH84eiJ\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423&pagina=25\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423&pagina=25\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423&pagina=25\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"pistolas\",\"catLabel\":\"Peças para Pistolas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423\",\"page\":25,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:49.128Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423&pagina=25",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423&pagina=25"
+}

@@ -1,0 +1,9 @@
+{
+	"id": "5Su2dltF0hmeNaS",
+	"json": "{\"id\":\"5Su2dltF0hmeNaS\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424&pagina=10\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424&pagina=10\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424&pagina=10\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"sniper\",\"catLabel\":\"Peças para Sniper\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424\",\"page\":10,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:42.153Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424&pagina=10",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424&pagina=10"
+}

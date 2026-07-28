@@ -11,6 +11,7 @@ export const CATEGORIES = [
   { slug: "baterias",       label: "Baterias & Carregadores", url: "https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104" },
   { slug: "granadas",       label: "Granadas",                url: "https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184" },
   { slug: "speedsoft",      label: "Speedsoft",               url: "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256" },
+  { slug: "miras",          label: "Miras e Red Dots",        url: "https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273" },
 ];
 
 export const MAX_PAGES = 150;

@@ -1,0 +1,9 @@
+{
+	"id": "gzRjjo2QGsWxeii",
+	"json": "{\"id\":\"gzRjjo2QGsWxeii\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"bbs\",\"catLabel\":\"BBs\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163\",\"page\":1,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:34.093Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163"
+}

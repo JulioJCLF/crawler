@@ -1,0 +1,9 @@
+{
+	"id": "k6lq4vpGsQysb8Z",
+	"json": "{\"id\":\"k6lq4vpGsQysb8Z\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191&pagina=27\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191&pagina=27\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191&pagina=27\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"pecas-externas\",\"catLabel\":\"Peças Externas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191\",\"page\":27,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:52.037Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191&pagina=27",
+	"url": "https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191&pagina=27"
+}
