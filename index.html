@@ -743,10 +743,6 @@
           <div class="quick-box-img"><span>UPG-AEG</span></div>
           <span class="quick-box-label">Upgrades AEG</span>
         </div>
-        <div class="quick-box" data-macro="upgrade-gbb">
-          <div class="quick-box-img"><span>UPG-GBB</span></div>
-          <span class="quick-box-label">Upgrades GBB/GBBR</span>
-        </div>
         <div class="quick-box" data-macro="suprimentos">
           <div class="quick-box-img"><span>SUPRI</span></div>
           <span class="quick-box-label">Suprimentos</span>
@@ -1099,8 +1095,6 @@ function filterProducts(products, filters) {
       result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/mount|base|trilho|rail|ris |ras |anel/i));
     } else if (filters.category === "#upgrade-aeg") {
       result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().includes("aeg"));
-    } else if (filters.category === "#upgrade-gbb") {
-      result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().match(/gbb|gbbr/));
     } else if (filters.category === "#suprimentos") {
       result = result.filter(p => ["bbs", "gas", "baterias"].includes(p.category));
     } else {
