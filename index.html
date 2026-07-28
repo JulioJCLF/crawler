@@ -731,6 +731,14 @@
           <div class="quick-box-img"><span>MIRAS</span></div>
           <span class="quick-box-label">Red Dots e Miras</span>
         </div>
+        <div class="quick-box" data-macro="luz">
+          <div class="quick-box-img"><span>LUZ</span></div>
+          <span class="quick-box-label">Lanternas e Lasers</span>
+        </div>
+        <div class="quick-box" data-macro="mount">
+          <div class="quick-box-img"><span>MOUNT</span></div>
+          <span class="quick-box-label">Mounts e Trilhos</span>
+        </div>
         <div class="quick-box" data-macro="upgrade-aeg">
           <div class="quick-box-img"><span>UPG-AEG</span></div>
           <span class="quick-box-label">Upgrades AEG</span>
@@ -1084,7 +1092,11 @@ function filterProducts(products, filters) {
     } else if (filters.category === "#gbb") {
       result = result.filter(p => p.category === "replicas" && (p.name.toLowerCase().match(/\bgbb\b/) && !p.name.toLowerCase().includes("gbbr")));
     } else if (filters.category === "#miras") {
-      result = result.filter(p => p.category === "miras");
+      result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/red dot|scope|sight|acog|magnifier|holografic|mira|luneta|visor/i));
+    } else if (filters.category === "#luz") {
+      result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/lanterna|laser|flashlight|iluminador|luz/i));
+    } else if (filters.category === "#mount") {
+      result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/mount|base|trilho|rail|ris |ras |anel/i));
     } else if (filters.category === "#upgrade-aeg") {
       result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().includes("aeg"));
     } else if (filters.category === "#upgrade-gbb") {
