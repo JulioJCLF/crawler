@@ -1092,7 +1092,13 @@ function filterProducts(products, filters) {
     } else if (filters.category === "#luz") {
       result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/lanterna|laser|flashlight|iluminador|luz/i));
     } else if (filters.category === "#mount") {
-      result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/mount|base|trilho|rail|ris |ras |anel/i));
+      result = result.filter(p => {
+        if (p.category !== "miras") return false;
+        const n = p.name.toLowerCase();
+        const hasMount = n.match(/mount|base|trilho|rail|ris |ras |anel/i);
+        const isOpticOrLight = n.match(/red dot|scope|sight|acog|magnifier|holografic|mira|luneta|visor|lanterna|laser|flashlight/i);
+        return hasMount && !isOpticOrLight;
+      });
     } else if (filters.category === "#upgrade-aeg") {
       result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().includes("aeg"));
     } else if (filters.category === "#suprimentos") {
