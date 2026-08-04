@@ -1,6 +1,6 @@
 {
 	"id": "IcZDbcOmWzUvuYq",
-	"json": "{\"id\":\"IcZDbcOmWzUvuYq\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"replicas\",\"catLabel\":\"Réplicas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124\",\"page\":2,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:34.959Z\"}",
+	"json": "{\"id\":\"IcZDbcOmWzUvuYq\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124&pagina=2\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"replicas\",\"catLabel\":\"Réplicas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124\",\"page\":2,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-08-04T18:06:52.076Z\"}",
 	"method": "GET",
 	"orderNo": null,
 	"retryCount": 0,

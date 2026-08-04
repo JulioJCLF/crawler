@@ -1,6 +1,6 @@
 {
 	"id": "zoodNg9JhUBYKz3",
-	"json": "{\"id\":\"zoodNg9JhUBYKz3\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"granadas\",\"catLabel\":\"Granadas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184\",\"page\":4,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-07-28T15:48:36.913Z\"}",
+	"json": "{\"id\":\"zoodNg9JhUBYKz3\",\"url\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184&pagina=4\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"granadas\",\"catLabel\":\"Granadas\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184\",\"page\":4,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-08-04T18:06:52.805Z\"}",
 	"method": "GET",
 	"orderNo": null,
 	"retryCount": 0,

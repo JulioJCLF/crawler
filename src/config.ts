@@ -12,6 +12,7 @@ export const CATEGORIES = [
   { slug: "granadas",       label: "Granadas",                url: "https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184" },
   { slug: "speedsoft",      label: "Speedsoft",               url: "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256" },
   { slug: "miras",          label: "Miras e Red Dots",        url: "https://www.arsenalsports.com/produtos/otica-e-iluminacao/filter?d=273" },
+  { slug: "vestuario",      label: "Equipamento e Vestuário", url: "https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381" },
 ];
 
 export const MAX_PAGES = 150;

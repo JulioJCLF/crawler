@@ -743,6 +743,10 @@
           <div class="quick-box-img"><span>UPG-AEG</span></div>
           <span class="quick-box-label">Upgrades AEG</span>
         </div>
+        <div class="quick-box" data-macro="vestuario">
+          <div class="quick-box-img"><span>VEST</span></div>
+          <span class="quick-box-label">Equipamento & Vestuário</span>
+        </div>
         <div class="quick-box" data-macro="suprimentos">
           <div class="quick-box-img"><span>SUPRI</span></div>
           <span class="quick-box-label">Suprimentos</span>
@@ -1101,6 +1105,8 @@ function filterProducts(products, filters) {
       });
     } else if (filters.category === "#upgrade-aeg") {
       result = result.filter(p => p.category === "pecas-internas" && p.name.toLowerCase().includes("aeg"));
+    } else if (filters.category === "#vestuario") {
+      result = result.filter(p => p.category === "vestuario");
     } else if (filters.category === "#suprimentos") {
       result = result.filter(p => ["bbs", "gas", "baterias"].includes(p.category));
     } else {

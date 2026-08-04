@@ -1,0 +1,9 @@
+{
+	"id": "aW7HrgsMJAdvVxo",
+	"json": "{\"id\":\"aW7HrgsMJAdvVxo\",\"url\":\"https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381&pagina=39\",\"loadedUrl\":\"https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381&pagina=39\",\"uniqueKey\":\"https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381&pagina=39\",\"method\":\"GET\",\"noRetry\":false,\"retryCount\":0,\"errorMessages\":[],\"headers\":{},\"userData\":{\"catSlug\":\"vestuario\",\"catLabel\":\"Equipamento e Vestuário\",\"baseUrl\":\"https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381\",\"page\":39,\"__crawlee\":{\"state\":4}},\"handledAt\":\"2026-08-04T18:07:29.924Z\"}",
+	"method": "GET",
+	"orderNo": null,
+	"retryCount": 0,
+	"uniqueKey": "https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381&pagina=39",
+	"url": "https://www.arsenalsports.com/produtos/equipamento-e-vestuario/filter?d=381&pagina=39"
+}
