@@ -333,7 +333,6 @@
     max-height: 400px;
   }
   .card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-  .card.fav-alert { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
   .thumb {
     aspect-ratio: 1 / 1; background: var(--surface-2);
     display: flex; align-items: center; justify-content: center; padding: 12px;
@@ -345,10 +344,6 @@
     font-size: 11px; color: var(--muted); letter-spacing: .1em;
   }
   .body { padding: 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .fav-alert-tag {
-    font-family: "Space Mono", monospace; font-size: 10px; color: var(--accent);
-    letter-spacing: .04em; text-transform: uppercase;
-  }
   .name {
     font-size: 13px; line-height: 1.35; font-weight: 500;
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
@@ -373,18 +368,7 @@
   }
   .cta-zap:hover { filter: brightness(1.1); }
 
-  /* fav / share icon buttons */
-  .fav-btn {
-    position: absolute; top: 8px; right: 8px; z-index: 3;
-    width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
-    background: rgba(11,13,12,.65); border: 1px solid var(--border); border-radius: 50%;
-    color: var(--text); cursor: pointer; backdrop-filter: blur(2px);
-    transition: color .15s, border-color .15s, transform .1s;
-  }
-  .fav-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .fav-btn.active { color: var(--accent); border-color: var(--accent); }
-  .fav-btn:active { transform: scale(.9); }
-  .fav-btn svg { width: 15px; height: 15px; }
+
   .share-item-btn {
     background: none; border: none; color: var(--muted); cursor: pointer;
     display: inline-flex; align-items: center; padding: 2px; transition: color .15s;
@@ -445,7 +429,6 @@
   }
   .data-table tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
   .data-table tbody tr:hover { background: var(--surface-2); }
-  .data-table tbody tr.fav-alert-row { box-shadow: inset 3px 0 0 var(--accent); }
   .data-table tbody tr.consulta-row { opacity: .5; }
   .data-table td { padding: 8px 12px; vertical-align: middle; }
   .thumb-mini {
@@ -463,8 +446,6 @@
   .pill-new     { background: var(--accent); color: #0b0d0c; }
   .pill-restock { background: var(--info);   color: #0b0d0c; }
   .td-actions { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-  .td-actions .fav-btn { position: static; background: none; border: none; width: auto; height: auto; }
-  .td-actions .fav-btn:hover { background: none; }
 
   .empty-state {
     text-align: center; padding: 80px 20px; color: var(--muted);
@@ -577,41 +558,617 @@
     .page-btn { min-width: 34px; height: 34px; font-size: 11px; }
     .price-range-wrap { flex-wrap: wrap; }
   }
+
+  /* ─── NAVEGAÇÃO SUPERIOR & LOGIN ─── */
+  .top-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+  .user-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+  }
+  .user-badge {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    color: var(--muted);
+  }
+  .user-badge.admin {
+    background: rgba(198, 255, 0, 0.08);
+    border-color: var(--accent);
+    color: var(--text);
+  }
+  .pricing-badge {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .btn-login-toggle {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-login-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn-login-toggle.btn-logout {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  .btn-login-toggle.btn-logout:hover {
+    background: rgba(255, 91, 74, 0.1);
+  }
+
+  /* ─── CHAVEADOR DE PERFIL DE PREÇOS ─── */
+  .pricing-profile-switch {
+    display: inline-flex;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2px;
+  }
+  .profile-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: calc(var(--radius) - 1px);
+    transition: color 0.15s, background-color 0.15s;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .profile-btn.active {
+    background: var(--accent);
+    color: #0b0d0c;
+  }
+  .profile-btn:hover:not(.active) {
+    color: var(--text);
+  }
+
+  /* ─── MODAL DE LOGIN ─── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 13, 12, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .login-modal {
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(-20px);
+    transition: transform 0.25s ease;
+  }
+  .modal-overlay.open .login-modal {
+    transform: translateY(0);
+  }
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+  .modal-header h2 {
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .form-control {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 14px;
+  }
+  .form-control:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .btn-submit {
+    width: 100%;
+    background: var(--accent);
+    color: #0b0d0c;
+    border: none;
+    padding: 12px;
+    border-radius: var(--radius);
+    font-family: "Space Mono", monospace;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: filter 0.15s;
+  }
+  .btn-submit:hover {
+    filter: brightness(1.1);
+  }
+  .login-hint {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 15px;
+    line-height: 1.4;
+    background: var(--surface-2);
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    border-left: 2px solid var(--border);
+  }
+
+  /* ─── BOTÃO FLUTUANTE DO CARRINHO ─── */
+  .floating-cart-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 90;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #0b0d0c;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(198, 255, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  .floating-cart-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
+  }
+  .floating-cart-btn:active {
+    transform: scale(0.95);
+  }
+  .floating-cart-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--danger);
+    color: white;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ─── DRAWER DO CARRINHO ─── */
+  .cart-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 13, 12, 0.6);
+    backdrop-filter: blur(2px);
+    z-index: 950;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .cart-drawer-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    bottom: 0;
+    width: 100%;
+    max-width: 420px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    z-index: 960;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cart-drawer.open {
+    right: 0;
+  }
+  .cart-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-header h2 {
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 24px;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .btn-cart-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .cart-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cart-item {
+    display: flex;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+    align-items: center;
+  }
+  .cart-item-img {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .cart-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .cart-item-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .cart-item-ref {
+    font-family: "Space Mono", monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .cart-item-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+  .cart-item-price {
+    font-family: "Space Mono", monospace;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+  }
+  .cart-item-qty-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+  .btn-qty {
+    background: none;
+    border: none;
+    color: var(--muted);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: color 0.15s;
+  }
+  .btn-qty:hover {
+    color: var(--accent);
+  }
+  .qty-val {
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+    width: 28px;
+    text-align: center;
+    color: var(--text);
+  }
+  .btn-remove-item {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+  .btn-remove-item:hover {
+    color: var(--danger);
+  }
+  .btn-remove-item svg {
+    width: 16px;
+    height: 16px;
+  }
+  .cart-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Space Mono", monospace;
+    font-size: 14px;
+  }
+  .cart-summary-total {
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .cart-notes {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: var(--radius);
+    padding: 10px;
+    font-size: 12px;
+    width: 100%;
+    resize: vertical;
+    min-height: 60px;
+    font-family: inherit;
+  }
+  .cart-notes::placeholder {
+    color: var(--muted);
+  }
+  .btn-cart-zap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #0b0d0c;
+    border: none;
+    padding: 12px;
+    border-radius: var(--radius);
+    font-family: "Space Mono", monospace;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: filter 0.15s;
+  }
+  .btn-cart-zap:hover {
+    filter: brightness(1.1);
+  }
+  .btn-clear-cart {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px;
+    border-radius: var(--radius);
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-clear-cart:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  .cart-empty-msg {
+    text-align: center;
+    color: var(--muted);
+    margin-top: 40px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ─── BOTÕES DO CATALOGO ─── */
+  .card-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .btn-add-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: "Space Mono", monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    margin-top: 6px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-add-cart:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .td-actions .cart-add-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .td-actions .cart-add-btn:hover {
+    color: var(--accent);
+  }
+  .td-actions .cart-add-btn:active {
+    transform: scale(0.9);
+  }
+
+  /* ─── PAINEL ADMIN DE PREÇOS ─── */
+  #adminPriceSection {
+    background: rgba(198, 255, 0, 0.02);
+    border-left: 2px solid var(--accent);
+    padding-left: 12px;
+  }
+  .slider-val-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-family: "Space Mono", monospace;
+    font-size: 12px;
+  }
+  .admin-label {
+    color: var(--muted);
+  }
+  .admin-value {
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .markup-slider {
+    width: 100%;
+    margin: 8px 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .preset-buttons {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .btn-preset {
+    flex: 1;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 6px;
+    font-size: 10px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: "Space Mono", monospace;
+    transition: all 0.15s;
+  }
+  .btn-preset:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
 </style>
 </head>
 <body>
 
   <section class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">Catálogo tático // equipamentos de airsoft</div>
-      <div class="brand">
-        <svg class="brand-mark" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- outer ring -->
-          <circle cx="26" cy="26" r="23" fill="none" stroke="#4d5030" stroke-width="1.5" class="ring-outer"/>
-          <!-- inner ring, faded -->
-          <circle cx="26" cy="26" r="11" fill="none" stroke="#4d5030" stroke-width="1" opacity=".35"/>
-          <!-- crosshair ticks -->
-          <line x1="26" y1="2"  x2="26" y2="14" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="26" y1="38" x2="26" y2="50" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="2"  y1="26" x2="14" y2="26" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="38" y1="26" x2="50" y2="26" stroke="#4d5030" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- diagonal corner marks -->
-          <line x1="7"  y1="7"  x2="11" y2="11" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="45" y1="7"  x2="41" y2="11" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="7"  y1="45" x2="11" y2="41" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <line x1="45" y1="45" x2="41" y2="41" stroke="#4d5030" stroke-width="1" stroke-linecap="round" opacity=".45"/>
-          <!-- center dot -->
-          <circle cx="26" cy="26" r="2.5" fill="#4d5030"/>
-        </svg>
-        <h1 class="wordmark">HUNTING WORLD<div class="bar"></div></h1>
+      <div class="top-nav">
+        <div class="pricing-profile-switch" id="profileSwitchGroup">
+          <button type="button" class="profile-btn active" data-profile="final">Cliente Final</button>
+          <button type="button" class="profile-btn" data-profile="parceiro">Parceiro</button>
+        </div>
+        <div class="user-status" id="userStatus">
+          <span class="user-badge">Visitante</span>
+        </div>
+        <button type="button" class="btn-login-toggle" id="btnLoginToggle">Acesso Restrito</button>
+        <button type="button" class="btn-login-toggle" id="btnAdminPanel" style="display: none; border-color: var(--accent); color: var(--accent);">Painel Admin</button>
       </div>
-      <p class="tagline">Catálogo completo de equipamentos de airsoft com preços atualizados. Veja o que chegou, o que voltou ao estoque e o que mudou de preço.</p>
+      <div class="eyebrow" id="brandEyebrow">Catálogo</div>
+      <div class="brand">
+        <div id="brandLogoContainer" style="display: inline-flex; align-items: center; justify-content: center;"></div>
+        <h1 class="wordmark" id="brandWordmark"><div class="bar"></div></h1>
+      </div>
+      <p class="tagline" id="brandTagline"></p>
       <div class="stats">
         <div class="stat"><span class="dot"></span>itens no catálogo <b id="count">—</b></div>
         <div class="stat"><span class="dot"></span>disponíveis <b id="countAvail">—</b></div>
         <div class="stat hot"><span class="dot"></span>novos (7d) <b id="countNovo">—</b></div>
         <div class="stat hot"><span class="dot"></span>voltaram ao estoque <b id="countRestock">—</b></div>
-        <div class="stat hot" id="favStat" hidden><span class="dot"></span>favoritos <b id="countFav">0</b></div>
         <div class="stat"><span class="dot"></span>atualizado <b id="updated">—</b></div>
       </div>
     </div>
@@ -672,10 +1229,6 @@
         </label>
         <label class="toggle" id="availToggle">
           <input type="checkbox" id="onlyAvail" /> Só disponíveis
-        </label>
-        <label class="toggle" id="favToggle">
-          <input type="checkbox" id="onlyFav" /> Só favoritos
-        </label>
       </div>
 
       <div class="sidebar-section">
@@ -686,26 +1239,12 @@
         </div>
       </div>
 
-      <div class="sidebar-section">
-        <h3 class="sidebar-title">Categorias de Réplicas</h3>
-        <div class="cat-list" id="catReplicas" role="tablist"></div>
-      </div>
 
-      <div class="sidebar-section" id="bbWeightSection" hidden style="margin-top: 2px; margin-bottom: 4px; margin-left: 12px; padding-left: 8px; border-left: 2px solid var(--border); gap: 0;">
-        <select id="bbWeightFilter" aria-label="Filtrar por peso da BB" style="font-size: 11px; padding: 6px 8px;">
-          <option value="">Qualquer peso</option>
-        </select>
-      </div>
-
-      <div class="sidebar-section" id="bateriaVoltageSection" hidden style="margin-top: 2px; margin-bottom: 4px; margin-left: 12px; padding-left: 8px; border-left: 2px solid var(--border); gap: 0;">
-        <select id="bateriaVoltageFilter" aria-label="Filtrar por voltagem" style="font-size: 11px; padding: 6px 8px;">
-          <option value="">Qualquer voltagem</option>
-        </select>
-      </div>
 
       <div class="sidebar-section">
-        <h3 class="sidebar-title">Outras Categorias</h3>
-        <div class="cat-list" id="catOutros" role="tablist"></div>
+        <h3 class="sidebar-title" id="categoriesSectionTitle">Categorias</h3>
+        <div class="cat-list" id="categoriesContainer" role="tablist"></div>
+        <div id="dynamicFiltersContainer" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;"></div>
       </div>
     </aside>
 
@@ -783,19 +1322,111 @@
 
   <div class="toast" id="toast"></div>
 
+  <!-- Floating Cart Button -->
+  <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="Ver Carrinho">
+    <span class="cart-badge" id="cartBadge" hidden>0</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+  </button>
+
+  <!-- Cart Drawer Overlay -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Seu Carrinho</h2>
+      <button type="button" class="btn-cart-close" id="btnCartClose">✕</button>
+    </div>
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- items loaded dynamically -->
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-summary-row">
+        <span>Total do Pedido:</span>
+        <span class="cart-summary-total" id="cartTotal">R$ 0,00</span>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="cartNotes">Observações do Pedido</label>
+        <textarea class="cart-notes" id="cartNotes" placeholder="Digite observações sobre a entrega, pagamento, etc. (opcional)"></textarea>
+      </div>
+      <button type="button" class="btn-cart-zap" id="btnCartZap">
+        Enviar para WhatsApp
+      </button>
+      <button type="button" class="btn-clear-cart" id="btnClearCart">
+        Esvaziar Carrinho
+      </button>
+    </div>
+  </div>
+
+  <!-- Login Modal Overlay -->
+  <div class="modal-overlay" id="loginModalOverlay">
+    <div class="login-modal">
+      <div class="modal-header">
+        <h2>Acesso Restrito</h2>
+        <button type="button" class="modal-close" id="loginModalClose">✕</button>
+      </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginUsername">Usuário</label>
+          <input type="text" class="form-control" id="loginUsername" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Senha</label>
+          <input type="password" class="form-control" id="loginPassword" required autocomplete="current-password" />
+        </div>
+        <div class="error-msg" id="loginError" style="color: var(--danger); font-size: 11px; font-family: 'Space Mono', monospace; margin-bottom: 10px;"></div>
+        <button type="submit" class="btn-submit">Entrar</button>
+      </form>
+      <div class="login-hint">
+        <strong>Contas de demonstração:</strong><br>
+        • admin / admin (ajuste livre)<br>
+        • vendedor / vendedor (tabela vendedor)<br>
+        • parceiro / parceiro (tabela parceiro)
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Modal Overlay -->
+  <div class="modal-overlay" id="adminModalOverlay">
+    <div class="login-modal" style="max-width: 540px; width: 90%;">
+      <div class="modal-header">
+        <h2>Ajuste por Categoria</h2>
+        <button type="button" class="modal-close" id="adminModalClose">✕</button>
+      </div>
+      <form id="adminPriceForm">
+        <div style="max-height: 340px; overflow-y: auto; margin-bottom: 20px; padding-right: 8px;">
+          <table class="admin-matrix-table" style="width: 100%; border-collapse: collapse; border-spacing: 0;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-strong); text-align: left;">
+                <th style="padding: 8px 4px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); font-weight: normal; text-transform: uppercase;">Categoria</th>
+                <th style="padding: 8px 4px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); text-align: center; font-weight: normal; text-transform: uppercase; width: 100px;">Cliente Final</th>
+                <th style="padding: 8px 4px; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); text-align: center; font-weight: normal; text-transform: uppercase; width: 100px;">Parceiro</th>
+              </tr>
+            </thead>
+            <tbody id="categoryMarkupsList">
+              <!-- Loaded dynamically -->
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" class="btn-submit">Salvar e Aplicar</button>
+      </form>
+    </div>
+  </div>
+
 
 
 <script>
-// ─── CONFIG — edite aqui ────────────────────────────────────────────────────
-const CONFIG = {
-  whatsappNumber:   "5545999858096",
-  whatsappTemplate: "Oi tenho interesse nesse equipamento {link}",
+// ─── CONFIG & PRICING (Carregados dinamicamente via config.json) ──────────────
+let CONFIG = {
+  whatsappNumber: "",
+  whatsappTemplate: ""
 };
 
-// ─── PRICING — ajuste câmbio e markup aqui ───────────────────────────────────
-const PRICING = {
-  exchangeRate:  5.50,   // Cotação fixa USD → BRL
-  markupPercent: 48,     // Porcentagem de markup sobre o valor convertido
+let DEFAULT_MARKUP_MATRIX = {};
+let PRICING = {
+  exchangeRate: 5.50,
+  markupPercent: 48,
+  categoryMarkups: {}
 };
 
 // ─── CONSTANTS ───────────────────────────────────────────────────────────────
@@ -807,7 +1438,6 @@ const TOAST_DURATION_MS  = 2200;
 const COPY_RESET_MS      = 1800;
 const SEARCH_TRACK_MIN_CHARS = 3;
 
-const STORAGE_KEY_FAVORITES = "hw_favoritos";
 const STORAGE_KEY_VIEW      = "hw_view";
 
 // ─── DOM CACHE ───────────────────────────────────────────────────────────────
@@ -820,8 +1450,6 @@ const dom = {
   countAvail:      document.getElementById("countAvail"),
   countNovo:       document.getElementById("countNovo"),
   countRestock:    document.getElementById("countRestock"),
-  countFav:        document.getElementById("countFav"),
-  favStat:         document.getElementById("favStat"),
   updated:         document.getElementById("updated"),
   footerRight:     document.getElementById("footerRight"),
   searchInput:     document.getElementById("q"),
@@ -831,16 +1459,12 @@ const dom = {
   priceMax:        document.getElementById("priceMax"),
   paginationWrap:  document.getElementById("paginationWrap"),
   pagination:      document.getElementById("pagination"),
-  catReplicas:     document.getElementById("catReplicas"),
-  catOutros:       document.getElementById("catOutros"),
+  categoriesContainer: document.getElementById("categoriesContainer"),
+  dynamicFiltersContainer: document.getElementById("dynamicFiltersContainer"),
   sidebar:         document.getElementById("sidebar"),
   sidebarBackdrop: document.getElementById("sidebarBackdrop"),
   sidebarClose:    document.getElementById("sidebarClose"),
   mobileFilterBtn: document.getElementById("mobileFilterBtn"),
-  bbWeightSection: document.getElementById("bbWeightSection"),
-  bbWeightFilter:  document.getElementById("bbWeightFilter"),
-  bateriaVoltageSection: document.getElementById("bateriaVoltageSection"),
-  bateriaVoltageFilter:  document.getElementById("bateriaVoltageFilter"),
   sectionHeading:     document.getElementById("sectionHeading"),
   sectionHeadingName: document.getElementById("sectionHeadingName"),
   sectionHeadingCount:document.getElementById("sectionHeadingCount"),
@@ -854,30 +1478,22 @@ const dom = {
     novo:    { checkbox: document.getElementById("onlyNovo"),    label: document.getElementById("novoToggle") },
     changed: { checkbox: document.getElementById("onlyChanged"), label: document.getElementById("changedToggle") },
     avail:   { checkbox: document.getElementById("onlyAvail"),   label: document.getElementById("availToggle") },
-    fav:     { checkbox: document.getElementById("onlyFav"),     label: document.getElementById("favToggle") },
   },
 };
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
-const ICON_STAR_OUTLINE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
-const ICON_STAR_FILLED  = `<svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 3 14.8 9.2 21.5 9.9 16.5 14.4 17.9 21 12 17.6 6.1 21 7.5 14.4 2.5 9.9 9.2 9.2"/></svg>`;
 
 // ─── APP STATE ───────────────────────────────────────────────────────────────
-let catalog        = [];              // all products loaded from snapshot.json
-let catalogBrands  = [];              // extracted brand list [{ brand, count }]
-let favorites      = loadFavorites(); // Set<productId> — persisted in localStorage
-let viewMode       = loadView();      // "grid" | "table" — persisted in localStorage
-let activeCategory = "aeg";             // slug of the active category pill, "" = all
-let currentPage    = 1;               // current pagination page
+let catalog              = [];              // all products loaded from snapshot.json
+let catalogBrands        = [];              // extracted brand list [{ brand, count }]
+let viewMode             = loadView();      // "grid" | "table" — persisted in localStorage
+let activeCategory       = "";              // slug of the active category pill, "" = all (will default to empty or first category)
+let currentPage          = 1;               // current pagination page
+let activePricingProfile = "final";         // "final" | "parceiro" (Retail vs Partner markup levels)
+let appConfig            = null;            // white-label config object loaded from config.json
+let activeDynamicFilters = {};              // key: filterId, value: selectedValue (stores states of currently active custom sidebar filters)
 
 // ─── STORAGE ─────────────────────────────────────────────────────────────────
-function loadFavorites() {
-  try { return new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_FAVORITES) || "[]")); }
-  catch { return new Set(); }
-}
-function saveFavorites() {
-  try { localStorage.setItem(STORAGE_KEY_FAVORITES, JSON.stringify([...favorites])); } catch {}
-}
 function loadView() {
   try { return localStorage.getItem(STORAGE_KEY_VIEW) === "table" ? "table" : "grid"; }
   catch { return "grid"; }
@@ -900,7 +1516,6 @@ const isRecentlyChanged = (product) => product.priceChangedAt && daysAgo(product
 const isRestock         = (product) => isRecentlyChanged(product) && product.changeType === "restock";
 const isPriceChange     = (product) => isRecentlyChanged(product) && product.changeType === "price_change";
 const isUnavailable     = (product) => !product.price && (product.changeType === "sob_consulta" || !product.changeType);
-const isFavoriteAlert   = (product) => favorites.has(product.id) && (isRestock(product) || isPriceChange(product));
 
 function productPriority(product) {
   if (isRestock(product) || isPriceChange(product)) return 2;
@@ -917,15 +1532,26 @@ function parsePriceNumber(priceString) {
 }
 
 // Converte valor USD para BRL com markup
-function convertToBRL(usdValue) {
-  return usdValue * PRICING.exchangeRate * (1 + PRICING.markupPercent / 100);
+function convertToBRL(usdValue, category) {
+  const profile = activePricingProfile; // "final" or "parceiro"
+  let markup = PRICING.markupPercent;
+  
+  if (category && PRICING.categoryMarkups[category] !== undefined) {
+    const catMarkup = PRICING.categoryMarkups[category];
+    if (typeof catMarkup === "object") {
+      markup = catMarkup[profile] !== undefined ? catMarkup[profile] : PRICING.markupPercent;
+    } else {
+      markup = catMarkup;
+    }
+  }
+  return usdValue * PRICING.exchangeRate * (1 + markup / 100);
 }
 
 // Converte string de preço "USD 249,00" para string BRL formatada
-function convertPriceToBRL(priceString) {
+function convertPriceToBRL(priceString, category) {
   const usdValue = parsePriceNumber(priceString);
   if (!isFinite(usdValue)) return null;
-  return convertToBRL(usdValue);
+  return convertToBRL(usdValue, category);
 }
 
 // Formata número como BRL
@@ -937,7 +1563,7 @@ function formatBRL(value) {
 function productPriceBRL(product) {
   if (!product.price) return Infinity;
   const usd = parsePriceNumber(product.price);
-  return isFinite(usd) ? convertToBRL(usd) : Infinity;
+  return isFinite(usd) ? convertToBRL(usd, product.category) : Infinity;
 }
 
 function formatDate(isoDate) {
@@ -1065,32 +1691,44 @@ function searchScore(product, query) {
 
 // ─── FILTER & SORT PIPELINE (pure functions) ─────────────────────────────────
 function readFilterState() {
-  return {
+  const state = {
     query:      dom.searchInput.value.trim().toLowerCase(),
     sort:       dom.sortSelect.value,
     category:   activeCategory,
     brand:      dom.brandFilter.value,
-    bbWeight:   dom.bbWeightFilter.value,
-    bateriaVoltage: dom.bateriaVoltageFilter.value,
     priceMin:   parseFloat(dom.priceMin.value) || 0,
     priceMax:   parseFloat(dom.priceMax.value) || Infinity,
     onlyNew:    dom.toggles.novo.checkbox.checked,
     onlyChanged:dom.toggles.changed.checkbox.checked,
     onlyAvail:  dom.toggles.avail.checkbox.checked,
-    onlyFav:    dom.toggles.fav.checkbox.checked,
+    custom:     {}
   };
+
+  if (appConfig && appConfig.customFilters) {
+    appConfig.customFilters.forEach(f => {
+      if (f.category === activeCategory) {
+        const el = document.getElementById(`custom-filter-${f.id}`);
+        if (el) {
+          state.custom[f.id] = el.value;
+        }
+      }
+    });
+  }
+  return state;
 }
 
 function filterProducts(products, filters) {
   let result = [...products];
 
   if (filters.category) {
-    if (filters.category === "#aeg") {
-      result = result.filter(p => p.category === "replicas" && p.name.toLowerCase().includes("aeg"));
-    } else if (filters.category === "#gbbr") {
-      result = result.filter(p => p.category === "replicas" && p.name.toLowerCase().includes("gbbr"));
-    } else if (filters.category === "#gbb") {
-      result = result.filter(p => p.category === "replicas" && (p.name.toLowerCase().match(/\bgbb\b/) && !p.name.toLowerCase().includes("gbbr")));
+    if (filters.category === "#aeg" || filters.category === "aeg") {
+      result = result.filter(p => p.category === "aeg" || p.name.toLowerCase().includes("aeg"));
+    } else if (filters.category === "#gbbr" || filters.category === "gbbr") {
+      result = result.filter(p => p.category === "gbbr" || p.name.toLowerCase().includes("gbbr"));
+    } else if (filters.category === "#gbb" || filters.category === "gbb") {
+      result = result.filter(p => p.category === "gbb" || (p.name.toLowerCase().match(/\bgbb\b/i) && !p.name.toLowerCase().includes("gbbr")));
+    } else if (filters.category === "#spring" || filters.category === "spring") {
+      result = result.filter(p => p.category === "spring" || p.name.toLowerCase().includes("spring"));
     } else if (filters.category === "#miras") {
       result = result.filter(p => p.category === "miras" && p.name.toLowerCase().match(/red dot|scope|sight|acog|magnifier|holografic|mira|luneta|visor/i));
     } else if (filters.category === "#luz") {
@@ -1118,14 +1756,23 @@ function filterProducts(products, filters) {
     result = result.filter((p) => p._brand === filters.brand);
   }
 
-  if (filters.bbWeight && filters.category === "bbs") {
-    result = result.filter((p) => p.name.includes(filters.bbWeight));
-  }
-
-  if (filters.bateriaVoltage && filters.category === "baterias") {
-    result = result.filter((p) => {
-      const match = p.name.match(/(\d+\.\d+)v/i);
-      return match && match[1] === filters.bateriaVoltage;
+  // Run dynamic custom filters checks
+  if (appConfig && appConfig.customFilters) {
+    appConfig.customFilters.forEach(f => {
+      if (f.category === filters.category) {
+        const val = filters.custom[f.id];
+        if (val) {
+          if (f.type === "contains") {
+            result = result.filter(p => p.name.toLowerCase().includes(val.toLowerCase()));
+          } else if (f.type === "regex") {
+            const rx = new RegExp(f.pattern || f.regex, "i");
+            result = result.filter(p => {
+              const match = p.name.match(rx);
+              return match && (match[1] || match[0]) === val;
+            });
+          }
+        }
+      }
     });
   }
 
@@ -1140,7 +1787,6 @@ function filterProducts(products, filters) {
   if (filters.onlyNew)     result = result.filter(isNewProduct);
   if (filters.onlyChanged) result = result.filter((p) => isRestock(p) || isPriceChange(p));
   if (filters.onlyAvail)   result = result.filter((p) => !isUnavailable(p));
-  if (filters.onlyFav)     result = result.filter((p) => favorites.has(p.id));
 
   // Filtro de faixa de preço (em BRL)
   if (filters.priceMin > 0 || isFinite(filters.priceMax)) {
@@ -1173,8 +1819,8 @@ function sortProducts(products, filters) {
 // ─── TEMPLATES (return HTML strings) ─────────────────────────────────────────
 function priceHtml(product) {
   if (isPriceChange(product) && product.previousPrice) {
-    const oldBRL = convertPriceToBRL(product.previousPrice);
-    const newBRL = convertPriceToBRL(product.price);
+    const oldBRL = convertPriceToBRL(product.previousPrice, product.category);
+    const newBRL = convertPriceToBRL(product.price, product.category);
     const priceWentUp = (newBRL || 0) > (oldBRL || 0);
     return `
       <div class="price-row">
@@ -1184,46 +1830,53 @@ function priceHtml(product) {
       </div>`;
   }
   if (isUnavailable(product)) return `<span class="tag-consulta">SOB CONSULTA</span>`;
-  const brl = convertPriceToBRL(product.price);
+  const brl = convertPriceToBRL(product.price, product.category);
   if (brl != null) return `<span class="price">${formatBRL(brl)}</span>`;
   return `<span class="price none">sob consulta</span>`;
+}
+
+function getCategoryLabel(product) {
+  if (product.categoryLabel) return product.categoryLabel;
+  if (typeof categoryLabels !== "undefined" && categoryLabels[product.category]) return categoryLabels[product.category];
+  const catObj = (appConfig && appConfig.categories) ? appConfig.categories.find(c => c.slug === product.category) : null;
+  if (catObj) return catObj.label;
+  return product.category ? (product.category.charAt(0).toUpperCase() + product.category.slice(1)) : "";
 }
 
 function cardHtml(product, { compact = false } = {}) {
   const isNew      = isNewProduct(product);
   const hasRestock = isRestock(product);
   const unavail    = isUnavailable(product);
-  const isFav      = favorites.has(product.id);
-  const favAlert   = isFavoriteAlert(product);
   const stability  = stabilityLabel(product);
   const zapUrl     = buildWhatsappUrl(product);
-
-  const favButton = compact ? "" : `
-    <button type="button" class="fav-btn ${isFav ? "active" : ""}" data-action="fav" data-id="${product.id}" aria-label="Favoritar" title="Favoritar">
-      ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
-    </button>`;
-
 
   const zapButton = zapUrl && !compact
     ? `<a class="cta-zap" href="${zapUrl}" target="_blank" rel="noopener">Pedir no WhatsApp</a>`
     : "";
 
-  const favDot = compact && isFav ? '<div class="radar-fav-dot"></div>' : "";
+  const cardButtons = compact ? "" : `
+    <div class="card-buttons">
+      <button type="button" class="btn-add-cart" data-action="add-cart" data-id="${product.id}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Adicionar ao Carrinho
+      </button>
+      ${zapButton}
+    </div>`;
+
+  const catLabel = getCategoryLabel(product);
 
   const metaLine = compact ? "" : `
-    <div class="ref">REF ${product.id}${product.categoryLabel ? ` · ${product.categoryLabel}` : ""}</div>
+    <div class="ref">REF ${product.id}${catLabel ? ` · ${catLabel}` : ""}</div>
     ${stability ? `<div class="stab-label">${stability}</div>` : ""}`;
 
   return `
-    <article class="card ${unavail ? "consulta" : ""} ${compact ? "radar-card" : ""} ${favAlert ? "fav-alert" : ""}" data-id="${product.id}">
-      ${favButton}${favDot}
+    <article class="card ${unavail ? "consulta" : ""} ${compact ? "radar-card" : ""}" data-id="${product.id}">
       ${isNew     ? '<div class="novo">NOVO</div>' : ""}
       ${hasRestock ? `<div class="restock ${isNew ? "stacked" : ""}">VOLTOU</div>` : ""}
       <a class="thumb ${product.image ? "" : "empty"}" href="${product.url}" target="_blank" rel="noopener">
         ${product.image ? `<img loading="lazy" src="${product.image}" alt="${escapeHtml(product.name)}">` : ""}
       </a>
       <div class="body">
-        ${favAlert ? '<div class="fav-alert-tag">★ favorito que mudou</div>' : ""}
         <div class="name">${escapeHtml(product.name)}</div>
         ${metaLine}
         <div class="foot">
@@ -1232,7 +1885,7 @@ function cardHtml(product, { compact = false } = {}) {
             <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
           </span>
         </div>
-        ${zapButton}
+        ${cardButtons}
       </div>
     </article>`;
 }
@@ -1241,8 +1894,6 @@ function rowHtml(product) {
   const isNew      = isNewProduct(product);
   const hasRestock = isRestock(product);
   const unavail    = isUnavailable(product);
-  const isFav      = favorites.has(product.id);
-  const favAlert   = isFavoriteAlert(product);
   const stability  = stabilityLabel(product);
 
   const badges = [
@@ -1257,7 +1908,7 @@ function rowHtml(product) {
   ].filter(Boolean).join(" · ");
 
   return `
-    <tr data-id="${product.id}" class="${unavail ? "consulta-row" : ""} ${favAlert ? "fav-alert-row" : ""}">
+    <tr data-id="${product.id}" class="${unavail ? "consulta-row" : ""}">
       <td>
         <a class="thumb-mini ${product.image ? "" : "empty"}" href="${product.url}" target="_blank" rel="noopener">
           ${product.image ? `<img loading="lazy" src="${product.image}" alt="">` : ""}
@@ -1270,8 +1921,8 @@ function rowHtml(product) {
       </td>
       <td>${priceHtml(product)}</td>
       <td class="td-actions">
-        <button type="button" class="fav-btn ${isFav ? "active" : ""}" data-action="fav" data-id="${product.id}" aria-label="Favoritar" title="Favoritar">
-          ${isFav ? ICON_STAR_FILLED : ICON_STAR_OUTLINE}
+        <button type="button" class="cart-add-btn" data-action="add-cart" data-id="${product.id}" aria-label="Adicionar ao Carrinho" title="Adicionar ao Carrinho">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         </button>
         <a class="open" href="${product.url}" target="_blank" rel="noopener">abrir ↗</a>
       </td>
@@ -1292,9 +1943,7 @@ function renderCatalog() {
     dom.tableWrap.hidden = true;
     dom.paginationWrap.hidden = true;
     dom.empty.hidden     = false;
-    dom.empty.innerHTML  = (filters.onlyFav && favorites.size === 0)
-      ? "<b>Nenhum favorito ainda</b>Clique na estrela de um item pra acompanhar ele de perto."
-      : "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
+    dom.empty.innerHTML  = "<b>Nada por aqui</b>Ajuste a busca ou desligue os filtros.";
     return;
   }
 
@@ -1375,12 +2024,7 @@ function resetPage() {
 function renderRadar() {
   const changedProducts = catalog
     .filter((product) => isRestock(product) || isPriceChange(product))
-    .sort((a, b) => {
-      const aIsFav = favorites.has(a.id) ? 1 : 0;
-      const bIsFav = favorites.has(b.id) ? 1 : 0;
-      if (bIsFav - aIsFav !== 0) return bIsFav - aIsFav;
-      return new Date(b.priceChangedAt) - new Date(a.priceChangedAt);
-    })
+    .sort((a, b) => new Date(b.priceChangedAt) - new Date(a.priceChangedAt))
     .slice(0, RADAR_MAX_ITEMS);
 
   dom.radarSection.hidden = changedProducts.length === 0;
@@ -1399,32 +2043,36 @@ function renderStats(data) {
 }
 
 function renderCategoryStrip(data) {
-  const categories = [...new Map(
-        catalog
-          .filter((p) => p.category)
-          .map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category, count: 0 }])
-      ).values()];
+  if (!dom.categoriesContainer) return;
+  dom.categoriesContainer.innerHTML = "";
 
   const totalCount = catalog.length;
-
-  dom.catReplicas.innerHTML = "";
-  dom.catOutros.innerHTML = "";
-
   const allPill = makeCategoryPill("", "Todos os Produtos", totalCount, activeCategory === "");
-  dom.catOutros.appendChild(allPill);
+  dom.categoriesContainer.appendChild(allPill);
 
-  const replicaSlugs = ["aeg", "gbb", "gbbr", "spring", "replicas-outras"];
+  // Group by category to count occurrences
+  const categoryCounts = {};
+  catalog.forEach(p => {
+    if (p.category) {
+      categoryCounts[p.category] = (categoryCounts[p.category] || 0) + 1;
+    }
+  });
 
-  categories.forEach((cat) => {
-    const count = cat.count || catalog.filter((p) => p.category === cat.slug).length;
+  // Load category definitions from config, or fallback to dynamic ones
+  let configCategories = (appConfig && appConfig.categories) ? appConfig.categories : [];
+  if (configCategories.length === 0) {
+    configCategories = [...new Map(
+      catalog
+        .filter((p) => p.category)
+        .map((p) => [p.category, { slug: p.category, label: p.categoryLabel || p.category }])
+    ).values()];
+  }
+
+  configCategories.forEach((cat) => {
+    const count = categoryCounts[cat.slug] || 0;
     if (count === 0) return;
     const pill = makeCategoryPill(cat.slug, cat.label, count, activeCategory === cat.slug);
-    
-    if (replicaSlugs.includes(cat.slug)) {
-      dom.catReplicas.appendChild(pill);
-    } else {
-      dom.catOutros.appendChild(pill);
-    }
+    dom.categoriesContainer.appendChild(pill);
   });
 }
 
@@ -1476,30 +2124,66 @@ function selectCategory(slug) {
   track("filter", { type: "categoria", value: slug || "todos" });
   updateCategoryStrip();
   
-  const showBbs = slug === "bbs" || slug === "#suprimentos";
-  const showBat = slug === "baterias" || slug === "#suprimentos";
-
-  dom.bbWeightSection.hidden = !showBbs;
-  dom.bateriaVoltageSection.hidden = !showBat;
-
-  if (showBbs) {
-    const activePill = document.querySelector(`.cat-pill[data-cat="bbs"]`);
-    if (activePill) activePill.insertAdjacentElement('afterend', dom.bbWeightSection);
-    else dom.catOutros.prepend(dom.bbWeightSection);
-  }
-  if (showBat) {
-    const activePill = document.querySelector(`.cat-pill[data-cat="baterias"]`);
-    if (activePill) activePill.insertAdjacentElement('afterend', dom.bateriaVoltageSection);
-    else dom.catOutros.prepend(dom.bateriaVoltageSection);
-  }
+  // Render dynamic custom filters
+  renderDynamicFilters();
 
   renderCatalog();
 }
 
-function updateFavoriteCount() {
-  dom.countFav.textContent = favorites.size;
-  dom.favStat.hidden       = favorites.size === 0;
+function renderDynamicFilters() {
+  const container = dom.dynamicFiltersContainer;
+  if (!container) return;
+  container.innerHTML = "";
+
+  if (!appConfig || !appConfig.customFilters) return;
+
+  appConfig.customFilters.forEach(f => {
+    if (f.category === activeCategory) {
+      let options = f.options || [];
+      if (options.length === 0 && f.regex) {
+        const extracted = new Set();
+        const rx = new RegExp(f.regex, "i");
+        catalog.forEach(p => {
+          if (p.category === activeCategory) {
+            const m = p.name.match(rx);
+            if (m) extracted.add(m[1] || m[0]);
+          }
+        });
+        
+        options = [{ value: "", label: `Qualquer ${f.label.toLowerCase()}` }];
+        [...extracted].sort().forEach(val => {
+          options.push({ value: val, label: `${val}${f.suffix || ""}` });
+        });
+      }
+
+      const selectedValue = activeDynamicFilters[f.id] || "";
+      
+      const filterSection = document.createElement("div");
+      filterSection.className = "sidebar-section";
+      filterSection.id = `filter-section-${f.id}`;
+      filterSection.style = "margin-top: 2px; margin-bottom: 4px; margin-left: 12px; padding-left: 8px; border-left: 2px solid var(--border); gap: 0;";
+      
+      const selectHtml = `
+        <h4 style="font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase;">${f.label}</h4>
+        <select id="custom-filter-${f.id}" aria-label="Filtrar por ${f.label}" style="font-size: 11px; padding: 6px 8px; width: 100%; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); font-family: 'Space Mono', monospace; border-radius: var(--radius);">
+          ${options.map(opt => `<option value="${opt.value}" ${opt.value === selectedValue ? "selected" : ""}>${opt.label}</option>`).join("")}
+        </select>
+      `;
+      
+      filterSection.innerHTML = selectHtml;
+      container.appendChild(filterSection);
+      
+      const selectEl = filterSection.querySelector("select");
+      selectEl.addEventListener("change", (e) => {
+        activeDynamicFilters[f.id] = e.target.value;
+        track("filter", { type: `custom_${f.id}`, value: e.target.value });
+        resetPage();
+      });
+    }
+  });
 }
+
+
 // ─── TOAST ────────────────────────────────────────────────────────────────────
 function showToast(message) {
   dom.toast.textContent = message;
@@ -1509,18 +2193,6 @@ function showToast(message) {
 }
 
 // ─── ACTIONS ─────────────────────────────────────────────────────────────────
-function toggleFavorite(productId) {
-  const isAdding = !favorites.has(productId);
-  if (isAdding) favorites.add(productId); else favorites.delete(productId);
-
-  const product = catalog.find((p) => p.id === productId);
-  track(isAdding ? "favorite-add" : "favorite-remove", { id: productId, name: product?.name ?? productId });
-
-  saveFavorites();
-  updateFavoriteCount();
-  renderRadar();
-  renderCatalog();
-}
 
 function setViewMode(mode) {
   viewMode = mode;
@@ -1548,8 +2220,397 @@ function handleDeepLink() {
   });
 }
 
+// ─── CART STATE & ACTIONS ───────────────────────────────────────────────────
+let cart = loadCart(); // Map of { productId: quantity }
+
+function loadCart() {
+  try { return JSON.parse(sessionStorage.getItem("hw_cart") || "{}"); }
+  catch { return {}; }
+}
+function saveCart() {
+  try { sessionStorage.setItem("hw_cart", JSON.stringify(cart)); } catch {}
+}
+function addToCart(productId) {
+  cart[productId] = (cart[productId] || 0) + 1;
+  saveCart();
+  updateCartUI();
+  const product = catalog.find(p => p.id === productId);
+  if (product) showToast(`Adicionado: ${product.name}`);
+}
+function updateCartQuantity(productId, newQty) {
+  if (newQty <= 0) delete cart[productId];
+  else cart[productId] = newQty;
+  saveCart();
+  updateCartUI();
+}
+function removeFromCart(productId) {
+  delete cart[productId];
+  saveCart();
+  updateCartUI();
+}
+function clearCart() {
+  cart = {};
+  saveCart();
+  updateCartUI();
+  showToast("Carrinho esvaziado.");
+}
+function getCartCount() {
+  return Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+}
+function getCartTotal() {
+  return Object.entries(cart).reduce((sum, [id, qty]) => {
+    const product = catalog.find(p => p.id === id);
+    if (!product) return sum;
+    const price = productPriceBRL(product);
+    return sum + (isFinite(price) ? price * qty : 0);
+  }, 0);
+}
+function updateCartUI() {
+  const badge = document.getElementById("cartBadge");
+  const count = getCartCount();
+  badge.textContent = count;
+  badge.hidden = count === 0;
+
+  const cartList = document.getElementById("cartItemsList");
+  const cartFooter = document.getElementById("cartFooter");
+  
+  const items = Object.entries(cart).map(([id, qty]) => {
+    const product = catalog.find(p => p.id === id);
+    return { product, qty };
+  }).filter(item => item.product !== undefined);
+
+  if (items.length === 0) {
+    cartList.innerHTML = `<div class="cart-empty-msg">Seu carrinho está vazio.<br><br>Adicione produtos navegando pelo catálogo.</div>`;
+    cartFooter.style.display = "none";
+  } else {
+    cartFooter.style.display = "flex";
+    cartList.innerHTML = items.map(({ product, qty }) => {
+      const brl = productPriceBRL(product);
+      const priceStr = isFinite(brl) ? formatBRL(brl) : "Sob consulta";
+      const totalStr = isFinite(brl) ? formatBRL(brl * qty) : "Sob consulta";
+      
+      return `
+        <div class="cart-item">
+          <div class="cart-item-img ${product.image ? "" : "empty"}">
+            ${product.image ? `<img src="${product.image}" alt="">` : ""}
+          </div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${escapeHtml(product.name)}</div>
+            <div class="cart-item-ref">REF ${product.id}</div>
+            <div class="cart-item-price-row">
+              <div class="cart-item-qty-control">
+                <button type="button" class="btn-qty" onclick="updateCartQuantity('${product.id}', ${qty - 1})">-</button>
+                <div class="qty-val">${qty}</div>
+                <button type="button" class="btn-qty" onclick="updateCartQuantity('${product.id}', ${qty + 1})">+</button>
+              </div>
+              <div class="cart-item-price">
+                ${qty > 1 ? `<span style="font-size:10px;color:var(--muted);font-weight:normal;display:block;">${priceStr} un.</span>` : ""}
+                ${totalStr}
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-remove-item" onclick="removeFromCart('${product.id}')" aria-label="Remover" title="Remover">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+          </button>
+        </div>
+      `;
+    }).join("");
+    
+    document.getElementById("cartTotal").textContent = formatBRL(getCartTotal());
+  }
+}
+
+function sendCartToWhatsapp() {
+  const items = Object.entries(cart).map(([id, qty]) => {
+    const product = catalog.find(p => p.id === id);
+    return { product, qty };
+  }).filter(item => item.product !== undefined);
+
+  if (items.length === 0) return;
+
+  const notes = document.getElementById("cartNotes").value.trim();
+  const profileLabel = activePricingProfile === "parceiro" ? "Tabela Parceiro" : "Tabela Cliente Final";
+  let text = `*Novo Pedido - Hunting World* 🛒 (${profileLabel})\n\n`;
+  
+  items.forEach(({ product, qty }) => {
+    const brl = productPriceBRL(product);
+    const priceStr = isFinite(brl) ? formatBRL(brl) : "Sob Consulta";
+    const totalStr = isFinite(brl) ? formatBRL(brl * qty) : "Sob Consulta";
+    
+    text += `*${qty}x* - ${product.name}\n`;
+    text += `• Preço un.: ${priceStr}\n`;
+    if (qty > 1 && isFinite(brl)) {
+      text += `• Subtotal: ${totalStr}\n`;
+    }
+    text += `• Ref: ${product.id}\n`;
+    text += `• Link: ${product.url}\n\n`;
+  });
+  
+  const total = getCartTotal();
+  text += `*Valor Total:* ${formatBRL(total)}\n`;
+  
+  if (notes) {
+    text += `\n*Observações:*\n${notes}\n`;
+  }
+  
+  const formattedText = encodeURIComponent(text);
+  const whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${formattedText}`;
+  window.open(whatsappUrl, "_blank", "noopener");
+  
+  track("cart-send", { count: items.length, total });
+}
+function applyBranding(config) {
+  if (!config) return;
+  
+  // Document title
+  if (config.store && config.store.name) {
+    document.title = config.store.name;
+  }
+  
+  // Wordmark
+  const brandWordmarkEl = document.getElementById("brandWordmark");
+  if (brandWordmarkEl && config.store && config.store.wordmark) {
+    brandWordmarkEl.innerHTML = `${config.store.wordmark}<div class="bar"></div>`;
+  }
+  
+  // Tagline
+  const brandTaglineEl = document.getElementById("brandTagline");
+  if (brandTaglineEl && config.store && config.store.tagline) {
+    brandTaglineEl.textContent = config.store.tagline;
+  }
+  
+  // Brand SVG
+  const logoContainer = document.getElementById("brandLogoContainer");
+  if (logoContainer && config.store && config.store.brandSvg) {
+    logoContainer.innerHTML = config.store.brandSvg;
+  }
+  
+  // Apply CSS Variables Theme
+  if (config.theme) {
+    const root = document.documentElement;
+    Object.entries(config.theme).forEach(([key, val]) => {
+      root.style.setProperty(`--${key}`, val);
+    });
+  }
+}
+
+// ─── AUTH STATE & ACTIONS ───────────────────────────────────────────────────
+let currentUser = loadUser();
+
+function loadUser() {
+  try { return JSON.parse(sessionStorage.getItem("hw_user")); }
+  catch { return null; }
+}
+function saveUser(user) {
+  try {
+    if (user) sessionStorage.setItem("hw_user", JSON.stringify(user));
+    else sessionStorage.removeItem("hw_user");
+  } catch {}
+}
+function applyUserSession() {
+  const userStatus = document.getElementById("userStatus");
+  const btnLoginToggle = document.getElementById("btnLoginToggle");
+  const btnAdminPanel = document.getElementById("btnAdminPanel");
+
+  // Load category markups from localStorage or fall back to DEFAULT_MARKUP_MATRIX
+  const matrix = (() => {
+    try {
+      const val = localStorage.getItem("hw_pricing_matrix");
+      return val ? JSON.parse(val) : { ...DEFAULT_MARKUP_MATRIX };
+    } catch {
+      return { ...DEFAULT_MARKUP_MATRIX };
+    }
+  })();
+  PRICING.categoryMarkups = matrix;
+
+  if (currentUser) {
+    if (currentUser.markupPercent !== undefined) {
+      PRICING.markupPercent = currentUser.markupPercent;
+    }
+    
+    // Automatically set default active profile based on user role
+    if (currentUser.role === "parceiro") {
+      activePricingProfile = "parceiro";
+    } else {
+      activePricingProfile = "final";
+    }
+    
+    userStatus.innerHTML = `
+      <span class="user-badge admin">Colaborador: <b>${currentUser.username}</b></span>
+    `;
+    
+    // Only show admin panel button for admin!
+    if (currentUser.role === "admin" && btnAdminPanel) {
+      btnAdminPanel.style.display = "inline-block";
+    } else if (btnAdminPanel) {
+      btnAdminPanel.style.display = "none";
+    }
+    
+    btnLoginToggle.textContent = "Sair";
+    btnLoginToggle.classList.add("btn-logout");
+  } else {
+    PRICING.markupPercent = 48; // Padrão
+    activePricingProfile = "final";
+    
+    userStatus.innerHTML = `
+      <span class="user-badge">Visitante</span>
+    `;
+    
+    if (btnAdminPanel) btnAdminPanel.style.display = "none";
+    btnLoginToggle.textContent = "Acesso Restrito";
+    btnLoginToggle.classList.remove("btn-logout");
+  }
+  
+  // Sync the active profile switch buttons
+  updateProfileSwitchUI();
+
+  if (catalog.length > 0) {
+    renderCatalog();
+    renderRadar();
+    updateCartUI();
+  }
+}
+function openLoginModal() {
+  document.getElementById("loginModalOverlay").classList.add("open");
+}
+function closeLoginModal() {
+  document.getElementById("loginModalOverlay").classList.remove("open");
+  document.getElementById("loginUsername").value = "";
+  document.getElementById("loginPassword").value = "";
+  document.getElementById("loginError").textContent = "";
+}
+function handleLoginSubmit(event) {
+  event.preventDefault();
+  const usernameInput = document.getElementById("loginUsername").value.trim();
+  const passwordInput = document.getElementById("loginPassword").value;
+  const errorEl = document.getElementById("loginError");
+  
+  let role = "";
+  let markupPercent = 48;
+  
+  const userLower = usernameInput.toLowerCase();
+  if (userLower === "admin" && passwordInput === "admin") {
+    role = "admin";
+    markupPercent = 48;
+  } else if (userLower === "vendedor" && passwordInput === "vendedor") {
+    role = "vendedor";
+    markupPercent = 40;
+  } else if (userLower === "parceiro" && passwordInput === "parceiro") {
+    role = "parceiro";
+    markupPercent = 30;
+  } else {
+    errorEl.textContent = "Usuário ou senha incorretos.";
+    return;
+  }
+  
+  currentUser = { username: usernameInput, role, markupPercent };
+  saveUser(currentUser);
+  applyUserSession();
+  closeLoginModal();
+  showToast(`Bem-vindo, ${usernameInput}!`);
+}
+function handleLogout() {
+  currentUser = null;
+  saveUser(null);
+  applyUserSession();
+  showToast("Logout efetuado.");
+}
+
+// ─── ADMIN PRICE ADJUSTMENT BY CATEGORY ──────────────────────────────────────
+const categoryLabels = {
+  aeg: "Réplicas AEG",
+  gbb: "Réplicas GBB",
+  gbbr: "Réplicas GBBR",
+  spring: "Réplicas Spring",
+  "replicas-outras": "Outras Réplicas",
+  bbs: "BBs (Munição)",
+  baterias: "Baterias"
+};
+
+function renderAdminCategories() {
+  const container = document.getElementById("categoryMarkupsList");
+  if (!container) return;
+  
+  let categories = [...new Set(catalog.map(p => p.category).filter(Boolean))];
+  if (categories.length === 0) {
+    categories = Object.keys(PRICING.categoryMarkups);
+  }
+  
+  container.innerHTML = categories.map(cat => {
+    const label = categoryLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+    const finalMarkup = (PRICING.categoryMarkups[cat] && PRICING.categoryMarkups[cat].final !== undefined)
+      ? PRICING.categoryMarkups[cat].final
+      : (typeof PRICING.categoryMarkups[cat] === "number" ? PRICING.categoryMarkups[cat] : PRICING.markupPercent);
+    const parceiroMarkup = (PRICING.categoryMarkups[cat] && PRICING.categoryMarkups[cat].parceiro !== undefined)
+      ? PRICING.categoryMarkups[cat].parceiro
+      : (typeof PRICING.categoryMarkups[cat] === "number" ? Math.round(PRICING.categoryMarkups[cat] * 0.7) : Math.round(PRICING.markupPercent * 0.7));
+      
+    return `
+      <tr style="border-bottom: 1px solid var(--border);">
+        <td style="padding: 10px 4px; font-size: 13px; color: var(--text);">${label}</td>
+        <td style="padding: 6px 4px; text-align: center;">
+          <input type="number" class="form-control" data-category="${cat}" data-type="final" value="${finalMarkup}" min="-50" max="150" step="1" style="width: 80px; padding: 6px; font-family: 'Space Mono', monospace; text-align: center; font-size: 13px; display: inline-block;" required />
+        </td>
+        <td style="padding: 6px 4px; text-align: center;">
+          <input type="number" class="form-control" data-category="${cat}" data-type="parceiro" value="${parceiroMarkup}" min="-50" max="150" step="1" style="width: 80px; padding: 6px; font-family: 'Space Mono', monospace; text-align: center; font-size: 13px; display: inline-block;" required />
+        </td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function handleAdminPriceSubmit(event) {
+  event.preventDefault();
+  
+  let categories = [...new Set(catalog.map(p => p.category).filter(Boolean))];
+  if (categories.length === 0) {
+    categories = Object.keys(PRICING.categoryMarkups);
+  }
+  
+  categories.forEach(cat => {
+    const finalInput = document.querySelector(`input[data-category="${cat}"][data-type="final"]`);
+    const parceiroInput = document.querySelector(`input[data-category="${cat}"][data-type="parceiro"]`);
+    
+    if (finalInput && parceiroInput) {
+      const finalVal = parseInt(finalInput.value, 10);
+      const parceiroVal = parseInt(parceiroInput.value, 10);
+      if (!isNaN(finalVal) && !isNaN(parceiroVal)) {
+        PRICING.categoryMarkups[cat] = {
+          final: finalVal,
+          parceiro: parceiroVal
+        };
+      }
+    }
+  });
+  
+  try {
+    localStorage.setItem("hw_pricing_matrix", JSON.stringify(PRICING.categoryMarkups));
+  } catch {}
+  
+  if (currentUser) {
+    currentUser.categoryMarkups = { ...PRICING.categoryMarkups };
+    saveUser(currentUser);
+  }
+  
+  renderCatalog();
+  renderRadar();
+  updateCartUI();
+  
+  document.getElementById("adminModalOverlay").classList.remove("open");
+  showToast("Preços por categoria atualizados!");
+}
+
+function updateProfileSwitchUI() {
+  const finalBtn = document.querySelector('#profileSwitchGroup button[data-profile="final"]');
+  const parceiroBtn = document.querySelector('#profileSwitchGroup button[data-profile="parceiro"]');
+  if (finalBtn && parceiroBtn) {
+    finalBtn.classList.toggle("active", activePricingProfile === "final");
+    parceiroBtn.classList.toggle("active", activePricingProfile === "parceiro");
+  }
+}
+
 // ─── EVENT WIRING ─────────────────────────────────────────────────────────────
-// Card action buttons (fav + share) — delegated from document
+// Card action buttons (add-cart) — delegated from document
 document.addEventListener("click", (event) => {
   const button = event.target.closest("[data-action]");
   if (!button) return;
@@ -1559,7 +2620,7 @@ document.addEventListener("click", (event) => {
   const product = catalog.find((p) => p.id === button.dataset.id);
   if (!product) return;
 
-  if (button.dataset.action === "fav")   toggleFavorite(product.id);
+  if (button.dataset.action === "add-cart") addToCart(product.id);
 });
 
 // Product link click tracking — delegated from document
@@ -1628,7 +2689,6 @@ document.querySelectorAll(".quick-box").forEach(box => {
   { key: "novo",    trackName: "novos"          },
   { key: "changed", trackName: "mudanca-preco"  },
   { key: "avail",   trackName: "disponiveis"    },
-  { key: "fav",     trackName: "favoritos"      },
 ].forEach(({ key, trackName }) => {
   const { checkbox, label } = dom.toggles[key];
   checkbox.addEventListener("change", (event) => {
@@ -1644,15 +2704,7 @@ dom.brandFilter.addEventListener("change", (event) => {
   resetPage();
 });
 
-dom.bbWeightFilter.addEventListener("change", (event) => {
-  track("filter", { type: "peso_bb", value: event.target.value });
-  resetPage();
-});
 
-dom.bateriaVoltageFilter.addEventListener("change", (event) => {
-  track("filter", { type: "voltagem_bateria", value: event.target.value });
-  resetPage();
-});
 
 // Price range filter
 let priceRangeTimer = null;
@@ -1677,53 +2729,152 @@ dom.pagination.addEventListener("click", (event) => {
 dom.viewGrid.addEventListener("click",  () => setViewMode("grid"));
 dom.viewTable.addEventListener("click", () => setViewMode("table"));
 
+// Profile switch listeners
+const profileSwitchGroup = document.getElementById("profileSwitchGroup");
+if (profileSwitchGroup) {
+  profileSwitchGroup.addEventListener("click", (event) => {
+    const btn = event.target.closest("button[data-profile]");
+    if (!btn) return;
+    const newProfile = btn.dataset.profile;
+    if (newProfile !== activePricingProfile) {
+      activePricingProfile = newProfile;
+      updateProfileSwitchUI();
+      track("profile-switch", { profile: newProfile });
+      
+      renderCatalog();
+      renderRadar();
+      updateCartUI();
+    }
+  });
+}
+
+// ─── LOGIN & CART EVENT LISTENERS ───────────────────────────────────────────
+document.getElementById("btnLoginToggle").addEventListener("click", () => {
+  if (currentUser) {
+    handleLogout();
+  } else {
+    openLoginModal();
+  }
+});
+
+document.getElementById("loginModalClose").addEventListener("click", closeLoginModal);
+document.getElementById("loginModalOverlay").addEventListener("click", (e) => {
+  if (e.target === document.getElementById("loginModalOverlay")) closeLoginModal();
+});
+
+document.getElementById("loginForm").addEventListener("submit", handleLoginSubmit);
+
+document.getElementById("floatingCartBtn").addEventListener("click", () => {
+  document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("cartDrawerOverlay").classList.add("open");
+  updateCartUI();
+});
+
+document.getElementById("btnCartClose").addEventListener("click", () => {
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("cartDrawerOverlay").classList.remove("open");
+});
+
+document.getElementById("cartDrawerOverlay").addEventListener("click", () => {
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("cartDrawerOverlay").classList.remove("open");
+});
+
+document.getElementById("btnClearCart").addEventListener("click", clearCart);
+document.getElementById("btnCartZap").addEventListener("click", sendCartToWhatsapp);
+
+// Admin Category Markup Modal Event Listeners
+const btnAdminPanel = document.getElementById("btnAdminPanel");
+if (btnAdminPanel) {
+  btnAdminPanel.addEventListener("click", () => {
+    renderAdminCategories();
+    document.getElementById("adminModalOverlay").classList.add("open");
+  });
+}
+
+const adminModalClose = document.getElementById("adminModalClose");
+if (adminModalClose) {
+  adminModalClose.addEventListener("click", () => {
+    document.getElementById("adminModalOverlay").classList.remove("open");
+  });
+}
+
+const adminModalOverlay = document.getElementById("adminModalOverlay");
+if (adminModalOverlay) {
+  adminModalOverlay.addEventListener("click", (e) => {
+    if (e.target === adminModalOverlay) {
+      adminModalOverlay.classList.remove("open");
+    }
+  });
+}
+
+const adminPriceForm = document.getElementById("adminPriceForm");
+if (adminPriceForm) {
+  adminPriceForm.addEventListener("submit", handleAdminPriceSubmit);
+}
+
+
+
 // ─── DATA BOOTSTRAP ───────────────────────────────────────────────────────────
-fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
-  .then((response) => {
-    if (!response.ok) throw new Error(response.status);
-    return response.json();
+Promise.all([
+  fetch(`./config.json?t=${Date.now()}`, { cache: "no-store" }).then(r => {
+    if (!r.ok) throw new Error("Não foi possível carregar config.json");
+    return r.json();
+  }),
+  fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" }).then(r => {
+    if (!r.ok) throw new Error("Não foi possível carregar snapshot.json");
+    return r.json();
   })
-  .then((data) => {
+])
+  .then(([config, data]) => {
+    appConfig = config;
     catalog = data.products || [];
 
-    // Separar categoria de réplicas e extrair pesos de BBs / Voltagens
-    const bbWeights = new Set();
-    const batteryVoltages = new Set();
-    catalog.forEach(p => {
-      if (p.category === "replicas") {
-        const n = p.name.toLowerCase();
-        if (n.includes("aeg")) { p.category = "aeg"; p.categoryLabel = "Réplicas AEG"; }
-        else if (n.includes("gbbr")) { p.category = "gbbr"; p.categoryLabel = "Réplicas GBBR"; }
-        else if (n.includes("gbb")) { p.category = "gbb"; p.categoryLabel = "Réplicas GBB"; }
-        else if (n.includes("spring")) { p.category = "spring"; p.categoryLabel = "Réplicas Spring"; }
-        else { p.category = "replicas-outras"; p.categoryLabel = "Outras Réplicas"; }
-      }
-      if (p.category === "bbs") {
-        const match = p.name.match(/0\.\d{2}/);
-        if (match) bbWeights.add(match[0]);
-      }
-      if (p.category === "baterias") {
-        const match = p.name.match(/(\d+\.\d+)v/i);
-        if (match) batteryVoltages.add(match[1]);
-      }
-    });
+    // Apply store branding & colors theme
+    applyBranding(appConfig);
 
-    [...bbWeights].sort().forEach(weight => {
-      const opt = document.createElement("option");
-      opt.value = weight;
-      opt.textContent = `${weight}g`;
-      dom.bbWeightFilter.appendChild(opt);
-    });
+    // Sync CONFIG and PRICING constants
+    if (appConfig.whatsapp) {
+      CONFIG.whatsappNumber = appConfig.whatsapp.number || CONFIG.whatsappNumber;
+      CONFIG.whatsappTemplate = appConfig.whatsapp.template || CONFIG.whatsappTemplate;
+    }
+    if (appConfig.pricing) {
+      PRICING.exchangeRate = appConfig.pricing.exchangeRate || PRICING.exchangeRate;
+      PRICING.markupPercent = appConfig.pricing.markupPercent || PRICING.markupPercent;
+    }
+    DEFAULT_MARKUP_MATRIX = appConfig.pricingMatrix || {};
 
-    [...batteryVoltages].sort((a,b) => parseFloat(a) - parseFloat(b)).forEach(voltage => {
-      const opt = document.createElement("option");
-      opt.value = voltage;
-      opt.textContent = `${voltage}V`;
-      dom.bateriaVoltageFilter.appendChild(opt);
-    });
+    // Apply category sub-classification rules (e.g. dividing 'replicas' into 'aeg', 'gbb', etc.)
+    if (appConfig.categoryClassifiers) {
+      catalog.forEach(p => {
+        appConfig.categoryClassifiers.forEach(c => {
+          if (p.category === c.parentCategory) {
+            let matched = false;
+            if (c.rules) {
+              for (const r of c.rules) {
+                if (r.contains && p.name.toLowerCase().includes(r.contains.toLowerCase())) {
+                  p.category = r.category;
+                  p.categoryLabel = r.label;
+                  matched = true;
+                  break;
+                }
+              }
+            }
+            if (!matched && c.fallback) {
+              p.category = c.fallback.category;
+              p.categoryLabel = c.fallback.label;
+            }
+          }
+        });
+      });
+    }
 
+    // Default to the first category slug configured in config.json
+    if (appConfig.categories && appConfig.categories.length > 0) {
+      activeCategory = appConfig.categories[0].slug;
+    }
 
-    // Extrair marcas dos produtos
+    // Extract brands for filtering
     catalogBrands = buildBrandList(catalog);
     catalogBrands.forEach(({ brand, count }) => {
       const opt = document.createElement("option");
@@ -1734,14 +2885,19 @@ fetch(`./snapshot.json?t=${Date.now()}`, { cache: "no-store" })
 
     renderStats(data);
     renderCategoryStrip(data);
+    
+    // Render dynamic filters for initial category
+    renderDynamicFilters();
+    
     setViewMode(viewMode);
-    updateFavoriteCount();
     renderRadar();
     handleDeepLink();
+    applyUserSession();
+    updateCartUI();
   })
   .catch((error) => {
     dom.empty.hidden = false;
-    dom.empty.innerHTML = `<b>Sem dados ainda</b>O snapshot.json não foi encontrado (erro ${error.message}). Rode o crawler ao menos uma vez.`;
+    dom.empty.innerHTML = `<b>Erro na Inicialização</b>Não foi possível carregar os dados (erro: ${error.message}). Por favor, certifique-se de que config.json e snapshot.json existem no diretório raiz.`;
   });
 </script>
 </body>
