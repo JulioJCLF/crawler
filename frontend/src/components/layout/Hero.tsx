@@ -1,0 +1,44 @@
+"use client";
+
+import { useTheme } from "@/providers/ThemeProvider";
+
+export function Hero() {
+  const { theme } = useTheme();
+
+  return (
+    <div className="relative overflow-hidden bg-background border-b border-border py-8 px-6 md:py-12 md:px-10">
+      {/* Glow effect for tactical themes */}
+      {theme === "hunting" && (
+        <div 
+          className="absolute top-[-50%] left-[-10%] w-[800px] h-[800px] rounded-full pointer-events-none opacity-20"
+          style={{ background: 'radial-gradient(circle, var(--accent) 0%, transparent 60%)' }}
+        />
+      )}
+
+      <div className="max-w-[1400px] mx-auto relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div>
+          <div className="flex items-center gap-2 mb-2 font-mono text-[11px] tracking-[0.2em] uppercase text-accent">
+            <span className="w-1.5 h-1.5 bg-accent inline-block"></span>
+            Intelligence & Tracking
+          </div>
+          
+          <h1 className="font-heading font-extrabold text-4xl md:text-6xl tracking-tight uppercase text-foreground mb-4">
+            Catálogo <span className="text-accent">Hunting World</span>
+          </h1>
+          
+          <p className="text-muted-foreground font-sans text-sm md:text-base max-w-xl">
+            Monitoramento tático de equipamentos, preços e disponibilidade. 
+            Identificação em tempo real de novos itens e repousições de estoque.
+          </p>
+        </div>
+
+        <div className="flex gap-4">
+          <div className="bg-card border border-border rounded-md p-3 flex items-center gap-3 font-mono text-xs text-muted-foreground">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_8px_var(--accent)]"></span>
+            Status: <strong className="text-foreground">Online</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

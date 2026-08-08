@@ -1,0 +1,237 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Filters } from "@/components/layout/Filters";
+import { Radar } from "@/components/layout/Radar";
+import { ProductCard } from "@/components/ProductCard";
+import { useTheme } from "@/providers/ThemeProvider";
+
+export default function Home() {
+  const [snapshot, setSnapshot] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { layout, setTheme, setLayout, theme } = useTheme();
+
+  const [selectedWeight, setSelectedWeight] = useState<string | null>(null);
+  const [selectedVestCategory, setSelectedVestCategory] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 36;
+
+  useEffect(() => {
+    fetch("/api/snapshot")
+      .then((res) => res.json())
+      .then((data) => {
+        setSnapshot(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch snapshot", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <div className="font-mono text-xs animate-pulse uppercase tracking-widest text-accent flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-accent" />
+          Estabelecendo conexão...
+        </div>
+      </div>
+    );
+  }
+
+  if (!snapshot) {
+    return (
+      <div className="flex items-center justify-center min-h-screen text-destructive font-mono uppercase text-sm">
+        [ERRO] Falha ao recuperar pacote de dados.
+      </div>
+    );
+  }
+
+  const handleSearchChange = (s: string) => {
+    setSearch(s);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (c: string | null) => {
+    setSelectedCategory(c);
+    setCurrentPage(1);
+  };
+
+  const handleWeightChange = (w: string | null) => {
+    setSelectedWeight(w);
+    setCurrentPage(1);
+  };
+
+  const handleVestCategoryChange = (v: string | null) => {
+    setSelectedVestCategory(v);
+    setCurrentPage(1);
+  };
+
+  const filteredProducts = snapshot.products.filter((p: any) => {
+    const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
+    let matchesCat = true;
+
+    if (selectedCategory) {
+      if (selectedCategory === "#aeg") {
+        matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("aeg");
+      } else if (selectedCategory === "#gbbr") {
+        matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("gbbr");
+      } else if (selectedCategory === "#gbb") {
+        matchesCat = p.category === "replicas" && (/\bgbb\b/i.test(p.name) && !p.name.toLowerCase().includes("gbbr"));
+      } else if (selectedCategory === "#spring") {
+        matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("spring");
+      } else if (selectedCategory === "#miras") {
+        matchesCat = p.category === "miras" && !/lanterna|laser|flashlight|iluminador|luz|mount|base|trilho|rail|ris |ras |anel/i.test(p.name);
+      } else if (selectedCategory === "#luz") {
+        matchesCat = p.category === "miras" && /lanterna|laser|flashlight|iluminador|luz/i.test(p.name);
+      } else if (selectedCategory === "#mount") {
+        if (p.category !== "miras") matchesCat = false;
+        else {
+          const n = p.name.toLowerCase();
+          const hasMount = /mount|base|trilho|rail|ris |ras |anel/i.test(n);
+          const isOptic = /red dot|scope|sight|acog|magnifier|holografic|mira|luneta|visor|lanterna|laser|flashlight/i.test(n);
+          matchesCat = hasMount && !isOptic;
+        }
+      } else if (selectedCategory === "#pecas-internas") {
+        matchesCat = p.category === "pecas-internas";
+      } else if (selectedCategory === "#pecas-externas") {
+        matchesCat = p.category === "pecas-externas";
+      } else if (selectedCategory === "#vestuario") {
+        matchesCat = p.category === "vestuario";
+      } else if (selectedCategory === "#bbs") {
+        matchesCat = p.category === "bbs" || p.name.toLowerCase().includes("bbs");
+      } else if (selectedCategory === "#suprimentos") {
+        matchesCat = ["gas", "baterias"].includes(p.category) && !p.name.toLowerCase().includes("bbs");
+      } else {
+        matchesCat = p.category === selectedCategory;
+      }
+    }
+
+    let matchesWeight = true;
+    if (selectedWeight && matchesCat && selectedCategory === "#bbs") {
+      const w = selectedWeight.replace('g', '');
+      const regex = new RegExp(`\\b${w}\\s*g?\\b`, 'i');
+      matchesWeight = regex.test(p.name);
+    }
+
+    let matchesVest = true;
+    if (selectedVestCategory && matchesCat && selectedCategory === "#vestuario") {
+      let vestRegex = /.*/;
+      switch (selectedVestCategory) {
+        case "holsters": vestRegex = /coldre|holster/i; break;
+        case "helmets": vestRegex = /capacete|helmet/i; break;
+        case "headsets": vestRegex = /fone|headset|abafador|headphone|ptt|comunicador/i; break;
+        case "gloves": vestRegex = /luva|glove/i; break;
+        case "vests": vestRegex = /colete|vest|plate carrier|chest rig/i; break;
+        case "belts": vestRegex = /cinto|belt/i; break;
+        case "uniforms": vestRegex = /farda|calça|camisa|combat shirt|uniforme|bota|coturno|jaqueta|chapeu|boonie/i; break;
+        case "slings": vestRegex = /bandoleira|sling/i; break;
+        case "backpacks": vestRegex = /mochila|backpack|bag|bolsa|pochete/i; break;
+        case "eyewear": vestRegex = /oculos|óculos|eyewear|goggle|mascara|máscara|mask|balaclava/i; break;
+      }
+      matchesVest = vestRegex.test(p.name);
+    }
+
+    return matchesSearch && matchesCat && matchesWeight && matchesVest;
+  });
+
+  // Paginação
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+
+  return (
+    <div className="flex flex-col min-h-screen">
+      {/* Dev Tools - Apenas para testes de layout */}
+      <div className="fixed bottom-4 left-4 z-50 flex gap-2">
+        <button 
+          onClick={() => setTheme(theme === 'hunting' ? 'minimal' : 'hunting')}
+          className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
+        >
+          Theme: {theme}
+        </button>
+        <button 
+          onClick={() => setLayout(layout === 'sidebar' ? 'topbar' : 'sidebar')}
+          className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
+        >
+          Layout: {layout}
+        </button>
+      </div>
+
+      <div className={`flex flex-1 ${layout === 'sidebar' ? 'flex-col md:flex-row' : 'flex-col'}`}>
+        <Filters 
+          categories={snapshot.categories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={handleCategoryChange}
+          search={search}
+          onSearchChange={handleSearchChange}
+          totalCount={snapshot.count}
+          selectedWeight={selectedWeight}
+          onSelectWeight={handleWeightChange}
+          selectedVestCategory={selectedVestCategory}
+          onSelectVestCategory={handleVestCategoryChange}
+        />
+
+        <main className={`flex-1 overflow-y-auto ${layout === 'sidebar' ? 'p-6 md:p-10 max-h-screen' : 'p-6'}`}>
+          <div className="max-w-[1400px] mx-auto">
+            {/* Oculta Radar quando há pesquisa ou categoria selecionada */}
+            {!search && !selectedCategory && <Radar products={snapshot.products} />}
+            
+            <div className="mb-6 flex items-baseline justify-between mt-8">
+              <h1 className="font-heading font-bold text-3xl uppercase tracking-wider text-foreground">
+                Acervo <span className="text-accent">({filteredProducts.length})</span>
+              </h1>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {currentProducts.map((product: any) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            {filteredProducts.length === 0 && (
+              <div className="text-center py-20 text-muted-foreground font-mono">
+                Nenhum equipamento encontrado na varredura com os filtros atuais.
+              </div>
+            )}
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="mt-12 flex justify-center items-center gap-4 border-t border-border pt-6 pb-20">
+                <button 
+                  onClick={() => {
+                    setCurrentPage(p => Math.max(1, p - 1));
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  disabled={currentPage === 1}
+                  className="px-6 py-2 bg-card border border-border rounded-md text-sm font-mono uppercase tracking-widest disabled:opacity-30 hover:bg-muted transition-colors text-foreground"
+                >
+                  &larr; Prev
+                </button>
+                <div className="font-mono text-sm text-muted-foreground flex gap-1">
+                  <span className="text-primary font-bold">PG {currentPage}</span>
+                  <span>/</span>
+                  <span>{totalPages}</span>
+                </div>
+                <button 
+                  onClick={() => {
+                    setCurrentPage(p => Math.min(totalPages, p + 1));
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  disabled={currentPage === totalPages}
+                  className="px-6 py-2 bg-card border border-border rounded-md text-sm font-mono uppercase tracking-widest disabled:opacity-30 hover:bg-muted transition-colors text-foreground"
+                >
+                  Next &rarr;
+                </button>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}

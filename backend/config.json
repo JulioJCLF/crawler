@@ -1,0 +1,109 @@
+{
+  "store": {
+    "name": "Hunting World Airsoft",
+    "wordmark": "HUNTING WORLD",
+    "tagline": "Catálogo completo de equipamentos de airsoft com preços atualizados. Veja o que chegou, o que voltou ao estoque e o que mudou de preço.",
+    "brandSvg": "<svg viewBox=\"0 0 52 52\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"26\" cy=\"26\" r=\"23\" fill=\"none\" stroke=\"#4d5030\" stroke-width=\"1.5\" class=\"ring-outer\"/><circle cx=\"26\" cy=\"26\" r=\"11\" fill=\"none\" stroke=\"#4d5030\" stroke-width=\"1\" opacity=\".35\"/><line x1=\"26\" y1=\"2\" x2=\"26\" y2=\"14\" stroke=\"#4d5030\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"26\" y1=\"38\" x2=\"26\" y2=\"50\" stroke=\"#4d5030\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"2\" y1=\"26\" x2=\"14\" y2=\"26\" stroke=\"#4d5030\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"38\" y1=\"26\" x2=\"50\" y2=\"26\" stroke=\"#4d5030\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><circle cx=\"26\" cy=\"26\" r=\"2.5\" fill=\"#4d5030\"/></svg>"
+  },
+  "theme": {
+    "accent": "#bfd126",
+    "accentBg": "#bfd126",
+    "bg": "#0b0d0c",
+    "surface": "#121514",
+    "surface-2": "#1a1e1c",
+    "border": "#242a27",
+    "border-strong": "#333b37",
+    "text": "#e1e7e4",
+    "muted": "#7a8881",
+    "danger": "#ff5b4a",
+    "success": "#3cd070",
+    "info": "#4ab5ff",
+    "radius": "4px"
+  },
+  "whatsapp": {
+    "number": "5545999858096",
+    "template": "Oi tenho interesse nesse equipamento {link}"
+  },
+  "pricing": {
+    "exchangeRate": 5.50,
+    "markupPercent": 48
+  },
+  "pricingMatrix": {
+    "aeg": { "final": 48, "parceiro": 30 },
+    "gbb": { "final": 48, "parceiro": 30 },
+    "gbbr": { "final": 48, "parceiro": 30 },
+    "spring": { "final": 48, "parceiro": 30 },
+    "replicas-outras": { "final": 48, "parceiro": 30 },
+    "bbs": { "final": 35, "parceiro": 20 },
+    "baterias": { "final": 40, "parceiro": 25 }
+  },
+  "categories": [
+    { "slug": "aeg", "label": "Réplicas AEG", "isReplica": true },
+    { "slug": "gbb", "label": "Réplicas GBB", "isReplica": true },
+    { "slug": "gbbr", "label": "Réplicas GBBR", "isReplica": true },
+    { "slug": "spring", "label": "Réplicas Spring", "isReplica": true },
+    { "slug": "replicas-outras", "label": "Outras Réplicas", "isReplica": true },
+    { "slug": "bbs", "label": "BBs (Munição)", "isReplica": false },
+    { "slug": "baterias", "label": "Baterias", "isReplica": false },
+    { "slug": "pecas-externas", "label": "Peças Externas", "isReplica": false },
+    { "slug": "pecas-internas", "label": "Peças Internas", "isReplica": false },
+    { "slug": "pistolas", "label": "Peças para Pistolas", "isReplica": false },
+    { "slug": "rifles-gas", "label": "Peças para Rifles a Gás", "isReplica": false },
+    { "slug": "sniper", "label": "Peças para Sniper", "isReplica": false },
+    { "slug": "magazines", "label": "Magazines", "isReplica": false },
+    { "slug": "gas", "label": "Green Gas / CO2", "isReplica": false },
+    { "slug": "granadas", "label": "Granadas", "isReplica": false },
+    { "slug": "speedsoft", "label": "Speedsoft", "isReplica": false }
+  ],
+  "crawlerCategories": [
+    { "slug": "replicas", "label": "Réplicas", "url": "https://www.arsenalsports.com/produtos/airsoft-replicas-de-airsoft/filter?d=124" },
+    { "slug": "pecas-externas", "label": "Peças Externas", "url": "https://www.arsenalsports.com/produtos/airsoft-pecas-externas-para-replicas-de-airsoft/filter?d=191" },
+    { "slug": "pecas-internas", "label": "Peças Internas", "url": "https://www.arsenalsports.com/produtos/airsoft-pecas-internas-para-replicas-de-airsoft/filter?d=229" },
+    { "slug": "pistolas", "label": "Peças para Pistolas", "url": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-pistolas/filter?d=423" },
+    { "slug": "rifles-gas", "label": "Peças para Rifles a Gás", "url": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-rifles-a-gas/filter?d=214" },
+    { "slug": "sniper", "label": "Peças para Sniper", "url": "https://www.arsenalsports.com/produtos/airsoft-pecas-exclusivas-para-sniper/filter?d=424" },
+    { "slug": "magazines", "label": "Magazines", "url": "https://www.arsenalsports.com/produtos/airsoft-magazines-para-replicas-de-airsoft/filter?d=114" },
+    { "slug": "bbs", "label": "BBs", "url": "https://www.arsenalsports.com/produtos/airsoft-bbs-/filter?d=163" },
+    { "slug": "gas", "label": "Gas / CO2 / HPA", "url": "https://www.arsenalsports.com/produtos/airsoft-green-gas--co2--hpa/filter?d=176" },
+    { "slug": "baterias", "label": "Baterias & Carregadores", "url": "https://www.arsenalsports.com/produtos/airsoft-baterias--carregadores/filter?d=104" },
+    { "slug": "granadas", "label": "Granadas", "url": "https://www.arsenalsports.com/produtos/airsoft-granadas-de-airsoft/filter?d=184" },
+    { "slug": "speedsoft", "label": "Speedsoft", "url": "https://www.arsenalsports.com/produtos/airsoft-speedsoft/filter?d=256" }
+  ],
+  "categoryClassifiers": [
+    {
+      "parentCategory": "replicas",
+      "rules": [
+        { "contains": "aeg", "category": "aeg", "label": "Réplicas AEG" },
+        { "contains": "gbbr", "category": "gbbr", "label": "Réplicas GBBR" },
+        { "contains": "gbb", "category": "gbb", "label": "Réplicas GBB" },
+        { "contains": "spring", "category": "spring", "label": "Réplicas Spring" }
+      ],
+      "fallback": { "category": "replicas-outras", "label": "Outras Réplicas" }
+    }
+  ],
+  "attributeExtractors": [
+    {
+      "id": "bbWeight",
+      "category": "bbs",
+      "label": "Peso da BB",
+      "regex": "0\\.\\d{2}",
+      "type": "contains",
+      "suffix": "g"
+    },
+    {
+      "id": "bateriaVoltage",
+      "category": "baterias",
+      "label": "Voltagem",
+      "regex": "(\\d+\\.\\d+)v",
+      "type": "regex",
+      "suffix": "v"
+    }
+  ],
+  "scraper": {
+    "productLinkSelector": "a[href*=\"/produto/\"]",
+    "productIdRegex": "/produto/.*?-(\\d+)\\.html",
+    "priceRegex": "USD\\s*([\\d.,]+)",
+    "imageSelector": "img[src*=\"/produtos/\"]",
+    "baseUrl": "https://www.arsenalsports.com"
+  }
+}
