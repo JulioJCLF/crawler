@@ -19,7 +19,10 @@ export default function Home() {
   const itemsPerPage = 36;
 
   useEffect(() => {
-    fetch("/api/snapshot")
+    // Busca do Github Raw (banco de dados estático)
+    const fetchUrl = "https://raw.githubusercontent.com/JulioJCLF/crawler/main/backend/snapshot.json";
+
+    fetch(fetchUrl)
       .then((res) => res.json())
       .then((data) => {
         setSnapshot(data);

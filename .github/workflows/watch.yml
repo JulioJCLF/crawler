@@ -22,18 +22,18 @@ jobs:
         with:
           node-version: 20
 
-      - run: npm install
+      - run: cd backend && npm ci
 
       - name: Rodar crawler
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: npm start
+        run: cd backend && npm start
 
       - name: Commitar snapshot atualizado
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add snapshot.json
+          git add backend/snapshot.json
           if git diff --staged --quiet; then
             echo "snapshot sem mudancas"
           else
