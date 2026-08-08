@@ -3,6 +3,7 @@
 import { useTheme } from "@/providers/ThemeProvider";
 import { Input } from "@/components/ui/input";
 import { CategorySummary } from "@/types";
+import { AIRSOFT_BRANDS } from "@/lib/brands";
 
 interface FiltersProps {
   categories: CategorySummary[];
@@ -15,6 +16,10 @@ interface FiltersProps {
   onSelectWeight: (weight: string | null) => void;
   selectedVestCategory: string | null;
   onSelectVestCategory: (vestCat: string | null) => void;
+  selectedBrand: string | null;
+  onSelectBrand: (brand: string | null) => void;
+  sortOrder: string;
+  onSortChange: (sort: string) => void;
 }
 
 const MACRO_CATEGORIES = [
@@ -57,35 +62,65 @@ export function Filters({
   selectedWeight,
   onSelectWeight,
   selectedVestCategory,
-  onSelectVestCategory
+  onSelectVestCategory,
+  selectedBrand,
+  onSelectBrand,
+  sortOrder,
+  onSortChange
 }: FiltersProps) {
   const { layout } = useTheme();
+
+  const isReplicaCategory = selectedCategory === "#aeg" || selectedCategory === "#gbb" || selectedCategory === "#gbbr" || selectedCategory === "#spring" || selectedCategory === "replicas";
 
   if (layout === "topbar") {
     return (
       <div className="bg-card border-b border-border p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
-        <div className="w-full md:max-w-[480px] flex gap-2">
+        <div className="w-full md:max-w-[800px] flex gap-2 flex-wrap">
           <Input 
             placeholder="Buscar código ou nome..." 
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="font-mono text-sm w-full"
+            className="font-mono text-sm w-full md:w-auto flex-1"
           />
+          
+          <select
+            value={sortOrder}
+            onChange={(e) => onSortChange(e.target.value)}
+            className="font-mono text-xs px-2 py-2 rounded-md bg-background border border-border flex-1 md:flex-none"
+          >
+            <option value="recent">Recentes</option>
+            <option value="asc">A-Z</option>
+            <option value="price_asc">Menor Preço</option>
+            <option value="price_desc">Maior Preço</option>
+          </select>
+
+          {isReplicaCategory && (
+            <select
+              value={selectedBrand || ""}
+              onChange={(e) => onSelectBrand(e.target.value || null)}
+              className="font-mono text-xs px-2 py-2 rounded-md bg-background border border-border flex-1 md:flex-none"
+            >
+              <option value="">Todas Marcas</option>
+              {AIRSOFT_BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+            </select>
+          )}
+
           {selectedCategory === "#bbs" && (
             <select
               value={selectedWeight || ""}
               onChange={(e) => onSelectWeight(e.target.value || null)}
-              className="font-mono text-xs px-2 rounded-md bg-background border border-border"
+              className="font-mono text-xs px-2 py-2 rounded-md bg-background border border-border flex-1 md:flex-none"
             >
               <option value="">Qualquer Peso</option>
               {BB_WEIGHTS.map(w => <option key={w} value={w}>{w}</option>)}
             </select>
           )}
+
           {selectedCategory === "#vestuario" && (
             <select
               value={selectedVestCategory || ""}
               onChange={(e) => onSelectVestCategory(e.target.value || null)}
-              className="font-mono text-xs px-2 rounded-md bg-background border border-border"
+              className="font-mono text-xs px-2 py-2 rounded-md bg-background border border-border flex-1 md:flex-none"
             >
               <option value="">All Gear</option>
               {VEST_CATEGORIES.map(v => <option key={v.value} value={v.value}>{v.label}</option>)}
@@ -110,6 +145,7 @@ export function Filters({
                 onSelectCategory(cat.slug);
                 if (cat.slug !== "#bbs") onSelectWeight(null);
                 if (cat.slug !== "#vestuario") onSelectVestCategory(null);
+                if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#spring") onSelectBrand(null);
               }}
               className={`flex-shrink-0 font-mono text-xs px-4 py-2 rounded-full border transition-colors ${
                 selectedCategory === cat.slug
@@ -138,6 +174,22 @@ export function Filters({
       <div className="space-y-6">
         <div>
           <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-2 block">
+            Ordenação
+          </label>
+          <select
+            value={sortOrder}
+            onChange={(e) => onSortChange(e.target.value)}
+            className="w-full font-mono text-sm p-2 rounded-md bg-background border border-border text-foreground"
+          >
+            <option value="recent">Recentes (Adicionados)</option>
+            <option value="asc">Alfabética (A-Z)</option>
+            <option value="price_asc">Menor Preço</option>
+            <option value="price_desc">Maior Preço</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-2 block">
             Busca por Palavra-chave
           </label>
           <Input 
@@ -147,6 +199,22 @@ export function Filters({
             className="font-mono text-sm bg-background border-border"
           />
         </div>
+
+        {isReplicaCategory && (
+          <div className="p-3 bg-muted/20 border border-border rounded-md">
+            <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-2 block">
+              Fabricante (Marca)
+            </label>
+            <select
+              value={selectedBrand || ""}
+              onChange={(e) => onSelectBrand(e.target.value || null)}
+              className="w-full font-mono text-sm p-2 rounded-md bg-background border border-border text-foreground"
+            >
+              <option value="">Todas Marcas</option>
+              {AIRSOFT_BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+            </select>
+          </div>
+        )}
 
         {selectedCategory === "#bbs" && (
           <div className="p-3 bg-muted/20 border border-border rounded-md">
@@ -186,7 +254,10 @@ export function Filters({
           </h3>
           <div className="flex flex-col gap-1">
             <button
-              onClick={() => onSelectCategory(null)}
+              onClick={() => {
+                onSelectCategory(null);
+                onSelectBrand(null);
+              }}
               className={`text-left font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
                 selectedCategory === null 
                   ? "bg-primary text-primary-foreground font-bold shadow-[0_0_10px_var(--primary)_inset]" 
@@ -202,6 +273,7 @@ export function Filters({
                   onSelectCategory(cat.slug);
                   if (cat.slug !== "#bbs") onSelectWeight(null);
                   if (cat.slug !== "#vestuario") onSelectVestCategory(null);
+                  if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#spring") onSelectBrand(null);
                 }}
                 className={`flex items-center justify-between font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
                   selectedCategory === cat.slug

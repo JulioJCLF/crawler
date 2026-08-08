@@ -5,6 +5,7 @@ import { Filters } from "@/components/layout/Filters";
 import { Radar } from "@/components/layout/Radar";
 import { ProductCard } from "@/components/ProductCard";
 import { useTheme } from "@/providers/ThemeProvider";
+import { parseUsdPrice } from "@/lib/pricingConfig";
 
 export default function Home() {
   const [snapshot, setSnapshot] = useState<any>(null);
@@ -15,6 +16,9 @@ export default function Home() {
 
   const [selectedWeight, setSelectedWeight] = useState<string | null>(null);
   const [selectedVestCategory, setSelectedVestCategory] = useState<string | null>(null);
+  const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [sortOrder, setSortOrder] = useState<string>("recent");
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 36;
 
@@ -70,6 +74,16 @@ export default function Home() {
 
   const handleVestCategoryChange = (v: string | null) => {
     setSelectedVestCategory(v);
+    setCurrentPage(1);
+  };
+
+  const handleBrandChange = (b: string | null) => {
+    setSelectedBrand(b);
+    setCurrentPage(1);
+  };
+
+  const handleSortChange = (sort: string) => {
+    setSortOrder(sort);
     setCurrentPage(1);
   };
 
@@ -141,14 +155,40 @@ export default function Home() {
       matchesVest = vestRegex.test(p.name);
     }
 
-    return matchesSearch && matchesCat && matchesWeight && matchesVest;
+    let matchesBrand = true;
+    if (selectedBrand && matchesCat) {
+      // Create a regex to match the exact word to prevent "KWA" from matching "KWC" if they overlap somehow (they don't, just safe)
+      const brandRegex = new RegExp(`\\b${selectedBrand.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+      matchesBrand = brandRegex.test(p.name);
+    }
+
+    return matchesSearch && matchesCat && matchesWeight && matchesVest && matchesBrand;
+  });
+
+  // Apply Sorting
+  const sortedProducts = [...filteredProducts].sort((a: any, b: any) => {
+    switch (sortOrder) {
+      case "asc":
+        return a.name.localeCompare(b.name);
+      case "price_asc":
+        return parseUsdPrice(a.price) - parseUsdPrice(b.price);
+      case "price_desc":
+        return parseUsdPrice(b.price) - parseUsdPrice(a.price);
+      case "recent":
+      default:
+        // Use firstSeen date. If dates are the same, rely on their original order (fallback)
+        if (a.firstSeen && b.firstSeen) {
+          return new Date(b.firstSeen).getTime() - new Date(a.firstSeen).getTime();
+        }
+        return 0;
+    }
   });
 
   // Paginação
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+  const totalPages = Math.ceil(sortedProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentProducts = filteredProducts.slice(indexOfFirstItem, indexOfLastItem);
+  const currentProducts = sortedProducts.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -180,6 +220,10 @@ export default function Home() {
           onSelectWeight={handleWeightChange}
           selectedVestCategory={selectedVestCategory}
           onSelectVestCategory={handleVestCategoryChange}
+          selectedBrand={selectedBrand}
+          onSelectBrand={handleBrandChange}
+          sortOrder={sortOrder}
+          onSortChange={handleSortChange}
         />
 
         <main className={`flex-1 overflow-y-auto ${layout === 'sidebar' ? 'p-6 md:p-10 max-h-screen' : 'p-6'}`}>
