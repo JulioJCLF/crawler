@@ -3,7 +3,6 @@
 import { useTheme } from "@/providers/ThemeProvider";
 import { Input } from "@/components/ui/input";
 import { CategorySummary } from "@/types";
-import { AIRSOFT_BRANDS } from "@/lib/brands";
 
 interface FiltersProps {
   categories: CategorySummary[];
@@ -20,6 +19,7 @@ interface FiltersProps {
   onSelectBrand: (brand: string | null) => void;
   sortOrder: string;
   onSortChange: (sort: string) => void;
+  availableBrands: string[];
 }
 
 const MACRO_CATEGORIES = [
@@ -66,7 +66,8 @@ export function Filters({
   selectedBrand,
   onSelectBrand,
   sortOrder,
-  onSortChange
+  onSortChange,
+  availableBrands
 }: FiltersProps) {
   const { layout } = useTheme();
 
@@ -101,7 +102,7 @@ export function Filters({
               className="font-mono text-xs px-2 py-2 rounded-md bg-background border border-border flex-1 md:flex-none"
             >
               <option value="">Todas Marcas</option>
-              {AIRSOFT_BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+              {availableBrands.map(brand => <option key={brand} value={brand}>{brand}</option>)}
             </select>
           )}
 
@@ -211,7 +212,7 @@ export function Filters({
               className="w-full font-mono text-sm p-2 rounded-md bg-background border border-border text-foreground"
             >
               <option value="">Todas Marcas</option>
-              {AIRSOFT_BRANDS.map(brand => <option key={brand} value={brand}>{brand}</option>)}
+              {availableBrands.map(brand => <option key={brand} value={brand}>{brand}</option>)}
             </select>
           </div>
         )}

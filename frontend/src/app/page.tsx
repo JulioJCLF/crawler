@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Filters } from "@/components/layout/Filters";
 import { Radar } from "@/components/layout/Radar";
 import { ProductCard } from "@/components/ProductCard";
 import { useTheme } from "@/providers/ThemeProvider";
 import { parseUsdPrice } from "@/lib/pricingConfig";
+import { AIRSOFT_BRANDS } from "@/lib/brands";
 
 export default function Home() {
   const [snapshot, setSnapshot] = useState<any>(null);
@@ -89,6 +90,23 @@ export default function Home() {
 
   // Filtra itens sem preço (Sob Consulta) da exibição principal e do radar
   const availableProducts = snapshot.products.filter((p: any) => p.price);
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const availableBrands = useMemo(() => {
+    const brandsSet = new Set<string>();
+    // We only care about brands in "replicas" since the brand filter only shows for replicas
+    availableProducts
+      .filter((p: any) => p.category === "replicas")
+      .forEach((p: any) => {
+        const lowerName = p.name.toLowerCase();
+        // Check which master brand matches
+        const matchedBrand = AIRSOFT_BRANDS.find(b => lowerName.includes(b.toLowerCase()));
+        if (matchedBrand) {
+          brandsSet.add(matchedBrand);
+        }
+      });
+    return Array.from(brandsSet).sort();
+  }, [availableProducts]);
 
   const filteredProducts = availableProducts.filter((p: any) => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
@@ -224,6 +242,7 @@ export default function Home() {
           onSelectBrand={handleBrandChange}
           sortOrder={sortOrder}
           onSortChange={handleSortChange}
+          availableBrands={availableBrands}
         />
 
         <main className={`flex-1 overflow-y-auto ${layout === 'sidebar' ? 'p-6 md:p-10 max-h-screen' : 'p-6'}`}>
