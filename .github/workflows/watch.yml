@@ -27,7 +27,7 @@ jobs:
       - name: Rodar crawler
         env:
           WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        run: node crawler.js
+        run: npm start
 
       - name: Commitar snapshot atualizado
         run: |
