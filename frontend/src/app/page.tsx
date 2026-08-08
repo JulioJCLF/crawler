@@ -73,7 +73,10 @@ export default function Home() {
     setCurrentPage(1);
   };
 
-  const filteredProducts = snapshot.products.filter((p: any) => {
+  // Filtra itens sem preço (Sob Consulta) da exibição principal e do radar
+  const availableProducts = snapshot.products.filter((p: any) => p.price);
+
+  const filteredProducts = availableProducts.filter((p: any) => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
     let matchesCat = true;
 
@@ -172,7 +175,7 @@ export default function Home() {
           onSelectCategory={handleCategoryChange}
           search={search}
           onSearchChange={handleSearchChange}
-          totalCount={snapshot.count}
+          totalCount={availableProducts.length}
           selectedWeight={selectedWeight}
           onSelectWeight={handleWeightChange}
           selectedVestCategory={selectedVestCategory}
@@ -182,7 +185,7 @@ export default function Home() {
         <main className={`flex-1 overflow-y-auto ${layout === 'sidebar' ? 'p-6 md:p-10 max-h-screen' : 'p-6'}`}>
           <div className="max-w-[1400px] mx-auto">
             {/* Oculta Radar quando há pesquisa ou categoria selecionada */}
-            {!search && !selectedCategory && <Radar products={snapshot.products} />}
+            {!search && !selectedCategory && <Radar products={availableProducts} />}
             
             <div className="mb-6 flex items-baseline justify-between mt-8">
               <h1 className="font-heading font-bold text-3xl uppercase tracking-wider text-foreground">
