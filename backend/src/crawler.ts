@@ -36,14 +36,19 @@ export async function runCrawler(): Promise<Product[]> {
           return;
         }
 
-        const enforcedCatSlug = enforceCategory(title, originalCatSlug);
+        const { categorySlug: enforcedCatSlug, weight: newWeight } = enforceCategory(title, originalCatSlug);
         validOnPage++;
 
         // If product already found, check if new category has higher priority
         if (productsMap.has(id)) {
           const existing = productsMap.get(id)!;
-          const existingWeight = CATEGORY_WEIGHTS[existing.category] || 0;
-          const newWeight = CATEGORY_WEIGHTS[enforcedCatSlug] || 0;
+          // We can't know the exact weight it was originally stored with unless we recalculate it or store it, 
+          // but we can just use the config weight as a fallback, or better, we can re-evaluate it.
+          // Wait, since we are doing dynamic weights, we should probably evaluate existing again?
+          // No, let's just use the default CATEGORY_WEIGHTS as the base, unless the newWeight is > that.
+          // Since existing might have been a forced gun (100) or just a regular part.
+          // Let's re-run enforceCategory on the existing name just to be safe, or simply use `enforceCategory(existing.name, existing.category).weight`.
+          const { weight: existingWeight } = enforceCategory(existing.name, existing.category);
           
           if (newWeight > existingWeight) {
             existing.category = enforcedCatSlug;

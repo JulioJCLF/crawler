@@ -46,21 +46,35 @@ export const CATEGORY_WEIGHTS: Record<string, number> = {
   "speedsoft": 5,
 };
 
-export function enforceCategory(name: string, originalCategory: string): string {
+export function enforceCategory(name: string, originalCategory: string): { categorySlug: string, weight: number } {
   const lowerName = name.toLowerCase();
-  
+  let defaultWeight = CATEGORY_WEIGHTS[originalCategory] || 0;
+
+  // OVERRIDES GLOBAIS: Garante que armas verdadeiras não caiam em peças (PESO 100)
+  if (
+    lowerName.endsWith("airsoft rifle") || 
+    lowerName.includes("blowback airsoft pistol") ||
+    lowerName.match(/\bsniper rifle\b/) || 
+    lowerName.match(/\bairsoft sniper\b/) ||
+    (lowerName.match(/\baeg\b/) && !lowerName.match(/for aeg|gearbox|part|peça|magazine/i))
+  ) {
+    return { categorySlug: "replicas", weight: 100 };
+  }
+
+  // OVERRIDES GENÉRICOS (Replicas -> Peças)
   if (originalCategory === "replicas") {
     if (lowerName.match(/\b(magazine|mag)\b/i)) {
-      return "magazines";
+      return { categorySlug: "magazines", weight: CATEGORY_WEIGHTS["magazines"] };
     }
     if (lowerName.match(/for aeg|for gbb|for gbbr|cylinder|spring|gearbox|piston|hop up|bucking|gear|motor|handguard|stock|grip|peça|peca/i)) {
       if (lowerName.match(/handguard|stock|grip|rail/i)) {
-        return "pecas-externas";
+        return { categorySlug: "pecas-externas", weight: CATEGORY_WEIGHTS["pecas-externas"] };
       }
-      return "pecas-internas";
+      return { categorySlug: "pecas-internas", weight: CATEGORY_WEIGHTS["pecas-internas"] };
     }
   }
-  return originalCategory;
+
+  return { categorySlug: originalCategory, weight: defaultWeight };
 }
 
 // Returns true if product should be kept, false if it should be excluded
