@@ -3,6 +3,7 @@
 import { useTheme } from "@/providers/ThemeProvider";
 import { Input } from "@/components/ui/input";
 import { CategorySummary } from "@/types";
+import { Logo } from "@/components/layout/Logo";
 
 interface FiltersProps {
   categories: CategorySummary[];
@@ -76,6 +77,7 @@ export function Filters({
   if (layout === "topbar") {
     return (
       <div className="bg-card border-b border-border p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <Logo className="h-12 w-auto object-contain flex-shrink-0" />
         <div className="w-full md:max-w-[800px] flex gap-2 flex-wrap">
           <Input 
             placeholder="Buscar código ou nome..." 
@@ -165,6 +167,10 @@ export function Filters({
   // Default Sidebar Layout
   return (
     <aside className="w-full md:w-72 border-r border-border bg-card/30 p-6 flex flex-col gap-6 sticky top-0 h-screen overflow-y-auto">
+      <div className="flex justify-center border-b border-border pb-5">
+        <Logo className="h-24 w-auto object-contain" />
+      </div>
+
       <div>
         <h2 className="font-heading font-bold text-2xl tracking-tighter uppercase mb-1 text-foreground">Filtros Táticos</h2>
         <p className="text-xs text-muted-foreground font-mono">

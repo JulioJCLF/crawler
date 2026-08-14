@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { useTheme } from "@/providers/ThemeProvider";
 import { parseUsdPrice } from "@/lib/pricingConfig";
 import { AIRSOFT_BRANDS } from "@/lib/brands";
+import { siteConfig } from "@/config/site";
 
 export default function Home() {
   const [snapshot, setSnapshot] = useState<any>(null);
@@ -215,21 +216,24 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Dev Tools - Apenas para testes de layout */}
-      <div className="fixed bottom-4 left-4 z-50 flex gap-2">
-        <button 
-          onClick={() => setTheme(theme === 'hunting' ? 'minimal' : 'hunting')}
-          className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
-        >
-          Theme: {theme}
-        </button>
-        <button 
-          onClick={() => setLayout(layout === 'sidebar' ? 'topbar' : 'sidebar')}
-          className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
-        >
-          Layout: {layout}
-        </button>
-      </div>
+      {/* Dev Tools - controlados por código (siteConfig.showDevTools).
+          Em produção fica desligado, então o cliente final nunca vê. */}
+      {siteConfig.showDevTools && (
+        <div className="fixed bottom-4 left-4 z-50 flex gap-2">
+          <button
+            onClick={() => setTheme(theme === 'hunting' ? 'minimal' : 'hunting')}
+            className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
+          >
+            Theme: {theme}
+          </button>
+          <button
+            onClick={() => setLayout(layout === 'sidebar' ? 'topbar' : 'sidebar')}
+            className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-mono opacity-20 hover:opacity-100 transition-opacity shadow-lg"
+          >
+            Layout: {layout}
+          </button>
+        </div>
+      )}
 
       <div className={`flex flex-1 ${layout === 'sidebar' ? 'flex-col md:flex-row' : 'flex-col'}`}>
         <Filters 

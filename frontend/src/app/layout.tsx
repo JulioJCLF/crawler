@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { CartProvider } from "@/providers/CartProvider";
 import { FloatingCart } from "@/components/layout/FloatingCart";
+import { siteConfig } from "@/config/site";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -23,8 +24,8 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Catálogo",
-  description: "Plataforma de Catálogo de Equipamentos",
+  title: siteConfig.brandName,
+  description: `${siteConfig.brandName} — Catálogo de Equipamentos`,
 };
 
 export default function RootLayout({
@@ -39,7 +40,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col relative">
-        <ThemeProvider defaultTheme="hunting" defaultLayout="sidebar">
+        <ThemeProvider defaultTheme={siteConfig.theme} defaultLayout={siteConfig.layout}>
           <CartProvider>
             {children}
             <FloatingCart />

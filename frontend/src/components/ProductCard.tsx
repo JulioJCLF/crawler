@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/providers/CartProvider";
 import { ExternalLink } from "lucide-react";
 import { calculateBRLPrice } from "@/lib/pricingConfig";
+import { siteConfig } from "@/config/site";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
@@ -14,7 +15,7 @@ export function ProductCard({ product }: { product: Product }) {
   const previousBrl = calculateBRLPrice(product.previousPrice, product.category);
 
   const zapMessage = `Olá, tenho interesse no produto *${product.name}* (Ref: ${product.id}).\n${currentBrl ? `Preço: ${currentBrl.formatted}` : `Qual o valor?`}\nLink Original: ${product.url}`;
-  const zapUrl = `https://wa.me/5541999999999?text=${encodeURIComponent(zapMessage)}`;
+  const zapUrl = `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(zapMessage)}`;
 
   // Cálculo de Porcentagem de Desconto
   let discountPercentage = 0;
