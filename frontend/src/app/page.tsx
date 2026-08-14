@@ -120,7 +120,19 @@ export default function Home() {
 
     if (selectedCategory) {
       if (selectedCategory === "#aeg") {
-        matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("aeg");
+        // Réplica AEG de verdade: tem "aeg", tem palavra de arma (rifle/carbine/
+        // smg/machine gun/pdw — tolerando erros de digitação de "rifle": rile,
+        // rilfe, rilfle) e NÃO é acessório ("... for ... aeg"). Assim tira as
+        // peças (stocks, selectors, pistons, hop-up, buffer tubes, etc.) que têm
+        // "aeg" no nome mas não são rifles.
+        const n = p.name.toLowerCase();
+        matchesCat =
+          p.category === "replicas" &&
+          /\baeg\b/.test(n) &&
+          /\bri[lf]{1,3}e|\bcarbine\b|\bsmg\b|\bdmr\b|\bmarksman\b|machine gun|pdw/.test(n) &&
+          !/\bfor\b/.test(n) &&
+          // exclui unidades eletrônicas soltas (ETU/MOSFET) que citam "rifles" no nome
+          !/micro switch|\bfcu\b/.test(n);
       } else if (selectedCategory === "#gbbr") {
         matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("gbbr");
       } else if (selectedCategory === "#gbb") {
