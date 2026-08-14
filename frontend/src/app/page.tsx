@@ -137,8 +137,18 @@ export default function Home() {
         matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("gbbr");
       } else if (selectedCategory === "#gbb") {
         matchesCat = p.category === "replicas" && (/\bgbb\b/i.test(p.name) && !p.name.toLowerCase().includes("gbbr"));
-      } else if (selectedCategory === "#spring") {
-        matchesCat = p.category === "replicas" && p.name.toLowerCase().includes("spring");
+      } else if (selectedCategory === "#sniper") {
+        // Snipers de verdade (spring/bolt-action, AEG e gás): exige indício de
+        // sniper + palavra de arma e exclui acessórios. Antes o filtro pegava
+        // "spring" no nome, o que trazia molas (peças internas), não rifles.
+        const n = p.name.toLowerCase();
+        const isSniper = /\bsniper\b|bolt.?action|\bvsr\b|\bl96\b|\bawp\b|\bawm\b|tac-?41|\bssg-?\d|\bm40\b|\bm24\b|\bm700\b|\bmsr\b/.test(n);
+        const isGun = /\bri[lf]{1,3}e|\bcarbine\b/.test(n);
+        const isAccessory =
+          /\bfor\b|magazine|\bmag\b|cylinder|bipod|\bcover\b|scope|mount|\bring\b|\brail\b|barrel|piston|spring guide|\bhop\b|bucking|cheek|sling|camo/.test(n) ||
+          // nome que começa com "<marca> <peça>" (ex.: "CYMA STOCK ...") é acessório
+          /^\S+\s+(stock|scope|bipod|mount|cover|magazine|cylinder|rail|barrel|sling|handguard|grip|hop|piston|spring)\b/.test(n);
+        matchesCat = p.category === "replicas" && isSniper && isGun && !isAccessory;
       } else if (selectedCategory === "#miras") {
         matchesCat = p.category === "miras" && !/lanterna|laser|flashlight|iluminador|luz|mount|base|trilho|rail|ris |ras |anel/i.test(p.name);
       } else if (selectedCategory === "#luz") {

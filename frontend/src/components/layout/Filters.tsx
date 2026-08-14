@@ -27,7 +27,7 @@ const MACRO_CATEGORIES = [
   { slug: "#aeg", label: "Rifles AEG" },
   { slug: "#gbbr", label: "Rifles GBBR" },
   { slug: "#gbb", label: "Pistolas GBB" },
-  { slug: "#spring", label: "Snipers / Spring" },
+  { slug: "#sniper", label: "Snipers / Spring" },
   { slug: "#miras", label: "Red Dots e Miras" },
   { slug: "#luz", label: "Lanternas e Lasers" },
   { slug: "#mount", label: "Trilhos e Mounts" },
@@ -73,7 +73,7 @@ export function Filters({
 }: FiltersProps) {
   const { layout } = useTheme();
 
-  const isReplicaCategory = selectedCategory === "#aeg" || selectedCategory === "#gbb" || selectedCategory === "#gbbr" || selectedCategory === "#spring" || selectedCategory === "replicas";
+  const isReplicaCategory = selectedCategory === "#aeg" || selectedCategory === "#gbb" || selectedCategory === "#gbbr" || selectedCategory === "#sniper" || selectedCategory === "replicas";
 
   if (layout === "topbar") {
     return (
@@ -149,7 +149,7 @@ export function Filters({
                 onSelectCategory(cat.slug);
                 if (cat.slug !== "#bbs") onSelectWeight(null);
                 if (cat.slug !== "#vestuario") onSelectVestCategory(null);
-                if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#spring") onSelectBrand(null);
+                if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#sniper") onSelectBrand(null);
               }}
               className={`flex-shrink-0 font-mono text-xs px-4 py-2 rounded-full border transition-colors ${
                 selectedCategory === cat.slug
@@ -281,7 +281,7 @@ export function Filters({
                   onSelectCategory(cat.slug);
                   if (cat.slug !== "#bbs") onSelectWeight(null);
                   if (cat.slug !== "#vestuario") onSelectVestCategory(null);
-                  if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#spring") onSelectBrand(null);
+                  if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#sniper") onSelectBrand(null);
                 }}
                 className={`flex items-center justify-between font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
                   selectedCategory === cat.slug
