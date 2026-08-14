@@ -39,6 +39,30 @@ export default function Home() {
       });
   }, []);
 
+  // Filtra itens sem preço (Sob Consulta) da exibição principal e do radar.
+  // IMPORTANTE: hooks precisam ser chamados incondicionalmente, ANTES de qualquer
+  // return antecipado (loading / !snapshot), senão React quebra (error #310).
+  const availableProducts = useMemo(
+    () => (snapshot?.products ?? []).filter((p: any) => p.price),
+    [snapshot]
+  );
+
+  const availableBrands = useMemo(() => {
+    const brandsSet = new Set<string>();
+    // We only care about brands in "replicas" since the brand filter only shows for replicas
+    availableProducts
+      .filter((p: any) => p.category === "replicas")
+      .forEach((p: any) => {
+        const lowerName = p.name.toLowerCase();
+        // Check which master brand matches
+        const matchedBrand = AIRSOFT_BRANDS.find(b => lowerName.includes(b.toLowerCase()));
+        if (matchedBrand) {
+          brandsSet.add(matchedBrand);
+        }
+      });
+    return Array.from(brandsSet).sort();
+  }, [availableProducts]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
@@ -88,26 +112,7 @@ export default function Home() {
     setCurrentPage(1);
   };
 
-  // Filtra itens sem preço (Sob Consulta) da exibição principal e do radar
-  const availableProducts = snapshot.products.filter((p: any) => p.price);
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const availableBrands = useMemo(() => {
-    const brandsSet = new Set<string>();
-    // We only care about brands in "replicas" since the brand filter only shows for replicas
-    availableProducts
-      .filter((p: any) => p.category === "replicas")
-      .forEach((p: any) => {
-        const lowerName = p.name.toLowerCase();
-        // Check which master brand matches
-        const matchedBrand = AIRSOFT_BRANDS.find(b => lowerName.includes(b.toLowerCase()));
-        if (matchedBrand) {
-          brandsSet.add(matchedBrand);
-        }
-      });
-    return Array.from(brandsSet).sort();
-  }, [availableProducts]);
-
+  // availableProducts e availableBrands são calculados acima (antes dos returns).
   const filteredProducts = availableProducts.filter((p: any) => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
     let matchesCat = true;
