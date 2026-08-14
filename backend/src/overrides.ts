@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import type { Product, CategorySummary } from "./types.js";
-import { CATEGORIES } from "./config.js";
+import { ALL_CATEGORIES as CATEGORIES } from "./config.js";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────

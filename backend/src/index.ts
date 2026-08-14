@@ -1,7 +1,7 @@
 import { runCrawler } from "./crawler.js";
 import { loadSnapshot, saveSnapshot, applyChangeTracking } from "./history.js";
 import { loadOverrides, applyOverrides } from "./overrides.js";
-import { CATEGORIES } from "./config.js";
+import { ALL_CATEGORIES } from "./config.js";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
@@ -35,7 +35,7 @@ async function main() {
   if (ov.notFound.length) console.log(`(${ov.notFound.length} override(s) sem produto correspondente no catálogo)`);
   if (ov.invalidCategory.length) console.warn(`Overrides com categoria inválida (ignorados): ${ov.invalidCategory.join(", ")}`);
 
-  const categorySummary = CATEGORIES.map((c) => ({
+  const categorySummary = ALL_CATEGORIES.map((c) => ({
     slug: c.slug,
     label: c.label,
     count: atuais.filter((p) => p.category === c.slug).length,

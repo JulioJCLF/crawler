@@ -15,6 +15,19 @@ export const CATEGORIES = [
   { slug: "vestuario",      label: "Equipamento e Vestuário", url: "https://www.arsenalsports.com/produtos?d=381" },
 ];
 
+/**
+ * Categorias DERIVADAS: não são fonte de crawl (o site não tem uma URL só de
+ * buckings), mas são destinos válidos criados pela heurística/overrides.
+ * Ex.: "buckings" (borrachas de hop-up) ficam pulverizados no site inteiro;
+ * aqui damos um lugar próprio pra eles.
+ */
+export const VIRTUAL_CATEGORIES = [
+  { slug: "buckings", label: "Buckings" },
+];
+
+/** Todas as categorias válidas (crawl + derivadas). Use para resumo/validação. */
+export const ALL_CATEGORIES = [...CATEGORIES, ...VIRTUAL_CATEGORIES];
+
 export const MAX_PAGES = 150;
 export const PAGE_PARAM = "pagina";
 
@@ -44,11 +57,19 @@ export const CATEGORY_WEIGHTS: Record<string, number> = {
   "baterias": 5,
   "granadas": 5,
   "speedsoft": 5,
+  "buckings": 6,
 };
 
 export function enforceCategory(name: string, originalCategory: string): { categorySlug: string, weight: number } {
   const lowerName = name.toLowerCase();
   let defaultWeight = CATEGORY_WEIGHTS[originalCategory] || 0;
+
+  // BUCKINGS (borracha de hop-up) têm categoria própria. Verificado ANTES de
+  // tudo (peso 110, maior que a regra de "arma AEG" = 100) porque muitos buckings
+  // têm "AEG" no nome e estavam sendo forçados para "replicas".
+  if (lowerName.match(/\bbucking\b/) || lowerName.match(/hop[\s-]?up rubber/)) {
+    return { categorySlug: "buckings", weight: 110 };
+  }
 
   // OVERRIDES GLOBAIS: Garante que armas verdadeiras não caiam em peças (PESO 100)
   if (

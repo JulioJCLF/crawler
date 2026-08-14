@@ -43,7 +43,22 @@ npm run overrides -- unset 31479 19923
 
 # 6) Reaplicar os overrides no snapshot.json agora (sem crawl)
 npm run overrides -- apply
+
+# 7) VARRER o catálogo inteiro por regra de nome (não por id)
+#    Prévia (não grava):
+npm run overrides -- sweep --match "\bbucking\b" --to buckings
+#    Aplicar no snapshot.json:
+npm run overrides -- sweep --match "\bbucking\b" --to buckings --apply
 ```
+
+### `set`/`move` (por id) vs `sweep` (por regra)
+
+- **`set` / `move`** gravam em `overrides.json` (por id). São para **exceções
+  pontuais** — sobrevivem a qualquer crawl porque são reaplicados sempre.
+- **`sweep`** aplica uma **regra de nome** direto no `snapshot.json` do catálogo
+  inteiro (rápido para lotes grandes). Para a regra virar **permanente** (todo
+  crawl), adicione-a em `src/config.ts` → `enforceCategory` (foi o que fizemos
+  para buckings). Sem isso, o `sweep` vale só até o próximo crawl.
 
 ### Flags úteis
 
@@ -57,7 +72,10 @@ npm run overrides -- apply
 
 `replicas`, `pecas-externas`, `pecas-internas`, `pistolas`, `rifles-gas`,
 `sniper`, `magazines`, `bbs`, `gas`, `baterias`, `granadas`, `speedsoft`,
-`miras`, `vestuario`.
+`miras`, `vestuario`, `buckings`.
+
+> `buckings` é uma categoria **derivada** (não vem de uma URL do site): a regra
+> em `enforceCategory` recolhe todos os buckings do catálogo inteiro para ela.
 
 > Editar `overrides.json` na mão também funciona — o formato é
 > `{ "<id>": { "category": "<slug>", "note": "..." } }` (ou só `{ "<id>": "<slug>" }`).

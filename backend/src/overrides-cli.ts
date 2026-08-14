@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Product, Snapshot } from "./types.js";
-import { CATEGORIES } from "./config.js";
+import { ALL_CATEGORIES as CATEGORIES } from "./config.js";
 import {
   loadOverrides,
   saveOverrides,
@@ -240,6 +240,58 @@ async function cmdMove(args: ParsedArgs, autoApply: boolean) {
   if (autoApply) await applyToSnapshotFile(overrides);
 }
 
+async function cmdSweep(args: ParsedArgs) {
+  const to = args.flags.to;
+  const matchStr = typeof args.flags.match === "string" ? args.flags.match : null;
+  if (typeof to !== "string" || !matchStr) {
+    console.error(c.red("Uso: sweep --match <regex> --to <slug> [--from <slug>] [--limit n] [--apply]"));
+    process.exit(1);
+  }
+  requireValidCategory(to);
+  const from = typeof args.flags.from === "string" ? args.flags.from : null;
+  if (from) requireValidCategory(from);
+  const matcher = new RegExp(matchStr, "i");
+  const limit = args.flags.limit ? Number(args.flags.limit) : Infinity;
+  const confirm = args.flags.apply === true;
+
+  const snapshot = await loadSnapshotOrExit();
+  let targets = snapshot.products.filter(
+    (p) => matcher.test(p.name) && p.category !== to && (!from || p.category === from),
+  );
+  if (Number.isFinite(limit)) targets = targets.slice(0, limit);
+
+  // resumo por categoria de origem
+  const byCat: Record<string, number> = {};
+  for (const p of targets) byCat[p.category] = (byCat[p.category] || 0) + 1;
+
+  console.log(
+    c.bold(`\nVarredura por regra: /${matchStr}/i → ${c.green(to)}` + (from ? c.dim(`  (só de ${from})`) : " (catálogo inteiro)")),
+  );
+  console.log(c.dim(`origem: ${Object.entries(byCat).map(([k, v]) => `${k}=${v}`).join(", ") || "—"}`));
+  console.log(c.bold(`\n${targets.length} item(ns):\n`));
+  targets.slice(0, 25).forEach(printProduct);
+  if (targets.length > 25) console.log(c.dim(`  … +${targets.length - 25} item(ns)`));
+
+  if (targets.length === 0) {
+    console.log(c.yellow("\nNada a varrer.\n"));
+    return;
+  }
+  if (!confirm) {
+    console.log(c.yellow(`\n[PRÉVIA] Nada gravado. Adicione ${c.bold("--apply")} para aplicar no snapshot.json.`));
+    console.log(c.dim("Dica: para tornar permanente (todo crawl), adicione a regra em src/config.ts (enforceCategory).\n"));
+    return;
+  }
+
+  for (const p of targets) {
+    p.category = to;
+    p.categoryLabel = labelFor(to);
+  }
+  snapshot.categories = recomputeCategorySummary(snapshot.products);
+  await writeFile(SNAPSHOT_PATH, JSON.stringify(snapshot, null, 2));
+  console.log(c.green(`\n✓ ${targets.length} item(ns) movidos para "${to}" no snapshot.json.`));
+  console.log(c.dim("Lembre: mantenha a regra em src/config.ts para persistir nos próximos crawls.\n"));
+}
+
 async function cmdUnset(args: ParsedArgs, autoApply: boolean) {
   const ids = args._;
   if (ids.length === 0) {
@@ -301,6 +353,7 @@ ${c.bold("Controle manual de categorias")}
   ${c.cyan("search")} <termo...> [--cat s] [--limit n]   procura itens no catálogo
   ${c.cyan("set")} <categoria> <id...> [--note ".."]     move ids p/ a categoria
   ${c.cyan("move")} --from s --to s [--match re] [--apply]  migração em LOTE (prévia sem --apply)
+  ${c.cyan("sweep")} --match re --to s [--from s] [--apply]  varre o catálogo TODO por regra de nome
   ${c.cyan("unset")} <id...>                        remove overrides
   ${c.cyan("list")}                                 lista overrides ativos
   ${c.cyan("apply")}                                reaplica overrides no snapshot.json
@@ -326,6 +379,7 @@ async function main() {
     case "search": return cmdSearch(parsed);
     case "set": return cmdSet(parsed, autoApply);
     case "move": return cmdMove(parsed, autoApply);
+    case "sweep": return cmdSweep(parsed);
     case "unset": return cmdUnset(parsed, autoApply);
     case "list": return cmdList();
     case "apply": return cmdApply();

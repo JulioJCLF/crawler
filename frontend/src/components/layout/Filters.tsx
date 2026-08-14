@@ -32,6 +32,7 @@ const MACRO_CATEGORIES = [
   { slug: "#luz", label: "Lanternas e Lasers" },
   { slug: "#mount", label: "Trilhos e Mounts" },
   { slug: "#pecas-internas", label: "Peças Internas" },
+  { slug: "buckings", label: "Buckings" },
   { slug: "#pecas-externas", label: "Peças Externas" },
   { slug: "#vestuario", label: "Vestuário Tático" },
   { slug: "#bbs", label: "Munição (BBs)" },

@@ -48,6 +48,19 @@ describe('Crawler Logic', () => {
       expect(result.categorySlug).toBe('replicas');
       expect(result.weight).toBe(100);
     });
+
+    it('should route buckings to their own category from any source', () => {
+      const fromReplicas = enforceCategory('MAPLE LEAF HOP-UP BUCKING AEG 70º', 'replicas');
+      const fromGas = enforceCategory('KINGARMS HOP-UP BUCKING TM GBB', 'rifles-gas');
+      expect(fromReplicas.categorySlug).toBe('buckings');
+      expect(fromGas.categorySlug).toBe('buckings');
+    });
+
+    it('should win over the AEG gun rule (bucking with "aeg" in name is not a gun)', () => {
+      const result = enforceCategory('G&G HOP-UP BUCKING 50º FOR AEG', 'replicas');
+      expect(result.categorySlug).toBe('buckings');
+      expect(result.weight).toBeGreaterThan(100);
+    });
   });
 
   describe('CATEGORY_WEIGHTS', () => {
