@@ -1,0 +1,25 @@
+{
+  "nome": "Arsenal Crawler",
+  "slug": "crawler",
+  "tipo_item": "requisito",
+  "nome_item": "Requisito",
+  "nome_itens": "Requisitos",
+  "pasta_itens": "02 Requisitos",
+  "prefixo_item": "REQ",
+  "campo_fase": "sprint",
+  "fases": [
+    "Base",
+    "Crawler",
+    "Mudanças e alertas",
+    "Automação",
+    "Vitrine",
+    "Qualidade"
+  ],
+  "campo_categoria": "area",
+  "categorias": {
+    "backend": "Backend (crawler)",
+    "frontend": "Vitrine",
+    "automacao": "Automação",
+    "dados": "Dados e histórico"
+  }
+}

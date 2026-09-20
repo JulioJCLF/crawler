@@ -1,0 +1,56 @@
+---
+tipo: painel
+gerado_em: 2026-09-20
+tags:
+  - crawler/painel
+---
+# Requisitos por fase
+
+> [!info] Página gerada automaticamente em 2026-09-20. Situação de cada item, organizado pelos blocos de trabalho.
+
+## 1 · Crawler
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 5/5
+
+| Requisito | Status | Prioridade |
+|---|---|---|
+| [[REQ-001 Monitorar as categorias do catálogo]] | 🚀 implementado | must |
+| [[REQ-002 Percorrer todas as páginas de cada categoria]] | 🚀 implementado | must |
+| [[REQ-003 Respeitar os limites do site de origem]] | 🚀 implementado | must |
+| [[REQ-004 Descartar produtos fora do escopo]] | 🚀 implementado | must |
+| [[REQ-005 Identificar cada produto e normalizar links]] | 🚀 implementado | must |
+
+## 2 · Mudanças e alertas
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 3/3
+
+| Requisito | Status | Prioridade |
+|---|---|---|
+| [[REQ-006 Comparar com a execução anterior e classificar a mudança]] | 🚀 implementado | must |
+| [[REQ-007 Manter o histórico de preços de cada produto]] | 🚀 implementado | must |
+| [[REQ-008 Avisar as mudanças por webhook]] | 🚀 implementado | must |
+
+## 3 · Automação
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 2/2
+
+| Requisito | Status | Prioridade |
+|---|---|---|
+| [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado | must |
+| [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado | must |
+
+## 4 · Vitrine
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 5/5
+
+| Requisito | Status | Prioridade |
+|---|---|---|
+| [[REQ-011 Listar produtos com filtros e paginação]] | 🚀 implementado | must |
+| [[REQ-012 Esconder itens sob consulta da vitrine]] | 🚀 implementado | must |
+| [[REQ-013 Mostrar preço em reais com o preço anterior]] | 🚀 implementado | must |
+| [[REQ-014 Oferecer contato direto e carrinho em cada card]] | 🚀 implementado | must |
+| [[REQ-015 Manter a lista de marcas indexadas editável]] | 🚀 implementado | should |
+
+## 5 · Qualidade
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 1/1
+
+| Requisito | Status | Prioridade |
+|---|---|---|
+| [[REQ-016 Garantir testes automatizados a cada mudança]] | 🚀 implementado | must |
+

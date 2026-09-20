@@ -1,2 +1,8 @@
 node_modules/
 storage/
+# portal de documentação (Quartz)
+portal/node_modules/
+portal/public/
+portal/.quartz-cache/
+
+.DS_Store
