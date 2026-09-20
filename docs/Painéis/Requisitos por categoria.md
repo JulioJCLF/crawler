@@ -16,7 +16,8 @@ tags:
 | [[REQ-002 Percorrer todas as páginas de cada categoria]] | 🚀 implementado |
 | [[REQ-003 Respeitar os limites do site de origem]] | 🚀 implementado |
 | [[REQ-004 Descartar produtos fora do escopo]] | 🚀 implementado |
-| [[REQ-008 Avisar as mudanças por webhook]] | 🚀 implementado |
+| [[REQ-008 Avisar as mudanças por webhook]] | ✅ aprovado |
+| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | ✅ aprovado |
 
 ## Vitrine
 
@@ -26,6 +27,7 @@ tags:
 | [[REQ-012 Esconder itens sob consulta da vitrine]] | 🚀 implementado |
 | [[REQ-013 Mostrar preço em reais com o preço anterior]] | 🚀 implementado |
 | [[REQ-014 Oferecer contato direto e carrinho em cada card]] | 🚀 implementado |
+| [[REQ-017 Mostrar filtros ativos e permitir limpá-los de uma vez]] | 🚀 implementado |
 
 ## Automação
 
@@ -34,6 +36,7 @@ tags:
 | [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado |
 | [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado |
 | [[REQ-016 Garantir testes automatizados a cada mudança]] | 🚀 implementado |
+| [[REQ-018 Avisar quando a execução diária falhar]] | ✅ aprovado |
 
 ## Dados e histórico
 

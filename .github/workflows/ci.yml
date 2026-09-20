@@ -32,8 +32,11 @@ jobs:
       - name: Install dependencies (frontend)
         run: cd frontend && npm ci
 
-      - name: Run unit tests
+      - name: Run unit tests (backend)
         run: cd backend && npm test
+
+      - name: Run unit tests (frontend)
+        run: cd frontend && npm test
 
       - name: Verify build (Type check)
         run: cd backend && npx tsc --noEmit && cd ../frontend && npx tsc --noEmit

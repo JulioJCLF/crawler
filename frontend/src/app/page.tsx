@@ -2,12 +2,14 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { Filters } from "@/components/layout/Filters";
+import { ActiveFilters } from "@/components/layout/ActiveFilters";
 import { Radar } from "@/components/layout/Radar";
 import { ProductCard } from "@/components/ProductCard";
 import { useTheme } from "@/providers/ThemeProvider";
 import { parseUsdPrice } from "@/lib/pricingConfig";
 import { AIRSOFT_BRANDS } from "@/lib/brands";
 import { siteConfig } from "@/config/site";
+import { buildActiveFilterChips, CLEARED_FILTER_STATE, FilterKey } from "@/lib/activeFilters";
 
 export default function Home() {
   const [snapshot, setSnapshot] = useState<any>(null);
@@ -114,6 +116,38 @@ export default function Home() {
   };
 
   // availableProducts e availableBrands são calculados acima (antes dos returns).
+
+  // REQ-017: remove um filtro específico do resumo, mantendo os demais.
+  const handleRemoveFilter = (key: FilterKey) => {
+    switch (key) {
+      case "search":
+        handleSearchChange(CLEARED_FILTER_STATE.search);
+        break;
+      case "category":
+        handleCategoryChange(CLEARED_FILTER_STATE.category);
+        break;
+      case "brand":
+        handleBrandChange(CLEARED_FILTER_STATE.brand);
+        break;
+      case "weight":
+        handleWeightChange(CLEARED_FILTER_STATE.weight);
+        break;
+      case "vestCategory":
+        handleVestCategoryChange(CLEARED_FILTER_STATE.vestCategory);
+        break;
+    }
+  };
+
+  // REQ-017 / RN1 / RN2: limpa todos os filtros, reseta a página, mas não toca em sortOrder.
+  const handleClearAllFilters = () => {
+    setSearch(CLEARED_FILTER_STATE.search);
+    setSelectedCategory(CLEARED_FILTER_STATE.category);
+    setSelectedBrand(CLEARED_FILTER_STATE.brand);
+    setSelectedWeight(CLEARED_FILTER_STATE.weight);
+    setSelectedVestCategory(CLEARED_FILTER_STATE.vestCategory);
+    setCurrentPage(1);
+  };
+
   const filteredProducts = availableProducts.filter((p: any) => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
     let matchesCat = true;
@@ -211,6 +245,14 @@ export default function Home() {
     return matchesSearch && matchesCat && matchesWeight && matchesVest && matchesBrand;
   });
 
+  const activeFilterChips = buildActiveFilterChips({
+    search,
+    category: selectedCategory,
+    brand: selectedBrand,
+    weight: selectedWeight,
+    vestCategory: selectedVestCategory,
+  });
+
   // Apply Sorting
   const sortedProducts = [...filteredProducts].sort((a: any, b: any) => {
     switch (sortOrder) {
@@ -280,7 +322,13 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto">
             {/* Oculta Radar quando há pesquisa ou categoria selecionada */}
             {!search && !selectedCategory && <Radar products={availableProducts} />}
-            
+
+            <ActiveFilters
+              chips={activeFilterChips}
+              onRemove={handleRemoveFilter}
+              onClearAll={handleClearAllFilters}
+            />
+
             <div className="mb-6 flex items-baseline justify-between mt-8">
               <h1 className="font-heading font-bold text-3xl uppercase tracking-wider text-foreground">
                 Acervo <span className="text-accent">({filteredProducts.length})</span>

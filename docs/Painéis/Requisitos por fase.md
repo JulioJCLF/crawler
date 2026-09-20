@@ -20,24 +20,26 @@ tags:
 | [[REQ-005 Identificar cada produto e normalizar links]] | 🚀 implementado | must |
 
 ## 2 · Mudanças e alertas
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 3/3
+🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ 2/3
 
 | Requisito | Status | Prioridade |
 |---|---|---|
 | [[REQ-006 Comparar com a execução anterior e classificar a mudança]] | 🚀 implementado | must |
 | [[REQ-007 Manter o histórico de preços de cada produto]] | 🚀 implementado | must |
-| [[REQ-008 Avisar as mudanças por webhook]] | 🚀 implementado | must |
+| [[REQ-008 Avisar as mudanças por webhook]] | ✅ aprovado | must |
 
 ## 3 · Automação
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 2/2
+🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ 2/4
 
 | Requisito | Status | Prioridade |
 |---|---|---|
 | [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado | must |
 | [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado | must |
+| [[REQ-018 Avisar quando a execução diária falhar]] | ✅ aprovado | must |
+| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | ✅ aprovado | must |
 
 ## 4 · Vitrine
-🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 5/5
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 6/6
 
 | Requisito | Status | Prioridade |
 |---|---|---|
@@ -46,6 +48,7 @@ tags:
 | [[REQ-013 Mostrar preço em reais com o preço anterior]] | 🚀 implementado | must |
 | [[REQ-014 Oferecer contato direto e carrinho em cada card]] | 🚀 implementado | must |
 | [[REQ-015 Manter a lista de marcas indexadas editável]] | 🚀 implementado | should |
+| [[REQ-017 Mostrar filtros ativos e permitir limpá-los de uma vez]] | 🚀 implementado | should |
 
 ## 5 · Qualidade
 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 1/1

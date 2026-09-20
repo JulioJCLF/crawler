@@ -23,7 +23,7 @@ interface FiltersProps {
   availableBrands: string[];
 }
 
-const MACRO_CATEGORIES = [
+export const MACRO_CATEGORIES = [
   { slug: "#aeg", label: "Rifles AEG" },
   { slug: "#gbbr", label: "Rifles GBBR" },
   { slug: "#gbb", label: "Pistolas GBB" },
