@@ -26,6 +26,7 @@ Nenhum.
 
 ## 🕒 Últimas sessões de trabalho
 - [[2026-09-21 - Luiz - Docs-check, documentação alinhada com o código real]]
+- [[2026-09-21 - Luiz - Corrigido CI quebrado no Node 18]]
 - [[2026-09-21 - Luiz - Alerta automático de falha da execução diária]]
 - [[2026-09-20 - Luiz - Pedidos de design e confiabilidade, vitrine com filtros ativos]]
 - [[2026-09-20 - Luiz - Adoção do sistema de documentação]]
