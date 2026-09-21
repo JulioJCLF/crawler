@@ -12,19 +12,24 @@ O **Arsenal Crawler** é uma ferramenta baseada em Node.js desenvolvida para ext
 
 ## Estrutura de Diretórios e Módulos (`/src`)
 
+> [!warning] Corrigido em 2026-09-21 (docs-check)
+> Esta seção descrevia um módulo `notifier.ts` e uma chamada `notifyChanges` em `index.ts` que **não existem no código**. O webhook de notificação (REQ-008) nunca chegou a ser implementado — está com status `aprovado` (pausado), não `implementado`. A lista abaixo foi corrigida para refletir os módulos reais.
+
 A aplicação é dividida em módulos com responsabilidades únicas, orquestrados pelo ponto de entrada principal.
 
 - **`index.ts` (Orquestrador Principal)**:
   - Inicializa o Crawler (`runCrawler`).
   - Carrega o snapshot anterior (`loadSnapshot`).
   - Calcula a diferença e rastreamento de mudanças (`applyChangeTracking`).
-  - Notifica webhook (`notifyChanges`) se existirem mudanças (`changeType` setado).
+  - Reaplica correções manuais de categoria (`applyOverrides`, ver `overrides.ts`).
   - Salva o novo snapshot.
+  - **Não envia nenhuma notificação** — esse passo (REQ-008) está pausado, não implementado.
 
 - **`config.ts` (Configurações e Parâmetros)**:
-  - Define as `CATEGORIES` monitoradas e URLs de origem.
+  - Define as `CATEGORIES` monitoradas e URLs de origem, e as `VIRTUAL_CATEGORIES` (categorias derivadas, sem URL própria — ex.: `buckings`).
   - Constantes como `MAX_PAGES` e parâmetros da URL.
-  - Lógica de filtro (exclusões de `wellness`, `fitness`, etc).
+  - Lógica de filtro (exclusões de `wellness`, `fitness`, etc, em `isValidProduct`).
+  - Sistema de pesos de categorização (`CATEGORY_WEIGHTS`, `enforceCategory`) — decide a categoria final de um produto por conteúdo do nome, podendo sobrepor a categoria de origem (ver `docs/03-crawler-spec.md`).
 
 - **`crawler.ts` (Motor de Scraping)**:
   - Configura o `CheerioCrawler` (concorrência, timeouts).
@@ -36,10 +41,13 @@ A aplicação é dividida em módulos com responsabilidades únicas, orquestrado
   - Processa o *diffing*: identifica se o produto é novo, mudou preço, voltou ao estoque ou perdeu o preço.
   - Atualiza o histórico de preços temporal do produto.
 
-- **`notifier.ts` (Sistema de Alertas)**:
-  - Comunica via protocolo HTTP POST simples para a URL do webhook (Discord/Telegram).
-  - Realiza o "chunking" (divisão de mensagens grandes em partes menores para evitar limites do Discord, ex: 1900 caracteres).
-  - Formata a aparência final das notificações.
+- **`overrides.ts` / `overrides-cli.ts` (Correções Manuais de Categoria)**:
+  - `overrides.json` guarda correções pontuais de categoria por ID de produto, aplicadas depois da heurística automática.
+  - `overrides-cli.ts` é uma ferramenta de linha de comando para gerenciar essas correções em lote.
+  - Sem requisito próprio ainda — comportamento implementado antes do sistema de documentação existir.
+
+- **`reliability/failureAlert.ts` + `reportExecutionStatus.ts` (REQ-018)**:
+  - Decide se a execução diária deve abrir, atualizar ou fechar uma Issue de alerta no GitHub, e chama o `gh` CLI a partir dessa decisão. Não depende do webhook.
 
 - **`types.ts`**:
   - Definições estáticas (tipagens do TypeScript) das interfaces usadas em todo o projeto.

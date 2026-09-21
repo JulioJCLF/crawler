@@ -33,4 +33,13 @@ Palavras-chave como `"wellness"`, `"fitness"`, `"yoga"`, `"chaveiro"`, `"adesivo
 O crawler trabalha de maneira inteligente (Spidering linear progressivo). 
 - Ele incrementa e injeta a próxima página (`?pagina=2`, `3`, etc) na fila do Crawler.
 - A condição de parada ocorre caso os "itens encontrados na página" (`foundOnPage`) chegue a zero OU caso o limite drástico (`MAX_PAGES = 150`) seja atingido.
-- Se houver produtos idênticos referenciados em múltiplas categorias, eles são deduplicados via `Map` (Key baseada no `ID`), mantendo a categoria do **primeiro encontro**.
+- Se houver produtos idênticos referenciados em múltiplas categorias, eles são deduplicados via `Map` (Key baseada no `ID`), mantendo a categoria de **maior peso** entre as ocorrências (ver seção abaixo) — não a do primeiro encontro.
+
+## Categorização por peso (`enforceCategory`, em `config.ts`)
+> Corrigido em 2026-09-21 (docs-check): esta seção não existia; o texto anterior dizia (errado) que a deduplicação mantinha a categoria do primeiro encontro.
+
+Depois de extraído, cada produto passa por `enforceCategory(nome, categoriaOriginal)`, que pode reclassificar a categoria com base em palavras no nome, não só na URL de onde veio:
+- Nomes com "bucking" ou "hop-up rubber" viram a categoria derivada `buckings` (peso 110 — a mais alta, não tem URL própria no site, é montada só pela heurística).
+- Nomes que batem com padrão de arma de verdade (ex.: termina em "airsoft rifle", "sniper rifle", "aeg" sem contexto de peça) viram `replicas` (peso 100).
+- Dentro de `replicas`, nomes com termos de peça (magazine, cylinder, spring, gearbox, hop up, stock, grip, etc.) são reclassificados para `magazines`, `pecas-internas` ou `pecas-externas`.
+- Cada categoria tem um peso fixo em `CATEGORY_WEIGHTS` (de 1 a 6, fora os casos acima). Quando o mesmo produto aparece em duas categorias de origem diferentes, vence o de maior peso.
