@@ -9,6 +9,7 @@ Linha do tempo de tudo o que mudou. **Mais recente no topo.** Detalhes de cada s
 
 | Data | O que mudou (em linguagem simples) | Quem | Detalhes |
 |---|---|---|---|
+| 2026-09-21 | Sistema agora avisa sozinho quando uma categoria específica do catálogo cai bruscamente (site pode ter mudado de estrutura). Fecha o PM-002 — os três requisitos de confiabilidade estão resolvidos | Luiz | [[2026-09-21 - Luiz - Alerta de queda brusca de categoria]] |
 | 2026-09-21 | CI estava quebrado nas duas últimas PRs sem ninguém notar: testava uma versão do Node (18) que o frontend não suporta mais. Corrigido para testar versões que o projeto realmente roda | Luiz | [[2026-09-21 - Luiz - Corrigido CI quebrado no Node 18]] |
 | 2026-09-21 | Documentação corrigida em 3 pontos onde não batia com o código: como o sistema decide categoria de produto duplicado, se o robô reconhece marca (não reconhece, só a vitrine) e um módulo de notificação que nunca existiu. Nenhum comportamento do sistema mudou | Luiz | [[2026-09-21 - Luiz - Docs-check, documentação alinhada com o código real]] |
 | 2026-09-21 | Execução diária agora avisa sozinha quando falha: abre uma Issue no GitHub, atualiza se falhar de novo, fecha quando se recupera. Corrigido também: repositório local estava 6 semanas desatualizado do GitHub (sincronizado sem perder nada) e o CI estava quebrado há 5 semanas por um bug de configuração | Luiz | [[2026-09-21 - Luiz - Alerta automático de falha da execução diária]] |

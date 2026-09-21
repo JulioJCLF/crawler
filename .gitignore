@@ -1,5 +1,6 @@
 node_modules/
 storage/
+backend/category-alert.json
 # portal de documentação (Quartz)
 portal/node_modules/
 portal/public/

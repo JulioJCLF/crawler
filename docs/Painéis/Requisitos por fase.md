@@ -29,14 +29,14 @@ tags:
 | [[REQ-008 Avisar as mudanças por webhook]] | ✅ aprovado | must |
 
 ## 3 · Automação
-🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ 3/4
+🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 4/4
 
 | Requisito | Status | Prioridade |
 |---|---|---|
 | [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado | must |
 | [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado | must |
 | [[REQ-018 Avisar quando a execução diária falhar]] | 🚀 implementado | must |
-| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | ✅ aprovado | must |
+| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | 🚀 implementado | must |
 
 ## 4 · Vitrine
 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 6/6
