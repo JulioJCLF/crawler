@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write              # necessario pra commitar o snapshot.json de volta
+  issues: write                 # REQ-018: abrir/atualizar/fechar Issue de alerta de falha
 
 concurrency:
   group: arsenal-watch
@@ -40,3 +41,13 @@ jobs:
             git commit -m "chore: update snapshot"
             git push
           fi
+
+      - name: Reportar falha ou recuperação da execução (REQ-018)
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd backend
+          npx tsx src/reportExecutionStatus.ts \
+            --status "${{ job.status }}" \
+            --run-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

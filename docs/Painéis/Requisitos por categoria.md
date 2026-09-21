@@ -1,12 +1,12 @@
 ---
 tipo: painel
-gerado_em: 2026-09-20
+gerado_em: 2026-09-21
 tags:
   - crawler/painel
 ---
 # Requisitos por categoria
 
-> [!info] Página gerada automaticamente em 2026-09-20. Mesma lista, organizada pela categoria de cada item.
+> [!info] Página gerada automaticamente em 2026-09-21. Mesma lista, organizada pela categoria de cada item.
 
 ## Backend (crawler)
 
@@ -36,7 +36,7 @@ tags:
 | [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado |
 | [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado |
 | [[REQ-016 Garantir testes automatizados a cada mudança]] | 🚀 implementado |
-| [[REQ-018 Avisar quando a execução diária falhar]] | ✅ aprovado |
+| [[REQ-018 Avisar quando a execução diária falhar]] | 🚀 implementado |
 
 ## Dados e histórico
 

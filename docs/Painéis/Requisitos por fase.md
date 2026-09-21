@@ -1,12 +1,12 @@
 ---
 tipo: painel
-gerado_em: 2026-09-20
+gerado_em: 2026-09-21
 tags:
   - crawler/painel
 ---
 # Requisitos por fase
 
-> [!info] Página gerada automaticamente em 2026-09-20. Situação de cada item, organizado pelos blocos de trabalho.
+> [!info] Página gerada automaticamente em 2026-09-21. Situação de cada item, organizado pelos blocos de trabalho.
 
 ## 1 · Crawler
 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩 5/5
@@ -29,13 +29,13 @@ tags:
 | [[REQ-008 Avisar as mudanças por webhook]] | ✅ aprovado | must |
 
 ## 3 · Automação
-🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ 2/4
+🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ 3/4
 
 | Requisito | Status | Prioridade |
 |---|---|---|
 | [[REQ-009 Rodar sozinho todo dia e guardar o resultado]] | 🚀 implementado | must |
 | [[REQ-010 Publicar a vitrine automaticamente]] | 🚀 implementado | must |
-| [[REQ-018 Avisar quando a execução diária falhar]] | ✅ aprovado | must |
+| [[REQ-018 Avisar quando a execução diária falhar]] | 🚀 implementado | must |
 | [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | ✅ aprovado | must |
 
 ## 4 · Vitrine
