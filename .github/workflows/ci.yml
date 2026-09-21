@@ -14,7 +14,10 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        # O frontend (Next.js 16) exige Node >= 20.9 (engines em next/package.json).
+        # 18.x nunca passaria aqui — sempre falhava com erro de binding nativo
+        # do PostCSS/Tailwind, sem relação com o código do projeto.
+        node-version: [20.x, 22.x]
 
     steps:
       - name: Checkout repository
