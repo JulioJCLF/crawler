@@ -1,7 +1,9 @@
 import { runCrawler } from "./crawler.js";
 import { loadSnapshot, saveSnapshot, applyChangeTracking } from "./history.js";
 import { loadOverrides, applyOverrides } from "./overrides.js";
+import { detectCategoryDrops } from "./reliability/categoryDrop.js";
 import { ALL_CATEGORIES } from "./config.js";
+import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { dirname } from "node:path";
@@ -9,6 +11,7 @@ import { dirname } from "node:path";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SNAPSHOT_PATH = join(__dirname, "..", "snapshot.json");
 const OVERRIDES_PATH = join(__dirname, "..", "overrides.json");
+const CATEGORY_ALERT_PATH = join(__dirname, "..", "category-alert.json");
 
 async function main() {
   console.log(`[${new Date().toISOString()}] Iniciando crawler com Crawlee...`);
@@ -50,6 +53,16 @@ async function main() {
     if (removidos.length) {
       console.log(`(${removidos.length} produto(s) sumiram do catálogo completamente)`);
     }
+  }
+
+  // REQ-019: detecta queda brusca por categoria ANTES de sobrescrever o
+  // snapshot. Isso pega falha parcial (uma categoria quebrou) que o guard
+  // de "zero produtos no total" (linha 18) não cobre. Não trava a execução —
+  // só grava um arquivo que o workflow lê para abrir/fechar a Issue de alerta.
+  const drops = detectCategoryDrops(categorySummary, snapshot?.categories ?? null);
+  if (drops.length > 0) {
+    console.warn(`Queda brusca detectada em ${drops.length} categoria(s): ${drops.map((d) => d.slug).join(", ")}`);
+    await writeFile(CATEGORY_ALERT_PATH, JSON.stringify({ generatedAt: agora, drops }, null, 2));
   }
 
   await saveSnapshot(SNAPSHOT_PATH, {

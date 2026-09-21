@@ -17,7 +17,7 @@ tags:
 | [[REQ-003 Respeitar os limites do site de origem]] | 🚀 implementado |
 | [[REQ-004 Descartar produtos fora do escopo]] | 🚀 implementado |
 | [[REQ-008 Avisar as mudanças por webhook]] | ✅ aprovado |
-| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | ✅ aprovado |
+| [[REQ-019 Detectar queda brusca de produtos numa categoria antes de publicar]] | 🚀 implementado |
 
 ## Vitrine
 
