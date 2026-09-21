@@ -4,13 +4,13 @@ id: REQ-018
 titulo: Avisar quando a execução diária falhar
 autora: Luiz
 data: 2026-09-20
-status: aprovado
+status: implementado
 categoria: nao-funcional
 area: automacao
 prioridade: must
 sprint: 3
 escopo: mvp
-implementado_em:
+implementado_em: 2026-09-21
 usa_ia: false
 relacionados: ["[[REQ-009 Rodar sozinho todo dia e guardar o resultado]]", "[[PM-002 Aumentar a confiabilidade do sistema]]"]
 tags:
@@ -39,17 +39,17 @@ Não se aplica.
 ## Regras de negócio
 - RN1: o alerta é uma Issue do GitHub, criada/atualizada por um passo do workflow (`watch.yml`) — não depende do webhook de REQ-008.
 - RN2: falhas seguidas não geram Issues duplicadas — reaproveita a Issue já aberta (identificada por rótulo `alerta-execucao`, distinto do `alerta-categoria` de REQ-019).
-- RN3: "execução falhou" cobre qualquer passo crítico do job (`watch.yml`) — crawler, commit e push do snapshot. O passo de aviso roda com `if: failure()` no fim do job, então pega falha em qualquer passo anterior, não só no crawler.
-- RN4: o passo de Issue usa `gh` (GitHub CLI, já disponível por padrão nos runners do GitHub Actions) com `GITHUB_TOKEN` — sem action de terceiro nem dependência nova.
+- RN3: "execução falhou" cobre qualquer passo crítico do job (`watch.yml`) — crawler, commit e push do snapshot. O passo de aviso roda com `if: always()` no fim do job (precisa rodar tanto na falha quanto no sucesso, para poder fechar a Issue quando o job se recupera) e decide criar/atualizar/fechar/nada a partir de `${{ job.status }}`.
+- RN4: o passo de Issue usa `gh` (GitHub CLI, já disponível por padrão nos runners do GitHub Actions) com `GITHUB_TOKEN`, chamado por um script (`backend/src/reportExecutionStatus.ts`) — sem action de terceiro nem dependência nova. A decisão de qual ação tomar (`decideFailureAction`) fica em `backend/src/reliability/failureAlert.ts`, separada do `gh` em si, para poder ser testada no Vitest.
 
 ## Dados envolvidos
 - Nenhum dado novo persistido no snapshot. Usa o resultado da execução (sucesso/falha) do workflow do GitHub Actions.
 
 ## Critérios de aceite
-- [ ] **Dado** que o crawler não extraiu nenhum produto, **quando** a execução terminar, **então** uma Issue de falha é criada no repositório com link para o run.
-- [ ] **Dado** uma Issue de falha já aberta, **quando** uma nova execução falhar de novo, **então** nenhuma Issue duplicada é criada — a existente é atualizada.
-- [ ] **Dado** uma Issue de falha aberta, **quando** uma execução seguinte terminar com sucesso, **então** a Issue é fechada automaticamente.
-- [ ] **Dado** uma execução que termina normalmente e não há Issue de falha aberta, **quando** o workflow finalizar, **então** nenhuma Issue é criada.
+- [x] **Dado** que o crawler não extraiu nenhum produto, **quando** a execução terminar, **então** uma Issue de falha é criada no repositório com link para o run. (`failureAlert.test.ts`)
+- [x] **Dado** uma Issue de falha já aberta, **quando** uma nova execução falhar de novo, **então** nenhuma Issue duplicada é criada — a existente é atualizada. (`failureAlert.test.ts`)
+- [x] **Dado** uma Issue de falha aberta, **quando** uma execução seguinte terminar com sucesso, **então** a Issue é fechada automaticamente. (`failureAlert.test.ts`)
+- [x] **Dado** uma execução que termina normalmente e não há Issue de falha aberta, **quando** o workflow finalizar, **então** nenhuma Issue é criada. (`failureAlert.test.ts`)
 
 ## Exceções e erros
 - Se o próprio passo de criar/atualizar a Issue falhar, isso não pode mascarar o código de saída de falha do workflow original.
@@ -66,4 +66,5 @@ Não se aplica.
 ## Histórico
 | Data | O que mudou | Quem | Referência |
 |---|---|---|---|
+| 2026-09-21 | Implementado: `backend/src/reliability/failureAlert.ts` (decisão, testada) + `backend/src/reportExecutionStatus.ts` (chama `gh`) + passo novo em `watch.yml` com permissão `issues: write`. Verificado localmente o caminho de leitura (`gh issue list`) contra o repositório real; os caminhos de criar/atualizar/fechar Issue não foram testados contra o repositório real para não deixar Issue de teste — ficam cobertos pelos testes unitários da decisão | Luiz | branch `req-018-alerta-falha-execucao` |
 | 2026-09-20 | Criado a partir do PM-002 | Luiz | [[PM-002 Aumentar a confiabilidade do sistema]] |
