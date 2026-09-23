@@ -1,12 +1,12 @@
 ---
 tipo: painel
-gerado_em: 2026-09-21
+gerado_em: 2026-09-23
 tags:
   - crawler/painel
 ---
 # Requisitos por categoria
 
-> [!info] Página gerada automaticamente em 2026-09-21. Mesma lista, organizada pela categoria de cada item.
+> [!info] Página gerada automaticamente em 2026-09-23. Mesma lista, organizada pela categoria de cada item.
 
 ## Backend (crawler)
 

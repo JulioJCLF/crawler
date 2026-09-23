@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
+import { siteConfig } from "@/config/site";
 
 export function FloatingCart() {
   const { items, totalItems, isCartOpen, setIsCartOpen, updateQuantity, removeFromCart, clearCart } = useCart();
@@ -25,7 +26,7 @@ export function FloatingCart() {
     });
     msg += `Total de Itens: ${totalItems}`;
     
-    return `https://wa.me/5541999999999?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(msg)}`;
   };
 
   return (
