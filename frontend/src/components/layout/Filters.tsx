@@ -167,9 +167,9 @@ export function Filters({
 
   // Default Sidebar Layout
   return (
-    <aside className="w-full md:w-72 border-r border-border bg-card/30 p-6 flex flex-col gap-6 sticky top-0 h-screen overflow-y-auto">
-      <div className="flex justify-center border-b border-border pb-5">
-        <Logo className="h-24 w-auto object-contain" />
+    <aside className="w-full md:w-72 border-b md:border-b-0 md:border-r border-border bg-card/30 p-4 md:p-6 flex flex-col gap-4 md:gap-6 md:sticky md:top-0 md:h-screen md:overflow-y-auto">
+      <div className="flex justify-center border-b border-border pb-4 md:pb-5">
+        <Logo className="h-16 md:h-24 w-auto object-contain" />
       </div>
 
       <div>
@@ -179,7 +179,7 @@ export function Filters({
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-4 md:space-y-6">
         <div>
           <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-2 block">
             Ordenação
@@ -260,13 +260,13 @@ export function Filters({
           <h3 className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-3 border-b border-border pb-2">
             Categorias-Alvo
           </h3>
-          <div className="flex flex-col gap-1">
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:flex-col md:gap-1 md:overflow-visible md:pb-0">
             <button
               onClick={() => {
                 onSelectCategory(null);
                 onSelectBrand(null);
               }}
-              className={`text-left font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
+              className={`flex-shrink-0 text-left font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
                 selectedCategory === null 
                   ? "bg-primary text-primary-foreground font-bold shadow-[0_0_10px_var(--primary)_inset]" 
                   : "hover:bg-muted text-muted-foreground border border-transparent hover:border-border"
@@ -283,13 +283,13 @@ export function Filters({
                   if (cat.slug !== "#vestuario") onSelectVestCategory(null);
                   if (cat.slug !== "#aeg" && cat.slug !== "#gbb" && cat.slug !== "#gbbr" && cat.slug !== "#sniper") onSelectBrand(null);
                 }}
-                className={`flex items-center justify-between font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
+                className={`flex-shrink-0 flex items-center justify-between font-mono text-xs px-3 py-2.5 rounded-md transition-colors ${
                   selectedCategory === cat.slug
                     ? "bg-primary text-primary-foreground font-bold shadow-[0_0_10px_var(--primary)_inset]"
                     : "hover:bg-muted text-muted-foreground border border-transparent hover:border-border"
                 }`}
               >
-                <span className="uppercase truncate mr-2">{cat.label}</span>
+                <span className="uppercase whitespace-nowrap md:truncate md:mr-2">{cat.label}</span>
               </button>
             ))}
           </div>
