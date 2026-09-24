@@ -168,3 +168,10 @@
     @apply font-sans;
   }
 }
+/* Esconde a barra de rolagem nas listas que rolam de lado (categorias no celular). */
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
