@@ -58,6 +58,6 @@ export const siteConfig: SiteConfig = {
   },
   theme: "hunting",
   layout: "sidebar",
-  whatsappNumber: "5541999999999",
+  whatsappNumber: "5545999858096",
   showDevTools: false,
 };
